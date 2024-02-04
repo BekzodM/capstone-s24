@@ -1,17 +1,17 @@
 
 # CSCI 499 Capstone Game
-A 3D tower defense game build in unity for CSCI 499 capstone
+A 3D tower defense game built in unity for CSCI 499 capstone
 
 ## Team Links
-Trello Board: https://trello.com/b/XNcMBorS/capstone
-Google Folder: https://drive.google.com/drive/folders/1-QmLFcbpjjl7RpAKAizrNXElHTsA-zL8?usp=drive_link
+Trello Board: https://trello.com/b/XNcMBorS/capstone  
+Google Folder: https://drive.google.com/drive/folders/1-QmLFcbpjjl7RpAKAizrNXElHTsA-zL8?usp=drive_link  
 
 ## 🚀 Developers
-William
-Cindy
-Lily
-Bekzod
-Bodrul
+William  
+Cindy  
+Lily  
+Bekzod  
+Bodrul  
 
 ## 🛠 Tools
 Unity game engine, C#
@@ -36,10 +36,10 @@ What did you learn while building this project? What challenges did you face and
 
 ## Features
 
-![Image](https://placehold.co/600x400)
+![Image](https://placehold.co/600x400)  
 - Light/dark mode toggle
-![Image](https://placehold.co/600x400)
+![Image](https://placehold.co/600x400)  
 - Live previews
 - Fullscreen mode
-![Image](https://placehold.co/600x400)
+![Image](https://placehold.co/600x400)  
 - Cross platform
