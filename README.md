@@ -37,9 +37,9 @@ What did you learn while building this project? What challenges did you face and
 ## Features
 
 ![Image](https://placehold.co/600x400)  
-- Light/dark mode toggle
+- Light/dark mode toggle  
 ![Image](https://placehold.co/600x400)  
-- Live previews
-- Fullscreen mode
+- Live previews  
+- Fullscreen mode  
 ![Image](https://placehold.co/600x400)  
-- Cross platform
+- Cross platform  
