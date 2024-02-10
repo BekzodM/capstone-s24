@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public abstract class Structure
+public abstract class Structure : MonoBehaviour
 {
-    protected string name;
+    protected string structureName;
     protected string description;
     protected string type;
     protected int cost;
@@ -14,7 +14,7 @@ public abstract class Structure
 
     protected Structure(string name, string description, string type, int cost, int health, float areaEffectRadius) 
     {
-        this.name = name;
+        structureName = name;
         this.description = description;
         this.type = type;
         this.cost = cost;
