@@ -13,7 +13,7 @@ public class areaZone : MonoBehaviour
             Offensive offensiveScript = gameObjectParent.GetComponent<Offensive>();
             if (offensiveScript != null)
             {
-                offensiveScript.CreateAttackProjectile(other.gameObject);
+                offensiveScript.Shoot(other.gameObject);
             }
         }
     }

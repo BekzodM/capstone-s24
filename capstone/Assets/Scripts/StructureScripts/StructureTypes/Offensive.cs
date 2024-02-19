@@ -10,17 +10,17 @@ public abstract class Offensive : Structure
     {
     }
 
-    public void CreateAttackProjectile(GameObject target) {
-        TurnStructureHead(target);
-        GameObject attackInstance = Instantiate(attackPrefab,target.transform.position,Quaternion.identity);
-    }
-
-    private void TurnStructureHead(GameObject target) {
+    public void Shoot(GameObject target, float projectileDistanceFromHead = 1f) {
         GameObject model = transform.GetChild(1).gameObject;
         GameObject modelHead = model.transform.GetChild(0).gameObject;
         Vector3 direction = target.transform.position - modelHead.transform.position;
-        if (direction != Vector3.zero) {
+        if (direction != Vector3.zero)
+        {
+            //rotate head
             modelHead.transform.rotation = Quaternion.LookRotation(direction);
+            //instantiate projectile
+            Vector3 spawnPos = modelHead.transform.position + modelHead.transform.forward * projectileDistanceFromHead;
+            Instantiate(attackPrefab, spawnPos, Quaternion.identity);
         }
     }
 }
