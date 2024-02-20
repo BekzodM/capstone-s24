@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class areaZone : MonoBehaviour
 {
+    [SerializeField] private float areaEffectRadius = 10f;
+
+    private void Start()
+    {
+        transform.localScale = new Vector3(areaEffectRadius,areaEffectRadius,areaEffectRadius);
+    }
     private void OnTriggerEnter(Collider other)
     {
         GameObject gameObjectParent = transform.parent.gameObject;

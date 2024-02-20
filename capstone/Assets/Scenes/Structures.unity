@@ -520,6 +520,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turret
       objectReference: {fileID: 0}
+    - target: {fileID: 4953525428354962625, guid: bc679f0168a606043b4646bd2824e30b, type: 3}
+      propertyPath: areaEffectRadius
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4997073381334681966, guid: bc679f0168a606043b4646bd2824e30b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.51

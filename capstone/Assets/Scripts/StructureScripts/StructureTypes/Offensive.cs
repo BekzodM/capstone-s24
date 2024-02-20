@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Offensive : Structure
 {
     [SerializeField] private GameObject attackPrefab;
+    [SerializeField] private float firingRate;
     [SerializeField] private float projectileDistanceFromHead = 1.5f;
     [SerializeField] private float projectileSpeed = 20f;
     protected Offensive(string name, string description, int cost, int health, float areaEffectRadius)
