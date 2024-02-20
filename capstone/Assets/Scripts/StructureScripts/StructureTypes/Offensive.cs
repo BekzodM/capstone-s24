@@ -37,7 +37,7 @@ public abstract class Offensive : Structure
 
     public void StartShooting(GameObject target)
     {
-        
+
         enemiesInZone.Add(target);
         if (targetEnemy == null)
         {
@@ -49,11 +49,14 @@ public abstract class Offensive : Structure
 
     public void StopShooting(GameObject target)
     {
-        isShooting = false;
+        
         enemiesInZone.Remove(target);
         if (targetEnemy == target)
         {
             targetEnemy = (enemiesInZone.Count > 0) ? enemiesInZone[0] : null;
+        }
+        if (enemiesInZone.Count == 0) {
+            isShooting = false;
         }
     }
     private void Shoot(GameObject target) {

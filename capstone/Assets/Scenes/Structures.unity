@@ -341,7 +341,7 @@ Transform:
   m_GameObject: {fileID: 397016891}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.61, y: 5.74, z: -1.1}
+  m_LocalPosition: {x: -1.61, y: 5.74, z: 0.437}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -574,7 +574,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7907070498450089891, guid: bc679f0168a606043b4646bd2824e30b, type: 3}
       propertyPath: projectileSpeed
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7907070498450089891, guid: bc679f0168a606043b4646bd2824e30b, type: 3}
       propertyPath: cooldownDuration
@@ -854,7 +854,7 @@ Transform:
   m_GameObject: {fileID: 1953490514}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.11, y: 7.22, z: -1.1}
+  m_LocalPosition: {x: 2.11, y: 7.97, z: -0.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
