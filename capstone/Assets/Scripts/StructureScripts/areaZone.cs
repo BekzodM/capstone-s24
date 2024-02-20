@@ -19,8 +19,22 @@ public class areaZone : MonoBehaviour
             Offensive offensiveScript = gameObjectParent.GetComponent<Offensive>();
             if (offensiveScript != null)
             {
-                offensiveScript.Shoot(other.gameObject);
+                offensiveScript.StartShooting(other.gameObject);
             }
         }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        GameObject gameObjectParent = transform.parent.gameObject;
+        if (other.CompareTag("Enemy"))
+        {
+            Debug.Log("Enemy has left the trigger zone");
+            Offensive offensiveScript = gameObjectParent.GetComponent<Offensive>();
+            if (offensiveScript != null)
+            {
+                offensiveScript.StopShooting(other.gameObject);
+            }
+        }
+
     }
 }
