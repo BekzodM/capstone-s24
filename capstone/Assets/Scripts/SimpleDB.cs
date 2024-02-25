@@ -33,8 +33,7 @@ public class SimpleDB : MonoBehaviour
             //set up an object (called "command") to allow db control
             using (var command = connection.CreateCommand())
             {
-                //create a table called weapons if it doesnt already exist
-                //has 2 fields: name (up to 20 chars) and damage (an INT)
+                //create tables using sql commands from createdb.sql
                 command.CommandText = sqlScript;
                 command.ExecuteNonQuery();
             }
