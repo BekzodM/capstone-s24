@@ -9,7 +9,16 @@ public class Actor : MonoBehaviour
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private GameInput gameInput;
 
+    public int maxHealth = 100;
+    public int currentHealth;
+    public HealthBar healthBar;
+
     private bool isWalking;
+
+    void Start() {
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+    }
 
     private void Update()
     {
@@ -27,5 +36,10 @@ public class Actor : MonoBehaviour
     public bool IsWalking()
     {
         return isWalking;
+    }
+
+    void TakeDamage(int damage) {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
     }
 }
