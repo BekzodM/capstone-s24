@@ -78,7 +78,7 @@ public abstract class Offensive : Structure
             //instantiate projectile
             Vector3 spawnPos = modelHead.position + modelHead.forward * projectileDistanceFromHead;
             if (attackPrefab != null) {
-                GameObject projectileInstance = Instantiate(attackPrefab, spawnPos, Quaternion.identity);
+                GameObject projectileInstance = Instantiate(attackPrefab, spawnPos, Quaternion.LookRotation(direction));
 
                 //launching projectile
                 Rigidbody attackRB = projectileInstance.GetComponent<Rigidbody>();
