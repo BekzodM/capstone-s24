@@ -15,7 +15,6 @@ public class SimpleDB : MonoBehaviour
     void Start()
     {
         CreateDB();
-        AddSave(-99, -99);
     }
 
     // Update is called once per frame
@@ -46,9 +45,12 @@ public class SimpleDB : MonoBehaviour
 
             connection.Close();
         }
+
+        AddSave(1, -99, -99);
+        AddSave(2, -99, -99);
     }
 
-    public void AddSave(int playerId, int progLevel)
+    public void AddSave(int slotNumber, int playerId, int progLevel)
     {
         //connect to DB
         using (var connection = new SqliteConnection(dbName))
@@ -59,7 +61,7 @@ public class SimpleDB : MonoBehaviour
             using (var command = connection.CreateCommand())
             {
                 //write insertion command
-                command.CommandText = "INSERT INTO saves (player_id, progress_level) VALUES ('" + playerId + "', '" + progLevel + "')";
+                command.CommandText = "INSERT INTO saves (slot_number, player_id, progress_level) VALUES ('" + slotNumber + "', '" + playerId + "', '" + progLevel + "')";
 
                 //run the command
                 command.ExecuteNonQuery();
@@ -70,7 +72,7 @@ public class SimpleDB : MonoBehaviour
         }
     }
 
-    public void ChangeSave(int save_id, int playerId, int progLevel)
+    public void ChangeSave(int saveId, int playerId, int progLevel)
     {
         //connect to DB
         using (var connection = new SqliteConnection(dbName))
@@ -80,8 +82,8 @@ public class SimpleDB : MonoBehaviour
             //set up an object (called "command") to allow db control
             using (var command = connection.CreateCommand())
             {
-                //write insertion command
-                command.CommandText = "INSERT INTO saves (player_id, progress_level) VALUES ('" + playerId + "', '" + progLevel + "')";
+                //write Update command
+                command.CommandText = "UPDATE saves SET player_id = " + playerId + ", progress_level = " + progLevel + " WHERE save_id = " + saveId;
 
                 //run the command
                 command.ExecuteNonQuery();
