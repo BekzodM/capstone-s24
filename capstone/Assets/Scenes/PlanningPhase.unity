@@ -347,7 +347,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &214480710
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2110,7 +2110,7 @@ MonoBehaviour:
   - {fileID: 8467770523811498818, guid: 20819f3a781e8d34994986702df4479d, type: 3}
   supportStructurePrefabs: []
   trapStructurePrefabs: []
-  structureShopPrefab: {fileID: 2861927505044557560, guid: 332f3a5e3537df845b783ebafb927e41, type: 3}
+  structureShopButtonPrefab: {fileID: 2861927505044557560, guid: 332f3a5e3537df845b783ebafb927e41, type: 3}
 --- !u!1 &1464800410
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,7 +11,7 @@ public class StructureShop : MonoBehaviour
     [SerializeField] private GameObject[] defensiveStructurePrefabs;
     [SerializeField] private GameObject[] supportStructurePrefabs;
     [SerializeField] private GameObject[] trapStructurePrefabs;
-    [SerializeField] private GameObject structureShopPrefab;
+    [SerializeField] private GameObject structureShopButtonPrefab;
     private GameObject[][] structurePrefabs;
     private int previousIndex = 0;
 
@@ -26,24 +27,15 @@ public class StructureShop : MonoBehaviour
 
         //Fill shop with buttons
 
-        Transform shopContent = transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0); //Content
-
-        for (int i = 0; i < shopContent.childCount; i++)
-        {
-            Transform child = shopContent.GetChild(i);//Offensive..Structures container
-            GameObject[] prefabs = structurePrefabs[i];
-
-            foreach (GameObject obj in prefabs)
-            {
-                GameObject buttonInstance = Instantiate(structureShopPrefab);
-                Button buttonComponent = buttonInstance.GetComponent<Button>();
-                buttonComponent.onClick.AddListener(HandleButtonClick);
-                buttonInstance.transform.SetParent(child.transform);
-            }
-        }
+        FillShopWithButtons();
     }
 
-    //Structure Type Buttons
+    public GameObject[][] GetStructurePrefabs()
+    {
+        return structurePrefabs;
+    }
+
+    //Structure Type Buttons. Switch between the different kinds of structures in the shop
     public void showStructureShop(int index)
     {
         Transform shopContent = transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0);
@@ -53,6 +45,28 @@ public class StructureShop : MonoBehaviour
         previousShopContent.SetActive(false);
         child.SetActive(true);
         previousIndex = index;
+    }
+
+    //Fill shop with buttons on the bottom part of the screen
+    private void FillShopWithButtons() 
+    {
+        Transform shopContent = transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0); //Content
+
+        for (int i = 0; i < shopContent.childCount; i++)
+        {
+            Transform child = shopContent.GetChild(i);//Offensive..Structures container
+            GameObject[] prefabs = structurePrefabs[i];
+
+            foreach (GameObject obj in prefabs)
+            {
+                GameObject buttonInstance = Instantiate(structureShopButtonPrefab);
+                Button buttonComponent = buttonInstance.GetComponent<Button>();
+                buttonComponent.onClick.AddListener(HandleButtonClick);
+                buttonInstance.transform.SetParent(child.transform);
+
+                buttonInstance.GetComponent<StructureButton>().SetButtonText(obj.name);
+            }
+        }
     }
 
     //Structure Shop Button onClick function
