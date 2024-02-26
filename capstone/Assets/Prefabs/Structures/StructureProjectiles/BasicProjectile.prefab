@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2419725648963353309}
   - component: {fileID: 7618708746090258410}
+  - component: {fileID: 8504300720901608849}
   m_Layer: 0
   m_Name: BasicProjectile
   m_TagString: Untagged
@@ -60,6 +61,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8504300720901608849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2363045294411865879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d251682bb68c5e4490025718353b4e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4147682905245482309
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,7 +135,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 5a2d0212f2daca644a08860783f42adf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
