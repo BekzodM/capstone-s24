@@ -14,6 +14,7 @@ public class Actor : MonoBehaviour
     public HealthBar healthBar;
 
     private bool isWalking;
+    private bool attack;
 
     void Start() {
         currentHealth = maxHealth;
@@ -31,11 +32,25 @@ public class Actor : MonoBehaviour
 
         float rotateSpeed = 12f;
         transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
+
+        //Attacking
+        if(Input.GetMouseButtonDown(0)) {
+            Attack();
+        } 
     }
 
     public bool IsWalking()
     {
         return isWalking;
+    }
+
+
+    public void Attack(){
+        ActorAnimator actorAnimator = GetComponentInChildren<ActorAnimator>();
+        if (actorAnimator != null)
+        {
+            actorAnimator.AttackAnimation();
+        }
     }
 
     void TakeDamage(int damage) {
