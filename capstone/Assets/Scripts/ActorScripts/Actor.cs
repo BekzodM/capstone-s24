@@ -12,9 +12,12 @@ public class Actor : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     public HealthBar healthBar;
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    public LayerMask enemyLayers;
 
     private bool isWalking;
-    private bool attack;
+    
 
     void Start() {
         currentHealth = maxHealth;
@@ -51,6 +54,17 @@ public class Actor : MonoBehaviour
         {
             actorAnimator.AttackAnimation();
         }
+        Collider[] attackEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
+
+        foreach(Collider enemy in attackEnemies) {
+            enemy.GetComponent<Enemy>().TakeDamage(10);
+        }
+
+    }
+
+    void OnDrawGizmosSelected() {
+        if(attackPoint == null) return;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
     void TakeDamage(int damage) {
