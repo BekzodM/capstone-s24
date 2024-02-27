@@ -13,6 +13,10 @@ public class Enemy : MonoBehaviour
         currentHealth = maxHealth;
     }
 
+    /*
+    Called by Player or Structure to deduct
+    hp from current enemy's health.
+    */
     public void TakeDamage(int damage) {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
