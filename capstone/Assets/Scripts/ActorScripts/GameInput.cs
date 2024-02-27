@@ -15,23 +15,6 @@ public class GameInput : MonoBehaviour
     {
         Vector2 inputVector = actorInputActions.Player.Move.ReadValue<Vector2>();
 
-        // if (Input.GetKey(KeyCode.W))
-        // {
-        //     inputVector.y += 1;
-        // }
-        // if (Input.GetKey(KeyCode.S))
-        // {
-        //     inputVector.y -= 1;
-        // }
-        // if (Input.GetKey(KeyCode.A))
-        // {
-        //     inputVector.x -= 1;
-        // }
-        // if (Input.GetKey(KeyCode.D))
-        // {
-        //     inputVector.x += 1;
-        // }
-
         inputVector = inputVector.normalized;
 
         Debug.Log(inputVector);
@@ -39,3 +22,22 @@ public class GameInput : MonoBehaviour
         return inputVector;
     }
 }
+
+// OLD INPUT METHOD
+//
+// if (Input.GetKey(KeyCode.W))
+// {
+//     inputVector.y += 1;
+// }
+// if (Input.GetKey(KeyCode.S))
+// {
+//     inputVector.y -= 1;
+// }
+// if (Input.GetKey(KeyCode.A))
+// {
+//     inputVector.x -= 1;
+// }
+// if (Input.GetKey(KeyCode.D))
+// {
+//     inputVector.x += 1;
+// }
