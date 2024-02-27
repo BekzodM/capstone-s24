@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS enemies(
 
 CREATE TABLE IF NOT EXISTS saves (
     save_id INTEGER NOT NULL PRIMARY KEY,
-    slot_number INTEGER UNIQUE,
+    slot_id INTEGER UNIQUE,
     player_id INTEGER,
     progress_level INTEGER,
     FOREIGN KEY (player_id) REFERENCES players(player_id)
