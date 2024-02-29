@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class GameInput : MonoBehaviour
 {
-    private ActorInputActions actorInputActions;
+    //private ActorInputActions actorInputActions;
 
-    private void Awake()
-    {
-        actorInputActions = new ActorInputActions();
-        actorInputActions.Player.Enable();
-    }
-    public Vector2 GetMovementVectorNormalized()
-    {
-        Vector2 inputVector = actorInputActions.Player.Move.ReadValue<Vector2>();
+    //private void Awake()
+    //{
+    //    actorInputActions = new ActorInputActions();
+    //    actorInputActions.Player.Enable();
+    //}
+    //public Vector2 GetMovementVectorNormalized()
+    //{
+    //    Vector2 inputVector = actorInputActions.Player.Move.ReadValue<Vector2>();
 
-        inputVector = inputVector.normalized;
+    //    inputVector = inputVector.normalized;
 
-        Debug.Log(inputVector);
+    //    Debug.Log(inputVector);
 
-        return inputVector;
-    }
+    //    return inputVector;
+    //}
 }
 
 // OLD INPUT METHOD
