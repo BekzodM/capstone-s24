@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] Player player;         // The player object this controller is controlling
-    //[SerializeField] float speed = 1.0f;    // Player speed
 
     private Rigidbody playerRigidbody;      // Part of the player object but for quick access
     private PlayerInput playerInput;    // PlayerInput component tied to Player object
@@ -63,7 +62,7 @@ public class PlayerController : MonoBehaviour
     {
         if(context.performed)
         {
-            playerRigidbody.AddForce(Vector3.up * 5.0f, ForceMode.Impulse);
+            playerRigidbody.AddForce(Vector3.up * player.JumpForce(), ForceMode.Impulse);
         }
     }
 
