@@ -566,7 +566,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7907070498450089891, guid: bc679f0168a606043b4646bd2824e30b, type: 3}
       propertyPath: cooldown
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7907070498450089891, guid: bc679f0168a606043b4646bd2824e30b, type: 3}
       propertyPath: fireRate
