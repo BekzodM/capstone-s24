@@ -7,6 +7,7 @@ public class ActorAnimator : MonoBehaviour
     [SerializeField] private Actor actor;
 
     private const string IS_WALKING = "IsWalking";
+    private const string ATTACK = "Attack";
     private Animator animator;
 
     private void Awake()
@@ -18,5 +19,10 @@ public class ActorAnimator : MonoBehaviour
     private void Update()
     {
         animator.SetBool(IS_WALKING, actor.IsWalking());
+    }
+
+    public void AttackAnimation()
+    {
+        animator.SetTrigger("Attack");
     }
 }
