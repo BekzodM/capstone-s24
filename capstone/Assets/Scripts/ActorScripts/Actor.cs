@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class Actor : MonoBehaviour
 {
+    // Protected fields because inherited classes need to access these values
 
-    [SerializeField] private float moveSpeed = 7f;
-    [SerializeField] private GameInput gameInput;
+    [SerializeField] protected float moveSpeed = 7f;
+    //[SerializeField] private GameInput gameInput;
 
+<<<<<<< HEAD
     public int maxHealth = 100;
     public int currentHealth;
     public HealthBar healthBar;
@@ -23,16 +25,20 @@ public class Actor : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
+=======
+    protected bool isWalking;
+>>>>>>> main
 
     private void Update()
     {
-        Vector2 inputVector = gameInput.GetMovementVectorNormalized();
-        Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
+        //Vector2 inputVector = gameInput.GetMovementVectorNormalized();
+        //Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
 
-        transform.position += moveDir * moveSpeed * Time.deltaTime;
+        //transform.position += moveDir * moveSpeed * Time.deltaTime;
 
-        isWalking = moveDir != Vector3.zero;
+        //isWalking = moveDir != Vector3.zero;
 
+<<<<<<< HEAD
         float rotateSpeed = 12f;
         transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
 
@@ -40,6 +46,10 @@ public class Actor : MonoBehaviour
         if(Input.GetMouseButtonDown(0)) {
             Attack();
         } 
+=======
+        //float rotateSpeed = 12f;
+        //transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
+>>>>>>> main
     }
 
     public bool IsWalking()
@@ -47,6 +57,7 @@ public class Actor : MonoBehaviour
         return isWalking;
     }
 
+<<<<<<< HEAD
     /* 
     Trigger "Attack" animation on Player.
     Create a list of "enemy" colliders that
@@ -78,5 +89,11 @@ public class Actor : MonoBehaviour
     void TakeDamage(int damage) {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
+=======
+    // moveSpeed getter
+    public float MoveSpeed()
+    {
+        return moveSpeed;
+>>>>>>> main
     }
 }
