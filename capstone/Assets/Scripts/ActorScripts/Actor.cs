@@ -10,24 +10,19 @@ public class Actor : MonoBehaviour
     [SerializeField] protected float moveSpeed = 7f;
     //[SerializeField] private GameInput gameInput;
 
-<<<<<<< HEAD
     public int maxHealth = 100;
     public int currentHealth;
     public HealthBar healthBar;
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
-
-    private bool isWalking;
     
 
     void Start() {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
-=======
     protected bool isWalking;
->>>>>>> main
 
     private void Update()
     {
@@ -38,18 +33,13 @@ public class Actor : MonoBehaviour
 
         //isWalking = moveDir != Vector3.zero;
 
-<<<<<<< HEAD
-        float rotateSpeed = 12f;
-        transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
 
         //Attacking
         if(Input.GetMouseButtonDown(0)) {
             Attack();
         } 
-=======
         //float rotateSpeed = 12f;
         //transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
->>>>>>> main
     }
 
     public bool IsWalking()
@@ -57,7 +47,6 @@ public class Actor : MonoBehaviour
         return isWalking;
     }
 
-<<<<<<< HEAD
     /* 
     Trigger "Attack" animation on Player.
     Create a list of "enemy" colliders that
@@ -89,11 +78,10 @@ public class Actor : MonoBehaviour
     void TakeDamage(int damage) {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
-=======
+    }
     // moveSpeed getter
     public float MoveSpeed()
     {
         return moveSpeed;
->>>>>>> main
     }
 }
