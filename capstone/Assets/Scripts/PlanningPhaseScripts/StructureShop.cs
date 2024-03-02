@@ -73,7 +73,8 @@ public class StructureShop : MonoBehaviour
     private void HandleButtonClick() {
         GameObject structureInfo = transform.GetChild(1).gameObject;
 
-        structureInfo.SetActive(!structureInfo.activeSelf);
+        //structureInfo.SetActive(!structureInfo.activeSelf);
+        structureInfo.SetActive(true);
 
     }
 
