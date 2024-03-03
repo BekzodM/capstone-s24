@@ -11,7 +11,7 @@ public abstract class Shooter : Offensive
     protected float critChance;
     protected float critDamage;
     public Shooter(int cost, int health, float areaEffectRadius, float attackSpeed, float attackDamage, float critChance, float critDamage, Attack projectile)
-        : base("Shooter", "Structures that shoot projectiles", cost, health, areaEffectRadius)
+        : base("Shooter", "Structures that shoot projectiles.", cost, health, areaEffectRadius)
     {
         this.attackDamage = attackDamage;
         this.critChance = critChance;
