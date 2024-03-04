@@ -7,15 +7,20 @@ public abstract class Shooter : Offensive
     [SerializeField] private float projectileSpeed = 20f;
     [SerializeField] private float projectileDistanceFromHead = 1.5f;
     [SerializeField] private GameObject attackPrefab;
-    protected float attackDamage;
-    protected float critChance;
-    protected float critDamage;
-    public Shooter(int cost, int health, float areaEffectRadius, float attackSpeed, float attackDamage, float critChance, float critDamage, Attack projectile)
-        : base("Shooter", "Structures that shoot projectiles.", cost, health, areaEffectRadius)
+    [SerializeField] protected float attackDamage;
+    [SerializeField] protected float critChance;
+    [SerializeField] protected float critDamage;
+    public Shooter(string name, string description, int cost, int health, float attackSpeed, float attackDamage, float critChance, float critDamage)
+        : base(name, description, cost, health)
     {
         this.attackDamage = attackDamage;
         this.critChance = critChance;
         this.critDamage = critDamage;
+    }
+
+    protected override void Start()
+    {
+        base.Start();
     }
 
     protected override void Attack(GameObject target)

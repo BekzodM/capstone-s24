@@ -9,13 +9,15 @@ public abstract class Offensive : Structure
     [SerializeField] private float cooldown = 1f;
     private float nextCooldown = 0f;
     private bool isAttacking = false;
-    protected Offensive(string name, string description, int cost, int health, float areaEffectRadius)
-        : base(name, description, "Offensive", cost, health, areaEffectRadius)
+    protected Offensive(string name, string description, int cost, int health)
+        : base(name, description, "Offensive", cost, health)
     {
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
+        SetStructureType("Offensive");
         enemiesInZone = new List<GameObject>();
     }
 

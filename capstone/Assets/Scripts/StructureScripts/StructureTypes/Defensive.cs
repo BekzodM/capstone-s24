@@ -5,8 +5,8 @@ using UnityEngine;
 
 public abstract class Defensive : Structure
 {
-    protected Defensive(string name, string description, int cost, int health, float areaEffectRadius)
-        : base(name, description, "Defensive", cost, health, areaEffectRadius)
+    protected Defensive(string name, string description, int cost, int health)
+        : base(name, description, "Defensive", cost, health)
     {
     }
 }
