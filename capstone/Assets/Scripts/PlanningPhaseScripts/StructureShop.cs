@@ -75,6 +75,8 @@ public class StructureShop : MonoBehaviour
 
         //structureInfo.SetActive(!structureInfo.activeSelf);
         structureInfo.SetActive(true);
+        Transform structureShopPanel = transform.GetChild(0);
+        RectTransform rectTransform = structureShopPanel.GetComponent<RectTransform>();
 
     }
 
