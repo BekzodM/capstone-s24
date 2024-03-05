@@ -52,33 +52,34 @@ public class StructureShop : MonoBehaviour
     {
         Transform shopContent = transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0); //Content
 
-        for (int i = 0; i < shopContent.childCount; i++)
+        for (int i = 0; i < shopContent.childCount; i++) //iterate children in Content
         {
-            Transform child = shopContent.GetChild(i);//Offensive..Structures container
+            Transform child = shopContent.GetChild(i);//Offensive,...Structures container
             GameObject[] prefabs = structurePrefabs[i];
 
-            foreach (GameObject obj in prefabs)
+            foreach (GameObject obj in prefabs) //iterate prefabs of Offensive, Defensive..etc.
             {
                 GameObject buttonInstance = Instantiate(structureShopButtonPrefab);
                 Button buttonComponent = buttonInstance.GetComponent<Button>();
-                buttonComponent.onClick.AddListener(HandleButtonClick);
+                //buttonComponent.onClick.AddListener(HandleButtonClick);
                 buttonInstance.transform.SetParent(child.transform);
 
-                buttonInstance.GetComponent<StructureButton>().SetButtonText(obj.name);
+                buttonInstance.GetComponent<StructureButton>().SetUpButton(obj.name);
             }
         }
     }
 
+    /*
     //Structure Shop Button onClick function
     private void HandleButtonClick() {
         GameObject structureInfo = transform.GetChild(1).gameObject;
 
-        //structureInfo.SetActive(!structureInfo.activeSelf);
+        //info panel appears
         structureInfo.SetActive(true);
-        Transform structureShopPanel = transform.GetChild(0);
-        RectTransform rectTransform = structureShopPanel.GetComponent<RectTransform>();
 
+        //show structure info on structureInfo panel
     }
+    */
 
 
     /*
