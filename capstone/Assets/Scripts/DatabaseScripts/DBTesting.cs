@@ -9,9 +9,11 @@ public class DBTesting : MonoBehaviour
     void Start()
     {
         databaseWrapper = new DatabaseWrapper();
-        databaseWrapper.getStructuresAll();
-        databaseWrapper.getStructuresByLevel(1);
-        databaseWrapper.getStructuresByType("offensive");
+        // databaseWrapper.databaseInit();
+        databaseWrapper.GetData("structures", "progress_level", 2);
+        databaseWrapper.GetData("structures", "structure_type", "Defense");
+        databaseWrapper.GetData("structures");
+
     }
 
     // Update is called once per frame

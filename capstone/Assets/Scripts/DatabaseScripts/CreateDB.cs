@@ -45,9 +45,6 @@ public class SimpleDB : MonoBehaviour
 
             connection.Close();
         }
-
-        AddSave(1, -99, -99);
-        AddSave(2, -99, -99);
     }
 
     public void AddSave(int slotNumber, int playerId, int progLevel)

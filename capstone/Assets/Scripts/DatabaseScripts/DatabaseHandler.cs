@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mono.Data.Sqlite;
+using System.IO;
 
 namespace DatabaseAccess
 {
@@ -10,12 +11,58 @@ namespace DatabaseAccess
     {
         private string dbName = "URI=file:GameData.db";
 
-        public string[,] getStructures(string selectCommand, string specifierCommand = null)
+        public void CreateDB()
+        {
+            //Create the db connection
+            using (var connection = new SqliteConnection(dbName))
+            {
+                connection.Open();
+
+                // Read the SQL script from file
+                string sqlScript = File.ReadAllText("Assets/Scripts/DatabaseScripts/CreateDB.sql");
+
+                //set up an object (called "command") to allow db control
+                using (var command = connection.CreateCommand())
+                {
+                    //create tables using sql commands from createdb.sql
+                    command.CommandText = sqlScript;
+
+                    //run the command
+                    command.ExecuteNonQuery();
+                }
+
+                connection.Close();
+            }
+        }
+
+        public void InsertData(string tableName, string insertCommand)
+        {
+            //connect to DB
+            using (var connection = new SqliteConnection(dbName))
+            {
+                connection.Open();
+
+                //set up an object (called "command") to allow db control
+                using (var command = connection.CreateCommand())
+                {
+                    //write insertion command
+                    command.CommandText = "INSERT INTO " + tableName + insertCommand;
+
+                    //run the command
+                    command.ExecuteNonQuery();
+                }
+
+                connection.Close();
+            }
+        }
+
+        public string[,] SelectData(string tableName, string selectCommand, string specifierCommand)
         {
             //string 2d array that stores results of the query
             string[,] results;
             //find out row count to initialize the 2d array
             int rowCount = 0;
+            int colCount = 0;
 
             //connect to DB
             using (var connection = new SqliteConnection(dbName))
@@ -26,34 +73,32 @@ namespace DatabaseAccess
                 using (var command = connection.CreateCommand())
                 {
                     //get the results row count for rowCount
-                    command.CommandText = "SELECT COUNT(*) FROM structures";
+                    command.CommandText = "SELECT COUNT(*) FROM " + tableName;
                     rowCount = Convert.ToInt32(command.ExecuteScalar());
+                    command.CommandText = "SELECT COUNT(*) FROM pragma_table_info('" + tableName + "')";
+                    colCount = Convert.ToInt32(command.ExecuteScalar());
                     // 7 columns as per structures table schema
-                    results = new string[rowCount, 7];
+                    results = new string[rowCount, colCount];
 
-                    //write insertion command
                     command.CommandText = selectCommand + specifierCommand;
 
                     //run the command
                     using (var reader = command.ExecuteReader())
                     {
-                        // reusing this variable as index for the results 2d array
-                        rowCount = 0;
                         if (reader.HasRows)
                         {
                             Debug.Log("Entry Exists");
-                            while (reader.Read())
+
+                            //2d array layout follows table schema
+                            for (int i = 0; i < rowCount; i++)
                             {
-                                //2d array layout follows table schema
-                                results[rowCount, 0] = reader[0].ToString();
-                                results[rowCount, 1] = reader["structure_name"].ToString();
-                                results[rowCount, 2] = reader["structure_type"].ToString();
-                                results[rowCount, 3] = reader["structure_damage"].ToString();
-                                results[rowCount, 4] = reader["structure_health"].ToString();
-                                results[rowCount, 5] = reader["structure_cost"].ToString();
-                                results[rowCount, 6] = reader["progress_level"].ToString();
-                                rowCount++;
+                                reader.Read();
+                                for (int j = 0; j < colCount; j++)
+                                {
+                                    results[i, j] = reader[reader.GetName(j)].ToString();
+                                }
                             }
+
                         }
                         else
                         {
@@ -67,7 +112,7 @@ namespace DatabaseAccess
 
             }
         }
-        public void addStructureDevUseOnly(string structName, string structType, int structDamage, int structHealth, int structCost, int progLevel)
+        public void AddStructureDevUseOnly(string structName, string structType, int structDamage, int structHealth, int structCost, int progLevel)
         {
 
             //connect to DB
@@ -91,13 +136,3 @@ namespace DatabaseAccess
         }
     }
 }
-
-// CREATE TABLE IF NOT EXISTS structures(
-//     structure_id INTEGER NOT NULL PRIMARY KEY,
-//     structure_name VARCHAR(20),
-//     structure_type VARCHAR(20),
-//     structure_damage INTEGER,
-//     structure_health INTEGER,
-//     structure_cost INTEGER,
-//     progress_level INTEGER
-// );
