@@ -23,6 +23,7 @@ public abstract class Structure : MonoBehaviour
     protected virtual void Start() {
         SetHealth(health);
         SetCost(cost);
+        gameObject.tag = "Structure";
     }
 
     //Getters
