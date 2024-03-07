@@ -17,8 +17,18 @@ public class DatabaseWrapper
         _databaseHandler.CreateDB();
     }
 
+    public void SetData(string tableName, int val1, int val2, int val3, int val4)
+    {
+
+    }
+
+    public void SetData(string tableName, string val1, string val2, int val3, int val4)
+    {
+
+    }
+
     //overloading function for int or string specifier
-    public void GetData(string tableName, string specifierColumn = null, string specifier = null)
+    public string[,] GetData(string tableName, string specifierColumn = null, string specifier = null)
     {
         string selectCommand = "SELECT * FROM " + tableName;
         string specifierCommand = "";
@@ -29,12 +39,12 @@ public class DatabaseWrapper
         }
 
         string[,] results = _databaseHandler.SelectData(tableName, selectCommand, specifierCommand);
-        // console printing results in set form, individual values in the form results[a,b] if you desire to access/handle single values.
-        Debug.Log($"{results[0, 0]} {results[0, 1]} {results[0, 2]} {results[0, 3]}");
+
+        return results;
     }
 
     //overloading function for int or string specifier
-    public void GetData(string tableName, string specifierColumn, int specifier)
+    public string[,] GetData(string tableName, string specifierColumn, int specifier)
     {
         string selectCommand = "SELECT * FROM " + tableName;
         // string specifierCommand = "WHERE " + specifierColumn + " <= " + specifier;
@@ -42,8 +52,8 @@ public class DatabaseWrapper
 
 
         string[,] results = _databaseHandler.SelectData(tableName, selectCommand, specifierCommand);
-        // console printing results in set form, individual values in the form results[a,b] if you desire to access/handle single values.
-        Debug.Log($"{results[0, 0]} {results[0, 1]} {results[0, 2]} {results[0, 3]}");
+
+        return results;
     }
 
 
