@@ -14,6 +14,8 @@ public class Player : Actor
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody>();
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
 
     }
 
