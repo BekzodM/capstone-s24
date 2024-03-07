@@ -9,7 +9,8 @@ public abstract class Offensive : Structure
     [SerializeField] private float cooldown = 1f;
     private float nextCooldown = 0f;
     private bool isAttacking = false;
-    protected Offensive(string name, string description, int cost, int health)
+    [SerializeField] protected int attackDamage;
+    protected Offensive(string name, string description, int cost, int health, float attackDamage)
         : base(name, description, "Offensive", cost, health)
     {
     }
@@ -60,5 +61,18 @@ public abstract class Offensive : Structure
     }
 
     protected abstract void Attack(GameObject target);
+
+    protected abstract void DealDamage(GameObject enemy);
+
+    //Getters
+    public int GetAttackDamage() {
+        return attackDamage;
+    }
+
+    //Setters
+    protected void SetAttackDamage(int dmg) {
+        attackDamage = dmg;
+    }
+
 
 }

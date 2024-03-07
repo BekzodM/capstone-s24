@@ -8,4 +8,17 @@ public class Wall : Defensive
         : base("Wall", "A basic wall", cost, health)
     {
     }
+
+    protected override void UseUpgrade1()
+    {
+    }
+
+    protected override void UseUpgrade2()
+    {
+    }
+
+    protected override void UseUpgrade3()
+    {
+
+    }
 }

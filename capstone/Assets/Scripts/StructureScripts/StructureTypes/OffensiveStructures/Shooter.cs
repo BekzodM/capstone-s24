@@ -7,15 +7,10 @@ public abstract class Shooter : Offensive
     [SerializeField] private float projectileSpeed = 20f;
     [SerializeField] private float projectileDistanceFromHead = 1.5f;
     [SerializeField] private GameObject attackPrefab;
-    [SerializeField] protected float attackDamage;
-    [SerializeField] protected float critChance;
-    [SerializeField] protected float critDamage;
-    public Shooter(string name, string description, int cost, int health, float attackSpeed, float attackDamage, float critChance, float critDamage)
-        : base(name, description, cost, health)
+
+    public Shooter(string name, string description, int cost, int health, int attackDamage)
+        : base(name, description, cost, health, attackDamage)
     {
-        this.attackDamage = attackDamage;
-        this.critChance = critChance;
-        this.critDamage = critDamage;
     }
 
     protected override void Start()
@@ -54,6 +49,11 @@ public abstract class Shooter : Offensive
                 }
             }
         }
+    }
+
+    protected override void DealDamage(GameObject enemy)
+    {
+        //enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
     }
 
 }

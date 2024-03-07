@@ -20,7 +20,10 @@ public abstract class Structure : MonoBehaviour
         this.health = health;
     }
 
-    protected virtual void Start() { }
+    protected virtual void Start() {
+        SetHealth(health);
+        SetCost(cost);
+    }
 
     //Getters
     public string GetStructureName()
@@ -74,4 +77,8 @@ public abstract class Structure : MonoBehaviour
         health = h;
     }
 
+    //Structure Upgrades
+    protected abstract void UseUpgrade1();
+    protected abstract void UseUpgrade2();
+    protected abstract void UseUpgrade3();
 }
