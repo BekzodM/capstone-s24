@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 // using System.Numerics; // What is this for?
@@ -75,9 +76,10 @@ public class Actor : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
-    void TakeDamage(int damage) {
+    public void TakeDamage(int damage) {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
+        Debug.Log("Damaged");
     }
     // moveSpeed getter
     public float MoveSpeed()

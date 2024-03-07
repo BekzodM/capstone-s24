@@ -19,7 +19,7 @@ public class areaZone : MonoBehaviour
             Offensive offensiveScript = gameObjectParent.GetComponent<Offensive>();
             if (offensiveScript != null)
             {
-                offensiveScript.StartShooting(other.gameObject);
+                offensiveScript.StartAttacking(other.gameObject);
             }
         }
     }
@@ -32,7 +32,7 @@ public class areaZone : MonoBehaviour
             Offensive offensiveScript = gameObjectParent.GetComponent<Offensive>();
             if (offensiveScript != null)
             {
-                offensiveScript.StopShooting(other.gameObject);
+                offensiveScript.StopAttacking(other.gameObject);
             }
         }
 

@@ -4,38 +4,38 @@ using UnityEngine;
 
 public abstract class Offensive : Structure
 {
-    [SerializeField] private GameObject attackPrefab;
     private List<GameObject> enemiesInZone;
     private GameObject targetEnemy;
     [SerializeField] private float cooldown = 1f;
     private float nextCooldown = 0f;
-    private bool isShooting = false;
-    [SerializeField] private float projectileDistanceFromHead = 1.5f;
-    [SerializeField] private float projectileSpeed = 20f;
-    protected Offensive(string name, string description, int cost, int health, float areaEffectRadius)
-        : base(name, description, "Offensive", cost, health, areaEffectRadius)
+    private bool isAttacking = false;
+    [SerializeField] protected int attackDamage;
+    protected Offensive(string name, string description, int cost, int health, float attackDamage)
+        : base(name, description, "Offensive", cost, health)
     {
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
+        SetStructureType("Offensive");
         enemiesInZone = new List<GameObject>();
     }
 
     private void Update()
     {
-        if (isShooting && Time.time >= nextCooldown) {
+        if (isAttacking && Time.time >= nextCooldown) {
             if (targetEnemy == null && enemiesInZone.Count > 0) {
                 targetEnemy = enemiesInZone[0];
             }
             if (targetEnemy != null) {
-                Shoot(targetEnemy);
+                Attack(targetEnemy);
                 nextCooldown = Time.time + cooldown;            
             }
         }
     }
 
-    public void StartShooting(GameObject target)
+    public void StartAttacking(GameObject target)
     {
 
         enemiesInZone.Add(target);
@@ -43,11 +43,11 @@ public abstract class Offensive : Structure
         {
             targetEnemy = target;
         }
-        isShooting = true;
+        isAttacking = true;
         nextCooldown = Time.time;
     }
 
-    public void StopShooting(GameObject target)
+    public void StopAttacking(GameObject target)
     {
         
         enemiesInZone.Remove(target);
@@ -56,37 +56,23 @@ public abstract class Offensive : Structure
             targetEnemy = (enemiesInZone.Count > 0) ? enemiesInZone[0] : null;
         }
         if (enemiesInZone.Count == 0) {
-            isShooting = false;
+            isAttacking = false;
         }
     }
-    private void Shoot(GameObject target) {
-        if (target == null)
-        {
-            Debug.LogWarning("Target is null. Cannot shoot.");
-            return;
-        }
 
-        GameObject model = transform.GetChild(1).gameObject;
-        Transform modelHead = model.transform.GetChild(0);
-        Vector3 direction = target.transform.position - modelHead.transform.position;
-        
-        if (direction != Vector3.zero)
-        {
-            //rotate head
-            modelHead.rotation = Quaternion.LookRotation(direction);
+    protected abstract void Attack(GameObject target);
 
-            //instantiate projectile
-            Vector3 spawnPos = modelHead.position + modelHead.forward * projectileDistanceFromHead;
-            if (attackPrefab != null) {
-                GameObject projectileInstance = Instantiate(attackPrefab, spawnPos, Quaternion.LookRotation(direction));
+    protected abstract void DealDamage(GameObject enemy);
 
-                //launching projectile
-                Rigidbody attackRB = projectileInstance.GetComponent<Rigidbody>();
-                if (attackRB != null)
-                {
-                    attackRB.velocity = direction.normalized * projectileSpeed;
-                }
-            }
-        }
+    //Getters
+    public int GetAttackDamage() {
+        return attackDamage;
     }
+
+    //Setters
+    protected void SetAttackDamage(int dmg) {
+        attackDamage = dmg;
+    }
+
+
 }
