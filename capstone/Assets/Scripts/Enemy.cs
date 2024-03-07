@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -9,19 +10,25 @@ public class Enemy : MonoBehaviour
     public HealthBar healthBar;
 
     public Transform attackPoint;
-    public float attackRange = 2f;
+    public float attackRange = 0.5f;
     public string playerTag = "Player";
+    float attackCooldown = 2f;
+    float lastAttackTime = -9999f;
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
     }
 
-    void OnTriggerEnter(Collider other) {
+    void OnTriggerStay(Collider other) {
         if(other.CompareTag(playerTag)) {
-            float distance = Vector3.Distance(transform.position, other.transform.position);
-            if (distance <= attackRange) {
-                other.GetComponent<Player>().TakeDamage(10);
+            if(Time.time - lastAttackTime >= attackCooldown) {
+                Vector3 closestPoint = other.ClosestPoint(attackPoint.position); 
+                float distance = Vector3.Distance(attackPoint.position, closestPoint);
+                if (distance <= attackRange) {
+                    other.GetComponent<Player>().TakeDamage(10);
+                    lastAttackTime = Time.time;
+                }
             }
         }
     }
@@ -37,6 +44,12 @@ public class Enemy : MonoBehaviour
         if(currentHealth == 0) {
             Destroy(gameObject);
         }
+    }
+
+    // Dev Function - visualize attack range.
+    void OnDrawGizmosSelected() {
+        if(attackPoint == null) return;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
 
