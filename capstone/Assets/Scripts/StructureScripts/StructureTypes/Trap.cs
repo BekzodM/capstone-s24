@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class Trap : Structure
 {
-    protected Trap(string name, string description, int cost, int health, float areaEffectRadius)
-        : base(name, description, "Trap", cost, health, areaEffectRadius)
+    protected Trap(string name, string description, int cost, int health)
+        : base(name, description, "Trap", cost, health)
     {
     }
 
