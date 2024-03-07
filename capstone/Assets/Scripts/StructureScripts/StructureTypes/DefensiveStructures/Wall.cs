@@ -9,15 +9,15 @@ public class Wall : Defensive
     {
     }
 
+    protected override void UseUpgrade0()
+    {
+    }
+
     protected override void UseUpgrade1()
     {
     }
 
     protected override void UseUpgrade2()
-    {
-    }
-
-    protected override void UseUpgrade3()
     {
 
     }
