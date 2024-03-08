@@ -87,7 +87,7 @@ namespace DatabaseAccess
                     {
                         if (reader.HasRows)
                         {
-                            Debug.Log("Entry Exists");
+                            // Debug.Log("Entry Exists");
 
                             //2d array layout follows table schema
                             for (int i = 0; i < rowCount; i++)

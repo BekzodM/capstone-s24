@@ -12,8 +12,12 @@ public class DBTesting : MonoBehaviour
         // databaseWrapper.databaseInit();
         string[,] Array2d;
         Array2d = databaseWrapper.GetData("structures", "progress_level", 2);
+        Debug.Log($"{Array2d[0, 0]} {Array2d[0, 1]} {Array2d[0, 2]} {Array2d[0, 3]}");
+
         Array2d = databaseWrapper.GetData("structures", "structure_type", "Defense");
-        Array2d = databaseWrapper.GetData("structures");
+        Debug.Log($"{Array2d[0, 0]} {Array2d[0, 1]} {Array2d[0, 2]} {Array2d[0, 3]}");
+
+        Array2d = databaseWrapper.GetData("players");
         // console printing results in set form, individual values in the form results[a,b] if you desire to access/handle single values.
         Debug.Log($"{Array2d[0, 0]} {Array2d[0, 1]} {Array2d[0, 2]} {Array2d[0, 3]}");
 
