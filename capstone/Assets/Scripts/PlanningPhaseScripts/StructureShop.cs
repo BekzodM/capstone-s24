@@ -64,14 +64,16 @@ public class StructureShop : MonoBehaviour
             Transform child = shopContent.GetChild(i);//Offensive,...Structures container
             GameObject[] prefabs = structurePrefabs[i];
 
-            foreach (GameObject obj in prefabs) //iterate prefabs of Offensive, Defensive..etc.
+            for (int j = 0; j < prefabs.Length; j++) 
+            //foreach (GameObject obj in prefabs) //iterate prefabs of Offensive, Defensive..etc.
             {
+                GameObject obj= prefabs[j];
+
                 GameObject buttonInstance = Instantiate(structureShopButtonPrefab);
                 Button buttonComponent = buttonInstance.GetComponent<Button>();
-                //buttonComponent.onClick.AddListener(HandleButtonClick);
                 buttonInstance.transform.SetParent(child.transform);
 
-                buttonInstance.GetComponent<StructureButton>().SetUpButton(obj.name);
+                buttonInstance.GetComponent<StructureButton>().SetUpButton(obj.name,j);
             }
         }
     }

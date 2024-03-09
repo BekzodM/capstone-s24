@@ -30,8 +30,6 @@ public class DragStructures : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(selectedObject);
-
         //Check Mouse Input is hold down the mouse button
         if (Input.GetMouseButtonDown(0)) {
             //Raycast from mouse to ground
