@@ -16,19 +16,4 @@ public class Turret : Shooter
         SetAttackDamage(attackDamage);
     }
 
-    protected override void UseUpgrade0() {
-        Debug.Log("Upgrade1");
-        //More damage
-
-
-    }
-    protected override void UseUpgrade1() {
-        Debug.Log("Upgrade2");
-        //Faster
-    }
-    protected override void UseUpgrade2() {
-        Debug.Log("Upgrade3");
-        //Wider Range
-    }
-
 }

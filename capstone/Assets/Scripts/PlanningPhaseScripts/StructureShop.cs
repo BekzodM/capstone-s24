@@ -69,17 +69,6 @@ public class StructureShop : MonoBehaviour
         }
     }
 
-    /*
-    //Structure Shop Button onClick function
-    private void HandleButtonClick() {
-        GameObject structureInfo = transform.GetChild(1).gameObject;
-
-        //info panel appears
-        structureInfo.SetActive(true);
-
-        //show structure info on structureInfo panel
-    }
-    */
 
 
     /*

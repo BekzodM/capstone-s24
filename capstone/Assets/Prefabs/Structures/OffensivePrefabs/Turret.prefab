@@ -312,6 +312,10 @@ PrefabInstance:
       value: attackZone
       objectReference: {fileID: 0}
     - target: {fileID: 6594605103654622601, guid: 591dfd458545ee84abbc76bdff19f097, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594605103654622601, guid: 591dfd458545ee84abbc76bdff19f097, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}

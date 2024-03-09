@@ -30,6 +30,7 @@ public abstract class Structure : MonoBehaviour
         SetHealth(health);
         SetCost(cost);
         gameObject.tag = "Structure";
+        gameObject.layer = LayerMask.NameToLayer("Draggable");
         upgrades = new Dictionary<int, Dictionary<int, Dictionary<string, string>>> {
             {0, upgradeLevels}, //first upgrade of structure
             {1, upgradeLevels},
@@ -101,7 +102,13 @@ public abstract class Structure : MonoBehaviour
     }
 
     //Structure Upgrades
-    protected abstract void UseUpgrade0();
-    protected abstract void UseUpgrade1();
-    protected abstract void UseUpgrade2();
+ 
+    //upgradeIdx = the index used to get the upgradeAmounts in the upgradeAmounts list
+    protected void IncreaseUpgradeLevel(int upgradeIdx) {
+        upgradeAmounts[upgradeIdx] += 1;
+        if (upgradeAmounts[upgradeIdx] > 5) {
+            upgradeAmounts[upgradeIdx] = 5;
+        }
+
+    }
 }
