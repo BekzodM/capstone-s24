@@ -19,6 +19,8 @@ public class DragStructures : MonoBehaviour
     private Camera mainCamera;
     private GameObject selectedObject;
     private RaycastHit hitInfo;
+    private bool isDragging = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,8 @@ public class DragStructures : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(selectedObject);
+
         //Check Mouse Input is hold down the mouse button
         if (Input.GetMouseButtonDown(0)) {
             //Raycast from mouse to ground
@@ -40,8 +44,17 @@ public class DragStructures : MonoBehaviour
                 if (hitInfo.collider.transform.parent.tag == "Structure") {
                     //get selected structure gameobject
                     selectedObject = hitInfo.collider.transform.parent.gameObject;
+                    isDragging = true;
                 }
             }
+
+            //Clicking elsewhere that is not on the Draggable layer deselects the object
+            if (Physics.Raycast(ray, out RaycastHit hit)) {
+                if (hit.collider.gameObject.layer != LayerMask.NameToLayer("Draggable")) {
+                    selectedObject = null;
+                }
+            }
+
         }
 
         //Dragging a valid selected object
@@ -49,12 +62,14 @@ public class DragStructures : MonoBehaviour
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             Debug.DrawRay(ray.origin, ray.direction * 100f, Color.red, 0.1f);
 
-            if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, groundLayer)) {
+            //moving the selected object to the postions along the ground
+            if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, groundLayer) && isDragging) {
                 selectedObject.transform.position = hitInfo.point;            
             }
 
+            //stop dragging but object is still selected
             if (Input.GetMouseButtonUp(0)) {
-                selectedObject = null;
+                isDragging = false;
             }
 
         }

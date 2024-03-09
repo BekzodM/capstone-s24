@@ -15,6 +15,13 @@ public class StructureShop : MonoBehaviour
     private GameObject[][] structurePrefabs;
     private int previousIndex = 0;
 
+    //map info
+    [SerializeField] private int startingMoney = 100;
+    [SerializeField] private int currentWaveNumber = 1;
+    [SerializeField] private int totalWaveNumber = 5;
+    [SerializeField] private int startingBaseHealth = 200;
+    [SerializeField] private int maxBaseHealth = 200;
+
     private void Start()
     {
         structurePrefabs = new GameObject[][]
@@ -69,20 +76,25 @@ public class StructureShop : MonoBehaviour
         }
     }
 
-
-
-    /*
-    public void InstantiatePrefabOnClick(int prefabIndex)
-    {
-        if (prefabIndex >= 0 && prefabIndex < structurePrefabs.Length)
-        {
-            Instantiate(structurePrefabs[prefabIndex], Vector3.zero, Quaternion.identity);
-        }
-        else {
-            Debug.LogWarning("Invalid prefab index: " + prefabIndex);
-        }
+    //Map Info Functions
+    public int GetStartingMoney() {
+        return startingMoney;
     }
-    */
-  
+
+    public int GetCurrentWaveNumber() {
+        return currentWaveNumber;
+    }
+
+    public int GetTotalWaveNumber() {
+        return totalWaveNumber;
+    }
+
+    public int GetStartingBaseHealth() {
+        return startingBaseHealth;
+    }
+
+    public int GetMaxBaseHealth() {
+        return maxBaseHealth;
+    }
 
 }

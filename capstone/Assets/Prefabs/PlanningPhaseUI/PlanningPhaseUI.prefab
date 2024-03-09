@@ -1370,6 +1370,11 @@ MonoBehaviour:
   supportStructurePrefabs: []
   trapStructurePrefabs: []
   structureShopButtonPrefab: {fileID: 2861927505044557560, guid: 332f3a5e3537df845b783ebafb927e41, type: 3}
+  startingMoney: 100
+  currentWaveNumber: 1
+  totalWaveNumber: 5
+  startingBaseHealth: 200
+  maxBaseHealth: 200
 --- !u!1 &1058680625187770855
 GameObject:
   m_ObjectHideFlags: 0
@@ -1381,6 +1386,7 @@ GameObject:
   - component: {fileID: 5344747949994251939}
   - component: {fileID: 6544512065139531096}
   - component: {fileID: 3331939862538232908}
+  - component: {fileID: 2281964425159776236}
   m_Layer: 5
   m_Name: MoneyText
   m_TagString: Untagged
@@ -1504,6 +1510,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2281964425159776236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1058680625187770855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29abb8ffc845c049a79a3020be5d36e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1582517281874591636
 GameObject:
   m_ObjectHideFlags: 0
@@ -3471,7 +3489,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 6746257813937275604}
   m_Direction: 2
   m_Value: 1.0000023
-  m_Size: 0.40108746
+  m_Size: 0.4010874
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6564,8 +6582,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7643470317803043652}
   m_HandleRect: {fileID: 1747308036047864676}
   m_Direction: 2
-  m_Value: 1.0000062
-  m_Size: 0.8512905
+  m_Value: 1.000004
+  m_Size: 0.7739573
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7191,6 +7209,7 @@ GameObject:
   - component: {fileID: 1016405539980650683}
   - component: {fileID: 411429573220201623}
   - component: {fileID: 25264030021729728}
+  - component: {fileID: 3404250462424154559}
   m_Layer: 5
   m_Name: BaseHealthText
   m_TagString: Untagged
@@ -7272,8 +7291,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7314,6 +7333,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3404250462424154559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7552365061493722600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6659f740be0b543418e52feff818bbc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7587174083870492929
 GameObject:
   m_ObjectHideFlags: 0
@@ -8489,6 +8520,7 @@ GameObject:
   - component: {fileID: 6320045872295854469}
   - component: {fileID: 1522843046051008285}
   - component: {fileID: 7332661188808736724}
+  - component: {fileID: 4933454803094483296}
   m_Layer: 5
   m_Name: WaveText
   m_TagString: Untagged
@@ -8612,6 +8644,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4933454803094483296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8977613750989387991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39d703ef0916e8c448be01226831de38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8988642141966219519
 GameObject:
   m_ObjectHideFlags: 0
