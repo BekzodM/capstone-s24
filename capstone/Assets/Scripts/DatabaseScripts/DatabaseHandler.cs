@@ -35,7 +35,7 @@ namespace DatabaseAccess
             }
         }
 
-        public void InsertData(string tableName, string insertCommand)
+        public void InsertData(string insertCommand)
         {
             //connect to DB
             using (var connection = new SqliteConnection(dbName))
@@ -46,7 +46,7 @@ namespace DatabaseAccess
                 using (var command = connection.CreateCommand())
                 {
                     //write insertion command
-                    command.CommandText = "INSERT INTO " + tableName + insertCommand;
+                    command.CommandText = insertCommand;
 
                     //run the command
                     command.ExecuteNonQuery();
@@ -73,7 +73,7 @@ namespace DatabaseAccess
                 using (var command = connection.CreateCommand())
                 {
                     //get the results row count for rowCount
-                    command.CommandText = "SELECT COUNT(*) FROM " + tableName;
+                    command.CommandText = "SELECT COUNT(*) FROM " + tableName + specifierCommand;
                     rowCount = Convert.ToInt32(command.ExecuteScalar());
                     command.CommandText = "SELECT COUNT(*) FROM pragma_table_info('" + tableName + "')";
                     colCount = Convert.ToInt32(command.ExecuteScalar());
@@ -112,7 +112,7 @@ namespace DatabaseAccess
 
             }
         }
-        public void AddStructureDevUseOnly(string structName, string structType, int structDamage, int structHealth, int structCost, int progLevel)
+        public void AddStructureDevUseOnly(string tableName, string structName, string structType, int structDamage, int structHealth, int structCost, int progLevel)
         {
 
             //connect to DB
@@ -124,7 +124,7 @@ namespace DatabaseAccess
                 using (var command = connection.CreateCommand())
                 {
                     //write insertion command
-                    command.CommandText = "INSERT INTO structures (structure_name, structure_type, structure_damage, structure_health, structure_cost, progress_level) VALUES ('" + structName + "', '" + structType + "', '" + structDamage + "' , '" + structHealth + "', '" + structCost + "', '" + progLevel + "')";
+                    command.CommandText = "INSERT INTO " + tableName + " VALUES ('" + structName + "', '" + structType + "', '" + structDamage + "' , '" + structHealth + "', '" + structCost + "', '" + progLevel + "')";
 
                     //run the command
                     command.ExecuteNonQuery();

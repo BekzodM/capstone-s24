@@ -4,14 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro; // Import TextMeshPro namespace
 using Mono.Data.Sqlite;
+using System;
 
 
 
 public class LoadSavesMenuScript : MonoBehaviour
 {
+
+    DatabaseWrapper AccessSave = new DatabaseWrapper();
     public bool OverWriteSave = false;
     public bool LoadSave = false;
-    private string dbName = "URI=file:GameData.db";
+    // private string dbName = "URI=file:GameData.db";
     public TMP_Text Slot1;
     public TMP_Text Slot2;
     public TMP_Text Slot3;
@@ -32,34 +35,13 @@ public class LoadSavesMenuScript : MonoBehaviour
 
     }
 
-    private void RenderSave(int id, TMP_Text SlotText)
+    private void RenderSave(int slotId, TMP_Text SlotText)
     {
-        string query = "SELECT * FROM saves WHERE save_Id = " + id;
-        using (var connection = new SqliteConnection(dbName))
-        {
-            connection.Open();
+        string[,] saveData = AccessSave.GetData("saves", "slot_id", slotId);
+        Debug.Log($"{saveData[0, 0]} {saveData[0, 1]} {saveData[0, 2]}");
+        string[,] playerData = AccessSave.GetData("players", "player_id", Int32.Parse(saveData[0, 2]));
+        Debug.Log($"{playerData[0, 0]} {playerData[0, 1]} {playerData[0, 2]} {playerData[0, 3]} ");
 
-            using (var command = connection.CreateCommand())
-            {
-                command.CommandText = query;
-
-                using (var reader = command.ExecuteReader())
-                {
-                    if (reader.HasRows)
-                    {
-                        Debug.Log("Entry Exists");
-                        SlotText.text = "Save " + reader["save_Id"] + "\n" + reader["player_Id"] + "\n" + "Level: " + reader["progress_Level"];
-
-                    }
-                    else
-                    {
-                        Debug.Log("Entry Does not Exist");
-                        SlotText.text = "No Save";
-                    }
-                }
-            }
-
-            connection.Close();
-        }
+        SlotText.text = "Save " + saveData[0, 0] + "\n" + playerData[0, 1] + "\n" + "Level: " + saveData[0, 3];
     }
 }

@@ -45,8 +45,8 @@ CREATE TABLE IF NOT EXISTS players (
 
 CREATE TABLE IF NOT EXISTS inventory (
     entry_id INTEGER NOT NULL PRIMARY KEY,
-    player_ID INTEGER,
-    item_ID INTEGER,
+    player_id INTEGER,
+    item_id INTEGER,
     item_quantity INTEGER,
     FOREIGN KEY (player_id) REFERENCES players(player_id),
     FOREIGN KEY (item_id) REFERENCES gameItems(player_id)
