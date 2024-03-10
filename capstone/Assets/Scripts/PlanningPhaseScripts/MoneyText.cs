@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MoneyText : MonoBehaviour
 {
-    [SerializeField] GameObject mapManager;
+    GameObject mapManager;
     private TextMeshProUGUI moneyText;
     private int money;
 
@@ -13,10 +13,7 @@ public class MoneyText : MonoBehaviour
     void Start()
     {
         moneyText = GetComponent<TextMeshProUGUI>();
-        /*
-        StructureShop structShop= transform.parent.parent.GetComponent<StructureShop>();
-        money = structShop.GetStartingMoney();
-        */
+        mapManager = transform.parent.parent.gameObject.GetComponent<StructureShop>().GetMapManager();
         if (mapManager == null)
         {
             Debug.Log("Connect the MapManager gameobject to the money text in the inspector");

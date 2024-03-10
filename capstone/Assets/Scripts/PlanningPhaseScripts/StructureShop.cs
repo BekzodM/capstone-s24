@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class StructureShop : MonoBehaviour
 {
+    [SerializeField] private GameObject mapManager;
     [SerializeField] private GameObject[] offensiveStructurePrefabs;
     [SerializeField] private GameObject[] defensiveStructurePrefabs;
     [SerializeField] private GameObject[] supportStructurePrefabs;
@@ -14,15 +15,6 @@ public class StructureShop : MonoBehaviour
     [SerializeField] private GameObject structureShopButtonPrefab;
     private GameObject[][] structurePrefabs;
     private int previousIndex = 0;
-
-    //map info
-    /*
-    [SerializeField] private int startingMoney = 100;
-    [SerializeField] private int currentWaveNumber = 1;
-    [SerializeField] private int totalWaveNumber = 5;
-    [SerializeField] private int startingBaseHealth = 200;
-    [SerializeField] private int maxBaseHealth = 200;
-    */
 
     private void Start()
     {
@@ -42,6 +34,10 @@ public class StructureShop : MonoBehaviour
     public GameObject[][] GetStructurePrefabs()
     {
         return structurePrefabs;
+    }
+
+    public GameObject GetMapManager() {
+        return mapManager;
     }
 
     //Structure Type Buttons. Switch between the different kinds of structures in the shop
@@ -80,26 +76,4 @@ public class StructureShop : MonoBehaviour
         }
     }
 
-    //Map Info Functions
-    /*
-    public int GetStartingMoney() {
-        return startingMoney;
-    }
-
-    public int GetCurrentWaveNumber() {
-        return currentWaveNumber;
-    }
-
-    public int GetTotalWaveNumber() {
-        return totalWaveNumber;
-    }
-
-    public int GetStartingBaseHealth() {
-        return startingBaseHealth;
-    }
-
-    public int GetMaxBaseHealth() {
-        return maxBaseHealth;
-    }
-    */
 }

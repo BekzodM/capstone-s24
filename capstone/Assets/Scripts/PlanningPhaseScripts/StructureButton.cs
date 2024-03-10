@@ -14,13 +14,6 @@ public class StructureButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /*
-        GameObject shop = transform.parent.parent.parent.parent.parent.parent.gameObject;
-        StructureShop structShop = shop.GetComponentInChildren<StructureShop>();
-        TextMeshProUGUI buttonText = transform.GetComponentInChildren<TextMeshProUGUI>();
-        buttonText.text = "smth";
-        */
-
     }
 
     //Sets up button text and appearance
@@ -84,7 +77,7 @@ public class StructureButton : MonoBehaviour
     }
 
     private void Buy() {
-        Debug.Log("Buy " + buttonName);
+        //MapManager mapManager = transform.parent
     }
 
     // Update is called once per frame
