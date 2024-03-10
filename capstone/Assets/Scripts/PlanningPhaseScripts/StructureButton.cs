@@ -38,7 +38,7 @@ public class StructureButton : MonoBehaviour
 
     public void OnClickBuy()
     {
-        Buy();
+        TryToBuy();
         ShowInfoPanel(false);
         ShowConfirmBuyPanel(false);
     }
@@ -76,8 +76,10 @@ public class StructureButton : MonoBehaviour
         transform.GetChild(1).gameObject.SetActive(show);
     }
 
-    private void Buy() {
-        //MapManager mapManager = transform.parent
+    private void TryToBuy() {
+        GameObject mapManager = transform.parent.parent.parent.parent.parent.parent.GetComponent<StructureShop>().GetMapManager();
+        MapManager mapManagerComponent = mapManager.GetComponent<MapManager>();
+        mapManagerComponent.CanPurchase(buttonName);
     }
 
     // Update is called once per frame

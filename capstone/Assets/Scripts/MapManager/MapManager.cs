@@ -32,6 +32,10 @@ public class MapManager : MonoBehaviour
     {
         return startingMoney;
     }
+    public bool CanPurchase(string structureName) {
+        //need database look up
+        return false;
+    }
 
     //Wave Functions
     public int GetCurrentWaveNumber()
