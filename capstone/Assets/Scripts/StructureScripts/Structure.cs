@@ -5,20 +5,110 @@ using UnityEngine;
 
 public abstract class Structure : MonoBehaviour
 {
-    protected string structureName;
-    protected string description;
-    protected string type;
-    protected int cost;
-    protected int health;
-    protected float areaEffectRadius;
+    [SerializeField] protected string structureName;
+    [SerializeField] protected string description;
+    [SerializeField] protected string structureType;
+    [SerializeField] protected int cost;
+    [SerializeField] protected int health;
+    protected int[] upgradeAmounts = {0,0,0};
+    protected Dictionary<int, Dictionary<int,Dictionary<string,string>>> upgrades;
+    protected Dictionary<int, Dictionary<string, string>> upgradeLevels;
+    protected Dictionary<string, string> upgradeLevelInfo;
 
-    protected Structure(string name, string description, string type, int cost, int health, float areaEffectRadius) 
+    
+
+    protected Structure(string name, string description, string type, int cost, int health) 
     {
         structureName = name;
         this.description = description;
-        this.type = type;
+        structureType = type;
         this.cost = cost;
         this.health = health;
-        this.areaEffectRadius = areaEffectRadius;
+    }
+
+    protected virtual void Start() {
+        SetHealth(health);
+        SetCost(cost);
+        gameObject.tag = "Structure";
+        gameObject.layer = LayerMask.NameToLayer("Draggable");
+        upgrades = new Dictionary<int, Dictionary<int, Dictionary<string, string>>> {
+            {0, upgradeLevels}, //first upgrade of structure
+            {1, upgradeLevels},
+            {2, upgradeLevels}
+        };
+        upgradeLevels = new Dictionary<int, Dictionary<string, string>> {
+            {0, upgradeLevelInfo}, //level 1 of the first,second, or third upgrade
+            {1, upgradeLevelInfo },
+            {2, upgradeLevelInfo },
+            {3, upgradeLevelInfo },
+            {4, upgradeLevelInfo},
+        };
+        upgradeLevelInfo = new Dictionary<string, string> {
+            {"name", ""},
+            {"description", ""},
+        };
+    }
+
+    //Getters
+    public string GetStructureName()
+    {
+        return structureName;
+    }
+
+    public string GetDescription()
+    {
+        return description;
+    }
+
+    public string GetStructureType()
+    {
+        return structureType;
+    }
+
+    public int GetCost()
+    {
+        return cost;
+    }
+
+    public int GetHealth()
+    {
+        return health;
+    }
+
+    //Setters
+    protected void SetStructureName(string structName)
+    {
+        structureName = structName;
+    }
+
+    protected void SetDescription(string desc)
+    {
+        description = desc;
+    }
+
+    protected void SetStructureType(string structType)
+    {
+        structureType = structType;
+    }
+
+    protected void SetCost(int c)
+    {
+        cost = c;
+    }
+
+    protected void SetHealth(int h)
+    {
+        health = h;
+    }
+
+    //Structure Upgrades
+ 
+    //upgradeIdx = the index used to get the upgradeAmounts in the upgradeAmounts list
+    protected void IncreaseUpgradeLevel(int upgradeIdx) {
+        upgradeAmounts[upgradeIdx] += 1;
+        if (upgradeAmounts[upgradeIdx] > 5) {
+            upgradeAmounts[upgradeIdx] = 5;
+        }
+
     }
 }
