@@ -8,7 +8,7 @@ public class Actor : MonoBehaviour
 {
     // Protected fields because inherited classes need to access these values
 
-    [SerializeField] protected float moveSpeed = 7f;
+    //[SerializeField] protected float moveSpeed = 7f;
     //[SerializeField] private GameInput gameInput;
 
     public int maxHealth = 100;
@@ -82,8 +82,8 @@ public class Actor : MonoBehaviour
         Debug.Log("Damaged");
     }
     // moveSpeed getter
-    public float MoveSpeed()
+    /* public float MoveSpeed()
     {
         return moveSpeed;
-    }
+    } */
 }

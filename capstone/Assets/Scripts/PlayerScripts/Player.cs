@@ -6,7 +6,7 @@ public class Player : Actor
 {
     // Player class should own game data associated with player
 
-    [SerializeField] protected float jumpForce = 5f;
+    //[SerializeField] protected float jumpForce = 5f;
 
     Rigidbody playerRigidbody;
 
@@ -27,8 +27,8 @@ public class Player : Actor
         }
     }
 
-    public float JumpForce()
+    /* public float JumpForce()
     {
         return jumpForce;
-    }
+    } */
 }
