@@ -10,6 +10,12 @@ public abstract class Structure : MonoBehaviour
     [SerializeField] protected string structureType;
     [SerializeField] protected int cost;
     [SerializeField] protected int health;
+    protected int[] upgradeAmounts = {0,0,0};
+    protected Dictionary<int, Dictionary<int,Dictionary<string,string>>> upgrades;
+    protected Dictionary<int, Dictionary<string, string>> upgradeLevels;
+    protected Dictionary<string, string> upgradeLevelInfo;
+
+    
 
     protected Structure(string name, string description, string type, int cost, int health) 
     {
@@ -23,6 +29,24 @@ public abstract class Structure : MonoBehaviour
     protected virtual void Start() {
         SetHealth(health);
         SetCost(cost);
+        gameObject.tag = "Structure";
+        gameObject.layer = LayerMask.NameToLayer("Draggable");
+        upgrades = new Dictionary<int, Dictionary<int, Dictionary<string, string>>> {
+            {0, upgradeLevels}, //first upgrade of structure
+            {1, upgradeLevels},
+            {2, upgradeLevels}
+        };
+        upgradeLevels = new Dictionary<int, Dictionary<string, string>> {
+            {0, upgradeLevelInfo}, //level 1 of the first,second, or third upgrade
+            {1, upgradeLevelInfo },
+            {2, upgradeLevelInfo },
+            {3, upgradeLevelInfo },
+            {4, upgradeLevelInfo},
+        };
+        upgradeLevelInfo = new Dictionary<string, string> {
+            {"name", ""},
+            {"description", ""},
+        };
     }
 
     //Getters
@@ -78,7 +102,13 @@ public abstract class Structure : MonoBehaviour
     }
 
     //Structure Upgrades
-    protected abstract void UseUpgrade1();
-    protected abstract void UseUpgrade2();
-    protected abstract void UseUpgrade3();
+ 
+    //upgradeIdx = the index used to get the upgradeAmounts in the upgradeAmounts list
+    protected void IncreaseUpgradeLevel(int upgradeIdx) {
+        upgradeAmounts[upgradeIdx] += 1;
+        if (upgradeAmounts[upgradeIdx] > 5) {
+            upgradeAmounts[upgradeIdx] = 5;
+        }
+
+    }
 }

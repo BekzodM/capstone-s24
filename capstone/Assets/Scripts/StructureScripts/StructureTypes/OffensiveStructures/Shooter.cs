@@ -4,9 +4,7 @@ using UnityEngine;
 
 public abstract class Shooter : Offensive
 {
-    [SerializeField] private float projectileSpeed = 20f;
-    [SerializeField] private float projectileDistanceFromHead = 1.5f;
-    [SerializeField] private GameObject attackPrefab;
+    [SerializeField] private float rayDistanceFromHead;
 
     public Shooter(string name, string description, int cost, int health, int attackDamage)
         : base(name, description, cost, health, attackDamage)
@@ -35,25 +33,31 @@ public abstract class Shooter : Offensive
             //rotate head
             modelHead.rotation = Quaternion.LookRotation(direction);
 
-            //instantiate projectile
-            Vector3 spawnPos = modelHead.position + modelHead.forward * projectileDistanceFromHead;
-            if (attackPrefab != null)
-            {
-                GameObject projectileInstance = Instantiate(attackPrefab, spawnPos, Quaternion.LookRotation(direction));
-
-                //launching projectile
-                Rigidbody attackRB = projectileInstance.GetComponent<Rigidbody>();
-                if (attackRB != null)
-                {
-                    attackRB.velocity = direction.normalized * projectileSpeed;
+            //Use Raycast that points to the enemy's direction and damage them
+            RaycastHit hit;
+            Vector3 startPos = modelHead.position + modelHead.forward * rayDistanceFromHead;
+            float distanceToTarget = Vector3.Distance(target.transform.position, startPos);//ray length
+            if (Physics.Raycast(startPos, direction, out hit, distanceToTarget)) {
+                Debug.Log(hit.collider.name);
+                Debug.DrawLine(startPos, hit.point, Color.blue, 5);
+                if (hit.collider.gameObject.tag == "Enemy") {
+                    DealDamage(hit.collider.gameObject);
                 }
             }
         }
     }
 
-    protected override void DealDamage(GameObject enemy)
+
+    protected override void DealDamage(GameObject target)
     {
-        //enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+        if (target == null)
+        {
+            target.GetComponent<Enemy>().TakeDamage(attackDamage);
+        }
+        else {
+            Debug.Log("No valid target to deal damage to");
+        }
+        
     }
 
 }

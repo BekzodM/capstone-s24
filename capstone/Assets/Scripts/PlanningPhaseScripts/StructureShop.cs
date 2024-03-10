@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class StructureShop : MonoBehaviour
 {
+    [SerializeField] private GameObject mapManager;
     [SerializeField] private GameObject[] offensiveStructurePrefabs;
     [SerializeField] private GameObject[] defensiveStructurePrefabs;
     [SerializeField] private GameObject[] supportStructurePrefabs;
@@ -35,6 +36,10 @@ public class StructureShop : MonoBehaviour
         return structurePrefabs;
     }
 
+    public GameObject GetMapManager() {
+        return mapManager;
+    }
+
     //Structure Type Buttons. Switch between the different kinds of structures in the shop
     public void showStructureShop(int index)
     {
@@ -57,43 +62,18 @@ public class StructureShop : MonoBehaviour
             Transform child = shopContent.GetChild(i);//Offensive,...Structures container
             GameObject[] prefabs = structurePrefabs[i];
 
-            foreach (GameObject obj in prefabs) //iterate prefabs of Offensive, Defensive..etc.
+            for (int j = 0; j < prefabs.Length; j++) 
+            //foreach (GameObject obj in prefabs) //iterate prefabs of Offensive, Defensive..etc.
             {
+                GameObject obj= prefabs[j];
+
                 GameObject buttonInstance = Instantiate(structureShopButtonPrefab);
                 Button buttonComponent = buttonInstance.GetComponent<Button>();
-                //buttonComponent.onClick.AddListener(HandleButtonClick);
                 buttonInstance.transform.SetParent(child.transform);
 
-                buttonInstance.GetComponent<StructureButton>().SetUpButton(obj.name);
+                buttonInstance.GetComponent<StructureButton>().SetUpButton(obj.name, i, j);
             }
         }
     }
-
-    /*
-    //Structure Shop Button onClick function
-    private void HandleButtonClick() {
-        GameObject structureInfo = transform.GetChild(1).gameObject;
-
-        //info panel appears
-        structureInfo.SetActive(true);
-
-        //show structure info on structureInfo panel
-    }
-    */
-
-
-    /*
-    public void InstantiatePrefabOnClick(int prefabIndex)
-    {
-        if (prefabIndex >= 0 && prefabIndex < structurePrefabs.Length)
-        {
-            Instantiate(structurePrefabs[prefabIndex], Vector3.zero, Quaternion.identity);
-        }
-        else {
-            Debug.LogWarning("Invalid prefab index: " + prefabIndex);
-        }
-    }
-    */
-  
 
 }
