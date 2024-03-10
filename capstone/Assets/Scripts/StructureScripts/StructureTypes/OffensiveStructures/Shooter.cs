@@ -50,12 +50,12 @@ public abstract class Shooter : Offensive
 
     protected override void DealDamage(GameObject target)
     {
-        if (target == null)
+        if (target != null)
         {
             target.GetComponent<Enemy>().TakeDamage(attackDamage);
         }
         else {
-            Debug.Log("No valid target to deal damage to");
+            //Debug.Log("No valid target to deal damage to");
         }
         
     }
