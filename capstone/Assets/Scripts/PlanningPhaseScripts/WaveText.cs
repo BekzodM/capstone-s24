@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Transactions;
 using TMPro;
 using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
 public class WaveText : MonoBehaviour
 {
+    [SerializeField] GameObject mapManager;
     private TextMeshProUGUI waveText;
     private int currentWave;
     private int totalWaves;
@@ -14,9 +16,19 @@ public class WaveText : MonoBehaviour
     void Start()
     {
         waveText= GetComponent<TextMeshProUGUI>();
+        /*
         StructureShop structShop = transform.parent.parent.GetComponent<StructureShop>();
         currentWave = structShop.GetCurrentWaveNumber();
         totalWaves= structShop.GetTotalWaveNumber();
+        */
+        if (mapManager == null) {
+            Debug.Log("Connect the MapManager gameobject to the wave text in the inspector");
+        }
+        MapManager mapManagerComponent = mapManager.GetComponent<MapManager>();
+        
+        
+        currentWave = mapManagerComponent.GetCurrentWaveNumber();
+        totalWaves = mapManagerComponent.GetTotalWaveNumber();
         ChangeMoneyText(currentWave, totalWaves);
     }
 

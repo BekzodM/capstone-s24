@@ -16,11 +16,13 @@ public class StructureShop : MonoBehaviour
     private int previousIndex = 0;
 
     //map info
+    /*
     [SerializeField] private int startingMoney = 100;
     [SerializeField] private int currentWaveNumber = 1;
     [SerializeField] private int totalWaveNumber = 5;
     [SerializeField] private int startingBaseHealth = 200;
     [SerializeField] private int maxBaseHealth = 200;
+    */
 
     private void Start()
     {
@@ -73,12 +75,13 @@ public class StructureShop : MonoBehaviour
                 Button buttonComponent = buttonInstance.GetComponent<Button>();
                 buttonInstance.transform.SetParent(child.transform);
 
-                buttonInstance.GetComponent<StructureButton>().SetUpButton(obj.name,j);
+                buttonInstance.GetComponent<StructureButton>().SetUpButton(obj.name, i, j);
             }
         }
     }
 
     //Map Info Functions
+    /*
     public int GetStartingMoney() {
         return startingMoney;
     }
@@ -98,5 +101,5 @@ public class StructureShop : MonoBehaviour
     public int GetMaxBaseHealth() {
         return maxBaseHealth;
     }
-
+    */
 }

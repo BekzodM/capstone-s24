@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BaseHealthText : MonoBehaviour
 {
+    [SerializeField] GameObject mapManager;
     private TextMeshProUGUI baseHealthText;
     private int baseHealth;
     private int maxBasehealth;
@@ -13,9 +14,18 @@ public class BaseHealthText : MonoBehaviour
     void Start()
     {
         baseHealthText = GetComponent<TextMeshProUGUI>();
+        /*
         StructureShop structShop = transform.parent.parent.GetComponent<StructureShop>();
         baseHealth = structShop.GetStartingBaseHealth();
         maxBasehealth= structShop.GetMaxBaseHealth();
+        */
+        if (mapManager == null)
+        {
+            Debug.Log("Connect the MapManager gameobject to the base health text in the inspector");
+        }
+        MapManager mapManagerComponent = mapManager.GetComponent<MapManager>();
+        baseHealth = mapManagerComponent.GetStartingBaseHealth();
+        maxBasehealth = mapManagerComponent.GetMaxBaseHealth();
         ChangeBaseHealthText(baseHealth, maxBasehealth);
     }
 

@@ -8,6 +8,7 @@ public class StructureButton : MonoBehaviour
 {
     private string buttonName;
     private Button button;
+    private int tabIndex;
     private int buttonIndex;
 
     // Start is called before the first frame update
@@ -23,18 +24,18 @@ public class StructureButton : MonoBehaviour
     }
 
     //Sets up button text and appearance
-    public void SetUpButton(string text, int idx)
+    public void SetUpButton(string text, int tabIdx, int buttonIdx)
     {
         SetButtonText(text);
         ConnectOnClickFunction();
-        SetButtonIndex(idx);
+        SetUpIndex(tabIdx, buttonIdx);
 
         //other methods to change button appearance
     }
 
-    public void SetButtonIndex(int idx) {
-        buttonIndex = idx;
-        //Debug.Log(buttonName + idx.ToString());
+    public void SetUpIndex(int tabIdx, int buttonIdx) {
+        tabIndex = tabIdx;
+        buttonIndex = buttonIdx;
     }
 
     public void OnClickCancelBuy() {
@@ -82,7 +83,9 @@ public class StructureButton : MonoBehaviour
         transform.GetChild(1).gameObject.SetActive(show);
     }
 
-    private void Buy() { Debug.Log("Buy " + buttonName); }
+    private void Buy() {
+        Debug.Log("Buy " + buttonName);
+    }
 
     // Update is called once per frame
     void Update()
