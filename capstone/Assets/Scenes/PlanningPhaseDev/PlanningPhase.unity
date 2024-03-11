@@ -191,6 +191,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &616683687 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5823325202498984632, guid: a7baa03507fbde84c999a2bb8fe62881, type: 3}
+  m_PrefabInstance: {fileID: 2131796319635294125}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &920103131
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,9 +715,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a9096557137f4a45a958e50ef816a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planningPhaseUI: {fileID: 616683687}
   startingMoney: 100
-  currentWaveNumber: 1
-  totalWaveNumber: 5
+  currentWave: 1
+  totalWaves: 5
   startingBaseHealth: 200
   maxBaseHealth: 200
 --- !u!4 &1587398119
