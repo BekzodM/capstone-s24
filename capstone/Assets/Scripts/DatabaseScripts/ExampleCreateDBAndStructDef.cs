@@ -5,16 +5,20 @@ using UnityEngine;
 
 public class ExampleCreateDBAndStructDef : MonoBehaviour
 {
-    DatabaseWrapper databaseWrapper = new DatabaseWrapper();
+    private DatabaseWrapper databaseWrapper = new DatabaseWrapper();
     void Start()
     {
+        Debug.Log("start");
         //create DB
         databaseWrapper.databaseInit();
         //database created in project root
 
-        //Insert your stuff, put path of your sql file
-        databaseWrapper.InsertImmutables("Assets/Scripts/DatabaseScripts/DummyData.sql");
+        Debug.Log("database init");
 
+        //Insert your stuff, put path of your sql file
+        databaseWrapper.InsertImmutables("Assets/Scripts/DatabaseScripts/Structures.sql");
+
+        Debug.Log("inserted immutables");
 
         string[,] results;
         //Use Getter
@@ -30,14 +34,27 @@ public class ExampleCreateDBAndStructDef : MonoBehaviour
 
 
 
-        results = databaseWrapper.GetData("structures", "progress_level", 2);
+        results = databaseWrapper.GetData("structures", "progress_level", 1);
         //This only gets entries with exactly progLevel = 2
         //if you want something like all less than 2
         //you gotta ask for every level one by one for now
 
-        results = databaseWrapper.GetData("structures", "structure_type", "Defense");
+        //results = databaseWrapper.GetData("structures", "structure_type", "Defense");
 
         //Use Setter
-        databaseWrapper.SetData("gameItems", "Bazooka", "Weapon", 999, 0, 1);
+        //databaseWrapper.SetData("gameItems", "Bazooka", "Weapon", 999, 0, 1);
+
+        if (results.Length == 0) {
+            Debug.Log("Nothing");
+        }
+        Debug.Log(structID);
+        Debug.Log(structName);
+        Debug.Log(structType);
+        Debug.Log(structDamage);
+        Debug.Log(structHealth);
+        Debug.Log(structCost);
+        Debug.Log(progLevel);
+        Debug.Log("Hello");
+        Debug.Log(results);
     }
 }
