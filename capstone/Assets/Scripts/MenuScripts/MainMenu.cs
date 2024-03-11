@@ -2,20 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainMenuScript : MonoBehaviour
+public class MainMenu : MonoBehaviour
 {
-    public void NewGame()
-    {
-
-    }
-    public void LoadSaves()
+    public void Play()
     {
 
     }
 
     public void Quit()
     {
-        Debug.Log("QUIT!");
         Application.Quit();
     }
 }
