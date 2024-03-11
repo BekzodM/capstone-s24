@@ -17,6 +17,11 @@ public class DatabaseWrapper
         _databaseHandler.CreateDB();
     }
 
+    public void InsertImmutables(string pathToSqlFile)
+    {
+        _databaseHandler.InsertImmutables(pathToSqlFile);
+    }
+
     public void SetData(string tableName, int val1, int val2, int val3)
     {
         string insertCommand = "";
@@ -78,7 +83,7 @@ public class DatabaseWrapper
 
     }
 
-    //overloading function for int or string specifier
+    //overloading function for int or string specifier. for string, needs to be surrounded by quotations
     public string[,] GetData(string tableName, string specifierColumn = null, string specifier = null)
     {
         string selectCommand = "SELECT * FROM " + tableName;
@@ -91,38 +96,20 @@ public class DatabaseWrapper
 
         string[,] results = _databaseHandler.SelectData(tableName, selectCommand, specifierCommand);
 
+        //returns results as a 2d array. if data does not exist, 2d array is empty
         return results;
     }
 
-    //overloading function for int or string specifier
+    //overloading function for int or string specifier. for int, no quotations
     public string[,] GetData(string tableName, string specifierColumn, int specifier)
     {
         string selectCommand = "SELECT * FROM " + tableName;
         string specifierCommand = " WHERE " + specifierColumn + " = " + specifier;
-        // switch (tableName)
-        // {
-        //     case "saves":
-        //         specifierCommand = " WHERE " + specifierColumn + " = " + specifier;
-
-        //         break;
-        //     default:
-        //         specifierCommand = " WHERE " + specifierColumn + " = " + specifier;
-
-        //         break;
-        // }
 
         string[,] results = _databaseHandler.SelectData(tableName, selectCommand, specifierCommand);
 
+        //returns results as a 2d array. if data does not exist, 2d array is empty
         return results;
     }
-
-
-    // public void setUpStructureDevFunc()
-    // {
-    //     _databaseHandler.AddStructureDevUseOnly("Machine Gun", "Offense", 10, 100, 10, 1);
-    //     _databaseHandler.AddStructureDevUseOnly("Trap", "Offense", 0, 100, 10, 1);
-    //     _databaseHandler.AddStructureDevUseOnly("Tripwire", "Offense", 0, 100, 10, 1);
-    // }
-
 
 }

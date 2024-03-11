@@ -35,6 +35,30 @@ namespace DatabaseAccess
             }
         }
 
+        public void InsertImmutables(string pathToSqlFile)
+        {
+            //Create the db connection
+            using (var connection = new SqliteConnection(dbName))
+            {
+                connection.Open();
+
+                // Read the SQL script from file
+                string sqlScript = File.ReadAllText(pathToSqlFile);
+
+                //set up an object (called "command") to allow db control
+                using (var command = connection.CreateCommand())
+                {
+                    //create tables using sql commands from createdb.sql
+                    command.CommandText = sqlScript;
+
+                    //run the command
+                    command.ExecuteNonQuery();
+                }
+
+                connection.Close();
+            }
+        }
+
         public void InsertData(string insertCommand)
         {
             //connect to DB
@@ -87,6 +111,7 @@ namespace DatabaseAccess
                     {
                         if (reader.HasRows)
                         {
+                            string debugOutput = "\n";
                             // Debug.Log("Entry Exists");
 
                             //2d array layout follows table schema
@@ -96,8 +121,11 @@ namespace DatabaseAccess
                                 for (int j = 0; j < colCount; j++)
                                 {
                                     results[i, j] = reader[reader.GetName(j)].ToString();
+                                    debugOutput += results[i, j] + " ";
                                 }
+                                debugOutput += "\n";
                             }
+                            Debug.Log(debugOutput);
 
                         }
                         else
@@ -109,28 +137,6 @@ namespace DatabaseAccess
 
                 connection.Close();
                 return results;
-
-            }
-        }
-        public void AddStructureDevUseOnly(string tableName, string structName, string structType, int structDamage, int structHealth, int structCost, int progLevel)
-        {
-
-            //connect to DB
-            using (var connection = new SqliteConnection(dbName))
-            {
-                connection.Open();
-
-                //set up an object (called "command") to allow db control
-                using (var command = connection.CreateCommand())
-                {
-                    //write insertion command
-                    command.CommandText = "INSERT INTO " + tableName + " VALUES ('" + structName + "', '" + structType + "', '" + structDamage + "' , '" + structHealth + "', '" + structCost + "', '" + progLevel + "')";
-
-                    //run the command
-                    command.ExecuteNonQuery();
-                }
-
-                connection.Close();
 
             }
         }

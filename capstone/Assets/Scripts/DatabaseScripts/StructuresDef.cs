@@ -3,21 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mono.Data.Sqlite;
 using System.IO;
-using UnityEditor.Rendering;
-using UnityEditor.MemoryProfiler;
-using TMPro;
-using Unity.VisualScripting;
 
-public class SimpleDB : MonoBehaviour
+
+public class StructuresDef : MonoBehaviour
 {
     private string dbName = "URI=file:GameData.db";
     // Start is called before the first frame update
     void Start()
     {
-        CreateDB();
+        StructuresDefInit();
     }
 
-    public void CreateDB()
+    public void StructuresDefInit()
     {
         //Create the db connection
         using (var connection = new SqliteConnection(dbName))
@@ -25,7 +22,7 @@ public class SimpleDB : MonoBehaviour
             connection.Open();
 
             // Read the SQL script from file
-            string sqlScript = File.ReadAllText("Assets/Scripts/DatabaseScripts/CreateDB.sql");
+            string sqlScript = File.ReadAllText("Assets/Scripts/DatabaseScripts/StructuresDef.sql");
 
 
             //set up an object (called "command") to allow db control
