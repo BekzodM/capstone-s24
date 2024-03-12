@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 31319071541041915}
   - component: {fileID: 8941240327532378924}
   - component: {fileID: 9207570308227346600}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,9 +115,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1443709805866510048}
   - component: {fileID: 4975925385011848689}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Structure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,3 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ee0953c87803e94a96f58a573a8d84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  structureName: 
+  description: 
+  structureType: 
+  cost: 0
+  health: 0

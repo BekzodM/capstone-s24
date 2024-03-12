@@ -11,11 +11,11 @@ public abstract class Structure : MonoBehaviour
     [SerializeField] protected int cost;
     [SerializeField] protected int health;
     protected int[] upgradeAmounts = {0,0,0};
+    /*
     protected Dictionary<int, Dictionary<int,Dictionary<string,string>>> upgrades;
     protected Dictionary<int, Dictionary<string, string>> upgradeLevels;
     protected Dictionary<string, string> upgradeLevelInfo;
-
-    
+    */
 
     protected Structure(string name, string description, string type, int cost, int health) 
     {
@@ -31,6 +31,7 @@ public abstract class Structure : MonoBehaviour
         SetCost(cost);
         gameObject.tag = "Structure";
         gameObject.layer = LayerMask.NameToLayer("Draggable");
+        /*
         upgrades = new Dictionary<int, Dictionary<int, Dictionary<string, string>>> {
             {0, upgradeLevels}, //first upgrade of structure
             {1, upgradeLevels},
@@ -47,6 +48,7 @@ public abstract class Structure : MonoBehaviour
             {"name", ""},
             {"description", ""},
         };
+        */
     }
 
     //Getters

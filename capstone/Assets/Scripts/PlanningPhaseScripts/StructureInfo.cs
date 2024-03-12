@@ -1,19 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StructureInfo : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private DatabaseWrapper databaseWrapper;
+    private TextMeshProUGUI structureName;
+    private Image structureImage;
+    private TextMeshProUGUI healthText;
+    private TextMeshProUGUI costText;
+    private TextMeshProUGUI structure_description;
+    private string[,] results;
+
+
+
+
     void Start()
     {
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        databaseWrapper = new DatabaseWrapper();
+        structureName = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        structureImage = transform.GetChild(1).GetComponent<Image>();
+        healthText = transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+        costText = transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+        structure_description = transform.GetChild(4).GetComponent<TextMeshProUGUI>();
         
+
     }
 
     public void MakeActive(bool isActive)
@@ -21,10 +35,16 @@ public class StructureInfo : MonoBehaviour
         gameObject.SetActive(isActive);
     }
 
-    public void SetInfoBasedOnButtonText(string text)
+    public void SetInfoBasedOnButtonText(string buttonName)
     {
-        Debug.Log(text);
-        //CODE TO DISPLAY INFO
+        Debug.Log(buttonName);
+        /*
+        results = databaseWrapper.GetData("structures", "structure_name", buttonName);
+        structureName.text = results[0, 1];
+        //image
+        healthText.text = results[0, 4];
+        costText.text = results[0, 5];
+        */
 
     }
 }
