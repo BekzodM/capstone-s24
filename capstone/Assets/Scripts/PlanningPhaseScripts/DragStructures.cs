@@ -43,6 +43,7 @@ public class DragStructures : MonoBehaviour
                     //get selected structure gameobject
                     selectedObject = hitInfo.collider.transform.parent.gameObject;
                     isDragging = true;
+                    Debug.Log("New selected object");
                 }
             }
 
@@ -50,6 +51,7 @@ public class DragStructures : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit hit)) {
                 if (hit.collider.gameObject.layer != LayerMask.NameToLayer("Draggable")) {
                     selectedObject = null;
+                    Debug.Log("Deselected Object");
                 }
             }
 

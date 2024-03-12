@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4997073381334681966}
   - component: {fileID: 7907070498450089891}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Turret
   m_TagString: Structure
   m_Icon: {fileID: 0}
@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 5499307521324930086}
   - component: {fileID: 891009383420900685}
   - component: {fileID: 8789131554667182696}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2374927234457234885}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 6694643260596507834}
   - component: {fileID: 3867483555601750145}
   - component: {fileID: 1121370904095623466}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,7 +315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6594605103654622601, guid: 591dfd458545ee84abbc76bdff19f097, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6594605103654622601, guid: 591dfd458545ee84abbc76bdff19f097, type: 3}
       propertyPath: m_IsActive

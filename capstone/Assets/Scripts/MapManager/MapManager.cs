@@ -60,23 +60,34 @@ public class MapManager : MonoBehaviour
         moneyText.ChangeMoneyText(money);
     }
 
-    public bool CanPurchase(string structureName)
+    public void Purchase(string structureName, int tabIndex, int buttonIndex)
     {
-        string[,] results = databaseWrapper.GetData("structures", "structure_name", "Turret");
+        string[,] results = databaseWrapper.GetData("structures", "structure_name", structureName);
         string structName = results[0, 1];
         int structCost = Int32.Parse(results[0,5]);
+        PlaceStructure placeStructureComponent = planningPhaseUI.GetComponent<PlaceStructure>();
+        bool isPlacingStructure = placeStructureComponent.GetIsPlacingStructure();
         if (money >= structCost)
         {
-            //Player can buy it
-            SubtractMoney(structCost);
-            //CODE TO INSTANTIATE STRUCTURE
+            if (isPlacingStructure == false)
+            {
+                //Player can buy it and they are not currently placing a structure down
+                SubtractMoney(structCost);
+                //CODE TO INSTANTIATE STRUCTURE
+                PlaceStructure placeStructure = planningPhaseUI.GetComponent<PlaceStructure>();
+                placeStructure.InstantiateStructure(tabIndex, buttonIndex);
+            }
+            else {
+                Debug.Log("player must place down the structure first");
+                //PANEL TELLING PLAYER THAT THEY CANNOT BUY A STRUCTURE BEFORE THEY FINISH PLACING DOWN A STRUCTURE
+            }
+
         }
         else {
             //Insufficent funds
             Debug.Log("Not enough money for " + structName);
             //MAKE A PANEL WITH TEXT TELLING THE PLAYER THAT THEY DON'T HAVE ENOUGH MONEY
         }
-        return false;
     }
 
     //Wave Functions

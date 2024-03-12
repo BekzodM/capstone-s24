@@ -79,7 +79,7 @@ public class StructureButton : MonoBehaviour
     private void TryToBuy() {
         GameObject mapManager = transform.parent.parent.parent.parent.parent.parent.GetComponent<StructureShop>().GetMapManager();
         MapManager mapManagerComponent = mapManager.GetComponent<MapManager>();
-        mapManagerComponent.CanPurchase(buttonName);
+        mapManagerComponent.Purchase(buttonName, tabIndex, buttonIndex);
     }
 
     // Update is called once per frame
