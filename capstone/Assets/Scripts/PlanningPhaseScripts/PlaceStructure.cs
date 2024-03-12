@@ -84,7 +84,7 @@ public class PlaceStructure : MonoBehaviour
     }
 
     public bool CheckStructurePlacement(GameObject obj) {
-        if (structures.Contains(obj)) {
+        if (structures.Contains(obj) && obj != null) {
             return true;
         }
         return false;

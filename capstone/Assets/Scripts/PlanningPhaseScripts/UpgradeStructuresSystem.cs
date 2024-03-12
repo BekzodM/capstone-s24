@@ -8,11 +8,15 @@ public class UpgradeStructuresSystem : MonoBehaviour
     //[SerializeField] GameObject upgradeButton1;
     //[SerializeField] GameObject upgradeButton2;
     [SerializeField] GameObject upgradeButtonContent;
+    private GameObject planningPhaseUI;
+    private PlaceStructure placeStructure;
+    private DragStructures dragStructures;
 
     // Start is called before the first frame update
     void Start()
-    {
-
+    { planningPhaseUI = transform.parent.parent.parent.parent.gameObject;
+        placeStructure = planningPhaseUI.GetComponent<PlaceStructure>();
+        dragStructures = planningPhaseUI.GetComponent<DragStructures>();
     }
 
     // Update is called once per frame
@@ -22,9 +26,12 @@ public class UpgradeStructuresSystem : MonoBehaviour
     }
 
     public void OnClickUpgradeButton(int idx) {
-        GameObject upgradeButton = upgradeButtonContent.transform.GetChild(idx + 1).gameObject;
-        GameObject confirmPanel = upgradeButton.transform.GetChild(1).gameObject;
-        confirmPanel.SetActive(true);
+        //only show confirm panel if the player is not placing a structure
+        if (placeStructure.CheckStructurePlacement(dragStructures.GetSelectedObject())) {
+            GameObject upgradeButton = upgradeButtonContent.transform.GetChild(idx + 1).gameObject;
+            GameObject confirmPanel = upgradeButton.transform.GetChild(1).gameObject;
+            confirmPanel.SetActive(true);
+        }
     }
 
     public void OnClickConfirmUpgrade(int idx) {

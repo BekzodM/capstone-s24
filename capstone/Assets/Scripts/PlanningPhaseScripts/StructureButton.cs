@@ -70,6 +70,13 @@ public class StructureButton : MonoBehaviour
         GameObject infoPanel = transform.parent.parent.parent.parent.parent.parent.GetChild(1).gameObject;
         StructureInfo info = infoPanel.GetComponent<StructureInfo>();
         info.MakeActive(show);
+        /*
+        GameObject upgradeButtonContent = info.transform.GetChild(0).GetChild(0).GetChild(0).gameObject;
+        Button [] upgradeButtons = upgradeButtonContent.GetComponentsInChildren<Button>();
+        foreach (Button button in upgradeButtons) {
+            button.interactable = false;
+        }
+        */
     }
 
     private void ShowConfirmBuyPanel(bool show) {
