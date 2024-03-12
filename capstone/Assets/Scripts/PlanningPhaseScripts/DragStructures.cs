@@ -42,8 +42,17 @@ public class DragStructures : MonoBehaviour
                 if (hitInfo.collider.transform.parent.tag == "Structure") {
                     //get selected structure gameobject
                     selectedObject = hitInfo.collider.transform.parent.gameObject;
-                    isDragging = true;
-                    Debug.Log("New selected object");
+                    PlaceStructure placeStructure = GetComponent<PlaceStructure>();
+
+                    //check if structure has as been placed down already
+                    if (placeStructure.CheckStructurePlacement(selectedObject))
+                    {
+                        Debug.Log("Selected structure has been placed down already");
+                    }
+                    else {
+                        isDragging = true;
+                        Debug.Log("New selected object");                    
+                    }
                 }
             }
 

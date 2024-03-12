@@ -8,14 +8,15 @@ public class PlaceStructure : MonoBehaviour
     bool isPlacingStructure = false;
     private Camera mainCamera;
     public GameObject worldSpaceCanvas;
+    public GameObject mapManager;
 
-    //List<GameObject> structures;
+    HashSet<GameObject> structures; //structures that have been placed down already
 
     // Start is called before the first frame update
     void Start()
     {
         mainCamera = Camera.main;
-        //structures = new List<GameObject>();
+        structures = new HashSet<GameObject>();
     }
 
     // Update is called once per frame
@@ -57,5 +58,35 @@ public class PlaceStructure : MonoBehaviour
 
     public bool GetIsPlacingStructure() {
         return isPlacingStructure;
+    }
+
+    public void OnClickConfirmPlacement() {
+        WorldSpaceCanvas canvas = worldSpaceCanvas.GetComponent<WorldSpaceCanvas>();
+        canvas.ShowCanvas(false);
+        isPlacingStructure = false;
+
+        //add to set
+        structures.Add(canvas.transform.parent.gameObject);
+    }
+
+    public void OnClickCancelPlacement() {
+        WorldSpaceCanvas canvas = worldSpaceCanvas.GetComponent<WorldSpaceCanvas>();
+        canvas.ShowCanvas(false);
+        isPlacingStructure = false;
+
+        //give full refund
+        GameObject obj = canvas.transform.parent.gameObject;
+        mapManager.GetComponent<MapManager>().FullRefund(obj.GetComponent<Structure>().GetStructureName());
+
+        //destroy instance and reparent the canvas
+        canvas.transform.SetParent(null);
+        Destroy(obj);
+    }
+
+    public bool CheckStructurePlacement(GameObject obj) {
+        if (structures.Contains(obj)) {
+            return true;
+        }
+        return false;
     }
 }

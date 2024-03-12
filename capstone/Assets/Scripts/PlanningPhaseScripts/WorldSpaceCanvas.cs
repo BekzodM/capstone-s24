@@ -16,15 +16,15 @@ public class WorldSpaceCanvas : MonoBehaviour
         transform.SetParent(obj);
         RectTransform canvasRectTransform = GetComponent<RectTransform>();
 
-        // Define the offset to move the canvas in local space
-        Vector3 localOffset = new Vector3(10f, -5f, 0f); // Adjust the values as needed
+        // offset to move the canvas in local space
+        Vector3 localOffset = new Vector3(0f, -6f, 0f); // Adjust the values as needed
 
         // Convert the local offset to global offset
         Vector3 globalOffset = transform.TransformDirection(localOffset);
 
-        // Move the canvas
-        canvasRectTransform.position += globalOffset;
+        canvasRectTransform.position = transform.parent.position + globalOffset;
     }
+
     public void ShowCanvas(bool show) {
         gameObject.SetActive(show);
     }
