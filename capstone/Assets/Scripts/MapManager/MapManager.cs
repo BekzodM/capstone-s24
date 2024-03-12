@@ -92,6 +92,7 @@ public class MapManager : MonoBehaviour
 
     public void FullRefund(string structureName) {
         string[,] results = databaseWrapper.GetData("structures", "structure_name", structureName);
+        Debug.Log("Full Refund struct name:" + structureName);
         string structName = results[0,1];
         int structCost = Int32.Parse(results[0,5]);
         AddMoney(structCost);

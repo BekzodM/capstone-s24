@@ -75,7 +75,7 @@ public class PlaceStructure : MonoBehaviour
         isPlacingStructure = false;
 
         //give full refund
-        GameObject obj = canvas.transform.parent.gameObject;
+        GameObject obj = worldSpaceCanvas.transform.parent.gameObject;
         mapManager.GetComponent<MapManager>().FullRefund(obj.GetComponent<Structure>().GetStructureName());
 
         //destroy instance and reparent the canvas

@@ -31,6 +31,8 @@ public abstract class Structure : MonoBehaviour
         SetCost(cost);
         gameObject.tag = "Structure";
         gameObject.layer = LayerMask.NameToLayer("Draggable");
+
+
         /*
         upgrades = new Dictionary<int, Dictionary<int, Dictionary<string, string>>> {
             {0, upgradeLevels}, //first upgrade of structure
