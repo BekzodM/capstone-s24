@@ -89,4 +89,8 @@ public class PlaceStructure : MonoBehaviour
         }
         return false;
     }
+
+    public void RemoveStructurePlacement(GameObject obj) {
+        structures.Remove(obj);
+    }
 }
