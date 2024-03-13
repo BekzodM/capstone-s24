@@ -59,6 +59,29 @@ namespace DatabaseAccess
             }
         }
 
+        public int ExecuteScalar(string queryCommand)
+        {
+            int lastRowId = 0;
+            //connect to DB
+            using (var connection = new SqliteConnection(dbName))
+            {
+                connection.Open();
+
+                //set up an object (called "command") to allow db control
+                using (var command = connection.CreateCommand())
+                {
+                    //write insertion command
+                    command.CommandText = queryCommand + "; SELECT last_insert_rowid();";
+
+                    //run the command
+                    lastRowId = Convert.ToInt32(command.ExecuteScalar());
+                }
+
+                connection.Close();
+            }
+            return lastRowId;
+        }
+
         public void NonQuery(string queryCommand)
         {
             //connect to DB

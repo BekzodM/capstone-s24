@@ -44,11 +44,11 @@ VALUES
     (3, 'Mage', 'Magic', 25, 60, 100, 3);
 
 INSERT INTO
-    saves (save_id, slot_id, player_id, progress_level)
+    saves (save_id, player_id, progress_level)
 VALUES
-    (1, 1, 1, 10),
-    (2, 2, 2, 5),
-    (3, 3, 3, 15);
+    (1, 1, 10),
+    (2, 2, 5),
+    (3, 3, 15);
 
 INSERT INTO
     players (
