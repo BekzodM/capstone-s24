@@ -60,6 +60,7 @@ public class LoadScript : MonoBehaviour
             string[,] saveData = AccessSave.GetData("saves", "slot_id", slotId);
             string[,] playerData = AccessSave.GetData("players", "player_id", Int32.Parse(saveData[0, 2]));
             Debug.Log($"Slot {slotId} selected");
+            Instruction.text = $"Slot {slotId} selected";
 
             GameState.saveId = 0;
             GameState.playerId = 0;
