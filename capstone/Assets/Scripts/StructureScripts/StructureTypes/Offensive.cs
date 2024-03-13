@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public abstract class Offensive : Structure
 {
@@ -9,9 +10,8 @@ public abstract class Offensive : Structure
     [SerializeField] private float cooldown = 1f;
     private float nextCooldown = 0f;
     private bool isAttacking = false;
-    [SerializeField] protected int attackDamage;
-    protected Offensive(string name, string description, int cost, int health, float attackDamage)
-        : base(name, description, "Offensive", cost, health)
+    protected Offensive(string name, string description, int cost, int health, int progressLevel, int attackDamage)
+        : base(name, description, "Offensive", cost, health, progressLevel, attackDamage)
     {
     }
 

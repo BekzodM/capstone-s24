@@ -5,8 +5,8 @@ using UnityEngine.UIElements;
 
 public class Wall : Defensive
 {
-    public Wall(int cost, int health)
-        : base("Wall", "A basic wall", cost, health)
+    public Wall(string name, string description, int cost, int health, int progressLevel, int attackDamage)
+        : base("Wall", "A basic wall", cost, health, progressLevel, attackDamage)
     {
     }
 
@@ -14,7 +14,7 @@ public class Wall : Defensive
     {
         base.Start();
         SetStructureName("Wall");
-        SetDescription("The basic defensive structure.");
+        //SetDescription("The basic defensive structure.");
     }
 
 }

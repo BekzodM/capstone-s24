@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class StructureInfo : MonoBehaviour
 {
-    private DatabaseWrapper databaseWrapper;
+    private DatabaseWrapper databaseWrapper = new DatabaseWrapper();
     private TextMeshProUGUI structureName;
     private Image structureImage;
     private TextMeshProUGUI healthText;
@@ -19,14 +19,14 @@ public class StructureInfo : MonoBehaviour
 
     void Start()
     {
-        
-        databaseWrapper = new DatabaseWrapper();
+        //databaseWrapper = new DatabaseWrapper();
+        /*
         structureName = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         structureImage = transform.GetChild(1).GetComponent<Image>();
         healthText = transform.GetChild(2).GetComponent<TextMeshProUGUI>();
         costText = transform.GetChild(3).GetComponent<TextMeshProUGUI>();
         structure_description = transform.GetChild(4).GetComponent<TextMeshProUGUI>();
-        
+        */
 
     }
 
@@ -38,13 +38,19 @@ public class StructureInfo : MonoBehaviour
     public void SetInfoBasedOnButtonText(string buttonName)
     {
         Debug.Log(buttonName);
-        /*
+        
         results = databaseWrapper.GetData("structures", "structure_name", buttonName);
+
+        structureName = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        structureImage = transform.GetChild(1).GetComponent<Image>();
+        healthText = transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+        costText = transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+        structure_description = transform.GetChild(4).GetComponent<TextMeshProUGUI>();
+
         structureName.text = results[0, 1];
         //image
-        healthText.text = results[0, 4];
-        costText.text = results[0, 5];
-        */
+        healthText.text = "Health: " + results[0, 4];
+        costText.text = "Cost: " + results[0, 5];
 
     }
 }
