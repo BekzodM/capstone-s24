@@ -5,21 +5,21 @@ using DatabaseAccess;
 
 public class DatabaseWrapper
 {
-    private DatabaseHandler _databaseHandler;
+    private DatabaseHandler databaseHandler;
 
     public DatabaseWrapper()
     {
-        _databaseHandler = new DatabaseHandler();
+        databaseHandler = new DatabaseHandler();
     }
 
     public void databaseInit()
     {
-        _databaseHandler.CreateDB();
+        databaseHandler.CreateDB();
     }
 
     public void InsertImmutables(string pathToSqlFile)
     {
-        _databaseHandler.InsertImmutables(pathToSqlFile);
+        databaseHandler.InsertImmutables(pathToSqlFile);
     }
 
     public void SetData(string tableName, int val1, int val2, int val3)
@@ -41,7 +41,7 @@ public class DatabaseWrapper
                 Debug.Log("table does not exist");
                 break;
         }
-        _databaseHandler.InsertData(insertCommand);
+        databaseHandler.NonQuery(insertCommand);
 
 
     }
@@ -79,7 +79,7 @@ public class DatabaseWrapper
                 break;
         }
 
-        _databaseHandler.InsertData(insertCommand);
+        databaseHandler.NonQuery(insertCommand);
 
     }
 
@@ -94,7 +94,7 @@ public class DatabaseWrapper
             specifierCommand = " WHERE " + specifierColumn + " = '" + specifier + "'";
         }
 
-        string[,] results = _databaseHandler.SelectData(tableName, selectCommand, specifierCommand);
+        string[,] results = databaseHandler.SelectData(tableName, selectCommand, specifierCommand);
 
         //returns results as a 2d array. if data does not exist, 2d array is empty
         return results;
@@ -106,10 +106,17 @@ public class DatabaseWrapper
         string selectCommand = "SELECT * FROM " + tableName;
         string specifierCommand = " WHERE " + specifierColumn + " = " + specifier;
 
-        string[,] results = _databaseHandler.SelectData(tableName, selectCommand, specifierCommand);
+        string[,] results = databaseHandler.SelectData(tableName, selectCommand, specifierCommand);
 
         //returns results as a 2d array. if data does not exist, 2d array is empty
         return results;
+    }
+
+    public void DeleteDataById(string tableName, string specifierColumn, int specifierId)
+    {
+        string deleteCommand = "DELETE FROM " + tableName + " WHERE " + specifierColumn + " = " + specifierId;
+        databaseHandler.NonQuery(deleteCommand);
+
     }
 
 }

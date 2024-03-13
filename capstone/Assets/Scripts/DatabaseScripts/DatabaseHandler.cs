@@ -59,7 +59,7 @@ namespace DatabaseAccess
             }
         }
 
-        public void InsertData(string insertCommand)
+        public void NonQuery(string queryCommand)
         {
             //connect to DB
             using (var connection = new SqliteConnection(dbName))
@@ -70,7 +70,7 @@ namespace DatabaseAccess
                 using (var command = connection.CreateCommand())
                 {
                     //write insertion command
-                    command.CommandText = insertCommand;
+                    command.CommandText = queryCommand;
 
                     //run the command
                     command.ExecuteNonQuery();
