@@ -11,10 +11,19 @@ CREATE TABLE IF NOT EXISTS structures(
     structure_id INTEGER NOT NULL PRIMARY KEY,
     structure_name VARCHAR(20),
     structure_type VARCHAR(20),
+    structure_description VARCHAR(255),
     structure_damage INTEGER,
     structure_health INTEGER,
     structure_cost INTEGER,
     progress_level INTEGER
+);
+
+CREATE TABLE IF NOT EXISTS structureUpgrades(
+    upgrade_id INTEGER NOT NULL PRIMARY KEY,
+    upgrade_name VARCHAR(20),
+    upgrade_type VARCHAR(20),
+    upgrade_description VARCHAR(255),
+    upgrade_slot INTEGER,
 );
 
 CREATE TABLE IF NOT EXISTS enemies(
