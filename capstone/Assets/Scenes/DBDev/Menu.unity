@@ -715,13 +715,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 393373271}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6a104f3382d34563864a6f283e7eb68, type: 3}
+  m_Script: {fileID: 11500000, guid: 08fd364ae3b1a48ff81d69421afe587b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Save1: {fileID: 402222949}
-  Save2: {fileID: 1886537151}
-  Save3: {fileID: 683891108}
-  Continue: {fileID: 0}
+  Slot1: {fileID: 543248419}
+  Slot2: {fileID: 2020338167}
+  Slot3: {fileID: 103906760}
 --- !u!1 &402222947
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,7 +803,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 402222950}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 393373273}
+        m_TargetAssemblyTypeName: LoadScript, Assembly-CSharp
+        m_MethodName: SlotSelect
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &402222950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1298,7 +1309,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 683891109}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 393373273}
+        m_TargetAssemblyTypeName: LoadScript, Assembly-CSharp
+        m_MethodName: SlotSelect
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &683891109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1805,7 +1828,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1271672417}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f201d36de5b04ef4bae58e2d03bf928, type: 3}
+  m_Script: {fileID: 11500000, guid: bf12454f737224a269fd2ae637a92e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1305101627
@@ -2049,7 +2072,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 393373273}
-        m_TargetAssemblyTypeName: LoadSavesMenuScript, Assembly-CSharp
+        m_TargetAssemblyTypeName: LoadScript, Assembly-CSharp
         m_MethodName: RenderSaveSlots
         m_Mode: 1
         m_Arguments:
@@ -2729,7 +2752,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1771621334}
-  - component: {fileID: 1771621335}
   m_Layer: 0
   m_Name: New Character Menu
   m_TagString: Untagged
@@ -2755,18 +2777,6 @@ Transform:
   - {fileID: 1305101628}
   m_Father: {fileID: 2061953937}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1771621335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1771621333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361c13f143bb44721a3d270a8a82f6b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1886537149
 GameObject:
   m_ObjectHideFlags: 0
@@ -2849,7 +2859,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1886537152}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 393373273}
+        m_TargetAssemblyTypeName: LoadScript, Assembly-CSharp
+        m_MethodName: SlotSelect
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1886537152
 MonoBehaviour:
   m_ObjectHideFlags: 0

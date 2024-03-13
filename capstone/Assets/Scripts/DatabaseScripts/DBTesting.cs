@@ -11,6 +11,9 @@ public class DBTesting : MonoBehaviour
         databaseWrapper = new DatabaseWrapper();
         string[,] Array2d;
 
+        // databaseWrapper.databaseInit();
+        // databaseWrapper.InsertImmutables("Assets/Scripts/DatabaseScripts/DummyData.sql");
+
         Array2d = databaseWrapper.GetData("structures");
 
         Array2d = databaseWrapper.GetData("structures", "progress_level", 2);
