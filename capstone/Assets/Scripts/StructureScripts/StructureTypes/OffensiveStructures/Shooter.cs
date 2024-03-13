@@ -6,8 +6,8 @@ public abstract class Shooter : Offensive
 {
     [SerializeField] private float rayDistanceFromHead;
 
-    public Shooter(string name, string description, int cost, int health, int attackDamage)
-        : base(name, description, cost, health, attackDamage)
+    public Shooter(string name, string description, int cost, int health, int progressLevel, int attackDamage)
+        : base(name, description, cost, health, progressLevel, attackDamage )
     {
     }
 

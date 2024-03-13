@@ -8,17 +8,12 @@ public class ExampleCreateDBAndStructDef : MonoBehaviour
     private DatabaseWrapper databaseWrapper = new DatabaseWrapper();
     void Start()
     {
-        Debug.Log("start");
         //create DB
         databaseWrapper.databaseInit();
         //database created in project root
 
-        Debug.Log("database init");
-
         //Insert your stuff, put path of your sql file
         databaseWrapper.InsertImmutables("Assets/Scripts/DatabaseScripts/Structures.sql");
-
-        Debug.Log("inserted immutables");
 
         string[,] results;
         //Use Getter
@@ -44,17 +39,5 @@ public class ExampleCreateDBAndStructDef : MonoBehaviour
         //Use Setter
         //databaseWrapper.SetData("gameItems", "Bazooka", "Weapon", 999, 0, 1);
 
-        if (results.Length == 0) {
-            Debug.Log("Nothing");
-        }
-        Debug.Log(structID);
-        Debug.Log(structName);
-        Debug.Log(structType);
-        Debug.Log(structDamage);
-        Debug.Log(structHealth);
-        Debug.Log(structCost);
-        Debug.Log(progLevel);
-        Debug.Log("Hello");
-        Debug.Log(results);
     }
 }

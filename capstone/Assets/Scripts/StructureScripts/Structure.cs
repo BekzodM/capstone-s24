@@ -10,27 +10,36 @@ public abstract class Structure : MonoBehaviour
     [SerializeField] protected string structureType;
     [SerializeField] protected int cost;
     [SerializeField] protected int health;
+    [SerializeField] protected int progressLevel;
+    [SerializeField] protected int attackDamage;
     protected int[] upgradeAmounts = {0,0,0};
+
+    protected DatabaseWrapper databaseWrapper;
+
+    /*
     protected Dictionary<int, Dictionary<int,Dictionary<string,string>>> upgrades;
     protected Dictionary<int, Dictionary<string, string>> upgradeLevels;
     protected Dictionary<string, string> upgradeLevelInfo;
+    */
 
-    
-
-    protected Structure(string name, string description, string type, int cost, int health) 
+    protected Structure(string name, string description, string type, int cost, int health, int progressLevel, int attackDamage) 
     {
         structureName = name;
         this.description = description;
         structureType = type;
         this.cost = cost;
         this.health = health;
+        this.progressLevel = progressLevel;
     }
 
     protected virtual void Start() {
-        SetHealth(health);
-        SetCost(cost);
+        //SetHealth(health);
+        //SetCost(cost);
         gameObject.tag = "Structure";
         gameObject.layer = LayerMask.NameToLayer("Draggable");
+
+
+        /*
         upgrades = new Dictionary<int, Dictionary<int, Dictionary<string, string>>> {
             {0, upgradeLevels}, //first upgrade of structure
             {1, upgradeLevels},
@@ -47,6 +56,16 @@ public abstract class Structure : MonoBehaviour
             {"name", ""},
             {"description", ""},
         };
+        */
+    }
+
+    protected virtual void SetStructureProperties() {
+        string[,] results = databaseWrapper.GetData("structures", "structure_name", GetStructureName());
+        //REMINDER: SET THE STRUCTURE DESCRIPTION WHEN IT HAS BEEN ADDED TO THE STRUCTURES TABLE
+        SetStructureType(results[0,2]);
+        SetCost(int.Parse(results[0,5]));
+        SetHealth(int.Parse(results[0,4]));
+        SetProgressLevel(int.Parse(results[0,6]));
     }
 
     //Getters
@@ -75,6 +94,11 @@ public abstract class Structure : MonoBehaviour
         return health;
     }
 
+    public int GetProgressLevel()
+    {
+        return progressLevel;
+    }
+
     //Setters
     protected void SetStructureName(string structName)
     {
@@ -101,9 +125,14 @@ public abstract class Structure : MonoBehaviour
         health = h;
     }
 
+    protected void SetProgressLevel(int level) {
+        progressLevel= level;
+    }
+
     //Structure Upgrades
  
     //upgradeIdx = the index used to get the upgradeAmounts in the upgradeAmounts list
+    /*
     protected void IncreaseUpgradeLevel(int upgradeIdx) {
         upgradeAmounts[upgradeIdx] += 1;
         if (upgradeAmounts[upgradeIdx] > 5) {
@@ -111,4 +140,5 @@ public abstract class Structure : MonoBehaviour
         }
 
     }
+    */
 }
