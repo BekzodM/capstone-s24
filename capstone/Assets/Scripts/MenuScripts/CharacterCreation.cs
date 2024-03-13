@@ -15,6 +15,6 @@ public class CharacterCreation : MonoBehaviour
 
     public void setClass()
     {
-        GameState.playerType = newClass.captionText.text;
+        GameState.playerType = newClass.options[newClass.value].text;
     }
 }

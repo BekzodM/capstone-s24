@@ -5,14 +5,12 @@ using Mono.Reflection;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoadScript : MonoBehaviour
 {
     public bool OverWriteSave = false;
     [SerializeField] TMP_Text Instruction;
-    [SerializeField] TMP_Text OverWriteMessage;
-
-    int selectedSlot = 0;
 
     DatabaseWrapper AccessSave = new DatabaseWrapper();
 
@@ -42,38 +40,27 @@ public class LoadScript : MonoBehaviour
 
     }
 
-    private void RenderSave(int slotId, TMP_Text SlotText)
+    private void RenderSave(int saveId, TMP_Text SlotText)
     {
-        string[,] saveData = AccessSave.GetData("saves", "slot_id", slotId);
-        Debug.Log($"{saveData[0, 0]} {saveData[0, 1]} {saveData[0, 2]} {saveData[0, 3]}");
-        string[,] playerData = AccessSave.GetData("players", "player_id", Int32.Parse(saveData[0, 2]));
+        string[,] saveData = AccessSave.GetData("saves", "save_id", saveId);
+        Debug.Log($"{saveData[0, 0]} {saveData[0, 1]} {saveData[0, 2]}");
+        string[,] playerData = AccessSave.GetData("players", "player_id", Int32.Parse(saveData[0, 1]));
         Debug.Log($"{playerData[0, 0]} {playerData[0, 1]} {playerData[0, 2]} {playerData[0, 3]} {playerData[0, 4]}");
 
-        SlotText.text = "Save " + saveData[0, 0] + "\n" + playerData[0, 1] + "\n" + "Level: " + saveData[0, 3];
+        SlotText.text = "Save " + saveData[0, 0] + "\n" + playerData[0, 1] + "\n" + "Level: " + saveData[0, 2];
     }
 
-    public void SlotSelect(int slotId)
+    public void SlotSelect(int saveId)
     {
+        GameState.saveId = saveId;
+
         if (OverWriteSave == false)
         {
-            selectedSlot = slotId;
-            string[,] saveData = AccessSave.GetData("saves", "slot_id", slotId);
-            string[,] playerData = AccessSave.GetData("players", "player_id", Int32.Parse(saveData[0, 2]));
-            Debug.Log($"Slot {slotId} selected");
-            Instruction.text = $"Slot {slotId} selected";
-
-            GameState.saveId = 0;
-            GameState.playerId = 0;
-            GameState.playerName = "";
-            GameState.playerType = "";
-            GameState.playerHealth = 0;
-            GameState.playerMana = 0;
+            Instruction.text = $"Slot {saveId} selected";
         }
         else if (OverWriteSave == true)
         {
-            selectedSlot = slotId;
-            Debug.Log($"Slot {slotId} selected for overwrite");
-            Instruction.text = $"You are about to overwrite save {slotId}!";
+            Instruction.text = $"You are about to overwrite save {saveId}!";
         }
         else
         {
@@ -82,26 +69,36 @@ public class LoadScript : MonoBehaviour
 
     }
 
-    public void Continue()
+    public void ContinueToGame()
     {
         if (OverWriteSave == true)
         {
-            //get old save
-            //get old player
-            //Delete playerID from player
-            //Delete saveID from saves
-
-            //create new character
-            // create new save
-
-            GameState.saveId = 0;
-            GameState.playerId = 0;
-            GameState.playerName = "";
-            GameState.playerType = "";
-            GameState.playerHealth = 0;
-            GameState.playerMana = 0;
-            // AccessSave.SetData();
+            string[,] saveData = AccessSave.GetData("saves", "save_id", GameState.saveId);
+            string[,] playerData = AccessSave.GetData("players", "player_id", Int32.Parse(saveData[0, 1]));
+            AccessSave.DeleteDataById("players", "player_id", Int32.Parse(playerData[0, 0]));
+            AccessSave.DeleteDataById("saves", "save_id", GameState.saveId);
+            GameState.playerHealth = 100;
+            GameState.playerMana = 100;
+            GameState.currentProgressLevel = 1;
+            GameState.playerId = AccessSave.SetData("players", GameState.playerName, GameState.playerType, GameState.playerHealth, GameState.playerMana);
+            GameState.saveId = AccessSave.SetData("saves", GameState.saveId, GameState.playerId, GameState.currentProgressLevel);
         }
+        else if (OverWriteSave == false)
+        {
+            string[,] saveData = AccessSave.GetData("saves", "save_id", GameState.saveId);
+            string[,] playerData = AccessSave.GetData("players", "player_id", Int32.Parse(saveData[0, 1]));
+
+            GameState.playerId = Int32.Parse(playerData[0, 0]);
+            GameState.playerName = playerData[0, 1];
+            GameState.playerType = playerData[0, 2];
+            GameState.playerHealth = Int32.Parse(playerData[0, 3]);
+            GameState.playerMana = Int32.Parse(playerData[0, 4]);
+            GameState.currentProgressLevel = Int32.Parse(saveData[0, 2]);
+        }
+
+        Debug.Log($"loadout: \nsave id: {GameState.saveId} \nplayer id: {GameState.playerId} \nplayer name: {GameState.playerName} \nplayer class: {GameState.playerType} \nplayer health: {GameState.playerHealth}hp \nplayer mana:{GameState.playerMana}mp \nplayer level: {GameState.currentProgressLevel}");
+        // SceneManager.LoadScene("OverWorld");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
 

@@ -22,14 +22,14 @@ public class DatabaseWrapper
         databaseHandler.InsertImmutables(pathToSqlFile);
     }
 
-    public void SetData(string tableName, int val1, int val2, int val3)
+    public int SetData(string tableName, int val1, int val2, int val3)
     {
         string insertCommand = "";
         switch (tableName)
         {
             case "saves":
                 // code block
-                insertCommand = "INSERT INTO saves (slot_id, player_id, progress_level) VALUES (" + val1 + ", " + val2 + ", " + val3 + ")";
+                insertCommand = "INSERT INTO saves (save_id, player_id, progress_level) VALUES (" + val1 + ", " + val2 + ", " + val3 + ")";
                 break;
             case "inventory":
                 // code block
@@ -41,12 +41,12 @@ public class DatabaseWrapper
                 Debug.Log("table does not exist");
                 break;
         }
-        databaseHandler.NonQuery(insertCommand);
 
+        return databaseHandler.ExecuteScalar(insertCommand);
 
     }
 
-    public void SetData(string tableName, string val1, string val2, int val3 = 0, int val4 = 0, int val5 = 0, int val6 = 0)
+    public int SetData(string tableName, string val1, string val2, int val3 = 0, int val4 = 0, int val5 = 0, int val6 = 0)
     {
         string insertCommand = "";
 
@@ -79,7 +79,7 @@ public class DatabaseWrapper
                 break;
         }
 
-        databaseHandler.NonQuery(insertCommand);
+        return databaseHandler.ExecuteScalar(insertCommand);
 
     }
 

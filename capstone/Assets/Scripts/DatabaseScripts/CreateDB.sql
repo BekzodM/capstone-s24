@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS structureUpgrades(
     upgrade_name VARCHAR(20),
     upgrade_type VARCHAR(20),
     upgrade_description VARCHAR(255),
-    upgrade_slot INTEGER,
+    upgrade_slot INTEGER
 );
 
 CREATE TABLE IF NOT EXISTS enemies(
@@ -38,7 +38,6 @@ CREATE TABLE IF NOT EXISTS enemies(
 
 CREATE TABLE IF NOT EXISTS saves (
     save_id INTEGER NOT NULL PRIMARY KEY,
-    slot_id INTEGER UNIQUE,
     player_id INTEGER,
     progress_level INTEGER,
     FOREIGN KEY (player_id) REFERENCES players(player_id)
