@@ -68,6 +68,20 @@ public abstract class Structure : MonoBehaviour
         SetProgressLevel(int.Parse(results[0,6]));
     }
 
+    public void TakeDamage(int damage) {
+        if (health - damage <= 0) {
+            SetHealth(0);
+            PlaceStructure placeStructComponent = FindObjectOfType<PlaceStructure>();
+            if (placeStructComponent != null) {
+                placeStructComponent.RemoveStructurePlacement(gameObject);
+            }
+            Destroy(gameObject);
+        }
+        else{
+            SetHealth(health-damage);
+        }
+    }
+
     //Getters
     public string GetStructureName()
     {
