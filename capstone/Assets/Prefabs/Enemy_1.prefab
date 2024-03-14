@@ -292,7 +292,7 @@ MonoBehaviour:
   maxHealth: 100
   healthBar: {fileID: 2312006379510747402}
   attackPoint: {fileID: 1319540451853291672}
-  attackRange: 1
+  attackRange: 0.5
   playerTag: Player
 --- !u!195 &5967084027633122930
 NavMeshAgent:
