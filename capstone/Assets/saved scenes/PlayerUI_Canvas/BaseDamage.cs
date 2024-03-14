@@ -15,13 +15,13 @@ public class BaseDamage : MonoBehaviour
     public int maxHealth = 100;
     int currentHealth;
 
-    //public HealthBar healthBar;
+    public HealthBar healthBar;
 
     void Start()
     {
         currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
         nearestEnemy = null;
-
     }
 
     private void Update()
@@ -37,10 +37,13 @@ public class BaseDamage : MonoBehaviour
                 Destroy(nearestEnemy);
                 nearestEnemy = null;
                 currentHealth -= 5;
+                healthBar.SetHealth(currentHealth);
             }
             if (currentHealth <= 0)
             {
-                //GAME OVER IMPLEMENT
+            //GAME OVER IMPLEMENT
+            //temp delete player to simulate game over
+                Destroy(GameObject.FindGameObjectWithTag("Player"));
             }
 
     }
