@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : Actor
 {
@@ -17,6 +18,8 @@ public class Player : Actor
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
 
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -25,7 +28,22 @@ public class Player : Actor
         if(Input.GetMouseButtonDown(0)) {
             Attack();
         }
+        // Press esc to exit Locked State
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            ToggleCursorLock();
+        }
     }
+
+    private void ToggleCursorLock()
+    {
+        // Toggle cursor lock state between locked and confined to the window
+        Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;
+
+        // Toggle cursor visibility
+        Cursor.visible = !Cursor.visible;
+    }
+
 
     /* public float JumpForce()
     {
