@@ -23,28 +23,7 @@ public class MoneyText : MonoBehaviour
         ChangeMoneyText(money);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void AddMoney(int money) {
-        this.money += money;
-        ChangeMoneyText(money);
-    }
-
-    public void SubtractMoney(int money) {
-        this.money -= money;
-        ChangeMoneyText(money);
-    }
-
-    private void ChangeMoneyText(int money) {
+    public void ChangeMoneyText(int money) {
         moneyText.text = "Money: " + money.ToString();
-    }
-
-    public int GetMoney()
-    {
-        return money;
     }
 }

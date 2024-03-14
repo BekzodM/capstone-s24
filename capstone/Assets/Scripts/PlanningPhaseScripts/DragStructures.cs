@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 /*
 Requirements:
@@ -42,17 +43,35 @@ public class DragStructures : MonoBehaviour
                 if (hitInfo.collider.transform.parent.tag == "Structure") {
                     //get selected structure gameobject
                     selectedObject = hitInfo.collider.transform.parent.gameObject;
-                    isDragging = true;
+                    PlaceStructure placeStructure = GetComponent<PlaceStructure>();
+
+                    //check if structure has as been placed down already
+                    if (placeStructure.CheckStructurePlacement(selectedObject))
+                    {
+                        Debug.Log("Selected structure has been placed down already");
+                        StructureInfo structInfo = transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<StructureInfo>();
+                        structInfo.MakeActive(true);
+                    }
+                    else {
+                        isDragging = true;
+                        Debug.Log("New selected object");                    
+                    }
                 }
             }
 
-            //Clicking elsewhere that is not on the Draggable layer deselects the object
-            if (Physics.Raycast(ray, out RaycastHit hit)) {
-                if (hit.collider.gameObject.layer != LayerMask.NameToLayer("Draggable")) {
-                    selectedObject = null;
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                Debug.Log("Mouse is hovering over UI");
+            }
+            else {
+                //Clicking elsewhere that is not on the Draggable layer deselects the object
+                if (Physics.Raycast(ray, out RaycastHit hit)) {
+                    if (hit.collider.gameObject.layer != LayerMask.NameToLayer("Draggable")) {
+                        selectedObject = null;
+                        Debug.Log("Deselected Object");
+                    }
                 }
             }
-
         }
 
         //Dragging a valid selected object
@@ -72,5 +91,9 @@ public class DragStructures : MonoBehaviour
 
         }
         
+    }
+
+    public GameObject GetSelectedObject() {
+        return selectedObject;
     }
 }

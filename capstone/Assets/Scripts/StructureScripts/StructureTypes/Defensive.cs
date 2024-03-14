@@ -5,8 +5,14 @@ using UnityEngine;
 
 public abstract class Defensive : Structure
 {
-    protected Defensive(string name, string description, int cost, int health)
-        : base(name, description, "Defensive", cost, health)
+    protected Defensive(string name, string description, int cost, int health, int progressLevel, int attackDamage)
+        : base(name, description, "Defensive", cost, health, progressLevel, attackDamage)
     {
     }
+
+    protected override void Start()
+    {
+        base.Start();
+    }
+
 }
