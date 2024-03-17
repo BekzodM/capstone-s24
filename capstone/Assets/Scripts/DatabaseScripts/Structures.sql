@@ -9,5 +9,5 @@ INSERT INTO
         progress_level
     )
 VALUES
-    (1, 'Turret', 'Offense', 10, 100, 50, 1),
+    (1, 'Turret', 'Offensive', 10, 100, 50, 1),
     (2, 'Wall', 'Defensive', 0, 200, 50, 1);
