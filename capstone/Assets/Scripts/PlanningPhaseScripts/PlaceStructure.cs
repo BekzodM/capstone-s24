@@ -49,6 +49,8 @@ public class PlaceStructure : MonoBehaviour
                 WorldSpaceCanvas canvas = worldSpaceCanvas.GetComponent<WorldSpaceCanvas>();
                 canvas.SetCanvasParent(prefabInstance.transform);
                 canvas.ShowCanvas(true);
+                canvas.ShowPlacementConfirmationPanel(true);
+                canvas.ShowSellPanel(false);
 
                 isPlacingStructure = true;
                 

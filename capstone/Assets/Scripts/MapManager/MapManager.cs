@@ -8,6 +8,9 @@ public class MapManager : MonoBehaviour
     //Planning Phase UI
     public GameObject planningPhaseUI;
 
+    //World Space Canvas
+    public GameObject worldSpaceCanvas;
+
     //Database
     private DatabaseWrapper databaseWrapper = new DatabaseWrapper();
 
@@ -97,6 +100,51 @@ public class MapManager : MonoBehaviour
         int structCost = Int32.Parse(results[0,5]);
         AddMoney(structCost);
         Debug.Log("Fully Refunded " + structName);
+    }
+
+    public void OnClickSellButton() {
+        GameObject selectedObj = planningPhaseUI.GetComponent<DragStructures>().GetSelectedObject();
+        if (selectedObj == null)
+        {
+            Debug.Log("No selected object for selling");
+        }
+        else {
+            //Sell(selectedObj);
+            WorldSpaceCanvas canvas = worldSpaceCanvas.GetComponent<WorldSpaceCanvas>();
+            canvas.ShowSellConfirmationPanel(true);
+            canvas.ShowPlacementConfirmationPanel(false);
+        }
+    }
+
+    public void OnClickCancelSellConfirmationButton()
+    {
+        WorldSpaceCanvas canvas = worldSpaceCanvas.GetComponent<WorldSpaceCanvas>();
+        canvas.ShowSellConfirmationPanel(false);
+        canvas.ShowPlacementConfirmationPanel(false);
+    }
+
+    public void Sell() {
+        GameObject obj = planningPhaseUI.GetComponent<DragStructures>().GetSelectedObject();
+        if (obj == null)
+        {
+            Debug.Log("No selected object for selling");
+        }
+        else {
+            int sellingValue = Mathf.RoundToInt(0.7f * obj.GetComponent<Structure>().GetStructureWorth());
+            //Refund 70% of structure's worth value
+            AddMoney(sellingValue);
+
+            //Remove from placement's set
+            planningPhaseUI.GetComponent<PlaceStructure>().RemoveStructurePlacement(obj);
+        
+            //ReparentWorldSpaceCanvas
+            worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().ResetWorldCanvas();
+
+            //Destroy Structure
+            Destroy(obj);
+        }
+
+
     }
 
     //Wave Functions

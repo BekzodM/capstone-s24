@@ -4933,6 +4933,7 @@ MonoBehaviour:
   draggableLayer:
     serializedVersion: 2
     m_Bits: 128
+  worldSpaceCanvas: {fileID: 0}
 --- !u!1 &5953548610262876668
 GameObject:
   m_ObjectHideFlags: 0
@@ -6440,8 +6441,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7643470317803043652}
   m_HandleRect: {fileID: 1747308036047864676}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 1
+  m_Value: 1.0000181
+  m_Size: 0.9606236
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

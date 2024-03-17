@@ -10,10 +10,15 @@ public class Wall : Defensive
     {
     }
 
+    protected override void Awake()
+    { 
+        SetStructureName("Wall");
+        base.Awake();
+    }
     protected override void Start()
     {
         base.Start();
-        SetStructureName("Wall");
+        
         //SetDescription("The basic defensive structure.");
     }
 

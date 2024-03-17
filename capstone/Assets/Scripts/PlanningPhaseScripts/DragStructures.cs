@@ -17,6 +17,8 @@ public class DragStructures : MonoBehaviour
     public LayerMask groundLayer;
     public LayerMask draggableLayer;
 
+    public GameObject worldSpaceCanvas;
+
     private Camera mainCamera;
     private GameObject selectedObject;
     private RaycastHit hitInfo;
@@ -49,8 +51,13 @@ public class DragStructures : MonoBehaviour
                     if (placeStructure.CheckStructurePlacement(selectedObject))
                     {
                         Debug.Log("Selected structure has been placed down already");
+                        
                         StructureInfo structInfo = transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<StructureInfo>();
                         structInfo.MakeActive(true);
+
+                        worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().SetCanvasParent(selectedObject.transform);
+                        worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().ShowCanvas(true);
+                        worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().ShowSellPanel(true);
                     }
                     else {
                         isDragging = true;
@@ -66,7 +73,8 @@ public class DragStructures : MonoBehaviour
             else {
                 //Clicking elsewhere that is not on the Draggable layer deselects the object
                 if (Physics.Raycast(ray, out RaycastHit hit)) {
-                    if (hit.collider.gameObject.layer != LayerMask.NameToLayer("Draggable")) {
+                    if (hit.collider.gameObject != null && hit.collider.gameObject.layer != LayerMask.NameToLayer("Draggable") && hit.collider.gameObject.layer != LayerMask.NameToLayer("UI")) {
+                        worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().ResetWorldCanvas();
                         selectedObject = null;
                         Debug.Log("Deselected Object");
                     }

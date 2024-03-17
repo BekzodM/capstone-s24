@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class WorldSpaceCanvas : MonoBehaviour
 {
@@ -27,5 +28,37 @@ public class WorldSpaceCanvas : MonoBehaviour
 
     public void ShowCanvas(bool show) {
         gameObject.SetActive(show);
+    }
+
+    public void ShowPlacementConfirmationPanel(bool show) {
+        transform.GetChild(0).gameObject.SetActive(show);
+    }
+
+    public void ShowSellPanel(bool show) {
+        GameObject sellPanel = transform.GetChild(1).gameObject;
+        GameObject sellButton = sellPanel.transform.GetChild(0).gameObject;
+        GameObject sellConfirmationPanel = sellPanel.transform.GetChild(1).gameObject;
+
+        sellPanel.SetActive(show);
+        sellButton.SetActive(true);
+        sellConfirmationPanel.SetActive(false);
+        
+    }
+
+    public void ShowSellConfirmationPanel(bool show) {
+        GameObject sellPanel = transform.GetChild(1).gameObject;
+        GameObject sellButton = sellPanel.transform.GetChild(0).gameObject;
+        GameObject sellConfirmationPanel = sellPanel.transform.GetChild(1).gameObject;
+
+        sellPanel.SetActive(show);
+        sellButton.SetActive(false);
+        sellConfirmationPanel.SetActive(true);
+    }
+
+    public void ResetWorldCanvas() {
+        transform.SetParent(null);
+        ShowCanvas(false);
+        ShowPlacementConfirmationPanel(true);
+        ShowSellPanel(false);
     }
 }
