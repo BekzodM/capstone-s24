@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class MapManager : MonoBehaviour
@@ -10,6 +11,9 @@ public class MapManager : MonoBehaviour
 
     //World Space Canvas
     public GameObject worldSpaceCanvas;
+
+    //Message to player
+    public GameObject messagePanel;
 
     //Database
     private DatabaseWrapper databaseWrapper = new DatabaseWrapper();
@@ -63,11 +67,11 @@ public class MapManager : MonoBehaviour
         moneyText.ChangeMoneyText(money);
     }
 
-    public void Purchase(string structureName, int tabIndex, int buttonIndex)
+    public void Purchase(string structureName)
     {
         string[,] results = databaseWrapper.GetData("structures", "structure_name", structureName);
         string structName = results[0, 1];
-        int structCost = Int32.Parse(results[0,5]);
+        int structCost = Int32.Parse(results[0,6]);
         PlaceStructure placeStructureComponent = planningPhaseUI.GetComponent<PlaceStructure>();
         bool isPlacingStructure = placeStructureComponent.GetIsPlacingStructure();
         if (money >= structCost)
@@ -77,12 +81,16 @@ public class MapManager : MonoBehaviour
                 //Player can buy it and they are not currently placing a structure down
                 SubtractMoney(structCost);
                 //CODE TO INSTANTIATE STRUCTURE
+                
+                /*
                 PlaceStructure placeStructure = planningPhaseUI.GetComponent<PlaceStructure>();
                 placeStructure.InstantiateStructure(tabIndex, buttonIndex);
+                */
             }
             else {
                 Debug.Log("player must place down the structure first");
                 //PANEL TELLING PLAYER THAT THEY CANNOT BUY A STRUCTURE BEFORE THEY FINISH PLACING DOWN A STRUCTURE
+                messagePanel.GetComponentInChildren<TextMeshProUGUI>().text = "You must place down the structure first.";
             }
 
         }
@@ -93,14 +101,16 @@ public class MapManager : MonoBehaviour
         }
     }
 
+    /*
     public void FullRefund(string structureName) {
         string[,] results = databaseWrapper.GetData("structures", "structure_name", structureName);
         Debug.Log("Full Refund struct name:" + structureName);
         string structName = results[0,1];
-        int structCost = Int32.Parse(results[0,5]);
+        int structCost = Int32.Parse(results[0,6]);
         AddMoney(structCost);
         Debug.Log("Fully Refunded " + structName);
     }
+    */
 
     public void OnClickSellButton() {
         GameObject selectedObj = planningPhaseUI.GetComponent<DragStructures>().GetSelectedObject();

@@ -61,7 +61,7 @@ public class DragStructures : MonoBehaviour
                     }
                     else {
                         isDragging = true;
-                        Debug.Log("New selected object");                    
+                        Debug.Log("object has not been placed down already");                    
                     }
                 }
             }
@@ -74,9 +74,18 @@ public class DragStructures : MonoBehaviour
                 //Clicking elsewhere that is not on the Draggable layer deselects the object
                 if (Physics.Raycast(ray, out RaycastHit hit)) {
                     if (hit.collider.gameObject != null && hit.collider.gameObject.layer != LayerMask.NameToLayer("Draggable") && hit.collider.gameObject.layer != LayerMask.NameToLayer("UI")) {
-                        worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().ResetWorldCanvas();
-                        selectedObject = null;
-                        Debug.Log("Deselected Object");
+                        //make sure the structure isn't placed down yet. Cannot deselect if the player is still placing down a structure
+                        if (!gameObject.GetComponent<PlaceStructure>().GetIsPlacingStructure())
+                        {
+                            worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().ResetWorldCanvas();
+                            selectedObject = null;
+                            StructureInfo infoPanel = transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<StructureInfo>();
+                            infoPanel.MakeActive(false);
+                            Debug.Log("Deselected Object");
+                        }
+                        else {
+                            Debug.Log("Player is placing structure and selected object cannot be deselected.");
+                        }
                     }
                 }
             }
@@ -103,5 +112,9 @@ public class DragStructures : MonoBehaviour
 
     public GameObject GetSelectedObject() {
         return selectedObject;
+    }
+
+    public void SetSelectedObject(GameObject obj) {
+        selectedObject = obj;
     }
 }

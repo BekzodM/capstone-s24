@@ -11,7 +11,7 @@ public class StructureInfo : MonoBehaviour
     private Image structureImage;
     private TextMeshProUGUI healthText;
     private TextMeshProUGUI costText;
-    private TextMeshProUGUI structure_description;
+    private TextMeshProUGUI structureDescription;
     private string[,] results;
 
 
@@ -19,15 +19,6 @@ public class StructureInfo : MonoBehaviour
 
     void Start()
     {
-        //databaseWrapper = new DatabaseWrapper();
-        /*
-        structureName = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-        structureImage = transform.GetChild(1).GetComponent<Image>();
-        healthText = transform.GetChild(2).GetComponent<TextMeshProUGUI>();
-        costText = transform.GetChild(3).GetComponent<TextMeshProUGUI>();
-        structure_description = transform.GetChild(4).GetComponent<TextMeshProUGUI>();
-        */
-
     }
 
     public void MakeActive(bool isActive)
@@ -45,12 +36,15 @@ public class StructureInfo : MonoBehaviour
         structureImage = transform.GetChild(1).GetComponent<Image>();
         healthText = transform.GetChild(2).GetComponent<TextMeshProUGUI>();
         costText = transform.GetChild(3).GetComponent<TextMeshProUGUI>();
-        structure_description = transform.GetChild(4).GetComponent<TextMeshProUGUI>();
+        structureDescription = transform.GetChild(4).GetComponent<TextMeshProUGUI>();
 
+        
         structureName.text = results[0, 1];
         //image
-        healthText.text = "Health: " + results[0, 4];
-        costText.text = "Cost: " + results[0, 5];
+        healthText.text = "Health: " + results[0, 5];
+        costText.text = "Cost: " + results[0, 6];
+        structureDescription.text = results[0, 3];
+        
 
     }
 }

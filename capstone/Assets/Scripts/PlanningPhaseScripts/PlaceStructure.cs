@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlaceStructure : MonoBehaviour
 {
-    bool isPlacingStructure = false;
+    private bool isPlacingStructure = false;
     private Camera mainCamera;
     public GameObject worldSpaceCanvas;
     public GameObject mapManager;
@@ -53,6 +53,8 @@ public class PlaceStructure : MonoBehaviour
                 canvas.ShowSellPanel(false);
 
                 isPlacingStructure = true;
+
+                gameObject.GetComponent<DragStructures>().SetSelectedObject(prefabInstance);
                 
             }
         }
@@ -69,6 +71,10 @@ public class PlaceStructure : MonoBehaviour
 
         //add to set
         structures.Add(canvas.transform.parent.gameObject);
+
+        //purchase
+        string name = transform.GetComponent<DragStructures>().GetSelectedObject().GetComponent<Structure>().GetStructureName();
+        mapManager.GetComponent<MapManager>().Purchase(name);
     }
 
     public void OnClickCancelPlacement() {
@@ -77,8 +83,10 @@ public class PlaceStructure : MonoBehaviour
         isPlacingStructure = false;
 
         //give full refund
+        
         GameObject obj = worldSpaceCanvas.transform.parent.gameObject;
-        mapManager.GetComponent<MapManager>().FullRefund(obj.GetComponent<Structure>().GetStructureName());
+        //mapManager.GetComponent<MapManager>().FullRefund(obj.GetComponent<Structure>().GetStructureName());
+        
 
         //destroy instance and reparent the canvas
         canvas.transform.SetParent(null);

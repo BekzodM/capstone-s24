@@ -64,15 +64,6 @@ public abstract class Offensive : Structure
 
     protected abstract void DealDamage(GameObject enemy);
 
-    //Getters
-    public int GetAttackDamage() {
-        return attackDamage;
-    }
-
-    //Setters
-    protected void SetAttackDamage(int dmg) {
-        attackDamage = dmg;
-    }
 
 
 }

@@ -69,9 +69,11 @@ public abstract class Structure : MonoBehaviour
         string[,] results = databaseWrapper.GetData("structures", "structure_name", structureName);
         //REMINDER: SET THE STRUCTURE DESCRIPTION WHEN IT HAS BEEN ADDED TO THE STRUCTURES TABLE
         SetStructureType(results[0,2]);
-        SetCost(int.Parse(results[0,5]));
-        SetHealth(int.Parse(results[0,4]));
-        SetProgressLevel(int.Parse(results[0,6]));
+        SetDescription(results[0,3]);
+        SetAttackDamage(int.Parse(results[0,4]));
+        SetHealth(int.Parse(results[0,5]));
+        SetCost(int.Parse(results[0,6]));
+        SetProgressLevel(int.Parse(results[0,7]));
         SetStructureWorth(cost);
     }
 
@@ -124,6 +126,10 @@ public abstract class Structure : MonoBehaviour
         return structureWorth;
     }
 
+    public int GetAttackDamage() {
+        return attackDamage;
+    }
+
     //Setters
     protected void SetStructureName(string structName)
     {
@@ -156,6 +162,10 @@ public abstract class Structure : MonoBehaviour
 
     protected void SetStructureWorth(int worth) {
         structureWorth = worth;
+    }
+
+    protected void SetAttackDamage(int damage) {
+        attackDamage = damage;
     }
 
     //Structure Upgrades
