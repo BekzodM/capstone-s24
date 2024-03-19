@@ -43,11 +43,14 @@ public class LoadScript : MonoBehaviour
     private void RenderSave(int saveId, TMP_Text SlotText)
     {
         string[,] saveData = AccessSave.GetData("saves", "save_id", saveId);
-        Debug.Log($"{saveData[0, 0]} {saveData[0, 1]} {saveData[0, 2]}");
-        string[,] playerData = AccessSave.GetData("players", "player_id", Int32.Parse(saveData[0, 1]));
-        Debug.Log($"{playerData[0, 0]} {playerData[0, 1]} {playerData[0, 2]} {playerData[0, 3]} {playerData[0, 4]}");
+        if (saveData.GetLength(0) > 0 && saveData.GetLength(1) > 0)
+        {
+            Debug.Log($"{saveData[0, 0]} {saveData[0, 1]} {saveData[0, 2]}");
+            string[,] playerData = AccessSave.GetData("players", "player_id", Int32.Parse(saveData[0, 1]));
+            Debug.Log($"{playerData[0, 0]} {playerData[0, 1]} {playerData[0, 2]} {playerData[0, 3]} {playerData[0, 4]}");
 
-        SlotText.text = "Save " + saveData[0, 0] + "\n" + playerData[0, 1] + "\n" + "Level: " + saveData[0, 2];
+            SlotText.text = "Save " + saveData[0, 0] + "\n" + playerData[0, 1] + "\n" + "Level: " + saveData[0, 2];
+        }
     }
 
     public void SlotSelect(int saveId)
@@ -74,9 +77,13 @@ public class LoadScript : MonoBehaviour
         if (OverWriteSave == true)
         {
             string[,] saveData = AccessSave.GetData("saves", "save_id", GameState.saveId);
-            string[,] playerData = AccessSave.GetData("players", "player_id", Int32.Parse(saveData[0, 1]));
-            AccessSave.DeleteDataById("players", "player_id", Int32.Parse(playerData[0, 0]));
-            AccessSave.DeleteDataById("saves", "save_id", GameState.saveId);
+            if (saveData.GetLength(0) > 0 && saveData.GetLength(1) > 0)
+            {
+                string[,] playerData = AccessSave.GetData("players", "player_id", Int32.Parse(saveData[0, 1]));
+                AccessSave.DeleteDataById("players", "player_id", Int32.Parse(playerData[0, 0]));
+                AccessSave.DeleteDataById("saves", "save_id", GameState.saveId);
+            }
+
             GameState.playerHealth = 100;
             GameState.playerMana = 100;
             GameState.currentProgressLevel = 1;
