@@ -92,10 +92,16 @@ public class StructureButton : MonoBehaviour
         GameObject planningPhaseUI = transform.parent.parent.parent.parent.parent.parent.parent.parent.gameObject;
         PlaceStructure placeStructure = planningPhaseUI.GetComponent<PlaceStructure>();
         GameObject messagePanel = planningPhaseUI.transform.GetChild(0).GetChild(0).GetChild(6).gameObject;
+        GameObject mapManager = placeStructure.mapManager;
         if (placeStructure.GetIsPlacingStructure())
         {
             Debug.Log("You cannot try to purchase a structure before another structure is being placed down.");
-            messagePanel.GetComponentInChildren<TextMeshProUGUI>().text = "You cannot try to purchase a structure before another structure is being placed down.";
+            messagePanel.GetComponent<Message>().SetMessageText("You cannot try to purchase a structure before another structure is placed down.");
+        }
+        else if (!mapManager.GetComponent<MapManager>().CanPurchase(buttonName)) {
+            //not enough money
+            Debug.Log("Not enough money");
+            messagePanel.GetComponent<Message>().SetMessageText("Not enough money");
         }
         else {
             Debug.Log("A structure is not being placed right now.");

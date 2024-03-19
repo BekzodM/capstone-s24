@@ -43,6 +43,13 @@ public class DragStructures : MonoBehaviour
             
             if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, draggableLayer)) {
                 if (hitInfo.collider.transform.parent.tag == "Structure") {
+
+
+                    //if there is a structure that hasn't been placed down yet, you cannot selected another placed down structure
+                    //if () { 
+                    
+                    //}
+
                     //get selected structure gameobject
                     selectedObject = hitInfo.collider.transform.parent.gameObject;
                     PlaceStructure placeStructure = GetComponent<PlaceStructure>();

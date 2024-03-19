@@ -67,6 +67,19 @@ public class MapManager : MonoBehaviour
         moneyText.ChangeMoneyText(money);
     }
 
+    public bool CanPurchase(string structureName) {
+        string[,] results = databaseWrapper.GetData("structures", "structure_name", structureName);
+
+        int structCost = Int32.Parse(results[0, 6]);
+        bool canPurchase = false;
+
+
+        if (money >= structCost)
+        {
+            canPurchase = true;
+        }
+        return canPurchase;
+    }
     public void Purchase(string structureName)
     {
         string[,] results = databaseWrapper.GetData("structures", "structure_name", structureName);
@@ -89,15 +102,19 @@ public class MapManager : MonoBehaviour
             }
             else {
                 Debug.Log("player must place down the structure first");
-                //PANEL TELLING PLAYER THAT THEY CANNOT BUY A STRUCTURE BEFORE THEY FINISH PLACING DOWN A STRUCTURE
-                messagePanel.GetComponentInChildren<TextMeshProUGUI>().text = "You must place down the structure first.";
+                messagePanel.GetComponent<Message>().SetMessageText("You must place down the structure first.");
             }
 
         }
         else {
             //Insufficent funds
+            /*
             Debug.Log("Not enough money for " + structName);
-            //MAKE A PANEL WITH TEXT TELLING THE PLAYER THAT THEY DON'T HAVE ENOUGH MONEY
+            messagePanel.GetComponent<Message>().SetMessageText("Not enough money for " + structName);
+            GameObject obj = planningPhaseUI.GetComponent<DragStructures>().GetSelectedObject();
+            obj.GetComponentInChildren<WorldSpaceCanvas>().ResetWorldCanvas();
+            Destroy(obj);
+            */
         }
     }
 
