@@ -4760,8 +4760,6 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Select...
-      m_Image: {fileID: 0}
     - m_Text: Fighter
       m_Image: {fileID: 0}
     - m_Text: Thief

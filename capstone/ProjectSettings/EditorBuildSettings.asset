@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/EnemyNavDev/EnemyNavDev.unity
-    guid: db41dd160a9574b35959d5309e2cb604
+    path: Assets/Scenes/DBDev/Menu.unity
+    guid: 671cd1e1cd87f4b428c8b803320f2dcb
+  - enabled: 1
+    path: Assets/Scenes/DBDev/Game.unity
+    guid: 84d2ed6f4f332474086a2c3018af8a24
   m_configObjects: {}
