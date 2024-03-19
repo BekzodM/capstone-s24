@@ -84,6 +84,8 @@ public abstract class Structure : MonoBehaviour
             if (placeStructComponent != null) {
                 placeStructComponent.RemoveStructurePlacement(gameObject);
             }
+            
+            placeStructComponent.RemoveStructurePlacement(gameObject);
             Destroy(gameObject);
         }
         else{

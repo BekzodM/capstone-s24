@@ -46,9 +46,6 @@ public class DragStructures : MonoBehaviour
 
 
                     //if there is a structure that hasn't been placed down yet, you cannot selected another placed down structure
-                    //if () { 
-                    
-                    //}
 
                     //get selected structure gameobject
                     selectedObject = hitInfo.collider.transform.parent.gameObject;
@@ -62,9 +59,18 @@ public class DragStructures : MonoBehaviour
                         StructureInfo structInfo = transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<StructureInfo>();
                         structInfo.MakeActive(true);
 
-                        worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().SetCanvasParent(selectedObject.transform);
-                        worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().ShowCanvas(true);
-                        worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().ShowSellPanel(true);
+                        if (gameObject.GetComponent<PlaceStructure>().GetIsPlacingStructure() == true)
+                        {
+                            Debug.Log("You are currently placing a structure. Do not reparent world space canvas.");
+                        }
+                        else { 
+                            worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().SetCanvasParent(selectedObject.transform);
+                            worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().ShowCanvas(true);
+                            worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().ShowSellPanel(true);
+                            
+                            StructureInfo structureInfo = FindObjectOfType<StructureInfo>();
+                            structureInfo.SetInfoBasedOnSelectedObject(selectedObject);
+                        }
                     }
                     else {
                         isDragging = true;
@@ -123,5 +129,10 @@ public class DragStructures : MonoBehaviour
 
     public void SetSelectedObject(GameObject obj) {
         selectedObject = obj;
+    }
+
+    public void DestroySelectedObject() {
+        Destroy(selectedObject);
+        selectedObject= null;
     }
 }

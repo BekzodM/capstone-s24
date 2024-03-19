@@ -93,12 +93,6 @@ public class MapManager : MonoBehaviour
             {
                 //Player can buy it and they are not currently placing a structure down
                 SubtractMoney(structCost);
-                //CODE TO INSTANTIATE STRUCTURE
-                
-                /*
-                PlaceStructure placeStructure = planningPhaseUI.GetComponent<PlaceStructure>();
-                placeStructure.InstantiateStructure(tabIndex, buttonIndex);
-                */
             }
             else {
                 Debug.Log("player must place down the structure first");
@@ -168,7 +162,7 @@ public class MapManager : MonoBehaviour
             worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().ResetWorldCanvas();
 
             //Destroy Structure
-            Destroy(obj);
+            planningPhaseUI.GetComponent<DragStructures>().DestroySelectedObject();
         }
 
 
