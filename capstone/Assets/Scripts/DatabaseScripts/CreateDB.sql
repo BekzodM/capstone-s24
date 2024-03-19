@@ -15,14 +15,16 @@ CREATE TABLE IF NOT EXISTS structures(
     structure_damage INTEGER,
     structure_health INTEGER,
     structure_cost INTEGER,
-    progress_level INTEGER
+    upgrade_id INTEGER,
+    progress_level INTEGER,
+    FOREIGN KEY (upgrade_id) REFERENCES structureUpgrades(upgrade_id)
 );
 
 CREATE TABLE IF NOT EXISTS structureUpgrades(
     upgrade_id INTEGER NOT NULL PRIMARY KEY,
     upgrade_name VARCHAR(20),
-    upgrade_type VARCHAR(20),
     upgrade_description VARCHAR(255),
+    upgrade_image_path VARCHAR(255),
     upgrade_slot INTEGER
 );
 
@@ -49,13 +51,4 @@ CREATE TABLE IF NOT EXISTS players (
     player_type VARCHAR(20),
     player_health INTEGER,
     player_mana INTEGER
-);
-
-CREATE TABLE IF NOT EXISTS inventory (
-    entry_id INTEGER NOT NULL PRIMARY KEY,
-    player_id INTEGER,
-    item_id INTEGER,
-    item_quantity INTEGER,
-    FOREIGN KEY (player_id) REFERENCES players(player_id),
-    FOREIGN KEY (item_id) REFERENCES gameItems(player_id)
 );
