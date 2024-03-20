@@ -70,7 +70,7 @@ public class MapManager : MonoBehaviour
     public bool CanPurchase(string structureName) {
         string[,] results = databaseWrapper.GetData("structures", "structure_name", structureName);
 
-        int structCost = Int32.Parse(results[0, 6]);
+        int structCost = Int32.Parse(results[0, 7]);
         bool canPurchase = false;
 
 
@@ -84,7 +84,7 @@ public class MapManager : MonoBehaviour
     {
         string[,] results = databaseWrapper.GetData("structures", "structure_name", structureName);
         string structName = results[0, 1];
-        int structCost = Int32.Parse(results[0,6]);
+        int structCost = Int32.Parse(results[0,7]);
         PlaceStructure placeStructureComponent = planningPhaseUI.GetComponent<PlaceStructure>();
         bool isPlacingStructure = placeStructureComponent.GetIsPlacingStructure();
         if (money >= structCost)

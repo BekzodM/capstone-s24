@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS structures(
     structure_name VARCHAR(20),
     structure_type VARCHAR(20),
     structure_description VARCHAR(255),
+    structure_image_path VARCHAR(255),
     structure_damage INTEGER,
     structure_health INTEGER,
     structure_cost INTEGER,
@@ -25,7 +26,6 @@ CREATE TABLE IF NOT EXISTS structureUpgrades(
     upgrade_image_path VARCHAR(255),
     upgrade_slot INTEGER,
     upgrade_cost INTEGER,
-    next_upgrade_id INTEGER,
     structure_id INTEGER,
     FOREIGN KEY (structure_id) REFERENCES structures(structure_id)
 );

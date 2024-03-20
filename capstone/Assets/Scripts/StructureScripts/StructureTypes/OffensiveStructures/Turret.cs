@@ -12,7 +12,6 @@ public class Turret : Shooter
     {
         SetStructureName("Turret");
         base.Awake();
-        
     }
 
     protected override void Start()

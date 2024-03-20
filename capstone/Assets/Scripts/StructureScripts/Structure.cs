@@ -13,15 +13,11 @@ public abstract class Structure : MonoBehaviour
     [SerializeField] protected int progressLevel;
     [SerializeField] protected int attackDamage;
     protected int structureWorth;
-    protected int[] upgradeAmounts = {0,0,0};
-
+    protected int structureId;
+    protected string imagePath;
     protected DatabaseWrapper databaseWrapper;
 
-    /*
-    protected Dictionary<int, Dictionary<int,Dictionary<string,string>>> upgrades;
-    protected Dictionary<int, Dictionary<string, string>> upgradeLevels;
-    protected Dictionary<string, string> upgradeLevelInfo;
-    */
+    protected StructureUpgradesInfo upgradesInfo;
 
     protected Structure(string name, string description, string type, int cost, int health, int progressLevel, int attackDamage) 
     {
@@ -39,41 +35,23 @@ public abstract class Structure : MonoBehaviour
     }
 
     protected virtual void Start() {
-        //SetHealth(health);
-        //SetCost(cost);
         gameObject.tag = "Structure";
         gameObject.layer = LayerMask.NameToLayer("Draggable");
         SetStructureProperties();
-
-        /*
-        upgrades = new Dictionary<int, Dictionary<int, Dictionary<string, string>>> {
-            {0, upgradeLevels}, //first upgrade of structure
-            {1, upgradeLevels},
-            {2, upgradeLevels}
-        };
-        upgradeLevels = new Dictionary<int, Dictionary<string, string>> {
-            {0, upgradeLevelInfo}, //level 1 of the first,second, or third upgrade
-            {1, upgradeLevelInfo },
-            {2, upgradeLevelInfo },
-            {3, upgradeLevelInfo },
-            {4, upgradeLevelInfo},
-        };
-        upgradeLevelInfo = new Dictionary<string, string> {
-            {"name", ""},
-            {"description", ""},
-        };
-        */
+        upgradesInfo= gameObject.AddComponent<StructureUpgradesInfo>();
     }
 
     protected virtual void SetStructureProperties() {
+        //structure properties
         string[,] results = databaseWrapper.GetData("structures", "structure_name", structureName);
-        //REMINDER: SET THE STRUCTURE DESCRIPTION WHEN IT HAS BEEN ADDED TO THE STRUCTURES TABLE
+        SetStructureId(int.Parse(results[0,0]));
         SetStructureType(results[0,2]);
         SetDescription(results[0,3]);
-        SetAttackDamage(int.Parse(results[0,4]));
-        SetHealth(int.Parse(results[0,5]));
-        SetCost(int.Parse(results[0,6]));
-        SetProgressLevel(int.Parse(results[0,7]));
+        SetImagePath(results[0,4]);
+        SetAttackDamage(int.Parse(results[0,5]));
+        SetHealth(int.Parse(results[0,6]));
+        SetCost(int.Parse(results[0,7]));
+        SetProgressLevel(int.Parse(results[0,8]));
         SetStructureWorth(cost);
     }
 
@@ -94,6 +72,10 @@ public abstract class Structure : MonoBehaviour
     }
 
     //Getters
+    public int GetStructureId() {
+        return structureId;
+    }
+
     public string GetStructureName()
     {
         return structureName;
@@ -132,7 +114,15 @@ public abstract class Structure : MonoBehaviour
         return attackDamage;
     }
 
+    public string GetImagePath() {
+        return imagePath;
+    }
+
     //Setters
+
+    protected void SetStructureId(int id) {
+        structureId = id;
+    }
     protected void SetStructureName(string structName)
     {
         structureName = structName;
@@ -170,16 +160,8 @@ public abstract class Structure : MonoBehaviour
         attackDamage = damage;
     }
 
-    //Structure Upgrades
- 
-    //upgradeIdx = the index used to get the upgradeAmounts in the upgradeAmounts list
-    /*
-    protected void IncreaseUpgradeLevel(int upgradeIdx) {
-        upgradeAmounts[upgradeIdx] += 1;
-        if (upgradeAmounts[upgradeIdx] > 5) {
-            upgradeAmounts[upgradeIdx] = 5;
-        }
-
+    protected void SetImagePath(string path) { 
+        imagePath= path;
     }
-    */
+
 }
