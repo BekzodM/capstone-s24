@@ -5,11 +5,12 @@ using UnityEngine.Rendering;
 
 public class WorldSpaceCanvas : MonoBehaviour
 {
+    public Camera planningCamera;
     private void LateUpdate()
     {
         transform.LookAt(
-            transform.position + Camera.main.transform.rotation * Vector3.forward,
-            Camera.main.transform.rotation * Vector3.up
+            transform.position + planningCamera.transform.rotation * Vector3.forward,
+            planningCamera.transform.rotation * Vector3.up
         );
     }
 
