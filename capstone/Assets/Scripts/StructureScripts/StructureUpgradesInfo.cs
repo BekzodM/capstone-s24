@@ -45,6 +45,7 @@ public class StructureUpgradesInfo : MonoBehaviour
         upgradeLevels= new int[3];
         upgradeSystem= FindFirstObjectByType<UpgradeStructuresSystem>();
         structureInfo= FindFirstObjectByType<StructureInfo>();
+        upgradeDictionary= new Dictionary<int, UpgradeFunction>();
     }
     
     void Start()
@@ -84,7 +85,7 @@ public class StructureUpgradesInfo : MonoBehaviour
         //populate upgradeDictionary
         Structure structureComponent = GetComponent<Structure>();
 
-        for (int i = 0; i < databaseUpgradesInfo.Length; i++) {
+        for (int i = 0; i < 15; i++) {
             UpgradeFunction upgradeFunction = structureComponent.GetUpgradeFunction(i);
             int upgradeId = int.Parse(databaseUpgradesInfo[i,0]);
             upgradeDictionary[upgradeId] = upgradeFunction;
@@ -112,6 +113,15 @@ public class StructureUpgradesInfo : MonoBehaviour
             {
                 upgradeId = int.Parse(upgradeSlot0[currentLevel, 0]);
             }
+            if (upgradeButtonIdx == 1)
+            {
+                upgradeId = int.Parse(upgradeSlot1[currentLevel, 0]);
+            }
+            if (upgradeButtonIdx == 2)
+            {
+                upgradeId = int.Parse(upgradeSlot2[currentLevel, 0]);
+            }
+
             if (upgradeId != 0)
             {
                 InvokeFunction(upgradeId);

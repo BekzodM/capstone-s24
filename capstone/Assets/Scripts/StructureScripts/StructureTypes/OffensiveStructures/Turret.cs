@@ -23,76 +23,81 @@ public class Turret : Shooter
     //slot0
     protected override void Slot0UpgradeLevel1()
     {
-        throw new System.NotImplementedException();
+        attackDamage += 20;
     }
 
     protected override void Slot0UpgradeLevel2()
     {
-        throw new System.NotImplementedException();
+        attackDamage += 20;
     }
 
     protected override void Slot0UpgradeLevel3()
     {
-        throw new System.NotImplementedException();
+        attackDamage += 20;
     }
 
     protected override void Slot0UpgradeLevel4()
     {
-        throw new System.NotImplementedException();
+        attackDamage += 20;
     }
 
     protected override void Slot0UpgradeLevel5()
     {
-        throw new System.NotImplementedException();
+        attackDamage += 20;
     }
     //slot1
     protected override void Slot1UpgradeLevel1()
     {
-        throw new System.NotImplementedException();
+        cooldown = cooldown * 0.5f;
     }
 
     protected override void Slot1UpgradeLevel2()
     {
-        throw new System.NotImplementedException();
+        cooldown = cooldown * 0.5f;
     }
 
     protected override void Slot1UpgradeLevel3()
     {
-        throw new System.NotImplementedException();
+        cooldown = cooldown * 0.5f;
     }
 
     protected override void Slot1UpgradeLevel4()
     {
-        throw new System.NotImplementedException();
+        cooldown = cooldown * 0.5f;
     }
 
     protected override void Slot1UpgradeLevel5()
     {
-        throw new System.NotImplementedException();
+        cooldown = cooldown * 0.5f;
     }
     //slot2
     protected override void Slot2UpgradeLevel1()
     {
-        throw new System.NotImplementedException();
+        float currentRadius = GetAreaZoneRadius();
+        SetAreaZoneRadius(currentRadius* 0.5f + currentRadius);
     }
 
     protected override void Slot2UpgradeLevel2()
     {
-        throw new System.NotImplementedException();
+        float currentRadius = GetAreaZoneRadius();
+        SetAreaZoneRadius(currentRadius * 0.5f + currentRadius);
     }
 
     protected override void Slot2UpgradeLevel3()
     {
-        throw new System.NotImplementedException();
+        float currentRadius = GetAreaZoneRadius();
+        SetAreaZoneRadius(currentRadius * 0.5f + currentRadius);
     }
 
     protected override void Slot2UpgradeLevel4()
     {
-        throw new System.NotImplementedException();
+        float currentRadius = GetAreaZoneRadius();
+        SetAreaZoneRadius(currentRadius * 0.5f + currentRadius);
     }
 
     protected override void Slot2UpgradeLevel5()
     {
-        throw new System.NotImplementedException();
+        float currentRadius = GetAreaZoneRadius();
+        SetAreaZoneRadius(currentRadius * 0.5f + currentRadius);
     }
 }

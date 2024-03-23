@@ -15,6 +15,7 @@ public abstract class Structure : MonoBehaviour
     protected int structureWorth;
     protected int structureId;
     protected string imagePath;
+    protected GameObject areaZone;
 
     protected UpgradeFunction[] upgradeFunctions;
 
@@ -34,6 +35,8 @@ public abstract class Structure : MonoBehaviour
     }
 
     protected virtual void Awake() {
+        areaZone = transform.GetChild(0).gameObject;
+
         databaseWrapper = new DatabaseWrapper();
 
         upgradeFunctions = new UpgradeFunction[15] { 
@@ -148,6 +151,10 @@ public abstract class Structure : MonoBehaviour
         return upgradeFunctions[index];
     }
 
+    public float GetAreaZoneRadius() { 
+        return areaZone.GetComponent<AreaZone>().GetAreaEffectRadius();
+    }
+
     //Setters
 
     protected void SetStructureId(int id) {
@@ -192,6 +199,10 @@ public abstract class Structure : MonoBehaviour
 
     protected void SetImagePath(string path) { 
         imagePath= path;
+    }
+
+    protected void SetAreaZoneRadius(float radius) { 
+        areaZone.GetComponent<AreaZone>().SetAreaEffectRadius(radius);
     }
 
     //Abstract methods upgrade functions

@@ -1937,6 +1937,7 @@ MonoBehaviour:
   worldSpaceCanvas: {fileID: 1524110521632125953}
   messagePanel: {fileID: 5004034855666989233}
   startingMoney: 1000
+  sellingPercentage: 0.7
   currentWave: 1
   totalWaves: 5
   startingBaseHealth: 200
@@ -2905,7 +2906,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3506113797561167346, guid: a7baa03507fbde84c999a2bb8fe62881, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 36.612965
+      value: 39.01283
       objectReference: {fileID: 0}
     - target: {fileID: 3534436407009369693, guid: a7baa03507fbde84c999a2bb8fe62881, type: 3}
       propertyPath: m_Camera
