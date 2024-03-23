@@ -34,17 +34,17 @@ VALUES
     (17, "Lv.2 More Health!", "Health increase by 100", "Sprites/PlanningPhase/attackIcon", 0, 50, 2),
     (18, "Lv.3 More Health!", "Health increase by 100", "Sprites/PlanningPhase/attackIcon", 0, 50, 2),
     (19, "Lv.4 More Health!", "Health increase by 100", "Sprites/PlanningPhase/attackIcon", 0, 50, 2),
-    (20, "Lv.5 More Health!", "Health increase by 100", "Sprites/PlanningPhase/attackIcon", 0, 50, 2),
+    (20, "Lv.5 The Ultimate Defense!", "Health increase by 100", "Sprites/PlanningPhase/attackIcon", 0, 50, 2),
     -- Wall Upgrade Slot 1
     (21, "Lv.1 More Bigger Wall!", "Wall size is 0.5 bigger", "Sprites/PlanningPhase/attackIcon", 0, 50, 2),
     (22, "Lv.2 More Bigger Wall!", "Wall size is 0.5 bigger", "Sprites/PlanningPhase/attackIcon", 0, 50, 2),
     (23, "Lv.3 More Bigger Wall!", "Wall size is 0.5 bigger", "Sprites/PlanningPhase/attackIcon", 0, 50, 2),
     (24, "Lv.4 More Bigger Wall!", "Wall size is 0.5 bigger", "Sprites/PlanningPhase/attackIcon", 0, 50, 2),
-    (25, "Lv.5 More Bigger Wall!", "Wall size is 0.5 bigger", "Sprites/PlanningPhase/attackIcon", 0, 50, 2),
+    (25, "Lv.5 The Biggest Wall!", "Wall size is 0.5 bigger", "Sprites/PlanningPhase/attackIcon", 0, 50, 2),
     -- Wall Upgrade Slot 2
-    (26, "Lv.1 Wall Turrets", "Add a Mini Turret to the walls. Mini Turrets deal 5 damage per shot.", "Sprites/PlanningPhase/attackIcon", 0, 50, 2),
-    (27, "Lv.2 Another Mini Turret", "Add another Mini Turret to the wall. Mini Turrets deal 5 damage per shot.", "Sprites/PlanningPhase/attackIcon", 0, 50, 2),
-    (28, "Lv.3 Stronger Wall Turrets", "Mini Turrets deal 10 damage per shot.", "Sprites/PlanningPhase/attackIcon", 0, 50, 2),
-    (29, "Lv.4 Electrified Turrets!", "Enemies that are shot with the Mini Turrets electrify nearby enemies.", "Sprites/PlanningPhase/attackIcon", 0, 50, 2),
-    (30, "Lv.5 Slow Down!", "Electrified enemies move slower for 5 seconds.", "Sprites/PlanningPhase/attackIcon", 0, 50, 2)
+    (26, "Lv.1 Firewall", "Each time an enemy touches the wall, they take 5 damage.", "Sprites/PlanningPhase/attackIcon", 0, 50, 2),
+    (27, "Lv.2 Firewall", "Each time an enemy touches the wall, they take 10 damage.", "Sprites/PlanningPhase/attackIcon", 0, 50, 2),
+    (28, "Lv.3 Firewall", "Each time an enemy touches the wall, they take 15 damage.", "Sprites/PlanningPhase/attackIcon", 0, 50, 2),
+    (29, "Lv.4 Firewall", "Each time an enemy touches the wall, they take 20 damage.", "Sprites/PlanningPhase/attackIcon", 0, 50, 2),
+    (30, "Lv.5 That's a lot of heat!", "Each time an enemy touches the wall, they take 25 damage.", "Sprites/PlanningPhase/attackIcon", 0, 50, 2)
     ;

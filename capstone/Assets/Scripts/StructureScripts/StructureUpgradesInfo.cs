@@ -1,12 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UpgradeStructureFunction;
 
 public class StructureUpgradesInfo : MonoBehaviour
 {
     private DatabaseWrapper databaseWrapper;
     private UpgradeStructuresSystem upgradeSystem;
     private StructureInfo structureInfo;
+
+    private Dictionary<int, UpgradeFunction> upgradeDictionary;
 
     [SerializeField] private float upgradeWorthPercentageIncrease = 0.3f;
 
@@ -41,6 +45,7 @@ public class StructureUpgradesInfo : MonoBehaviour
         upgradeLevels= new int[3];
         upgradeSystem= FindFirstObjectByType<UpgradeStructuresSystem>();
         structureInfo= FindFirstObjectByType<StructureInfo>();
+        upgradeDictionary= new Dictionary<int, UpgradeFunction>();
     }
     
     void Start()
@@ -76,19 +81,72 @@ public class StructureUpgradesInfo : MonoBehaviour
                 upgradeSlot2[i, j] = databaseUpgradesInfo[10 + i, j];
             }
         }
-        
+
+        //populate upgradeDictionary
+        Structure structureComponent = GetComponent<Structure>();
+
+        for (int i = 0; i < 15; i++) {
+            UpgradeFunction upgradeFunction = structureComponent.GetUpgradeFunction(i);
+            int upgradeId = int.Parse(databaseUpgradesInfo[i,0]);
+            upgradeDictionary[upgradeId] = upgradeFunction;
+        }
     }
 
     //not complete
     public void Upgrade(int upgradeButtonIdx) {
         Debug.Log("UPGRADE: " + upgradeButtonIdx.ToString());
-        totalUpgrades++;
-        upgradeLevels[upgradeButtonIdx]++;
+        int currentLevel = upgradeLevels[upgradeButtonIdx];
+        int upgradeId = 0;
+        if (currentLevel < 5)
+        {
+            totalUpgrades++;
+            upgradeLevels[upgradeButtonIdx]++;
 
-        //increasing structure worth from upgrades
-        int oldStructureWorth = gameObject.GetComponent<Structure>().GetStructureWorth();
-        int newStructureWorth = Mathf.RoundToInt(upgradeWorthPercentageIncrease * oldStructureWorth + oldStructureWorth);
-        gameObject.GetComponent<Structure>().SetStructureWorth(newStructureWorth);
+            //increasing structure worth from upgrades
+            int oldStructureWorth = gameObject.GetComponent<Structure>().GetStructureWorth();
+            int newStructureWorth = Mathf.RoundToInt(upgradeWorthPercentageIncrease * oldStructureWorth + oldStructureWorth);
+            gameObject.GetComponent<Structure>().SetStructureWorth(newStructureWorth);
+
+            //invoke Upgrade Function's effect]
+
+            if (upgradeButtonIdx == 0)
+            {
+                upgradeId = int.Parse(upgradeSlot0[currentLevel, 0]);
+            }
+            if (upgradeButtonIdx == 1)
+            {
+                upgradeId = int.Parse(upgradeSlot1[currentLevel, 0]);
+            }
+            if (upgradeButtonIdx == 2)
+            {
+                upgradeId = int.Parse(upgradeSlot2[currentLevel, 0]);
+            }
+
+            if (upgradeId != 0)
+            {
+                InvokeFunction(upgradeId);
+            }
+            else {
+                Debug.LogError("Invalid upgradeId index");
+            }
+            
+        }
+        else {
+            Debug.LogError("Current Upgrade is already maxed!");
+        }
+
+    }
+
+    public void InvokeFunction(int key)
+    {
+        if (upgradeDictionary.ContainsKey(key))
+        {
+            upgradeDictionary[key]();
+        }
+        else
+        {
+            Console.WriteLine("No function found for key: " + key);
+        }
     }
 
     public int GetCost(int slotIndex) {
