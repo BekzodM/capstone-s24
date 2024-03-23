@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
+using UpgradeStructureFunction;
 public abstract class Structure : MonoBehaviour
 {
     [SerializeField] protected string structureName;
@@ -15,6 +15,9 @@ public abstract class Structure : MonoBehaviour
     protected int structureWorth;
     protected int structureId;
     protected string imagePath;
+
+    protected UpgradeFunction[] upgradeFunctions;
+
     protected DatabaseWrapper databaseWrapper;
 
     protected StructureUpgradesInfo upgradesInfo;
@@ -32,6 +35,24 @@ public abstract class Structure : MonoBehaviour
 
     protected virtual void Awake() {
         databaseWrapper = new DatabaseWrapper();
+
+        upgradeFunctions = new UpgradeFunction[15] { 
+            Slot0UpgradeLevel1,
+            Slot0UpgradeLevel2,
+            Slot0UpgradeLevel3,
+            Slot0UpgradeLevel4,
+            Slot0UpgradeLevel5,
+            Slot1UpgradeLevel1,
+            Slot1UpgradeLevel2,
+            Slot1UpgradeLevel3,
+            Slot1UpgradeLevel4,
+            Slot1UpgradeLevel5,
+            Slot2UpgradeLevel1,
+            Slot2UpgradeLevel2,
+            Slot2UpgradeLevel3,
+            Slot2UpgradeLevel4,
+            Slot2UpgradeLevel5,
+        };
     }
 
     protected virtual void Start() {
@@ -118,6 +139,15 @@ public abstract class Structure : MonoBehaviour
         return imagePath;
     }
 
+    public UpgradeFunction[] GetUpgradeFunctions()
+    {
+        return upgradeFunctions;
+    }
+
+    public UpgradeFunction GetUpgradeFunction(int index) {
+        return upgradeFunctions[index];
+    }
+
     //Setters
 
     protected void SetStructureId(int id) {
@@ -163,5 +193,25 @@ public abstract class Structure : MonoBehaviour
     protected void SetImagePath(string path) { 
         imagePath= path;
     }
+
+    //Abstract methods upgrade functions
+    //slot 0 upgrades
+    protected abstract void Slot0UpgradeLevel1();
+    protected abstract void Slot0UpgradeLevel2();
+    protected abstract void Slot0UpgradeLevel3();
+    protected abstract void Slot0UpgradeLevel4();
+    protected abstract void Slot0UpgradeLevel5();
+    //slot1 upgrades
+    protected abstract void Slot1UpgradeLevel1();
+    protected abstract void Slot1UpgradeLevel2();
+    protected abstract void Slot1UpgradeLevel3();
+    protected abstract void Slot1UpgradeLevel4();
+    protected abstract void Slot1UpgradeLevel5();
+    //slot2 upgrades
+    protected abstract void Slot2UpgradeLevel1();
+    protected abstract void Slot2UpgradeLevel2();
+    protected abstract void Slot2UpgradeLevel3();
+    protected abstract void Slot2UpgradeLevel4();
+    protected abstract void Slot2UpgradeLevel5();
 
 }

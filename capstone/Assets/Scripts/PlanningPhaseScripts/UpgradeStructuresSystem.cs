@@ -13,8 +13,8 @@ public class UpgradeStructuresSystem : MonoBehaviour
     private DragStructures dragStructures;
     private GameObject message;
 
-    public delegate void FunctionDelegate();
-    private Dictionary<int, FunctionDelegate> functionDictionary;
+    //public delegate void FunctionDelegate();
+    //private Dictionary<int, FunctionDelegate> functionDictionary;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +23,7 @@ public class UpgradeStructuresSystem : MonoBehaviour
         placeStructure = planningPhaseUI.GetComponent<PlaceStructure>();
         dragStructures = planningPhaseUI.GetComponent<DragStructures>();
         message = transform.parent.parent.GetChild(6).gameObject;
-        functionDictionary = new Dictionary<int, FunctionDelegate>();
+        //functionDictionary = new Dictionary<int, FunctionDelegate>();
     }
 
     //Upgrade UI Button Functions
@@ -50,6 +50,7 @@ public class UpgradeStructuresSystem : MonoBehaviour
     }
 
     //Upgrade System Functions
+    /*
     public void InvokeFunction(int key)
     {
         if (functionDictionary.ContainsKey(key))
@@ -61,6 +62,7 @@ public class UpgradeStructuresSystem : MonoBehaviour
             Console.WriteLine("No function found for key: " + key);
         }
     }
+    */
 
     private void TryToBuyUpgrade(int slotIndex) {
         MapManager mapManager = placeStructure.mapManager.GetComponent<MapManager>();

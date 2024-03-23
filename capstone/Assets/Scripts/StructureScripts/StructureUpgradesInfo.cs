@@ -1,12 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UpgradeStructureFunction;
 
 public class StructureUpgradesInfo : MonoBehaviour
 {
     private DatabaseWrapper databaseWrapper;
     private UpgradeStructuresSystem upgradeSystem;
     private StructureInfo structureInfo;
+
+    private Dictionary<int, UpgradeFunction> upgradeDictionary;
 
     [SerializeField] private float upgradeWorthPercentageIncrease = 0.3f;
 
@@ -76,7 +80,15 @@ public class StructureUpgradesInfo : MonoBehaviour
                 upgradeSlot2[i, j] = databaseUpgradesInfo[10 + i, j];
             }
         }
-        
+
+        //populate upgradeDictionary
+        Structure structureComponent = GetComponent<Structure>();
+
+        for (int i = 0; i < databaseUpgradesInfo.Length; i++) {
+            UpgradeFunction upgradeFunction = structureComponent.GetUpgradeFunction(i);
+            int upgradeId = int.Parse(databaseUpgradesInfo[i,0]);
+            upgradeDictionary[upgradeId] = upgradeFunction;
+        }
     }
 
     //not complete
@@ -89,6 +101,18 @@ public class StructureUpgradesInfo : MonoBehaviour
         int oldStructureWorth = gameObject.GetComponent<Structure>().GetStructureWorth();
         int newStructureWorth = Mathf.RoundToInt(upgradeWorthPercentageIncrease * oldStructureWorth + oldStructureWorth);
         gameObject.GetComponent<Structure>().SetStructureWorth(newStructureWorth);
+    }
+
+    public void InvokeFunction(int key)
+    {
+        if (upgradeDictionary.ContainsKey(key))
+        {
+            upgradeDictionary[key]();
+        }
+        else
+        {
+            Console.WriteLine("No function found for key: " + key);
+        }
     }
 
     public int GetCost(int slotIndex) {
