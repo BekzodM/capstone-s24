@@ -94,13 +94,37 @@ public class StructureUpgradesInfo : MonoBehaviour
     //not complete
     public void Upgrade(int upgradeButtonIdx) {
         Debug.Log("UPGRADE: " + upgradeButtonIdx.ToString());
-        totalUpgrades++;
-        upgradeLevels[upgradeButtonIdx]++;
+        int currentLevel = upgradeLevels[upgradeButtonIdx];
+        int upgradeId = 0;
+        if (currentLevel < 5)
+        {
+            totalUpgrades++;
+            upgradeLevels[upgradeButtonIdx]++;
 
-        //increasing structure worth from upgrades
-        int oldStructureWorth = gameObject.GetComponent<Structure>().GetStructureWorth();
-        int newStructureWorth = Mathf.RoundToInt(upgradeWorthPercentageIncrease * oldStructureWorth + oldStructureWorth);
-        gameObject.GetComponent<Structure>().SetStructureWorth(newStructureWorth);
+            //increasing structure worth from upgrades
+            int oldStructureWorth = gameObject.GetComponent<Structure>().GetStructureWorth();
+            int newStructureWorth = Mathf.RoundToInt(upgradeWorthPercentageIncrease * oldStructureWorth + oldStructureWorth);
+            gameObject.GetComponent<Structure>().SetStructureWorth(newStructureWorth);
+
+            //invoke Upgrade Function's effect]
+
+            if (upgradeButtonIdx == 0)
+            {
+                upgradeId = int.Parse(upgradeSlot0[currentLevel, 0]);
+            }
+            if (upgradeId != 0)
+            {
+                InvokeFunction(upgradeId);
+            }
+            else {
+                Debug.LogError("Invalid upgradeId index");
+            }
+            
+        }
+        else {
+            Debug.LogError("Current Upgrade is already maxed!");
+        }
+
     }
 
     public void InvokeFunction(int key)
