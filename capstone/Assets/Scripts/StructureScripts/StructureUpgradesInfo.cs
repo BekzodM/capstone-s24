@@ -8,6 +8,8 @@ public class StructureUpgradesInfo : MonoBehaviour
     private UpgradeStructuresSystem upgradeSystem;
     private StructureInfo structureInfo;
 
+    [SerializeField] private float upgradeWorthPercentageIncrease = 0.3f;
+
     private int structureId;
     
     //amount of total upgrades on the structure
@@ -82,11 +84,19 @@ public class StructureUpgradesInfo : MonoBehaviour
         Debug.Log("UPGRADE: " + upgradeButtonIdx.ToString());
         totalUpgrades++;
         upgradeLevels[upgradeButtonIdx]++;
-        
+
+        //increasing structure worth from upgrades
+        int oldStructureWorth = gameObject.GetComponent<Structure>().GetStructureWorth();
+        int newStructureWorth = Mathf.RoundToInt(upgradeWorthPercentageIncrease * oldStructureWorth + oldStructureWorth);
+        gameObject.GetComponent<Structure>().SetStructureWorth(newStructureWorth);
     }
 
     public int GetCost(int slotIndex) {
         int currentUpgradeLevel = upgradeLevels[slotIndex];
+        if (currentUpgradeLevel == 5) {
+            Debug.Log("reached max level");
+            return -1;
+        }
         if (slotIndex == 0)
         {
             return int.Parse(upgradeSlot0[currentUpgradeLevel,5]);
@@ -163,4 +173,59 @@ public class StructureUpgradesInfo : MonoBehaviour
         return imagePath;
     }
 
+    public string GetSlotUpgradeName(int slotIndex)
+    {
+        int currentLevel = upgradeLevels[slotIndex];
+        string upgradeName = "";
+
+        if (slotIndex == 0)
+        {
+            if (currentLevel == 5)
+            {
+                Debug.Log("Upgrade Name of level 5 is the last upgrade name");
+                upgradeName = upgradeSlot0[4, 1];
+            }
+            else
+            {
+                upgradeName = upgradeSlot0[currentLevel, 1];
+            }
+        }
+        else if (slotIndex == 1)
+        {
+            if (currentLevel == 5)
+            {
+                Debug.Log("Upgrade Name of level 5 is the last upgrade name");
+                upgradeName = upgradeSlot1[4, 1];
+            }
+            else
+            {
+                upgradeName = upgradeSlot1[currentLevel, 1];
+            }
+        }
+        else if (slotIndex == 2)
+        {
+            if (currentLevel == 5)
+            {
+                Debug.Log("Upgrade Name of level 5 is the last upgrade name");
+                upgradeName = upgradeSlot2[4, 1];
+            }
+            else
+            {
+                upgradeName = upgradeSlot2[currentLevel, 1];
+            }
+        }
+        else
+        {
+            Debug.LogError("Invalid slot index");
+        }
+        return upgradeName;
+    }
+
+    public int GetCurrentUpgradeLevel(int slotIndex) { 
+        return upgradeLevels[slotIndex];
+    }
+
+    public void AddBlockedSlot(int slotIndex) {
+        blockedSlot.Add(slotIndex);
+    }
 }

@@ -20,6 +20,10 @@ public class MapManager : MonoBehaviour
 
     //Money
     [SerializeField] private int startingMoney = 100;
+
+    //percentage of how much the player gets for selling a structure
+    [SerializeField] private float sellingPercentage = 0.7f;
+    
     private int money;
 
     //Waves
@@ -98,7 +102,6 @@ public class MapManager : MonoBehaviour
                 Debug.Log("player must place down the structure first");
                 messagePanel.GetComponent<Message>().SetMessageText("You must place down the structure first.");
             }
-
         }
         else {
             //Insufficent funds
@@ -151,7 +154,7 @@ public class MapManager : MonoBehaviour
             Debug.Log("No selected object for selling");
         }
         else {
-            int sellingValue = Mathf.RoundToInt(0.7f * obj.GetComponent<Structure>().GetStructureWorth());
+            int sellingValue = Mathf.RoundToInt(sellingPercentage * obj.GetComponent<Structure>().GetStructureWorth());
             //Refund 70% of structure's worth value
             AddMoney(sellingValue);
 
@@ -163,6 +166,10 @@ public class MapManager : MonoBehaviour
 
             //Destroy Structure
             planningPhaseUI.GetComponent<DragStructures>().DestroySelectedObject();
+
+            //Hide structure Info
+            StructureInfo structureInfo = planningPhaseUI.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<StructureInfo>();
+            structureInfo.MakeActive(false);
         }
 
 

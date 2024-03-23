@@ -82,34 +82,43 @@ public class StructureInfo : MonoBehaviour
     }
 
     
-    //may delete later
-    public void ShowUpgradeButtonInfo(StructureUpgradesInfo upgradesInfo) {
+    public void SetUpgradeInfoBasedOnSelectedObject(GameObject obj) {
+        StructureUpgradesInfo upgradesInfo = obj.GetComponent<StructureUpgradesInfo>();
         Transform upgradeScrollView = transform.GetChild(5);
         Transform content = upgradeScrollView.GetChild(0).GetChild(0);
 
-        for (int i = 0; i < 3; i++ ) {
+        for (int i = 1; i < 4; i++ ) {
             Transform upgradeButton = content.GetChild(i);
             //Transform upgradePanel = upgradeButton.GetChild(0);
 
-            SetUpgradeButtonImage(i,upgradesInfo.GetSlotImagePath(i));
+            int slotIndex = i - 1;
 
-            /*
-            //SetImage
-            GameObject upgradeImage = upgradePanel.GetChild(0).gameObject;
-            string imagePath = upgradesInfo.;
-            Texture2D texture = Resources.Load<Texture2D>(imagePath);
-            Sprite loadedSprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
-            if (texture != null)
+            SetUpgradeButtonImage(slotIndex,upgradesInfo.GetSlotImagePath(slotIndex));
+
+            SetUpgradeButtonText(slotIndex,upgradesInfo.GetSlotUpgradeName(slotIndex));
+
+            SetSliderValue(slotIndex,upgradesInfo.GetCurrentUpgradeLevel(slotIndex));
+
+            //check blocked and unblocked slots and handle visibility
+            UpgradeStructuresSystem upgradeSystem= upgradeScrollView.GetComponent<UpgradeStructuresSystem>();
+            if (upgradesInfo.GetBlockedSlots().Contains(slotIndex)) {
+                //blocked slots
+                upgradeSystem.DisableSlot(upgradeButton.GetComponent<CanvasGroup>());
+            }
+            else 
             {
-                upgradeImage.GetComponent<Image>().sprite = loadedSprite;
+                //unblocked slots
+                if (upgradesInfo.GetCurrentUpgradeLevel(slotIndex) == 5)
+                {
+                    //button is not interactable
+                    upgradeButton.GetComponent<Button>().interactable = false;
+                }
+                else { 
+                    //upgrade button is interactable
+                    upgradeButton.GetComponent<Button>().interactable = true;
+                    upgradeSystem.ActivateSlot(upgradeButton.GetComponent<CanvasGroup>());
+                }
             }
-            else {
-                Debug.LogError("Texture2D not found at path: " + imagePath);
-            }
-            */
-
-            //Set Upgrade Name
-
         }
     }
     
@@ -142,5 +151,20 @@ public class StructureInfo : MonoBehaviour
         //Set text
         GameObject upgradeText = upgradePanel.GetChild(1).gameObject;
         upgradeText.GetComponent<TextMeshProUGUI>().text = text;
+    }
+
+    public void SetSliderValue(int slotIndex, int currentLevel)
+    {
+        Transform upgradeScrollView = transform.GetChild(5);
+        Transform content = upgradeScrollView.GetChild(0).GetChild(0);
+        Transform upgradeButton = content.GetChild(slotIndex + 1);
+        Transform upgradePanel = upgradeButton.GetChild(0);
+        Transform slider = upgradePanel.GetChild(2);
+        //Set slider value
+
+        float sliderValue = (1f/5f) * currentLevel;
+
+        slider.GetComponent<UpgradeLevelProgressBar>().SetProgressBar(sliderValue);
+
     }
 }

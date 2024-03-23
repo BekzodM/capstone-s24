@@ -70,6 +70,7 @@ public class DragStructures : MonoBehaviour
                             
                             StructureInfo structureInfo = FindObjectOfType<StructureInfo>();
                             structureInfo.SetInfoBasedOnSelectedObject(selectedObject);
+                            structureInfo.SetUpgradeInfoBasedOnSelectedObject(selectedObject);
                         }
                     }
                     else {

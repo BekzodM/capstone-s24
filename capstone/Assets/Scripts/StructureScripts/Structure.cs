@@ -152,7 +152,7 @@ public abstract class Structure : MonoBehaviour
         progressLevel= level;
     }
 
-    protected void SetStructureWorth(int worth) {
+    public void SetStructureWorth(int worth) {
         structureWorth = worth;
     }
 
