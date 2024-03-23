@@ -90,7 +90,7 @@ public class PlaceStructure : MonoBehaviour
 
         //destroy instance and reparent the canvas
         canvas.transform.SetParent(null);
-        Destroy(obj);
+        gameObject.GetComponent<DragStructures>().DestroySelectedObject();
     }
 
     public bool CheckStructurePlacement(GameObject obj) {

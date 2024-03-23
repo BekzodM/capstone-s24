@@ -14,11 +14,14 @@ public class ExampleCreateDBAndStructDef : MonoBehaviour
 
         //Insert your stuff, put path of your sql file
         databaseWrapper.InsertImmutables("Assets/Scripts/DatabaseScripts/Structures.sql");
+        databaseWrapper.InsertImmutables("Assets/Scripts/DatabaseScripts/StructureUpgrades.sql");
+
 
         string[,] results;
         //Use Getter
         results = databaseWrapper.GetData("structures");
 
+        /*
         int structID = Int32.Parse(results[0, 0]);
         string structName = results[0, 1];
         string structType = results[0, 2];
@@ -27,7 +30,7 @@ public class ExampleCreateDBAndStructDef : MonoBehaviour
         int structHealth = Int32.Parse(results[0, 5]);
         int structCost = Int32.Parse(results[0, 6]);
         int progLevel = Int32.Parse(results[0, 7]);
-
+        */
 
 
         results = databaseWrapper.GetData("structures", "progress_level", 1);
