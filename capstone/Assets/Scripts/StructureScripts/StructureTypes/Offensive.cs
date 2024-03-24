@@ -7,7 +7,7 @@ public abstract class Offensive : Structure
 {
     private List<GameObject> enemiesInZone;
     private GameObject targetEnemy;
-    [SerializeField] private float cooldown = 1f;
+    [SerializeField] protected float cooldown = 1f;
     private float nextCooldown = 0f;
     private bool isAttacking = false;
     protected Offensive(string name, string description, int cost, int health, int progressLevel, int attackDamage)

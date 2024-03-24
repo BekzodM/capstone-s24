@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlaceStructure : MonoBehaviour
 {
     private bool isPlacingStructure = false;
-    private Camera mainCamera;
+    public Camera planningCamera;
     public GameObject worldSpaceCanvas;
     public GameObject mapManager;
 
@@ -15,7 +15,7 @@ public class PlaceStructure : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainCamera = Camera.main;
+        //planningCamera = Camera.main;
         structures = new HashSet<GameObject>();
     }
 
@@ -29,8 +29,8 @@ public class PlaceStructure : MonoBehaviour
         GameObject prefab = transform.GetChild(0).GetChild(0).GetComponent<StructureShop>().GetPrefabFromStructurePrefabs(tabIndex, buttonIndex);
         if (prefab != null)
         {
-            Vector3 cameraPosition = mainCamera.transform.position;
-            Vector3 cameraForward = mainCamera.transform.forward;
+            Vector3 cameraPosition = planningCamera.transform.position;
+            Vector3 cameraForward = planningCamera.transform.forward;
 
             Debug.DrawRay(cameraPosition, cameraForward * 100f, Color.blue, 0.1f);
 
@@ -90,7 +90,7 @@ public class PlaceStructure : MonoBehaviour
 
         //destroy instance and reparent the canvas
         canvas.transform.SetParent(null);
-        Destroy(obj);
+        gameObject.GetComponent<DragStructures>().DestroySelectedObject();
     }
 
     public bool CheckStructurePlacement(GameObject obj) {

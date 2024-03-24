@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class areaZone : MonoBehaviour
+public class AreaZone : MonoBehaviour
 {
     [SerializeField] private float areaEffectRadius = 10f;
 
@@ -36,5 +36,14 @@ public class areaZone : MonoBehaviour
             }
         }
 
+    }
+
+    public float GetAreaEffectRadius() {
+        return areaEffectRadius;
+    }
+
+    public void SetAreaEffectRadius(float radius) { 
+        areaEffectRadius = radius;
+        transform.localScale = new Vector3(areaEffectRadius, areaEffectRadius, areaEffectRadius);
     }
 }

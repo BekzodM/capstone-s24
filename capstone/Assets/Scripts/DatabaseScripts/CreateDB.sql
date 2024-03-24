@@ -12,12 +12,11 @@ CREATE TABLE IF NOT EXISTS structures(
     structure_name VARCHAR(20),
     structure_type VARCHAR(20),
     structure_description VARCHAR(255),
+    structure_image_path VARCHAR(255),
     structure_damage INTEGER,
     structure_health INTEGER,
     structure_cost INTEGER,
-    upgrade_id INTEGER,
-    progress_level INTEGER,
-    FOREIGN KEY (upgrade_id) REFERENCES structureUpgrades(upgrade_id)
+    progress_level INTEGER
 );
 
 CREATE TABLE IF NOT EXISTS structureUpgrades(
@@ -25,7 +24,10 @@ CREATE TABLE IF NOT EXISTS structureUpgrades(
     upgrade_name VARCHAR(20),
     upgrade_description VARCHAR(255),
     upgrade_image_path VARCHAR(255),
-    upgrade_slot INTEGER
+    upgrade_slot INTEGER,
+    upgrade_cost INTEGER,
+    structure_id INTEGER,
+    FOREIGN KEY (structure_id) REFERENCES structures(structure_id)
 );
 
 CREATE TABLE IF NOT EXISTS enemies(
