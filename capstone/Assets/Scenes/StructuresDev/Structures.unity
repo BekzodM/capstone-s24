@@ -516,10 +516,38 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3425301620626651570, guid: bc679f0168a606043b4646bd2824e30b, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3425301620626651570, guid: bc679f0168a606043b4646bd2824e30b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b3b7e4da7c627f948a9aa64470d2e19c, type: 2}
     - target: {fileID: 3459350931898883265, guid: bc679f0168a606043b4646bd2824e30b, type: 3}
       propertyPath: m_Name
       value: Turret
       objectReference: {fileID: 0}
+    - target: {fileID: 3687595127000558714, guid: bc679f0168a606043b4646bd2824e30b, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3687595127000558714, guid: bc679f0168a606043b4646bd2824e30b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -2813467912831258332, guid: fb81bad64d5aa0e419281beff9ee6b20, type: 3}
+    - target: {fileID: 3687595127000558714, guid: bc679f0168a606043b4646bd2824e30b, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 4874126678125670354, guid: fb81bad64d5aa0e419281beff9ee6b20, type: 3}
+    - target: {fileID: 3687595127000558714, guid: bc679f0168a606043b4646bd2824e30b, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: b3b7e4da7c627f948a9aa64470d2e19c, type: 2}
+    - target: {fileID: 3687595127000558714, guid: bc679f0168a606043b4646bd2824e30b, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: b3b7e4da7c627f948a9aa64470d2e19c, type: 2}
     - target: {fileID: 4953525428354962625, guid: bc679f0168a606043b4646bd2824e30b, type: 3}
       propertyPath: areaEffectRadius
       value: 10
@@ -530,7 +558,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4997073381334681966, guid: bc679f0168a606043b4646bd2824e30b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.07
+      value: -0.106
       objectReference: {fileID: 0}
     - target: {fileID: 4997073381334681966, guid: bc679f0168a606043b4646bd2824e30b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -564,6 +592,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5213180296292365496, guid: bc679f0168a606043b4646bd2824e30b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360799773089589747, guid: bc679f0168a606043b4646bd2824e30b, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360799773089589747, guid: bc679f0168a606043b4646bd2824e30b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 5557685236865559273, guid: fb81bad64d5aa0e419281beff9ee6b20, type: 3}
+    - target: {fileID: 6360799773089589747, guid: bc679f0168a606043b4646bd2824e30b, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 7770318624900243041, guid: fb81bad64d5aa0e419281beff9ee6b20, type: 3}
+    - target: {fileID: 6360799773089589747, guid: bc679f0168a606043b4646bd2824e30b, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 4218046369211427024, guid: fb81bad64d5aa0e419281beff9ee6b20, type: 3}
+    - target: {fileID: 6360799773089589747, guid: bc679f0168a606043b4646bd2824e30b, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: b3b7e4da7c627f948a9aa64470d2e19c, type: 2}
     - target: {fileID: 7907070498450089891, guid: bc679f0168a606043b4646bd2824e30b, type: 3}
       propertyPath: cooldown
       value: 0.3

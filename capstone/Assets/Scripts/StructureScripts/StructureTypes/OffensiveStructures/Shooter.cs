@@ -25,7 +25,7 @@ public abstract class Shooter : Offensive
         }
 
         GameObject model = transform.GetChild(1).gameObject;
-        Transform modelHead = model.transform.GetChild(0);
+        Transform modelHead = model.transform.GetChild(1);
         Vector3 direction = target.transform.position - modelHead.transform.position;
 
         if (direction != Vector3.zero)
