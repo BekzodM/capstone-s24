@@ -71,7 +71,7 @@ public abstract class Shooter : Offensive
     {
         if (target != null)
         {
-            target.GetComponent<Enemy>().TakeDamage(attackDamage);
+            target.GetComponent<Enemy>().TakeDamage(attackDamage,gameObject);
         }
         else {
             //Debug.Log("No valid target to deal damage to");

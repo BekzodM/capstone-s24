@@ -37,8 +37,7 @@ public abstract class Offensive : Structure
 
     public void StartAttacking(GameObject target)
     {
-
-        enemiesInZone.Add(target);
+        AddEnemyToZone(target);
         if (targetEnemy == null)
         {
             targetEnemy = target;
@@ -49,8 +48,7 @@ public abstract class Offensive : Structure
 
     public void StopAttacking(GameObject target)
     {
-        
-        enemiesInZone.Remove(target);
+        RemoveEnemyFromZone(target);
         if (targetEnemy == target)
         {
             targetEnemy = (enemiesInZone.Count > 0) ? enemiesInZone[0] : null;
@@ -63,6 +61,16 @@ public abstract class Offensive : Structure
     protected abstract void Attack(GameObject target);
 
     protected abstract void DealDamage(GameObject enemy);
+
+    public void AddEnemyToZone(GameObject enemy) {
+        enemiesInZone.Add(enemy);
+        //Debug.Log(enemy.name + " has entered the enemiesInZone");
+    }
+
+    public void RemoveEnemyFromZone(GameObject enemy) {
+        enemiesInZone.Remove(enemy);
+        //Debug.Log(enemy.name + " has lefted the enemiesInZone");
+    }
 
 
 

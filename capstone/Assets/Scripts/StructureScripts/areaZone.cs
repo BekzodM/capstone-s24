@@ -15,7 +15,7 @@ public class AreaZone : MonoBehaviour
         GameObject gameObjectParent = transform.parent.gameObject;
         if (other.CompareTag("Enemy"))
         {
-            Debug.Log("Enemy has entered the trigger zone");
+            //Debug.Log("Enemy has entered the trigger zone");
             Offensive offensiveScript = gameObjectParent.GetComponent<Offensive>();
             if (offensiveScript != null)
             {
@@ -28,7 +28,7 @@ public class AreaZone : MonoBehaviour
         GameObject gameObjectParent = transform.parent.gameObject;
         if (other.CompareTag("Enemy"))
         {
-            Debug.Log("Enemy has left the trigger zone");
+            //Debug.Log("Enemy has left the trigger zone");
             Offensive offensiveScript = gameObjectParent.GetComponent<Offensive>();
             if (offensiveScript != null)
             {
