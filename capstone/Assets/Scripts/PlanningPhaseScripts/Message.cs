@@ -69,7 +69,8 @@ public class Message : MonoBehaviour
 
     public void SetMessageText(string message) {
         GameObject text = transform.GetChild(0).gameObject;
-        text.GetComponent<TextMeshProUGUI>().text= message;
+        //text.GetComponent<TextMeshProUGUI>().text= message;
+        text.GetComponent<TextMeshProUGUI>().SetText(message);
         FadeInPanel();
     }
 }

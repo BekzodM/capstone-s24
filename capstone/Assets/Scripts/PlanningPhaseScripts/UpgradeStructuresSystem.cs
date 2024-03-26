@@ -49,7 +49,7 @@ public class UpgradeStructuresSystem : MonoBehaviour
         MapManager mapManager = placeStructure.mapManager.GetComponent<MapManager>();
         int currentMoney = mapManager.GetMoney();
         GameObject currentObj = dragStructures.GetSelectedObject();
-        Message msg = message.GetComponent<Message>();
+        
         if (currentObj != null)
         {
             StructureUpgradesInfo upgradesInfo = currentObj.GetComponent<StructureUpgradesInfo>();
@@ -79,12 +79,12 @@ public class UpgradeStructuresSystem : MonoBehaviour
                 }
                 else {
                     Debug.Log("Reached the maximum amount of upgrades. Cannot upgrade more than 5 times.");
-                    msg.SetMessageText("You have reached the maximum amount of upgrades. Cannot upgrade more than 5 times.");
+                    message.GetComponent<Message>().SetMessageText("You have reached the maximum amount of upgrades. Cannot upgrade more than 5 times.");
                 }
             }
             else {
                 Debug.Log("Not enough money to upgrade");
-                msg.SetMessageText("Not enough money to upgrade.");
+                message.GetComponent<Message>().SetMessageText("Not enough money to upgrade.");
             }
         }
         else {
