@@ -10,15 +10,13 @@ public class Message : MonoBehaviour
     [SerializeField] private float fadeDuration = 0.6f;
     private CanvasGroup canvasGroup;
 
-    TextMeshProUGUI messageToPlayer;
     // Start is called before the first frame update
 
     private void Awake() {
-        messageToPlayer= GetComponentInChildren<TextMeshProUGUI>();
         canvasGroup = GetComponent<CanvasGroup>();
     }
     void Start()
-    {
+    {        
         canvasGroup.alpha = 0f;
         gameObject.SetActive(false);
     }
@@ -70,7 +68,8 @@ public class Message : MonoBehaviour
     }
 
     public void SetMessageText(string message) {
-        messageToPlayer.text = message;
+        GameObject text = transform.GetChild(0).gameObject;
+        text.GetComponent<TextMeshProUGUI>().text= message;
         FadeInPanel();
     }
 }
