@@ -246,7 +246,7 @@ Transform:
   m_GameObject: {fileID: 1350523376537234543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 52.803425, y: -47.273228, z: -84.69554}
+  m_LocalPosition: {x: -11.1, y: -47.273228, z: -84.69554}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -857,7 +857,7 @@ Transform:
   m_GameObject: {fileID: 3995137285355754440}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 52.803425, y: -102.65323, z: -84.69554}
+  m_LocalPosition: {x: -11.100002, y: -102.65323, z: -84.69554}
   m_LocalScale: {x: 9.4727, y: 1, z: 6.9566}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2239,6 +2239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planningCamera: {fileID: 7537718530045963769}
+  root: {fileID: 4367970144473117807}
 --- !u!1 &7689238953862904342
 GameObject:
   m_ObjectHideFlags: 0
