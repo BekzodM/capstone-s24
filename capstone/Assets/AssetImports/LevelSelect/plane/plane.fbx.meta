@@ -1,9 +1,29 @@
 fileFormatVersion: 2
-guid: 0171fa616f0164df2aed33ae8fd4d34b
+guid: b8e1da3f6c4b048509b49f1249bef940
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PAPER
+    second: {fileID: 2100000, guid: 7db78e10c29924d288cc2600238f3ce8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PAPERIN
+    second: {fileID: 2100000, guid: 7db78e10c29924d288cc2600238f3ce8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PROP
+    second: {fileID: 2100000, guid: 9d82e793a19964f6c8333157dff0e589, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WOOD
+    second: {fileID: 2100000, guid: 17e466b659cc4429da3a8be600bc6ab1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
