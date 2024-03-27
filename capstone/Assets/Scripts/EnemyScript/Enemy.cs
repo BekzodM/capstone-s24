@@ -46,6 +46,20 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    //Take damage function for structures
+    public void TakeDamage(int damage, GameObject attacker) { 
+        currentHealth-= damage;
+        healthBar.SetHealth(currentHealth);
+
+        //remove killed enemy from enemiesInZone list
+        attacker.GetComponent<Offensive>().RemoveEnemyFromZone(gameObject);
+        
+        if(currentHealth == 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     // Dev Function - visualize attack range.
     void OnDrawGizmosSelected() {
         if(attackPoint == null) return;

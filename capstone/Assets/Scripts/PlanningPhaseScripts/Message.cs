@@ -20,9 +20,11 @@ public class Message : MonoBehaviour
     void Start()
     {
         canvasGroup.alpha = 0f;
+        gameObject.SetActive(false);
     }
 
     public void FadeInPanel() {
+        gameObject.SetActive(true);
         StartCoroutine(FadeInAndOutPanel(0f, 1f));
     }
 
@@ -63,6 +65,8 @@ public class Message : MonoBehaviour
         }
 
         canvasGroup.alpha = targetAlpha;
+
+        gameObject.SetActive(false);
     }
 
     public void SetMessageText(string message) {

@@ -5,6 +5,8 @@ using UnityEngine;
 public abstract class Shooter : Offensive
 {
     [SerializeField] private float rayDistanceFromHead;
+    public GameObject muzzle;
+    public GameObject impact;
 
     public Shooter(string name, string description, int cost, int health, int progressLevel, int attackDamage)
         : base(name, description, cost, health, progressLevel, attackDamage )
@@ -25,7 +27,7 @@ public abstract class Shooter : Offensive
         }
 
         GameObject model = transform.GetChild(1).gameObject;
-        Transform modelHead = model.transform.GetChild(0);
+        Transform modelHead = model.transform.GetChild(1);
         Vector3 direction = target.transform.position - modelHead.transform.position;
 
         if (direction != Vector3.zero)
@@ -42,6 +44,23 @@ public abstract class Shooter : Offensive
                 Debug.DrawLine(startPos, hit.point, Color.blue, 5);
                 if (hit.collider.gameObject.tag == "Enemy") {
                     DealDamage(hit.collider.gameObject);
+                    
+                    //attacking particles
+                    GameObject muzzleInstance = Instantiate(muzzle, startPos, Quaternion.identity);
+                    ParticleSystem ps1 = muzzle.GetComponent<ParticleSystem>();
+                    
+                    if (ps1 != null) {
+                        ps1.Play();
+                        Destroy(muzzleInstance, ps1.main.duration);
+                    }
+
+                    GameObject impactInstance = Instantiate(impact, hit.point, Quaternion.identity);
+                    ParticleSystem ps2 = impactInstance.GetComponent<ParticleSystem>();
+                    if (ps2 != null) {
+                        ps2.Play();
+                        Destroy(impactInstance, ps2.main.duration);
+                    }
+                    
                 }
             }
         }
@@ -52,7 +71,7 @@ public abstract class Shooter : Offensive
     {
         if (target != null)
         {
-            target.GetComponent<Enemy>().TakeDamage(attackDamage);
+            target.GetComponent<Enemy>().TakeDamage(attackDamage,gameObject);
         }
         else {
             //Debug.Log("No valid target to deal damage to");

@@ -19,7 +19,7 @@ public class DragStructures : MonoBehaviour
 
     public GameObject worldSpaceCanvas;
 
-    private Camera mainCamera;
+    public Camera planningCamera;
     private GameObject selectedObject;
     private RaycastHit hitInfo;
     private bool isDragging = false;
@@ -27,7 +27,7 @@ public class DragStructures : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainCamera = Camera.main;
+        //mainCamera = Camera.main;
     }
 
     // Update is called once per frame
@@ -38,7 +38,7 @@ public class DragStructures : MonoBehaviour
             //Raycast from mouse to ground
 
             //camera to screen point ray
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            Ray ray = planningCamera.ScreenPointToRay(Input.mousePosition);
             Debug.DrawRay(ray.origin, ray.direction * 100f, Color.blue, 0.1f);
             
             if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, draggableLayer)) {
@@ -46,9 +46,6 @@ public class DragStructures : MonoBehaviour
 
 
                     //if there is a structure that hasn't been placed down yet, you cannot selected another placed down structure
-                    //if () { 
-                    
-                    //}
 
                     //get selected structure gameobject
                     selectedObject = hitInfo.collider.transform.parent.gameObject;
@@ -62,9 +59,19 @@ public class DragStructures : MonoBehaviour
                         StructureInfo structInfo = transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<StructureInfo>();
                         structInfo.MakeActive(true);
 
-                        worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().SetCanvasParent(selectedObject.transform);
-                        worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().ShowCanvas(true);
-                        worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().ShowSellPanel(true);
+                        if (gameObject.GetComponent<PlaceStructure>().GetIsPlacingStructure() == true)
+                        {
+                            Debug.Log("You are currently placing a structure. Do not reparent world space canvas.");
+                        }
+                        else { 
+                            worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().SetCanvasParent(selectedObject.transform);
+                            worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().ShowCanvas(true);
+                            worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().ShowSellPanel(true);
+                            
+                            StructureInfo structureInfo = FindObjectOfType<StructureInfo>();
+                            structureInfo.SetInfoBasedOnSelectedObject(selectedObject);
+                            structureInfo.SetUpgradeInfoBasedOnSelectedObject(selectedObject);
+                        }
                     }
                     else {
                         isDragging = true;
@@ -100,7 +107,7 @@ public class DragStructures : MonoBehaviour
 
         //Dragging a valid selected object
         if (selectedObject != null) {
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            Ray ray = planningCamera.ScreenPointToRay(Input.mousePosition);
             Debug.DrawRay(ray.origin, ray.direction * 100f, Color.red, 0.1f);
 
             //moving the selected object to the postions along the ground
@@ -123,5 +130,10 @@ public class DragStructures : MonoBehaviour
 
     public void SetSelectedObject(GameObject obj) {
         selectedObject = obj;
+    }
+
+    public void DestroySelectedObject() {
+        Destroy(selectedObject);
+        selectedObject= null;
     }
 }

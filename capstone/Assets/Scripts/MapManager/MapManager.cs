@@ -20,6 +20,10 @@ public class MapManager : MonoBehaviour
 
     //Money
     [SerializeField] private int startingMoney = 100;
+
+    //percentage of how much the player gets for selling a structure
+    [SerializeField] private float sellingPercentage = 0.7f;
+    
     private int money;
 
     //Waves
@@ -70,7 +74,7 @@ public class MapManager : MonoBehaviour
     public bool CanPurchase(string structureName) {
         string[,] results = databaseWrapper.GetData("structures", "structure_name", structureName);
 
-        int structCost = Int32.Parse(results[0, 6]);
+        int structCost = Int32.Parse(results[0, 7]);
         bool canPurchase = false;
 
 
@@ -84,7 +88,7 @@ public class MapManager : MonoBehaviour
     {
         string[,] results = databaseWrapper.GetData("structures", "structure_name", structureName);
         string structName = results[0, 1];
-        int structCost = Int32.Parse(results[0,6]);
+        int structCost = Int32.Parse(results[0,7]);
         PlaceStructure placeStructureComponent = planningPhaseUI.GetComponent<PlaceStructure>();
         bool isPlacingStructure = placeStructureComponent.GetIsPlacingStructure();
         if (money >= structCost)
@@ -93,18 +97,11 @@ public class MapManager : MonoBehaviour
             {
                 //Player can buy it and they are not currently placing a structure down
                 SubtractMoney(structCost);
-                //CODE TO INSTANTIATE STRUCTURE
-                
-                /*
-                PlaceStructure placeStructure = planningPhaseUI.GetComponent<PlaceStructure>();
-                placeStructure.InstantiateStructure(tabIndex, buttonIndex);
-                */
             }
             else {
                 Debug.Log("player must place down the structure first");
                 messagePanel.GetComponent<Message>().SetMessageText("You must place down the structure first.");
             }
-
         }
         else {
             //Insufficent funds
@@ -157,7 +154,7 @@ public class MapManager : MonoBehaviour
             Debug.Log("No selected object for selling");
         }
         else {
-            int sellingValue = Mathf.RoundToInt(0.7f * obj.GetComponent<Structure>().GetStructureWorth());
+            int sellingValue = Mathf.RoundToInt(sellingPercentage * obj.GetComponent<Structure>().GetStructureWorth());
             //Refund 70% of structure's worth value
             AddMoney(sellingValue);
 
@@ -168,7 +165,11 @@ public class MapManager : MonoBehaviour
             worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().ResetWorldCanvas();
 
             //Destroy Structure
-            Destroy(obj);
+            planningPhaseUI.GetComponent<DragStructures>().DestroySelectedObject();
+
+            //Hide structure Info
+            StructureInfo structureInfo = planningPhaseUI.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<StructureInfo>();
+            structureInfo.MakeActive(false);
         }
 
 
