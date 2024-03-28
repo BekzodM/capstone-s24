@@ -993,6 +993,7 @@ MonoBehaviour:
   placeStructure: {fileID: 5066741647715351149}
   dragStructures: {fileID: 9158462016682308139}
   message: {fileID: 6983899397044042713}
+  planningPhaseCamera: {fileID: 7537718530045963769}
 --- !u!1 &4767291953885519641
 GameObject:
   m_ObjectHideFlags: 0
@@ -3601,11 +3602,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5103780844134064357, guid: a7baa03507fbde84c999a2bb8fe62881, type: 3}
       propertyPath: m_Size
-      value: 0.40108734
+      value: 0.40108728
       objectReference: {fileID: 0}
     - target: {fileID: 5103780844134064357, guid: a7baa03507fbde84c999a2bb8fe62881, type: 3}
       propertyPath: m_Value
-      value: 1.0000036
+      value: 1.0000033
       objectReference: {fileID: 0}
     - target: {fileID: 5219242664075125693, guid: a7baa03507fbde84c999a2bb8fe62881, type: 3}
       propertyPath: m_AnchorMax.y

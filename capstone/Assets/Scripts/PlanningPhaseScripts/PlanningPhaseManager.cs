@@ -17,6 +17,7 @@ public class PlanningPhaseManager : MonoBehaviour
     [SerializeField] private PlaceStructure placeStructure;
     [SerializeField] private DragStructures dragStructures;
     [SerializeField] private Message message;
+    [SerializeField] private Camera planningPhaseCamera;
 
 
     private void Awake()
@@ -41,6 +42,7 @@ public class PlanningPhaseManager : MonoBehaviour
         gameObject.SetActive(true);
         worldSpaceCanvas.gameObject.SetActive(false);
         structureInfo.gameObject.SetActive(false);
+        EnablePlanningPhaseCamera();
     }
 
     //connected to the Start Wave button
@@ -58,6 +60,10 @@ public class PlanningPhaseManager : MonoBehaviour
             dragStructures.ResetSelectedObject();
             dragStructures.SetSelectedObject(null);
         }
+    }
+
+    public void EnablePlanningPhaseCamera() { 
+        planningPhaseCamera.enabled = true;
     }
 
     //Money Wrappers
