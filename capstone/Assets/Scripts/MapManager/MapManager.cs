@@ -42,12 +42,6 @@ public class MapManager : MonoBehaviour
         baseHealth = startingBaseHealth;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     //Money Functions
     public int GetStartingMoney()
     {
@@ -57,6 +51,11 @@ public class MapManager : MonoBehaviour
     {
         return money;
     }
+
+    public void SetMoney(int amount) {
+        money = amount;
+    }
+
     public void AddMoney(int increase)
     {
         MoneyText moneyText = planningPhaseUI.GetComponentInChildren<MoneyText>();

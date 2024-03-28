@@ -97,11 +97,7 @@ public class DragStructures : MonoBehaviour
                         {
                             worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().ResetWorldCanvas();
 
-                            if (selectedObject != null) {
-                                Structure selectedStructureComponent = selectedObject.GetComponent<Structure>();
-                                selectedStructureComponent.ShowAreaZone(false);
-                                selectedStructureComponent.ActivateAreaZoneCollider(true);
-                            }
+                            ResetSelectedObject();
 
                             selectedObject = null;
                             StructureInfo infoPanel = transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<StructureInfo>();
@@ -146,5 +142,13 @@ public class DragStructures : MonoBehaviour
     public void DestroySelectedObject() {
         Destroy(selectedObject);
         selectedObject= null;
+    }
+
+    public void ResetSelectedObject() {
+        if (selectedObject != null) {
+            Structure selectedStructure = selectedObject.GetComponent<Structure>();
+            selectedStructure.ShowAreaZone(false);
+            selectedStructure.ActivateAreaZoneCollider(true);
+        }
     }
 }
