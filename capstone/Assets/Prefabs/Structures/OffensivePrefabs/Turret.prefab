@@ -267,6 +267,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5905312630646424418}
+  - component: {fileID: 3177404798190154492}
   m_Layer: 7
   m_Name: turret
   m_TagString: Untagged
@@ -291,6 +292,27 @@ Transform:
   - {fileID: 7973237527297430583}
   m_Father: {fileID: 4997073381334681966}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3177404798190154492
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6537029973759138264}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 2.1862931, z: 1.7489218}
+  m_Center: {x: 0, y: 1.1922843, z: 0.0029954314}
 --- !u!1001 &4350714267245481606
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -315,6 +337,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: b3b7e4da7c627f948a9aa64470d2e19c, type: 2}
+    - target: {fileID: 3218552336624629041, guid: 591dfd458545ee84abbc76bdff19f097, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6594605103654622601, guid: 591dfd458545ee84abbc76bdff19f097, type: 3}
       propertyPath: m_Name
       value: attackZone

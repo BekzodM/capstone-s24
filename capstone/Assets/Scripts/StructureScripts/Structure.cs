@@ -201,9 +201,19 @@ public abstract class Structure : MonoBehaviour
         imagePath= path;
     }
 
+    //Area Zone methods
     protected void SetAreaZoneRadius(float radius) { 
         areaZone.GetComponent<AreaZone>().SetAreaEffectRadius(radius);
     }
+
+    public void ShowAreaZone(bool show) { 
+        areaZone.SetActive(show);
+    }
+
+    public void ActivateAreaZoneCollider(bool isActive) { 
+        areaZone.GetComponent<SphereCollider>().enabled = isActive;
+    }
+
 
     //Abstract methods upgrade functions
     //slot 0 upgrades

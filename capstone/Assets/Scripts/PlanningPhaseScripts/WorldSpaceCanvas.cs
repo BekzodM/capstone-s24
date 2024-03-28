@@ -6,6 +6,8 @@ using UnityEngine.Rendering;
 public class WorldSpaceCanvas : MonoBehaviour
 {
     public Camera planningCamera;
+    public GameObject root;
+
     private void LateUpdate()
     {
         transform.LookAt(
@@ -19,7 +21,7 @@ public class WorldSpaceCanvas : MonoBehaviour
         RectTransform canvasRectTransform = GetComponent<RectTransform>();
 
         // offset to move the canvas in local space
-        Vector3 localOffset = new Vector3(0f, -6f, 0f); // Adjust the values as needed
+        Vector3 localOffset = new Vector3(0f, -6f, -30f); // Adjust the values as needed
 
         // Convert the local offset to global offset
         Vector3 globalOffset = transform.TransformDirection(localOffset);
@@ -57,7 +59,7 @@ public class WorldSpaceCanvas : MonoBehaviour
     }
 
     public void ResetWorldCanvas() {
-        transform.SetParent(null);
+        transform.SetParent(root.transform);
         ShowCanvas(false);
         ShowPlacementConfirmationPanel(true);
         ShowSellPanel(false);
