@@ -27,12 +27,21 @@ public class PlayerController : MonoBehaviour
     // We want our motion to be relative to camera position
     [SerializeField] private Camera playerCamera;
 
-    [SerializeField] private CinemachineFreeLook thirdPersonCamera;
+    [SerializeField] private CinemachineVirtualCamera thirdPersonCamera;
     [SerializeField] private CinemachineVirtualCamera aimCamera;
     private bool aimCameraActive = false;
 
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private GameObject gun;
+    private bool isShooting = false;        // Player bool input
+    private bool readyToShoot = true;
+    private bool reloading = false;
+    private bool allowButtonHold = false;
+    private int magazineSize = 10;
+    private int bulletsPerTap = 1;  // How many bullets to shoot out
+    private float timeBetweenShooting = .1f;
+    private float timeBetweenShots = .1f;
+    private float reloadTime = 2f;
     // All instantiated bullets will belong to this parent to make it so the hierarchy doesn't get messy
     [SerializeField] private Transform bulletParent;
     [SerializeField] private float bulletMissDistance;
@@ -56,7 +65,7 @@ public class PlayerController : MonoBehaviour
 
         // Aim camera has higher priority, set active to false to use normal 3rd person camera as
         // default
-        aimCamera.gameObject.SetActive(false);
+        //aimCamera.gameObject.SetActive(false);
         
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -67,10 +76,10 @@ public class PlayerController : MonoBehaviour
         // NOTE: For some reason, the right mouse button never triggers "started" or "canceled" events
         // But they are subscribed to their respective functions just in case
         // "performed" is currently triggered twice (on-click and on-release of right mouse button)
-        playerInputActions.Player.Aim.started += AimStart;
+        //playerInputActions.Player.Aim.started += AimStart;
         playerInputActions.Player.Aim.performed += Aim;
-        playerInputActions.Player.Aim.canceled += AimCancel;
-        playerInputActions.Player.Shoot.performed += _ => Shoot();
+        //playerInputActions.Player.Aim.canceled += AimCancel;
+        playerInputActions.Player.Shoot.performed += _ => OnShoot();
         playerInputActions.Player.Jump.performed += Jump; // Subscribe to Jump() method
         movement = playerInputActions.Player.Movement;  // Get ref to "Movement" action from PlayerInputActions
         playerInputActions.Player.Enable();
@@ -78,10 +87,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnDisable()
     {
-        playerInputActions.Player.Aim.started -= AimStart;
+        //playerInputActions.Player.Aim.started -= AimStart;
         playerInputActions.Player.Aim.performed -= Aim;
-        playerInputActions.Player.Aim.canceled -= AimCancel;
-        playerInputActions.Player.Shoot.performed += _ => Shoot();
+        //playerInputActions.Player.Aim.canceled -= AimCancel;
+        playerInputActions.Player.Shoot.performed += _ => OnShoot();
         playerInputActions.Player.Jump.performed -= Jump;
         playerInputActions.Player.Disable();
     }
@@ -171,6 +180,8 @@ public class PlayerController : MonoBehaviour
     // Jump callback function
     private void Jump(InputAction.CallbackContext context)
     {
+        Debug.Log("Jump");
+        Debug.Log(context.performed);
         if (context.performed && IsGrounded())
         {
             forceDirection += Vector3.up * jumpForce;
@@ -201,53 +212,102 @@ public class PlayerController : MonoBehaviour
     //      Once on-click & once on-release of the button
     private void Aim(InputAction.CallbackContext context)
     {
+        Debug.Log(context.performed);
         if (context.performed)
         {
             aimCameraActive = !aimCameraActive;
-            aimCamera.gameObject.SetActive(aimCameraActive);
+            //aimCamera.gameObject.SetActive(aimCameraActive);
 
-            thirdPersonCamera.gameObject.SetActive(!aimCameraActive);
+            //thirdPersonCamera.gameObject.SetActive(!aimCameraActive);
+
+            if (aimCameraActive)
+                aimCamera.Priority += 10;
+            else
+                aimCamera.Priority -= 10;
         }
     }
 
-    // Never used
-    private void AimStart(InputAction.CallbackContext context)
-    {
-        Debug.Log("aim start");
-        if (context.started)
-        {
-            aimCamera.gameObject.SetActive(true);
-        }
-    }
+    //// Never used
+    //private void AimStart(InputAction.CallbackContext context)
+    //{
+    //    Debug.Log("aim start");
+    //    if (context.started)
+    //    {
+    //        aimCamera.gameObject.SetActive(true);
+    //    }
+    //}
 
-    // Never used
-    private void AimCancel(InputAction.CallbackContext context)
+    //// Never used
+    //private void AimCancel(InputAction.CallbackContext context)
+    //{
+    //    Debug.Log("aim cancel");
+    //    if (context.canceled)
+    //    {
+    //        aimCamera.gameObject.SetActive(false);
+    //    }
+    //}
+
+    private void OnShoot()
     {
-        Debug.Log("aim cancel");
-        if (context.canceled)
+        /* isShooting bool value accessed here, reloading bool value will be accessed through the gun gameobject */
+        isShooting = !isShooting;
+
+        if (isShooting && !reloading)
         {
-            aimCamera.gameObject.SetActive(false);
+            Shoot();
         }
     }
 
     private void Shoot()
     {
-        RaycastHit hit;
-        // 2nd arg: position + forward for the position in front of the gun
-        GameObject bullet = GameObject.Instantiate(bulletPrefab, gun.transform.position + gun.transform.forward, Quaternion.identity, bulletParent);
-        BulletController bulletController = bullet.GetComponent<BulletController>();
+        
 
-        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, Mathf.Infinity))
+        if (isShooting && readyToShoot)
         {
-            bulletController.target = hit.point;
-            bulletController.hit = true;
-        }
-        else
-        {
-            // If no target, shoot direction is based off of the position of center of the screen
-            bulletController.target = playerCamera.transform.position + playerCamera.transform.forward * bulletMissDistance;
-            bulletController.hit = true;
+            readyToShoot = false;
 
+            RaycastHit hit;
+            // 2nd arg: position + forward for the position in front of the gun
+            // Bullet direction should face where you are aiming
+            GameObject bullet = GameObject.Instantiate(bulletPrefab, gun.transform.position + gun.transform.forward, Quaternion.identity, bulletParent);
+            BulletController bulletController = bullet.GetComponent<BulletController>();
+
+            // Can specify a 5th arg for a layermask (i.e. if ray hits an "enemy" layermask)
+            // Has to not hit player, so enemy layermask only? and if needed a layermask for terrain?
+            if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, Mathf.Infinity))
+            {
+                bulletController.target = hit.point;
+                bulletController.hit = true;
+            }
+            else
+            {
+                // If no target, shoot direction is based off of the position of center of the screen
+                bulletController.target = playerCamera.transform.position + playerCamera.transform.forward * bulletMissDistance;
+                bulletController.hit = false;
+
+            }
+
+
+            Invoke(nameof(ResetShot), timeBetweenShooting);
+
+            Invoke(nameof(Shoot), timeBetweenShots);
         }
+    }
+
+    private void ResetShot()
+    {
+        readyToShoot = true;
+    }
+
+    private void Reload()
+    {
+        reloading = true;
+        Invoke(nameof(ReloadFinished), reloadTime);
+    }
+
+    private void ReloadFinished()
+    {
+        //bulletsLeft = magazineSize;
+        //reloading = false;
     }
 }

@@ -7,7 +7,7 @@ public class BulletController : MonoBehaviour
     //[SerializeField] private GameObject bulletDecal;    // Bullet hole
 
     private float speed = 50f;
-    private float timeToDestroy = 2f;   // Timer before bullet is destroyed
+    private float timeToDestroy = 1f;   // Timer before bullet is destroyed
 
     public Vector3 target { get; set; }
     public bool hit { get; set; }
@@ -28,7 +28,7 @@ public class BulletController : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
 
-        // If no target and close to "target", destroy
+        // If no target and close enough to "target", destroy
         if (!hit && Vector3.Distance(transform.position, target) < .01f)
         {
             Destroy(gameObject);
@@ -41,8 +41,8 @@ public class BulletController : MonoBehaviour
     {
         // For bullet holes (2 lines of code)
         ContactPoint contact = collision.GetContact(0);
-        // arg 2: point + 
-        //GameObject.Instantiate(bulletDecal, contact.point, Quaternion.LookRotation(contact.normal));
+        // arg 2: point + slightly above surface of collided object
+        //GameObject.Instantiate(bulletDecal, contact.point + contact.normal * .0001f, Quaternion.LookRotation(contact.normal));
 
         Destroy(gameObject);
     }
