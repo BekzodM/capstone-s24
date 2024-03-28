@@ -32,16 +32,17 @@ public class Tooltip : MonoBehaviour
 
         Vector2 anchoredPosition = Input.mousePosition / canvasRectTransform.localScale.x;
 
+        
         // Add an offset to the anchored position
-        float xOffset = 20f; // Adjust as needed
-        float yOffset = 20f; // Adjust as needed
+        float xOffset = 30f; // Adjust as needed
+        float yOffset = 30f; // Adjust as needed
         anchoredPosition.x += xOffset;
         anchoredPosition.y += yOffset;
 
         // Ensure the tooltip stays within the canvas bounds
         anchoredPosition.x = Mathf.Clamp(anchoredPosition.x, 0f, parentCanvas.pixelRect.width);
         anchoredPosition.y = Mathf.Clamp(anchoredPosition.y, 0f, parentCanvas.pixelRect.height);
-
+        
         
         if (anchoredPosition.x + backgroundRectTransform.rect.width > canvasRectTransform.rect.width)
         {

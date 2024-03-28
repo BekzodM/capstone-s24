@@ -50,7 +50,8 @@ public class DragStructures : MonoBehaviour
                     //get selected structure gameobject
                     selectedObject = hitInfo.collider.transform.parent.gameObject;
                     PlaceStructure placeStructure = GetComponent<PlaceStructure>();
-
+                    Structure structureComponent = selectedObject.GetComponent<Structure>();
+                    
                     //check if structure has as been placed down already
                     if (placeStructure.CheckStructurePlacement(selectedObject))
                     {
@@ -58,6 +59,9 @@ public class DragStructures : MonoBehaviour
                         
                         StructureInfo structInfo = transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<StructureInfo>();
                         structInfo.MakeActive(true);
+
+                        structureComponent.ShowAreaZone(true);
+                        structureComponent.ActivateAreaZoneCollider(false);
 
                         if (gameObject.GetComponent<PlaceStructure>().GetIsPlacingStructure() == true)
                         {
@@ -92,6 +96,13 @@ public class DragStructures : MonoBehaviour
                         if (!gameObject.GetComponent<PlaceStructure>().GetIsPlacingStructure())
                         {
                             worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().ResetWorldCanvas();
+
+                            if (selectedObject != null) {
+                                Structure selectedStructureComponent = selectedObject.GetComponent<Structure>();
+                                selectedStructureComponent.ShowAreaZone(false);
+                                selectedStructureComponent.ActivateAreaZoneCollider(true);
+                            }
+
                             selectedObject = null;
                             StructureInfo infoPanel = transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<StructureInfo>();
                             infoPanel.MakeActive(false);
