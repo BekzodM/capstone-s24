@@ -26,7 +26,7 @@ public class Wall : Defensive
     }
 
     private void SetWallScaleSize(float size) {
-        transform.GetChild(0).localScale = new Vector3(size, size, 1f);
+        transform.GetChild(1).localScale = new Vector3(size, size, 1f);
     }
 
     private void OnCollisionEnter(Collision collision)

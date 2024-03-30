@@ -26,6 +26,16 @@ public class PlaceStructure : MonoBehaviour
     }
 
     public void InstantiateStructure(int tabIndex, int buttonIndex) {
+        //hide the previously selected structure's area zone and make its collider true
+        GameObject selectedObject = GetComponent<DragStructures>().GetSelectedObject();
+        if (selectedObject != null) { 
+            Structure selectedStructure = selectedObject.GetComponent<Structure>();
+            selectedStructure.ShowAreaZone(false);
+            selectedStructure.ActivateAreaZoneCollider(true);        
+        }
+
+
+        //Instantiate
         GameObject prefab = transform.GetChild(0).GetChild(0).GetComponent<StructureShop>().GetPrefabFromStructurePrefabs(tabIndex, buttonIndex);
         if (prefab != null)
         {
@@ -44,6 +54,9 @@ public class PlaceStructure : MonoBehaviour
                 Vector3 spawnPosition = hit.point;
                 
                 GameObject prefabInstance = Instantiate(prefab, spawnPosition, Quaternion.identity);
+
+                prefabInstance.GetComponent<Structure>().ActivateAreaZoneCollider(false);
+
                 //structures.Add(prefabInstance);
 
                 WorldSpaceCanvas canvas = worldSpaceCanvas.GetComponent<WorldSpaceCanvas>();

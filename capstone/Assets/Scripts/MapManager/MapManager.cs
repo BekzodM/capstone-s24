@@ -42,12 +42,6 @@ public class MapManager : MonoBehaviour
         baseHealth = startingBaseHealth;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     //Money Functions
     public int GetStartingMoney()
     {
@@ -57,6 +51,11 @@ public class MapManager : MonoBehaviour
     {
         return money;
     }
+
+    public void SetMoney(int amount) {
+        money = amount;
+    }
+
     public void AddMoney(int increase)
     {
         MoneyText moneyText = planningPhaseUI.GetComponentInChildren<MoneyText>();
@@ -104,6 +103,7 @@ public class MapManager : MonoBehaviour
             }
         }
         else {
+            messagePanel.GetComponent<Message>().SetMessageText("Not enough money for " + structName);
             //Insufficent funds
             /*
             Debug.Log("Not enough money for " + structName);
@@ -114,17 +114,6 @@ public class MapManager : MonoBehaviour
             */
         }
     }
-
-    /*
-    public void FullRefund(string structureName) {
-        string[,] results = databaseWrapper.GetData("structures", "structure_name", structureName);
-        Debug.Log("Full Refund struct name:" + structureName);
-        string structName = results[0,1];
-        int structCost = Int32.Parse(results[0,6]);
-        AddMoney(structCost);
-        Debug.Log("Fully Refunded " + structName);
-    }
-    */
 
     public void OnClickSellButton() {
         GameObject selectedObj = planningPhaseUI.GetComponent<DragStructures>().GetSelectedObject();
