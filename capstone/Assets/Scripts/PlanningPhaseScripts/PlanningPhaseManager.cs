@@ -133,5 +133,10 @@ public class PlanningPhaseManager : MonoBehaviour
         mapManager.DecreaseMaxBaseHealth(decrease);
     }
 
+    //change to gamePlay scene
+    public void resumeGameState()
+    {
+        //gameStateManager..updateGameState(gameStateManager.gamePlayState);
+    }
 
 }
