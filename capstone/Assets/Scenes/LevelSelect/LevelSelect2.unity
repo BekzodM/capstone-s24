@@ -6310,6 +6310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneName: MainGameScene
+  level: 1
 --- !u!4 &393009478
 Transform:
   m_ObjectHideFlags: 0
@@ -15259,6 +15260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneName: MainGameScene
+  level: 4
 --- !u!4 &1004529027
 Transform:
   m_ObjectHideFlags: 0
@@ -21636,6 +21638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneName: MainGameScene
+  level: 2
 --- !u!4 &1449514911
 Transform:
   m_ObjectHideFlags: 0
@@ -26011,6 +26014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneName: MainGameScene
+  level: 3
 --- !u!4 &1778300689
 Transform:
   m_ObjectHideFlags: 0

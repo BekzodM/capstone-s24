@@ -5,7 +5,11 @@ using System;
 public class LoadScene : MonoBehaviour
 {
     [SerializeField] string SceneName;
+    [SerializeField] int level;
     public void InteractLoadScene() {
-        SceneManager.LoadScene(SceneName);
+        if(GameState.currentProgressLevel >= level) {
+            SceneManager.LoadScene(SceneName);
+        }
+        else Debug.Log("Level Locked");
     }
 }
