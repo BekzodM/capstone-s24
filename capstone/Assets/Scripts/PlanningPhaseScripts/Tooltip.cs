@@ -73,6 +73,19 @@ public class Tooltip : MonoBehaviour
         Instance.Show();
     }
 
+    public static void ShowTooltip(string[] upgradeStructureInfo) {
+        if (upgradeStructureInfo != null) { 
+            if (upgradeStructureInfo.Length == 4) {
+                //array of upgrade structure info
+                Transform background = Instance.transform.GetChild(0);
+                for (int i = 0; i < 4; i++) {
+                    background.GetChild(i).GetComponent<TextMeshProUGUI>().SetText(upgradeStructureInfo[i]);
+                }
+                Instance.Show();
+            }        
+        }
+    }
+
     public static void HideTooltip()
     {
         Instance.Hide();
