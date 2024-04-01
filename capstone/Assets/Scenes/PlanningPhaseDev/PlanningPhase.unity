@@ -131,9 +131,181 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2299951071696837500, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2299951071696837500, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2299951071696837500, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2299951071696837500, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591538180099409250, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591538180099409250, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591538180099409250, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591538180099409250, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682447468911459984, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682447468911459984, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682447468911459984, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682447468911459984, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3242323257709431778, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3242323257709431778, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3242323257709431778, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3242323257709431778, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4367970144473117807, guid: 03683157d907419488c137f669e5816d, type: 3}
       propertyPath: m_Name
       value: PlanningPhase
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054573205363584088, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: cameraControls.m_Name
+      value: Camera Controls
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054573205363584088, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: cameraControls.m_SingletonActionBindings.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054573205363584088, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: cameraControls.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 32cfb212-647e-44bf-a7c7-0386bac43fa9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054573205363584088, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: cameraControls.m_SingletonActionBindings.Array.data[1].m_Id
+      value: b9e432b3-7f21-40e5-b9c0-546ef6658c61
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054573205363584088, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: cameraControls.m_SingletonActionBindings.Array.data[2].m_Id
+      value: 6b1fda76-3750-4cb7-ac3d-bf1f6521bee2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054573205363584088, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: cameraControls.m_SingletonActionBindings.Array.data[3].m_Id
+      value: df17c9f9-29ca-4f53-9dff-dd3ca04ae01e
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054573205363584088, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: cameraControls.m_SingletonActionBindings.Array.data[4].m_Id
+      value: ea57dfe3-3bd6-4d01-a44a-dd50b4a36d5f
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054573205363584088, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: cameraControls.m_SingletonActionBindings.Array.data[0].m_Name
+      value: 2D Vector
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054573205363584088, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: cameraControls.m_SingletonActionBindings.Array.data[0].m_Path
+      value: 2DVector
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054573205363584088, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: cameraControls.m_SingletonActionBindings.Array.data[1].m_Name
+      value: up
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054573205363584088, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: cameraControls.m_SingletonActionBindings.Array.data[1].m_Path
+      value: <Keyboard>/w
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054573205363584088, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: cameraControls.m_SingletonActionBindings.Array.data[2].m_Name
+      value: down
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054573205363584088, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: cameraControls.m_SingletonActionBindings.Array.data[2].m_Path
+      value: <Keyboard>/s
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054573205363584088, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: cameraControls.m_SingletonActionBindings.Array.data[3].m_Name
+      value: left
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054573205363584088, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: cameraControls.m_SingletonActionBindings.Array.data[3].m_Path
+      value: <Keyboard>/a
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054573205363584088, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: cameraControls.m_SingletonActionBindings.Array.data[4].m_Name
+      value: right
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054573205363584088, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: cameraControls.m_SingletonActionBindings.Array.data[4].m_Path
+      value: <Keyboard>/d
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054573205363584088, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: cameraControls.m_SingletonActionBindings.Array.data[0].m_Flags
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054573205363584088, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: cameraControls.m_SingletonActionBindings.Array.data[1].m_Flags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054573205363584088, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: cameraControls.m_SingletonActionBindings.Array.data[2].m_Flags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054573205363584088, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: cameraControls.m_SingletonActionBindings.Array.data[3].m_Flags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054573205363584088, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: cameraControls.m_SingletonActionBindings.Array.data[4].m_Flags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054573205363584088, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: cameraControls.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Camera Controls
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054573205363584088, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: cameraControls.m_SingletonActionBindings.Array.data[1].m_Action
+      value: Camera Controls
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054573205363584088, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: cameraControls.m_SingletonActionBindings.Array.data[2].m_Action
+      value: Camera Controls
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054573205363584088, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: cameraControls.m_SingletonActionBindings.Array.data[3].m_Action
+      value: Camera Controls
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054573205363584088, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: cameraControls.m_SingletonActionBindings.Array.data[4].m_Action
+      value: Camera Controls
       objectReference: {fileID: 0}
     - target: {fileID: 6084636960322758658, guid: 03683157d907419488c137f669e5816d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -173,6 +345,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6084636960322758658, guid: 03683157d907419488c137f669e5816d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6906918575043319656, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6906918575043319656, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6906918575043319656, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7944492625372042074, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7944492625372042074, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7944492625372042074, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
