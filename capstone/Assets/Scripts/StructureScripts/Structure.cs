@@ -23,6 +23,8 @@ public abstract class Structure : MonoBehaviour
 
     protected StructureUpgradesInfo upgradesInfo;
 
+    protected TooltipHover tooltipHover;
+
     protected Structure(string name, string description, string type, int cost, int health, int progressLevel, int attackDamage) 
     {
         structureName = name;
@@ -62,7 +64,9 @@ public abstract class Structure : MonoBehaviour
         gameObject.tag = "Structure";
         gameObject.layer = LayerMask.NameToLayer("Draggable");
         SetStructureProperties();
-        upgradesInfo= gameObject.AddComponent<StructureUpgradesInfo>();
+        upgradesInfo = gameObject.AddComponent<StructureUpgradesInfo>();
+        tooltipHover = gameObject.AddComponent<TooltipHover>();
+        tooltipHover.type = TooltipHover.HoverType.PlacedStructure;
     }
 
     protected virtual void SetStructureProperties() {
@@ -153,6 +157,17 @@ public abstract class Structure : MonoBehaviour
 
     public float GetAreaZoneRadius() { 
         return areaZone.GetComponent<AreaZone>().GetAreaEffectRadius();
+    }
+
+    public string[] GetStructureInfo() {
+        string[] structureInfo = new string[6];
+        structureInfo[0] = GetStructureName();
+        structureInfo[1] = GetStructureType();
+        structureInfo[2] = GetDescription();
+        structureInfo[3] = GetHealth().ToString();
+        structureInfo[4] = GetAttackDamage().ToString();
+        structureInfo[5] = GetStructureWorth().ToString();
+        return structureInfo;
     }
 
     //Setters

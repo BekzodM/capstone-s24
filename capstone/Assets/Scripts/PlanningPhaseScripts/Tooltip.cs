@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Tooltip : MonoBehaviour
 {
@@ -73,16 +70,33 @@ public class Tooltip : MonoBehaviour
         Instance.Show();
     }
 
-    public static void ShowTooltip(string[] upgradeStructureInfo) {
-        if (upgradeStructureInfo != null) { 
-            if (upgradeStructureInfo.Length == 4) {
+    public static void ShowTooltip(string[] info) {
+        Transform upgradeBG = Instance.transform.GetChild(0);
+        Transform structureBG = Instance.transform.GetChild(1);
+        if (info != null) { 
+            if (info.Length == 4) {
+                upgradeBG.gameObject.SetActive(true);
+                structureBG.gameObject.SetActive(false);
+                Instance.SetBackgroundRectTransform(upgradeBG.GetComponent<RectTransform>());
                 //array of upgrade structure info
-                Transform background = Instance.transform.GetChild(0);
                 for (int i = 0; i < 4; i++) {
-                    background.GetChild(i).GetComponent<TextMeshProUGUI>().SetText(upgradeStructureInfo[i]);
+                    upgradeBG.GetChild(i).GetComponent<TextMeshProUGUI>().SetText(info[i]);
                 }
                 Instance.Show();
-            }        
+            }
+            if (info.Length == 6)
+            {
+                upgradeBG.gameObject.SetActive(false);
+                structureBG.gameObject.SetActive(true);
+                Instance.SetBackgroundRectTransform(structureBG.GetComponent<RectTransform>());
+                for (int i = 0; i < 6; i++)
+                {
+                    structureBG.GetChild(i).GetComponent<TextMeshProUGUI>().SetText(info[i]);
+                }
+            }
+            else {
+                Debug.LogError("Info string list length invalid");
+            }
         }
     }
 
@@ -91,4 +105,7 @@ public class Tooltip : MonoBehaviour
         Instance.Hide();
     }
 
+    private void SetBackgroundRectTransform(RectTransform rect) { 
+        backgroundRectTransform= rect;
+    }
 }

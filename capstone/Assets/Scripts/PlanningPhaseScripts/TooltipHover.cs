@@ -13,7 +13,7 @@ public class TooltipHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         PlacedStructure
     }
 
-    [SerializeField] private HoverType type;
+    public HoverType type;
 
     private void Start()
     {
@@ -24,8 +24,9 @@ public class TooltipHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             case HoverType.UpgradeButton:
                 Tooltip.ShowTooltip(GetUpgradeInfo());
                 break;
-            //case for placed structures
-            //CODE HERE
+            case HoverType.PlacedStructure:
+                Tooltip.ShowTooltip(GetStructureInfo());
+                break;
             default:
                 Debug.LogError("Invalid string name of hoverObj");
                 break;
@@ -55,9 +56,13 @@ public class TooltipHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     //Get the currently selected object's structure info
     private string[] GetStructureInfo() {
-        string[] structureInfo;
-        return null;
+        Structure structure = gameObject.GetComponent<Structure>();
+        if (structure != null)
+        {
+            string[] structureInfo = structure.GetStructureInfo();
+            return structureInfo;
 
-        //CODE HERE
+        }
+        return null;
     }
 }
