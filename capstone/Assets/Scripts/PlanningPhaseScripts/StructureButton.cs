@@ -70,6 +70,13 @@ public class StructureButton : MonoBehaviour
         GameObject infoPanel = transform.parent.parent.parent.parent.parent.parent.GetChild(1).gameObject;
         StructureInfo info = infoPanel.GetComponent<StructureInfo>();
         info.MakeActive(show);
+        /*
+        GameObject upgradeButtonContent = info.transform.GetChild(0).GetChild(0).GetChild(0).gameObject;
+        Button [] upgradeButtons = upgradeButtonContent.GetComponentsInChildren<Button>();
+        foreach (Button button in upgradeButtons) {
+            button.interactable = false;
+        }
+        */
     }
 
     private void ShowConfirmBuyPanel(bool show) {
@@ -77,9 +84,31 @@ public class StructureButton : MonoBehaviour
     }
 
     private void TryToBuy() {
+        /*
         GameObject mapManager = transform.parent.parent.parent.parent.parent.parent.GetComponent<StructureShop>().GetMapManager();
         MapManager mapManagerComponent = mapManager.GetComponent<MapManager>();
-        mapManagerComponent.CanPurchase(buttonName);
+        mapManagerComponent.Purchase(buttonName, tabIndex, buttonIndex);
+        */
+        GameObject planningPhaseUI = transform.parent.parent.parent.parent.parent.parent.parent.parent.gameObject;
+        PlaceStructure placeStructure = planningPhaseUI.GetComponent<PlaceStructure>();
+        GameObject messagePanel = planningPhaseUI.transform.GetChild(0).GetChild(0).GetChild(6).gameObject;
+        GameObject mapManager = placeStructure.mapManager;
+        if (placeStructure.GetIsPlacingStructure())
+        {
+            Debug.Log("You cannot try to purchase a structure before another structure is being placed down.");
+            messagePanel.GetComponent<Message>().SetMessageText("You cannot try to purchase a structure before another structure is placed down.");
+        }
+        else if (!mapManager.GetComponent<MapManager>().CanPurchase(buttonName)) {
+            //not enough money
+            Debug.Log("Not enough money");
+            messagePanel.GetComponent<Message>().SetMessageText("Not enough money");
+        }
+        else {
+            Debug.Log("A structure is not being placed right now.");
+            placeStructure.InstantiateStructure(tabIndex, buttonIndex);
+        }
+        
+
     }
 
     // Update is called once per frame

@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : Actor
 {
     // Player class should own game data associated with player
 
-    [SerializeField] protected float jumpForce = 5f;
+    //[SerializeField] protected float jumpForce = 5f;
 
     Rigidbody playerRigidbody;
+
 
     // Start is called before the first frame update
     void Start()
@@ -17,18 +19,36 @@ public class Player : Actor
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
 
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0))
+        {
             Attack();
+        }
+        // Press esc to exit Locked State
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            ToggleCursorLock();
         }
     }
 
-    public float JumpForce()
+    private void ToggleCursorLock()
+    {
+        // Toggle cursor lock state between locked and confined to the window
+        Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;
+
+        // Toggle cursor visibility
+        Cursor.visible = !Cursor.visible;
+    }
+
+
+    /* public float JumpForce()
     {
         return jumpForce;
-    }
+    } */
 }

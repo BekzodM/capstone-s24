@@ -17,12 +17,6 @@ public class SimpleDB : MonoBehaviour
         CreateDB();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void CreateDB()
     {
         //Create the db connection
@@ -33,6 +27,7 @@ public class SimpleDB : MonoBehaviour
             // Read the SQL script from file
             string sqlScript = File.ReadAllText("Assets/Scripts/DatabaseScripts/CreateDB.sql");
 
+
             //set up an object (called "command") to allow db control
             using (var command = connection.CreateCommand())
             {
@@ -41,53 +36,12 @@ public class SimpleDB : MonoBehaviour
 
                 //run the command
                 command.ExecuteNonQuery();
+
             }
 
             connection.Close();
         }
     }
 
-    public void AddSave(int slotNumber, int playerId, int progLevel)
-    {
-        //connect to DB
-        using (var connection = new SqliteConnection(dbName))
-        {
-            connection.Open();
 
-            //set up an object (called "command") to allow db control
-            using (var command = connection.CreateCommand())
-            {
-                //write insertion command
-                command.CommandText = "INSERT INTO saves (slot_number, player_id, progress_level) VALUES ('" + slotNumber + "', '" + playerId + "', '" + progLevel + "')";
-
-                //run the command
-                command.ExecuteNonQuery();
-            }
-
-            connection.Close();
-
-        }
-    }
-    //change
-    public void ChangeSave(int saveId, int playerId, int progLevel)
-    {
-        //connect to DB
-        using (var connection = new SqliteConnection(dbName))
-        {
-            connection.Open();
-
-            //set up an object (called "command") to allow db control
-            using (var command = connection.CreateCommand())
-            {
-                //write Update command
-                command.CommandText = "UPDATE saves SET player_id = " + playerId + ", progress_level = " + progLevel + " WHERE save_id = " + saveId;
-
-                //run the command
-                command.ExecuteNonQuery();
-            }
-
-            connection.Close();
-
-        }
-    }
 }

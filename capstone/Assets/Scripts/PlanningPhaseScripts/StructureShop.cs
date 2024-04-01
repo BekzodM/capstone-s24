@@ -36,6 +36,10 @@ public class StructureShop : MonoBehaviour
         return structurePrefabs;
     }
 
+    public GameObject GetPrefabFromStructurePrefabs(int tabIndex, int buttonIndex) {
+        return structurePrefabs[tabIndex][buttonIndex];
+    }
+
     public GameObject GetMapManager() {
         return mapManager;
     }

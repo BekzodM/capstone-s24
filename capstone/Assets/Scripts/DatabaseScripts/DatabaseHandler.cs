@@ -35,7 +35,54 @@ namespace DatabaseAccess
             }
         }
 
-        public void InsertData(string tableName, string insertCommand)
+        public void InsertImmutables(string pathToSqlFile)
+        {
+            //Create the db connection
+            using (var connection = new SqliteConnection(dbName))
+            {
+                connection.Open();
+
+                // Read the SQL script from file
+                string sqlScript = File.ReadAllText(pathToSqlFile);
+
+                //set up an object (called "command") to allow db control
+                using (var command = connection.CreateCommand())
+                {
+                    //create tables using sql commands from createdb.sql
+                    command.CommandText = sqlScript;
+
+                    //run the command
+                    command.ExecuteNonQuery();
+                }
+
+                connection.Close();
+            }
+        }
+
+        public int ExecuteScalar(string queryCommand)
+        {
+            int lastRowId = 0;
+            //connect to DB
+            using (var connection = new SqliteConnection(dbName))
+            {
+                connection.Open();
+
+                //set up an object (called "command") to allow db control
+                using (var command = connection.CreateCommand())
+                {
+                    //write insertion command
+                    command.CommandText = queryCommand + "; SELECT last_insert_rowid();";
+
+                    //run the command
+                    lastRowId = Convert.ToInt32(command.ExecuteScalar());
+                }
+
+                connection.Close();
+            }
+            return lastRowId;
+        }
+
+        public void NonQuery(string queryCommand)
         {
             //connect to DB
             using (var connection = new SqliteConnection(dbName))
@@ -46,7 +93,7 @@ namespace DatabaseAccess
                 using (var command = connection.CreateCommand())
                 {
                     //write insertion command
-                    command.CommandText = "INSERT INTO " + tableName + insertCommand;
+                    command.CommandText = queryCommand;
 
                     //run the command
                     command.ExecuteNonQuery();
@@ -73,7 +120,7 @@ namespace DatabaseAccess
                 using (var command = connection.CreateCommand())
                 {
                     //get the results row count for rowCount
-                    command.CommandText = "SELECT COUNT(*) FROM " + tableName;
+                    command.CommandText = "SELECT COUNT(*) FROM " + tableName + specifierCommand;
                     rowCount = Convert.ToInt32(command.ExecuteScalar());
                     command.CommandText = "SELECT COUNT(*) FROM pragma_table_info('" + tableName + "')";
                     colCount = Convert.ToInt32(command.ExecuteScalar());
@@ -87,7 +134,8 @@ namespace DatabaseAccess
                     {
                         if (reader.HasRows)
                         {
-                            Debug.Log("Entry Exists");
+                            string debugOutput = "\n";
+                            // Debug.Log("Entry Exists");
 
                             //2d array layout follows table schema
                             for (int i = 0; i < rowCount; i++)
@@ -96,8 +144,11 @@ namespace DatabaseAccess
                                 for (int j = 0; j < colCount; j++)
                                 {
                                     results[i, j] = reader[reader.GetName(j)].ToString();
+                                    debugOutput += results[i, j] + " ";
                                 }
+                                debugOutput += "\n";
                             }
+                            Debug.Log(debugOutput);
 
                         }
                         else
@@ -109,28 +160,6 @@ namespace DatabaseAccess
 
                 connection.Close();
                 return results;
-
-            }
-        }
-        public void AddStructureDevUseOnly(string structName, string structType, int structDamage, int structHealth, int structCost, int progLevel)
-        {
-
-            //connect to DB
-            using (var connection = new SqliteConnection(dbName))
-            {
-                connection.Open();
-
-                //set up an object (called "command") to allow db control
-                using (var command = connection.CreateCommand())
-                {
-                    //write insertion command
-                    command.CommandText = "INSERT INTO structures (structure_name, structure_type, structure_damage, structure_health, structure_cost, progress_level) VALUES ('" + structName + "', '" + structType + "', '" + structDamage + "' , '" + structHealth + "', '" + structCost + "', '" + progLevel + "')";
-
-                    //run the command
-                    command.ExecuteNonQuery();
-                }
-
-                connection.Close();
 
             }
         }

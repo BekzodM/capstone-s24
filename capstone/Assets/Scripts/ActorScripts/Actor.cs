@@ -8,7 +8,7 @@ public class Actor : MonoBehaviour
 {
     // Protected fields because inherited classes need to access these values
 
-    [SerializeField] protected float moveSpeed = 7f;
+    //[SerializeField] protected float moveSpeed = 7f;
     //[SerializeField] private GameInput gameInput;
 
     public int maxHealth = 100;
@@ -17,9 +17,10 @@ public class Actor : MonoBehaviour
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
-    
 
-    void Start() {
+
+    void Start()
+    {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
@@ -36,9 +37,10 @@ public class Actor : MonoBehaviour
 
 
         //Attacking
-        if(Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0))
+        {
             Attack();
-        } 
+        }
         //float rotateSpeed = 12f;
         //transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
     }
@@ -56,7 +58,8 @@ public class Actor : MonoBehaviour
     For each enemy in attackEnemies call
     TakeDamage for the enemy.
     */
-    public void Attack(){
+    public void Attack()
+    {
         ActorAnimator actorAnimator = GetComponentInChildren<ActorAnimator>();
         if (actorAnimator != null)
         {
@@ -64,26 +67,29 @@ public class Actor : MonoBehaviour
         }
         Collider[] attackEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
 
-        foreach(Collider enemy in attackEnemies) {
+        foreach (Collider enemy in attackEnemies)
+        {
             enemy.GetComponent<Enemy>().TakeDamage(10); //calls TakeDamage for the enemy with 10hp damage.
         }
 
     }
 
     // Dev Function - visualize attack range.
-    void OnDrawGizmosSelected() {
-        if(attackPoint == null) return;
+    void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null) return;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
-    public void TakeDamage(int damage) {
+    public void TakeDamage(int damage)
+    {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
         Debug.Log("Damaged");
     }
     // moveSpeed getter
-    public float MoveSpeed()
+    /* public float MoveSpeed()
     {
         return moveSpeed;
-    }
+    } */
 }
