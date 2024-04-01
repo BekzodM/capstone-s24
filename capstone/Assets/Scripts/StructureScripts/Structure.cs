@@ -66,7 +66,7 @@ public abstract class Structure : MonoBehaviour
         SetStructureProperties();
         upgradesInfo = gameObject.AddComponent<StructureUpgradesInfo>();
         tooltipHover = gameObject.AddComponent<TooltipHover>();
-        tooltipHover.type = TooltipHover.HoverType.PlacedStructure;
+        tooltipHover.type = TooltipHover.HoverType.Structure;
     }
 
     protected virtual void SetStructureProperties() {
@@ -164,9 +164,9 @@ public abstract class Structure : MonoBehaviour
         structureInfo[0] = GetStructureName();
         structureInfo[1] = GetStructureType();
         structureInfo[2] = GetDescription();
-        structureInfo[3] = GetHealth().ToString();
-        structureInfo[4] = GetAttackDamage().ToString();
-        structureInfo[5] = GetStructureWorth().ToString();
+        structureInfo[3] = "Health: " + GetHealth().ToString();
+        structureInfo[4] = "Attack: " + GetAttackDamage().ToString();
+        structureInfo[5] = "Worth: " + GetStructureWorth().ToString();
         return structureInfo;
     }
 

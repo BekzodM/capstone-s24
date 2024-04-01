@@ -10,7 +10,7 @@ public class TooltipHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     [SerializeField] private int slotIndex;
     public enum HoverType {
         UpgradeButton,
-        PlacedStructure
+        Structure
     }
 
     public HoverType type;
@@ -24,7 +24,7 @@ public class TooltipHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             case HoverType.UpgradeButton:
                 Tooltip.ShowTooltip(GetUpgradeInfo());
                 break;
-            case HoverType.PlacedStructure:
+            case HoverType.Structure:
                 Tooltip.ShowTooltip(GetStructureInfo());
                 break;
             default:

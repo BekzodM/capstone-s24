@@ -337,8 +337,8 @@ public class StructureUpgradesInfo : MonoBehaviour
         string[] upgradeSlotInfo = new string[4];
         upgradeSlotInfo[0] = GetSlotUpgradeName(slotIndex);
         upgradeSlotInfo[1] = GetSlotUpgradeDescription(slotIndex);
-        upgradeSlotInfo[2] = GetCost(slotIndex).ToString();
-        upgradeSlotInfo[3] = GetCurrentUpgradeLevel(slotIndex).ToString();
+        upgradeSlotInfo[2] = "Cost: " + GetCost(slotIndex).ToString();
+        upgradeSlotInfo[3] = "Current Level: " + GetCurrentUpgradeLevel(slotIndex).ToString();
         return upgradeSlotInfo;
     }
 
