@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UpgradeStructureFunction;
 
@@ -92,7 +93,6 @@ public class StructureUpgradesInfo : MonoBehaviour
         }
     }
 
-    //not complete
     public void Upgrade(int upgradeButtonIdx) {
         Debug.Log("UPGRADE: " + upgradeButtonIdx.ToString());
         int currentLevel = upgradeLevels[upgradeButtonIdx];
@@ -279,8 +279,67 @@ public class StructureUpgradesInfo : MonoBehaviour
         return upgradeName;
     }
 
+    public string GetSlotUpgradeDescription(int slotIndex)
+    {
+        int currentLevel = upgradeLevels[slotIndex];
+        string upgradeDesc = "";
+
+        if (slotIndex == 0)
+        {
+            if (currentLevel == 5)
+            {
+                Debug.Log("Upgrade Name of level 5 is the last upgrade description");
+                upgradeDesc = upgradeSlot0[4, 2];
+            }
+            else
+            {
+                upgradeDesc = upgradeSlot0[currentLevel, 2];
+            }
+        }
+        else if (slotIndex == 1)
+        {
+            if (currentLevel == 5)
+            {
+                Debug.Log("Upgrade Name of level 5 is the last upgrade description");
+                upgradeDesc = upgradeSlot1[4, 2];
+            }
+            else
+            {
+                upgradeDesc = upgradeSlot1[currentLevel, 2];
+            }
+        }
+        else if (slotIndex == 2)
+        {
+            if (currentLevel == 5)
+            {
+                Debug.Log("Upgrade Name of level 5 is the last upgrade description");
+                upgradeDesc = upgradeSlot2[4, 2];
+            }
+            else
+            {
+                upgradeDesc = upgradeSlot2[currentLevel, 2];
+            }
+        }
+        else
+        {
+            Debug.LogError("Invalid slot index");
+        }
+        return upgradeDesc;
+    }
+
+
     public int GetCurrentUpgradeLevel(int slotIndex) { 
         return upgradeLevels[slotIndex];
+    }
+
+    public string[] GetUpgradeSlotInfo(int slotIndex)
+    {
+        string[] upgradeSlotInfo = new string[4];
+        upgradeSlotInfo[0] = GetSlotUpgradeName(slotIndex);
+        upgradeSlotInfo[1] = GetSlotUpgradeDescription(slotIndex);
+        upgradeSlotInfo[2] = "Cost: " + GetCost(slotIndex).ToString();
+        upgradeSlotInfo[3] = "Current Level: " + GetCurrentUpgradeLevel(slotIndex).ToString();
+        return upgradeSlotInfo;
     }
 
     public void AddBlockedSlot(int slotIndex) {
