@@ -26,12 +26,13 @@ public class BaseDamage : MonoBehaviour
 
     private void Update()
     {
-        nearestEnemyFunction();
+        //nearestEnemyFunction();
         baseEnemyAttack();
     }
 
     private void baseEnemyAttack()
     {
+            nearestEnemyFunction();
             if (nearestEnemy!= null && Vector3.Distance(basePoint.position, nearestEnemy.transform.position) < radius)
             {
                 Destroy(nearestEnemy);
@@ -56,7 +57,7 @@ public class BaseDamage : MonoBehaviour
             {
                 distance = Vector3.Distance(basePoint.position, allEnemies[i].transform.position);
 
-                if (distance < nearestDistance)
+                if (distance <= nearestDistance)
                 {
                     nearestEnemy = allEnemies[i];
                     nearestDistance = distance;
