@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlanningCamera : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class PlanningCamera : MonoBehaviour
     public float zoomSpeed = 100f;
     public float minZoomSize = 5f;
     public float maxZoomSize = 200f;
+
+    public InputAction cameraControls;
+    Vector2 move = Vector2.zero;
+
 
     Camera planningCamera;
     void Start()
@@ -18,11 +23,14 @@ public class PlanningCamera : MonoBehaviour
     void Update()
     {
         // Camera movement with A and D keys (left and right)
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
 
-        // Calculate movement direction based on camera's up and down directions
-        Vector3 moveDirection = transform.up * verticalInput + transform.right * horizontalInput;
+        move = cameraControls.ReadValue<Vector2>();
+        float directionX = move.x;
+        float directionY = move.y;
+
+        Vector3 moveDirection = transform.up * directionY + transform.right *directionX;
+
+
 
         // Normalize the movement direction to ensure consistent speed diagonally
         moveDirection = moveDirection.normalized;
@@ -39,5 +47,15 @@ public class PlanningCamera : MonoBehaviour
 
         // Apply the new zoom size
         planningCamera.orthographicSize = newZoomSize;
+    }
+
+    private void OnEnable()
+    {
+        cameraControls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        cameraControls.Disable();
     }
 }

@@ -17,6 +17,13 @@ public class StructureInfo : MonoBehaviour
 
     void Start()
     {
+        /*
+        structureName = transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
+        structureImage = transform.GetChild(1).GetComponent<Image>();
+        healthText = transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>();
+        costText = transform.GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>();
+        structureDescription = transform.GetChild(4).GetChild(0).GetComponent<TextMeshProUGUI>();
+        */
     }
 
     public void MakeActive(bool isActive)
@@ -30,13 +37,14 @@ public class StructureInfo : MonoBehaviour
         
         results = databaseWrapper.GetData("structures", "structure_name", buttonName);
 
-        structureName = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        structureName = transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
         structureImage = transform.GetChild(1).GetComponent<Image>();
-        healthText = transform.GetChild(2).GetComponent<TextMeshProUGUI>();
-        costText = transform.GetChild(3).GetComponent<TextMeshProUGUI>();
-        structureDescription = transform.GetChild(4).GetComponent<TextMeshProUGUI>();
+        healthText = transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>();
+        costText = transform.GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>();
+        structureDescription = transform.GetChild(4).GetChild(0).GetComponent<TextMeshProUGUI>();
 
-        
+
+
         structureName.text = results[0, 1];
         //image
         string path = results[0, 4];

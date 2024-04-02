@@ -84,7 +84,7 @@ public class Tooltip : MonoBehaviour
                 }
                 Instance.Show();
             }
-            if (info.Length == 6)
+            else if (info.Length == 6)
             {
                 upgradeBG.gameObject.SetActive(false);
                 structureBG.gameObject.SetActive(true);
