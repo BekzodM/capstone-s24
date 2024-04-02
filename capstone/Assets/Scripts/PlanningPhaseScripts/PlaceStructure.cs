@@ -88,6 +88,8 @@ public class PlaceStructure : MonoBehaviour
         //purchase
         string name = transform.GetComponent<DragStructures>().GetSelectedObject().GetComponent<Structure>().GetStructureName();
         mapManager.GetComponent<MapManager>().Purchase(name);
+
+        Tooltip.HideTooltip();
     }
 
     public void OnClickCancelPlacement() {
@@ -104,6 +106,8 @@ public class PlaceStructure : MonoBehaviour
         //destroy instance and reparent the canvas
         canvas.transform.SetParent(null);
         gameObject.GetComponent<DragStructures>().DestroySelectedObject();
+
+        Tooltip.HideTooltip();
     }
 
     public bool CheckStructurePlacement(GameObject obj) {
