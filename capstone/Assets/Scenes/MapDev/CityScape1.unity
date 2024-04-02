@@ -4155,7 +4155,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 11.18, y: 3.63, z: 13.14}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &802375042
 MonoBehaviour:
@@ -4184,7 +4184,7 @@ Transform:
   m_GameObject: {fileID: 802375040}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -24.95, y: 0.82, z: 0}
+  m_LocalPosition: {x: -18.94, y: 0.82, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5977,7 +5977,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Size: {x: 53.38, y: 3, z: 4}
   m_Center: {x: 0, y: 1, z: 41.3}
-  m_Area: 0
+  m_Area: 1
   m_AffectedAgents: ffffffff
 --- !u!114 &1154075530
 MonoBehaviour:
@@ -5991,9 +5991,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Size: {x: 25, y: 3, z: 23}
+  m_Size: {x: 23.8, y: 3, z: 23}
   m_Center: {x: 0, y: 0, z: 21.05}
-  m_Area: 0
+  m_Area: 1
   m_AffectedAgents: ffffffff
 --- !u!114 &1154075531
 MonoBehaviour:
@@ -6009,7 +6009,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Size: {x: 53.38, y: 3, z: 4}
   m_Center: {x: 0, y: 1, z: 0}
-  m_Area: 0
+  m_Area: 1
   m_AffectedAgents: ffffffff
 --- !u!4 &1154075532
 Transform:
