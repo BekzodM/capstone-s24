@@ -222,7 +222,9 @@ public abstract class Structure : MonoBehaviour
     }
 
     public void ShowAreaZone(bool show) { 
-        areaZone.SetActive(show);
+        //areaZone.SetActive(show);
+        areaZone.GetComponent<MeshRenderer>().enabled= show;
+        
     }
 
     public void ActivateAreaZoneCollider(bool isActive) { 
