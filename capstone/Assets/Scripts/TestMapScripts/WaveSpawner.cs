@@ -40,7 +40,7 @@ public class WaveSpawner : MonoBehaviour
 
         DetermineColorOfCountdown();
 
-        if (waveIndex < numberOfWaves && countdown > 0f)//timer counting down:
+        if (waveIndex <= numberOfWaves && countdown > 0f)//timer counting down:
         {
             countdown -= Time.deltaTime;
 
