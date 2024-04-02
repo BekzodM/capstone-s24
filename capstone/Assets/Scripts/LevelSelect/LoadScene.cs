@@ -10,6 +10,6 @@ public class LoadScene : MonoBehaviour
         if(GameState.currentProgressLevel >= level) {
             SceneManager.LoadScene(SceneName);
         }
-        else Debug.Log(GameState.currentProgressLevel);
+        else Debug.Log("Level Locked");
     }
 }
