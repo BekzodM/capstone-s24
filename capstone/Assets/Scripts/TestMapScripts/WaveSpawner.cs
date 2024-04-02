@@ -31,13 +31,13 @@ public class WaveSpawner : MonoBehaviour
 
     IEnumerator SpawnWave()
     {
-        waveIndex++;
+        //waveIndex++;
 
-        for (int i = 0; i < waveIndex * 3; i++)
-        {
+        //for (int i = 0; i < waveIndex * 3; i++)
+        //{
             SpawnEnemy();
             yield return new WaitForSeconds(0.5f);
-        }
+        //}
     }
 
     void SpawnEnemy()
