@@ -46,9 +46,12 @@ public class DragStructures : MonoBehaviour
 
 
                     //if there is a structure that hasn't been placed down yet, you cannot selected another placed down structure
-
+                    
+                    //HideSelectedStructureAreaZoneMesh();
+                    
                     //get selected structure gameobject
                     selectedObject = hitInfo.collider.transform.parent.gameObject;
+
                     PlaceStructure placeStructure = GetComponent<PlaceStructure>();
                     Structure structureComponent = selectedObject.GetComponent<Structure>();
                     
@@ -61,7 +64,7 @@ public class DragStructures : MonoBehaviour
                         structInfo.MakeActive(true);
 
                         structureComponent.ShowAreaZone(true);
-                        structureComponent.ActivateAreaZoneCollider(false);
+                        //structureComponent.ActivateAreaZoneCollider(false);
 
                         if (gameObject.GetComponent<PlaceStructure>().GetIsPlacingStructure() == true)
                         {
@@ -97,7 +100,7 @@ public class DragStructures : MonoBehaviour
                         {
                             worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().ResetWorldCanvas();
 
-                            ResetSelectedObject();
+                            HideSelectedStructureAreaZoneMesh();
 
                             selectedObject = null;
                             StructureInfo infoPanel = transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<StructureInfo>();
@@ -144,11 +147,10 @@ public class DragStructures : MonoBehaviour
         selectedObject= null;
     }
 
-    public void ResetSelectedObject() {
+    public void HideSelectedStructureAreaZoneMesh() {
         if (selectedObject != null) {
             Structure selectedStructure = selectedObject.GetComponent<Structure>();
             selectedStructure.ShowAreaZone(false);
-            selectedStructure.ActivateAreaZoneCollider(true);
         }
     }
 }
