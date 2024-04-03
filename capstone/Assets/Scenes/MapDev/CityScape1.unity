@@ -4189,7 +4189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c28f557e103f846a11052ed7f7d993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.2
+  radius: 0.8
   basePoint: {fileID: 802375043}
   allEnemies: []
   nearestEnemy: {fileID: 0}
@@ -8871,6 +8871,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 239022675672214031, guid: a9da540c58f0448999604da04e125810, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 278957246019099238, guid: a9da540c58f0448999604da04e125810, type: 3}
       propertyPath: gunType
       value: 3

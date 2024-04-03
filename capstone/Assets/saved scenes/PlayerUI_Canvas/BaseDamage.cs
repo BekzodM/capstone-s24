@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BaseDamage : MonoBehaviour
 {
-    public float radius = 0.2f;
+    public float radius = 0.5f;
     
     public Transform basePoint;
     public GameObject[] allEnemies;
