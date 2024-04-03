@@ -31,7 +31,7 @@ public class PlaceStructure : MonoBehaviour
         if (selectedObject != null) { 
             Structure selectedStructure = selectedObject.GetComponent<Structure>();
             selectedStructure.ShowAreaZone(false);
-            selectedStructure.ActivateAreaZoneCollider(true);        
+            //selectedStructure.ActivateAreaZoneCollider(true);        
         }
 
 
