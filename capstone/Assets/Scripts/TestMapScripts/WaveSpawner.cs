@@ -86,8 +86,8 @@ public class WaveSpawner : MonoBehaviour
 
     IEnumerator singalComplete()
     {
+        yield return new WaitForSeconds(battlePhaseController.timeBetweenWaves);
         battlePhaseController.roundComplete = true;
-        yield return new WaitForSeconds(3f);
     }
 
 }
