@@ -25,15 +25,24 @@ public class BattlePhaseController : MonoBehaviour
     public int maxHealth = 100;
     public HealthBar healthBar;
 
+    //planning phase connection:
+    public GameObject planningPhaseObject;
+    private PlanningPhaseManager planningPhaseManager;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        planningPhaseManager = planningPhaseObject.GetComponent<PlanningPhaseManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //round complete will invoke planning phase:
+        if (roundComplete)
+        {
+            planningPhaseObject.SetActive(true);
+            gameObject.SetActive(false);
+        }
     }
 }

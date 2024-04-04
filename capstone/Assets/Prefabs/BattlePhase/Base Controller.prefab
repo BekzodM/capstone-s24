@@ -45,12 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c28f557e103f846a11052ed7f7d993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.2
-  basePoint: {fileID: 8081726541023317481}
-  allEnemies: []
-  nearestEnemy: {fileID: 0}
-  maxHealth: 100
-  healthBar: {fileID: 0}
+  battlePhaseControllerObject: {fileID: 0}
 --- !u!135 &2650051526224440166
 SphereCollider:
   m_ObjectHideFlags: 0

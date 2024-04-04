@@ -37,9 +37,11 @@ public class WaveSpawner : MonoBehaviour
                 
                 battlePhaseController.waveCountdownText.text = Mathf.Round(battlePhaseController.countdown).ToString();
             }
+
             if (battlePhaseController.waveIndex >= battlePhaseController.numberOfWaves && battlePhaseController.allEnemies.Length == 0 && battlePhaseController.spawning == false)
             {
-                battlePhaseController.roundComplete = true;
+                StartCoroutine(singalComplete());
+                //battlePhaseController.roundComplete = true;
                 battlePhaseController.waveCountdownText.text = "Done";
             }
         }
@@ -80,6 +82,12 @@ public class WaveSpawner : MonoBehaviour
     private void SpawnEnemy() //function to spawn enemy
     {
         Instantiate(battlePhaseController.enemyPrefab, battlePhaseController.spawnPoint.position, battlePhaseController.spawnPoint.rotation);
+    }
+
+    IEnumerator singalComplete()
+    {
+        battlePhaseController.roundComplete = true;
+        yield return new WaitForSeconds(3f);
     }
 
 }
