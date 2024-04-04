@@ -23,6 +23,8 @@ public abstract class Structure : MonoBehaviour
 
     protected StructureUpgradesInfo upgradesInfo;
 
+    protected TooltipHover tooltipHover;
+
     protected Structure(string name, string description, string type, int cost, int health, int progressLevel, int attackDamage) 
     {
         structureName = name;
@@ -62,7 +64,9 @@ public abstract class Structure : MonoBehaviour
         gameObject.tag = "Structure";
         gameObject.layer = LayerMask.NameToLayer("Draggable");
         SetStructureProperties();
-        upgradesInfo= gameObject.AddComponent<StructureUpgradesInfo>();
+        upgradesInfo = gameObject.AddComponent<StructureUpgradesInfo>();
+        tooltipHover = gameObject.AddComponent<TooltipHover>();
+        tooltipHover.type = TooltipHover.HoverType.Structure;
     }
 
     protected virtual void SetStructureProperties() {
@@ -155,6 +159,17 @@ public abstract class Structure : MonoBehaviour
         return areaZone.GetComponent<AreaZone>().GetAreaEffectRadius();
     }
 
+    public string[] GetStructureInfo() {
+        string[] structureInfo = new string[6];
+        structureInfo[0] = GetStructureName();
+        structureInfo[1] = GetStructureType();
+        structureInfo[2] = GetDescription();
+        structureInfo[3] = "Health: " + GetHealth().ToString();
+        structureInfo[4] = "Attack: " + GetAttackDamage().ToString();
+        structureInfo[5] = "Worth: " + GetStructureWorth().ToString();
+        return structureInfo;
+    }
+
     //Setters
 
     protected void SetStructureId(int id) {
@@ -207,7 +222,9 @@ public abstract class Structure : MonoBehaviour
     }
 
     public void ShowAreaZone(bool show) { 
-        areaZone.SetActive(show);
+        //areaZone.SetActive(show);
+        areaZone.GetComponent<MeshRenderer>().enabled= show;
+        
     }
 
     public void ActivateAreaZoneCollider(bool isActive) { 

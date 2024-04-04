@@ -134,6 +134,7 @@ public class MapManager : MonoBehaviour
         WorldSpaceCanvas canvas = worldSpaceCanvas.GetComponent<WorldSpaceCanvas>();
         canvas.ShowSellConfirmationPanel(false);
         canvas.ShowPlacementConfirmationPanel(false);
+        Tooltip.HideTooltip();
     }
 
     public void Sell() {
@@ -160,7 +161,7 @@ public class MapManager : MonoBehaviour
             StructureInfo structureInfo = planningPhaseUI.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<StructureInfo>();
             structureInfo.MakeActive(false);
         }
-
+        Tooltip.HideTooltip();
 
     }
 
