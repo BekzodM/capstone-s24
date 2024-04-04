@@ -8,8 +8,6 @@ public class BattlePhaseController : MonoBehaviour
     //current information:
     public bool levelComplete;
     public int currentRound;
-    public int currentBaseHealth;
-    public int currentPlayerHealth;
 
     //wave spawner:
     public Transform enemyPrefab;
@@ -41,6 +39,9 @@ public class BattlePhaseController : MonoBehaviour
     {
         planningPhaseManager = planningPhaseObject.GetComponent<PlanningPhaseManager>();
         maxHealth = planningPhaseManager.GetMaxBaseHealth();
+        currentRound = 0;
+        levelComplete = false;
+
     }
 
     // Start is called before the first frame update
@@ -62,6 +63,12 @@ public class BattlePhaseController : MonoBehaviour
         {
             planningPhaseObject.SetActive(true);
             gameObject.SetActive(false);
+            currentRound++;
+            waveIndex = 0;
+            numberOfWaves++;
+            countdown = 5f;
+            roundComplete = false;
+
         }
     }
 

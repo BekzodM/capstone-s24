@@ -36,6 +36,7 @@ public class PlanningPhaseManager : MonoBehaviour
 
     void Start()
     {
+        StartPlanningPhase();
     }
 
     public void StartPlanningPhase() { 
