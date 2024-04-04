@@ -165,6 +165,7 @@ public class PlanningPhaseManager : MonoBehaviour
                 render.enabled = activate;
             }
         }
+
     }
 
 }
