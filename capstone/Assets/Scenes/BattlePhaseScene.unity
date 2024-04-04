@@ -250,6 +250,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4773995569304196367, guid: dcf5b3b8fbe312a4cb5b33e82cc8362c, type: 3}
+      propertyPath: m_Name
+      value: Wave Countdown Text
+      objectReference: {fileID: 0}
     - target: {fileID: 7247398805179036546, guid: dcf5b3b8fbe312a4cb5b33e82cc8362c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -361,6 +365,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &415939621
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 415939623}
+  - component: {fileID: 415939622}
+  m_Layer: 0
+  m_Name: BattlePhase Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &415939622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415939621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e215ef585eb50af4eb6e5798a7818944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 6592323667759460898, guid: de09f51df304247169d06be8ab234e89, type: 3}
+  spawnPoint: {fileID: 1053661404}
+  timeBetweenWaves: 3
+  countdown: 5
+  numberOfWaves: 5
+  waveCountdownText: {fileID: 178495632}
+  waveCounter: {fileID: 82305207}
+  waveIndex: 0
+  spawning: 0
+  roundComplete: 0
+  radius: 0.2
+  basePoint: {fileID: 1009952112}
+  allEnemies: []
+  nearestEnemy: {fileID: 0}
+  maxHealth: 100
+  healthBar: {fileID: 178495631}
+--- !u!4 &415939623
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415939621}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &436794379
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,6 +555,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 178495631}
+    - target: {fileID: 2120480370765156849, guid: f83dfd6fd0eabe24bb4954cdb49b05cd, type: 3}
+      propertyPath: battlePhaseControllerObject
+      value: 
+      objectReference: {fileID: 415939621}
     - target: {fileID: 4964971879924362755, guid: f83dfd6fd0eabe24bb4954cdb49b05cd, type: 3}
       propertyPath: m_Name
       value: Base Controller
@@ -557,6 +625,16 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4964971879924362755, guid: f83dfd6fd0eabe24bb4954cdb49b05cd, type: 3}
   m_PrefabInstance: {fileID: 1009952108}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1009952112 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8081726541023317481, guid: f83dfd6fd0eabe24bb4954cdb49b05cd, type: 3}
+  m_PrefabInstance: {fileID: 1009952108}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1053661404 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 726354507290046934, guid: cc4d3e59439e3bc41ab60f822f17ef03, type: 3}
+  m_PrefabInstance: {fileID: 1773683832}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1773683832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -606,6 +684,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5411765231089687684, guid: cc4d3e59439e3bc41ab60f822f17ef03, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411765231089687684, guid: cc4d3e59439e3bc41ab60f822f17ef03, type: 3}
       propertyPath: baseObject
       value: 
       objectReference: {fileID: 1009952109}
@@ -629,6 +711,10 @@ PrefabInstance:
       propertyPath: waveCountdownText
       value: 
       objectReference: {fileID: 178495632}
+    - target: {fileID: 5411765231089687684, guid: cc4d3e59439e3bc41ab60f822f17ef03, type: 3}
+      propertyPath: battlePhaseControllerObject
+      value: 
+      objectReference: {fileID: 415939621}
     - target: {fileID: 5412930616217110633, guid: cc4d3e59439e3bc41ab60f822f17ef03, type: 3}
       propertyPath: m_Name
       value: WaveSpawn Controller
@@ -658,3 +744,4 @@ SceneRoots:
   - {fileID: 1009952108}
   - {fileID: 1773683832}
   - {fileID: 178495630}
+  - {fileID: 415939623}
