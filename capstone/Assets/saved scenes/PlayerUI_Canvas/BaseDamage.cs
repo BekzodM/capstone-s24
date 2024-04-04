@@ -33,8 +33,9 @@ public class BaseDamage : MonoBehaviour
             {
                 Destroy(battlePhaseController.nearestEnemy);
                 battlePhaseController.nearestEnemy = null;
-                currentHealth -= 5;
+                currentHealth -= battlePhaseController.baseDamageAmount;
                 battlePhaseController.healthBar.SetHealth(currentHealth);
+                battlePhaseController.planningPhaseManager.DecreaseBaseHealth(battlePhaseController.baseDamageAmount);
             }
             if (currentHealth <= 0)
             {

@@ -119,8 +119,8 @@ public class PlanningPhaseManager : MonoBehaviour
         mapManager.GetBaseHealth();
     }
 
-    public void GetMaxBaseHealth() { 
-        mapManager.GetMaxBaseHealth();
+    public int GetMaxBaseHealth() { 
+        return mapManager.GetMaxBaseHealth();
     }
 
     public void IncreaseBaseHealth(int increase) {

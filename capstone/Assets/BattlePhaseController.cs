@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class BattlePhaseController : MonoBehaviour
 {
+    //current information:
+    public bool levelComplete;
+    public int currentRound;
+    public int currentBaseHealth;
+    public int currentPlayerHealth;
+
     //wave spawner:
     public Transform enemyPrefab;
     public Transform spawnPoint;
@@ -24,15 +30,22 @@ public class BattlePhaseController : MonoBehaviour
     public GameObject nearestEnemy;
     public int maxHealth = 100;
     public HealthBar healthBar;
+    public int baseDamageAmount = 5;
 
     //planning phase connection:
     public GameObject planningPhaseObject;
-    private PlanningPhaseManager planningPhaseManager;
+    public PlanningPhaseManager planningPhaseManager;
+
+    private void Awake()
+    {
+        planningPhaseManager = planningPhaseObject.GetComponent<PlanningPhaseManager>();
+        maxHealth = planningPhaseManager.GetMaxBaseHealth();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        planningPhaseManager = planningPhaseObject.GetComponent<PlanningPhaseManager>();
+
     }
 
     // Update is called once per frame
@@ -45,4 +58,5 @@ public class BattlePhaseController : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+
 }
