@@ -41,7 +41,7 @@ public class BaseDamage : MonoBehaviour
             {
             //GAME OVER IMPLEMENT
             //temp delete player to simulate game over
-                Destroy(GameObject.FindGameObjectWithTag("Player"));
+                battlePhaseController.baseAlive = false;
             }
 
     }

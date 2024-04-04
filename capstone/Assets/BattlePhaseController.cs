@@ -31,6 +31,7 @@ public class BattlePhaseController : MonoBehaviour
     public int maxHealth = 100;
     public HealthBar healthBar;
     public int baseDamageAmount = 5;
+    public bool baseAlive = true;
 
     //planning phase connection:
     public GameObject planningPhaseObject;
@@ -51,6 +52,11 @@ public class BattlePhaseController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!baseAlive)
+        {
+            planningPhaseObject.SetActive(false);
+            gameObject.SetActive(false);
+        }
         //round complete will invoke planning phase:
         if (roundComplete)
         {
