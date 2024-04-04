@@ -131,6 +131,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 80400610336756294, guid: 6462f459dcf7bbe46861e930773bf728, type: 3}
+      propertyPath: m_text
+      value: 'Round: 0/1'
+      objectReference: {fileID: 0}
+    - target: {fileID: 80400610336756294, guid: 6462f459dcf7bbe46861e930773bf728, type: 3}
+      propertyPath: m_fontSize
+      value: 38.55
+      objectReference: {fileID: 0}
     - target: {fileID: 637878348815051636, guid: 6462f459dcf7bbe46861e930773bf728, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -142,6 +150,14 @@ PrefabInstance:
     - target: {fileID: 637878348815051636, guid: 6462f459dcf7bbe46861e930773bf728, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 937872738925311195, guid: 6462f459dcf7bbe46861e930773bf728, type: 3}
+      propertyPath: m_text
+      value: Start Round!
+      objectReference: {fileID: 0}
+    - target: {fileID: 937872738925311195, guid: 6462f459dcf7bbe46861e930773bf728, type: 3}
+      propertyPath: m_fontSize
+      value: 32.4
       objectReference: {fileID: 0}
     - target: {fileID: 4125577430143037254, guid: 6462f459dcf7bbe46861e930773bf728, type: 3}
       propertyPath: m_AnchorMax.x

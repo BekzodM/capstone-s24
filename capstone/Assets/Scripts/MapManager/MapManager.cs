@@ -27,7 +27,7 @@ public class MapManager : MonoBehaviour
     private int money;
 
     //Waves
-    [SerializeField] private int currentWave = 1;
+    [SerializeField] private int currentWave = 0;
     [SerializeField] private int totalWaves = 5;
 
     //Base HP
