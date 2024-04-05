@@ -13,6 +13,7 @@ public abstract class Defensive : Structure
     protected override void Start()
     {
         base.Start();
+        SetStructureType("Defensive");
     }
 
 }

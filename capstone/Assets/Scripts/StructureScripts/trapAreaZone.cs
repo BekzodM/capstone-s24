@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AreaZone : MonoBehaviour
+public class TrapAreaZone : MonoBehaviour
 {
     [SerializeField] private float areaEffectRadius = 10f;
 
@@ -16,10 +16,10 @@ public class AreaZone : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             //Debug.Log("Enemy has entered the trigger zone");
-            Offensive offensiveScript = gameObjectParent.GetComponent<Offensive>();
-            if (offensiveScript != null)
+            Trap trapScript = gameObjectParent.GetComponent<Trap>();
+            if (trapScript != null)
             {
-                offensiveScript.StartAttacking(other.gameObject);
+                trapScript.StartAttacking(other.gameObject);
             }
         }
     }
@@ -29,10 +29,10 @@ public class AreaZone : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             //Debug.Log("Enemy has left the trigger zone");
-            Offensive offensiveScript = gameObjectParent.GetComponent<Offensive>();
-            if (offensiveScript != null)
+            Trap trapScript = gameObjectParent.GetComponent<Trap>();
+            if (trapScript != null)
             {
-                offensiveScript.StopAttacking(other.gameObject);
+                trapScript.StopAttacking(other.gameObject);
             }
         }
 
