@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class Wall : Defensive
 {
-    [SerializeField] private float scaleSize;
+    //[SerializeField] private float scaleSize;
     protected bool canDamage = false;
     protected int wallDamage = 0;
     public Wall(string name, string description, int cost, int health, int progressLevel, int attackDamage)
@@ -21,12 +21,16 @@ public class Wall : Defensive
     protected override void Start()
     {
         base.Start();
-        scaleSize = 1f;
+        //scaleSize = 1f;
         //SetWallScaleSize(scaleSize);
     }
 
-    private void SetWallScaleSize(float size) {
-        transform.GetChild(1).localScale = new Vector3(size, size, 1f);
+    private void SetWallScaleSize(float sizeScaleFactor) {
+        Transform wall = transform.GetChild(1);
+        float x = wall.localScale.x;
+        float y = wall.localScale.y;
+        float z = wall.localScale.z;
+        wall.localScale = new Vector3(x * sizeScaleFactor + x, y * sizeScaleFactor + y, z * sizeScaleFactor + z);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -67,32 +71,27 @@ public class Wall : Defensive
     //slot1
     protected override void Slot1UpgradeLevel1()
     {
-        scaleSize = scaleSize * 0.5f + scaleSize;
-        SetWallScaleSize(scaleSize);
+        SetWallScaleSize(0.2f);
     }
 
     protected override void Slot1UpgradeLevel2()
     {
-        scaleSize = scaleSize * 0.5f + scaleSize;
-        SetWallScaleSize(scaleSize);
+        SetWallScaleSize(0.2f);
     }
 
     protected override void Slot1UpgradeLevel3()
     {
-        scaleSize = scaleSize * 0.5f + scaleSize;
-        SetWallScaleSize(scaleSize);
+        SetWallScaleSize(0.2f);
     }
 
     protected override void Slot1UpgradeLevel4()
     {
-        scaleSize = scaleSize * 0.5f + scaleSize;
-        SetWallScaleSize(scaleSize);
+        SetWallScaleSize(0.2f);
     }
 
     protected override void Slot1UpgradeLevel5()
     {
-        scaleSize = scaleSize * 0.5f + scaleSize;
-        SetWallScaleSize(scaleSize);
+        SetWallScaleSize(0.2f);
     }
     //slot2
     protected override void Slot2UpgradeLevel1()
