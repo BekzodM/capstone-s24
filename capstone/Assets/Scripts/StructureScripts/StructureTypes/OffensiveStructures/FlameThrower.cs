@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlameThrower : Shooter
+public class FlameThrower : Emitter
 {
     public FlameThrower(string name, string description, int cost, int health, int progressLevel, int attackDamage)
         : base(name, description, cost, health, progressLevel, attackDamage)
