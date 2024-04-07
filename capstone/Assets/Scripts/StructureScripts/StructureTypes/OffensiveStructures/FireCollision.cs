@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class FireCollision : MonoBehaviour
 {
-
-    private List<GameObject> AOEZone;
-
     private void OnTriggerEnter(Collider other)
     {
         GameObject head = transform.parent.gameObject;
@@ -20,8 +17,8 @@ public class FireCollision : MonoBehaviour
             Debug.Log("Enemy has entered the AOE zone");
             Emitter emitterScript = flamethrower.GetComponent<Emitter>();
             Debug.Log(other.gameObject);
-            AOEZone.Add(other.gameObject);
-            Debug.Log("Enemy has been added to list 1");
+            // AOEZone.Add(other.gameObject);
+            // Debug.Log("Enemy has been added to list 1");
             emitterScript.AddToAOE(other.gameObject);
             Debug.Log("Enemy has been added to list 2");
         }
@@ -38,7 +35,7 @@ public class FireCollision : MonoBehaviour
         {
             Emitter emitterScript = flamethrower.GetComponent<Emitter>();
             emitterScript.RemoveFromAOE(other.gameObject);
-            Debug.Log("Enemy has entered the AOE zone");
+            Debug.Log("Enemy has exit the AOE zone");
         }
     }
 
