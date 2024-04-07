@@ -33,17 +33,26 @@ public class Player : Actor
         // Press esc to exit Locked State
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
-            ToggleCursorLock();
+            // ToggleCursorLock();
         }
     }
 
-    private void ToggleCursorLock()
+    public void ToggleCursorLock()
     {
         // Toggle cursor lock state between locked and confined to the window
         Cursor.lockState = Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked;
 
         // Toggle cursor visibility
         Cursor.visible = !Cursor.visible;
+    }
+
+    public void ToggleCursorUnlocked()
+    {
+        // Toggle cursor lock state between locked and confined to the window
+        Cursor.lockState = CursorLockMode.None;
+
+        // Toggle cursor visibility
+        Cursor.visible = true;
     }
 
 
