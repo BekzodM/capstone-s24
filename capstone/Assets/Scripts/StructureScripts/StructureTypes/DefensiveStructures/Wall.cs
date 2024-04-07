@@ -5,7 +5,6 @@ using UnityEngine.UIElements;
 
 public class Wall : Defensive
 {
-    //[SerializeField] private float scaleSize;
     protected bool canDamage = false;
     protected int wallDamage = 0;
     public Wall(string name, string description, int cost, int health, int progressLevel, int attackDamage)
@@ -21,8 +20,6 @@ public class Wall : Defensive
     protected override void Start()
     {
         base.Start();
-        //scaleSize = 1f;
-        //SetWallScaleSize(scaleSize);
     }
 
     private void SetWallScaleSize(float sizeScaleFactor) {
