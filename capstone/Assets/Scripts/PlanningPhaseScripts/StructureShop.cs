@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class StructureShop : MonoBehaviour
@@ -29,6 +30,16 @@ public class StructureShop : MonoBehaviour
         //Fill shop with buttons
 
         FillShopWithButtons();
+
+        Scrollbar shopScrollBar = transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Scrollbar>();
+        if (shopScrollBar != null)
+        {
+            shopScrollBar.SetDirection(Scrollbar.Direction.BottomToTop,true);
+            shopScrollBar.value = 1;
+        }
+        else {
+            Debug.LogError("Shop Scroll bar is null");
+        }
     }
 
     public GameObject[][] GetStructurePrefabs()
@@ -72,7 +83,7 @@ public class StructureShop : MonoBehaviour
                 GameObject obj= prefabs[j];
 
                 GameObject buttonInstance = Instantiate(structureShopButtonPrefab);
-                Button buttonComponent = buttonInstance.GetComponent<Button>();
+                //Button buttonComponent = buttonInstance.GetComponent<Button>();
                 buttonInstance.transform.SetParent(child.transform);
 
                 buttonInstance.GetComponent<StructureButton>().SetUpButton(obj.name, i, j);
