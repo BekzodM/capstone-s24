@@ -153,7 +153,7 @@ namespace DatabaseAccess
                         }
                         else
                         {
-                            Debug.Log("Entry Does not Exist");
+                            Debug.Log("Entry Does not Exist\n" + command.CommandText + "\n was your query");
                         }
                     }
                 }
