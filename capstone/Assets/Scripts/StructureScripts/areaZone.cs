@@ -8,34 +8,97 @@ public class AreaZone : MonoBehaviour
 
     private void Start()
     {
-        transform.localScale = new Vector3(areaEffectRadius,areaEffectRadius,areaEffectRadius);
+        //transform.localScale = new Vector3(areaEffectRadius,areaEffectRadius,areaEffectRadius);
     }
     private void OnTriggerEnter(Collider other)
     {
-        GameObject gameObjectParent = transform.parent.gameObject;
+        GameObject structure = transform.parent.gameObject;
         if (other.CompareTag("Enemy"))
         {
-            //Debug.Log("Enemy has entered the trigger zone");
-            Offensive offensiveScript = gameObjectParent.GetComponent<Offensive>();
-            if (offensiveScript != null)
+            string structureType = structure.GetComponent<Structure>().GetStructureType();
+            if (structureType == "Offensive") {
+                HandleOnTriggerEnterForOffensiveStructures(structure, other.gameObject);
+            }
+            else if (structureType == "Defensive")
             {
-                offensiveScript.StartAttacking(other.gameObject);
+                HandleOnTriggerEnterForDefensiveStructures(structure, other.gameObject);
+            }
+            else if (structureType == "Support")
+            {
+
+            }
+            else if (structureType == "Trap")
+            {
+
+            }
+            else
+            {
+                Debug.LogError("Invalid structure type");
             }
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        GameObject gameObjectParent = transform.parent.gameObject;
+        GameObject structure = transform.parent.gameObject;
         if (other.CompareTag("Enemy"))
         {
-            //Debug.Log("Enemy has left the trigger zone");
-            Offensive offensiveScript = gameObjectParent.GetComponent<Offensive>();
-            if (offensiveScript != null)
+            string structureType = structure.GetComponent<Structure>().GetStructureType();
+            if (structureType == "Offensive")
             {
-                offensiveScript.StopAttacking(other.gameObject);
+                HandleOnTriggerExitForOffensiveStructures(structure, other.gameObject);
+            }
+            else if (structureType == "Defensive")
+            {
+                HandleOnTriggerExitForDefensiveStructures(structure, other.gameObject);
+            }
+            else if (structureType == "Support")
+            {
+
+            }
+            else if (structureType == "Trap")
+            {
+
+            }
+            else {
+                Debug.LogError("Invalid structure type");
             }
         }
 
+    }
+    // Offensive
+    private void HandleOnTriggerEnterForOffensiveStructures(GameObject structure, GameObject other) {
+        Offensive offensiveScript = structure.GetComponent<Offensive>();
+        if (offensiveScript != null)
+        {
+            offensiveScript.StartAttacking(other);
+        }
+    }
+
+    private void HandleOnTriggerExitForOffensiveStructures(GameObject structure, GameObject other) {
+        Offensive offensiveScript = structure.GetComponent<Offensive>();
+        if (offensiveScript != null)
+        {
+            offensiveScript.StopAttacking(other);
+        }
+    }
+
+    //Defensive
+
+    private void HandleOnTriggerEnterForDefensiveStructures(GameObject structure, GameObject other) {
+        Defensive defensiveScript = structure.GetComponent<Defensive>();
+        if (defensiveScript != null)
+        {
+            defensiveScript.StartDefensiveAttack(other);
+        }
+    }
+
+    private void HandleOnTriggerExitForDefensiveStructures(GameObject structure, GameObject other)
+    {
+        Defensive defensiveScript = structure.GetComponent<Defensive>();
+        if (defensiveScript != null)
+        {
+            defensiveScript.EndDefensiveAttack(other);
+        }
     }
 
     public float GetAreaEffectRadius() {
@@ -46,4 +109,6 @@ public class AreaZone : MonoBehaviour
         areaEffectRadius = radius;
         transform.localScale = new Vector3(areaEffectRadius, areaEffectRadius, areaEffectRadius);
     }
+
+
 }

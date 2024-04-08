@@ -147,9 +147,15 @@ public class PlanningPhaseManager : MonoBehaviour
         foreach (GameObject obj in objectsWithTag)
         {
             GameObject areaZone = obj.transform.GetChild(0).gameObject;
-            if (areaZone != null) { 
-                SphereCollider collider = areaZone.GetComponent<SphereCollider>();
-                collider.enabled = activate;
+            if (areaZone != null) {
+                Collider collider = areaZone.GetComponent<Collider>();
+                if (collider != null)
+                {
+                    collider.enabled = activate;
+                }
+                else {
+                    Debug.LogError("Structure collider is null");
+                }
             }
         }
     }
