@@ -5,7 +5,6 @@ using UnityEngine.UIElements;
 
 public class Wall : Defensive
 {
-    protected bool canDamage = false;
     protected int wallDamage = 0;
     public Wall(string name, string description, int cost, int health, int progressLevel, int attackDamage)
         : base("Wall", "A basic wall", cost, health, progressLevel, attackDamage)
@@ -30,13 +29,15 @@ public class Wall : Defensive
         wall.localScale = new Vector3(x * sizeScaleFactor + x, y * sizeScaleFactor + y, z * sizeScaleFactor + z);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public override void StartDefensiveAttack(GameObject other) { 
+        base.StartDefensiveAttack(other);
+        Debug.Log("Start Defensive Wall Attack");
+    }
+
+    public override void EndDefensiveAttack(GameObject other)
     {
-        if (canDamage) {
-            if (collision.gameObject.CompareTag("Enemy")) {
-                collision.gameObject.GetComponent<Enemy>().TakeDamage(wallDamage);
-            }
-        }
+        base.EndDefensiveAttack(other);
+        Debug.Log("End Defensive Wall Attack");
     }
 
     //upgrades
@@ -93,31 +94,27 @@ public class Wall : Defensive
     //slot2
     protected override void Slot2UpgradeLevel1()
     {
-        canDamage = true;
+        areaZone.SetActive(true);
         wallDamage = 5;
     }
 
     protected override void Slot2UpgradeLevel2()
     {
-        canDamage = true;
         wallDamage = 10;
     }
 
     protected override void Slot2UpgradeLevel3()
     {
-        canDamage = true;
         wallDamage = 15;
     }
 
     protected override void Slot2UpgradeLevel4()
     {
-        canDamage = true;
         wallDamage = 20;
     }
 
     protected override void Slot2UpgradeLevel5()
     {
-        canDamage = true;
         wallDamage = 25;
     }
 
