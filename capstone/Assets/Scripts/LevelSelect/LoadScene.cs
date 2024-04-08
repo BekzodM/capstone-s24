@@ -12,6 +12,20 @@ public class LoadScene : MonoBehaviour
             padlock.gameObject.SetActive(false);
         }
     }
+
+    void OnTriggerEnter(Collider other) {
+        if(other.CompareTag("Player")) {
+            Transform canvas = transform.Find("Canvas");
+            canvas.gameObject.SetActive(true);
+        }
+    }
+
+    void OnTriggerExit(Collider other) {
+        if(other.CompareTag("Player")) {
+            Transform canvas = transform.Find("Canvas");
+            canvas.gameObject.SetActive(false);
+        }
+    }
     public void InteractLoadScene() {
         if(GameState.currentProgressLevel >= level) {
             SceneManager.LoadScene(SceneName);
