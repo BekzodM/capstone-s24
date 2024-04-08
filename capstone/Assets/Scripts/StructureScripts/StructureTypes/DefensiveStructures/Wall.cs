@@ -5,7 +5,8 @@ using UnityEngine.UIElements;
 
 public class Wall : Defensive
 {
-    protected int wallDamage = 0;
+    public ParticleSystem flameParticles;
+    public ParticleSystem embersParticles;
     public Wall(string name, string description, int cost, int health, int progressLevel, int attackDamage)
         : base("Wall", "A basic wall", cost, health, progressLevel, attackDamage)
     {
@@ -95,27 +96,34 @@ public class Wall : Defensive
     protected override void Slot2UpgradeLevel1()
     {
         areaZone.SetActive(true);
-        wallDamage = 5;
+        flameParticles.Play();
+        embersParticles.Play();
+        attackDamage = 5;
+        cooldown= 10;
     }
 
     protected override void Slot2UpgradeLevel2()
     {
-        wallDamage = 10;
+        attackDamage = 10;
+        cooldown= 10;
     }
 
     protected override void Slot2UpgradeLevel3()
     {
-        wallDamage = 15;
+        attackDamage = 15;
+        cooldown= 10;
     }
 
     protected override void Slot2UpgradeLevel4()
     {
-        wallDamage = 20;
+        attackDamage = 20;
+        cooldown= 10;
     }
 
     protected override void Slot2UpgradeLevel5()
     {
-        wallDamage = 25;
+        attackDamage = 25;
+        cooldown= 10;
     }
 
 }
