@@ -228,7 +228,7 @@ public abstract class Structure : MonoBehaviour
     }
 
     public void ActivateAreaZoneCollider(bool isActive) { 
-        areaZone.GetComponent<SphereCollider>().enabled = isActive;
+        areaZone.GetComponent<Collider>().enabled = isActive;
     }
 
 

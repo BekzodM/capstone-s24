@@ -63,6 +63,7 @@ public class PlaceStructure : MonoBehaviour
                 canvas.SetCanvasParent(prefabInstance.transform);
                 canvas.ShowCanvas(true);
                 canvas.ShowPlacementConfirmationPanel(true);
+                canvas.ShowRotationPanel(true);
                 canvas.ShowSellPanel(false);
 
                 isPlacingStructure = true;

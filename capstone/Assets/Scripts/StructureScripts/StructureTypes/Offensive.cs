@@ -24,13 +24,17 @@ public abstract class Offensive : Structure
 
     private void Update()
     {
-        if (isAttacking && Time.time >= nextCooldown) {
-            if (targetEnemy == null && enemiesInZone.Count > 0) {
+
+        if (isAttacking && Time.time >= nextCooldown)
+        {
+            if (targetEnemy == null && enemiesInZone.Count > 0)
+            {
                 targetEnemy = enemiesInZone[0];
             }
-            if (targetEnemy != null) {
+            if (targetEnemy != null)
+            {
                 Attack(targetEnemy);
-                nextCooldown = Time.time + cooldown;            
+                nextCooldown = Time.time + cooldown;
             }
         }
     }
@@ -53,7 +57,8 @@ public abstract class Offensive : Structure
         {
             targetEnemy = (enemiesInZone.Count > 0) ? enemiesInZone[0] : null;
         }
-        if (enemiesInZone.Count == 0) {
+        if (enemiesInZone.Count == 0)
+        {
             isAttacking = false;
         }
     }
@@ -62,12 +67,14 @@ public abstract class Offensive : Structure
 
     protected abstract void DealDamage(GameObject enemy);
 
-    public void AddEnemyToZone(GameObject enemy) {
+    public void AddEnemyToZone(GameObject enemy)
+    {
         enemiesInZone.Add(enemy);
         //Debug.Log(enemy.name + " has entered the enemiesInZone");
     }
 
-    public void RemoveEnemyFromZone(GameObject enemy) {
+    public void RemoveEnemyFromZone(GameObject enemy)
+    {
         enemiesInZone.Remove(enemy);
         //Debug.Log(enemy.name + " has lefted the enemiesInZone");
     }

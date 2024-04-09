@@ -33,6 +33,8 @@ public class BattlePhaseController : MonoBehaviour
 
     //planning phase connection:
     public GameObject planningPhaseObject;
+
+    [SerializeField] GameObject player;
     public PlanningPhaseManager planningPhaseManager;
 
     private void Awake()
@@ -62,12 +64,14 @@ public class BattlePhaseController : MonoBehaviour
         if (roundComplete)
         {
             planningPhaseObject.SetActive(true);
-            gameObject.SetActive(false);
             currentRound++;
             waveIndex = 0;
             numberOfWaves++;
             countdown = 5f;
             roundComplete = false;
+            player.transform.GetChild(2).gameObject.GetComponent<Player>().ToggleCursorUnlocked();
+            player.SetActive(false);
+            gameObject.SetActive(false);
 
         }
     }
