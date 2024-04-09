@@ -71,9 +71,11 @@ public class DragStructures : MonoBehaviour
                             Debug.Log("You are currently placing a structure. Do not reparent world space canvas.");
                         }
                         else { 
-                            worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().SetCanvasParent(selectedObject.transform);
-                            worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().ShowCanvas(true);
-                            worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().ShowSellPanel(true);
+                            WorldSpaceCanvas worldCanvas = worldSpaceCanvas.GetComponent<WorldSpaceCanvas>();
+                            worldCanvas.SetCanvasParent(selectedObject.transform);
+                            worldCanvas.ShowCanvas(true);
+                            worldCanvas.ShowSellPanel(true);
+                            worldCanvas.ShowRotationPanel(false);
                             
                             StructureInfo structureInfo = FindObjectOfType<StructureInfo>();
                             structureInfo.SetInfoBasedOnSelectedObject(selectedObject);
