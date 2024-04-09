@@ -12,4 +12,4 @@ INSERT INTO
     )
 VALUES
     (1, "Turret", "Offensive","A basic shooting turret", "Sprites/PlanningPhase/turretIcon", 10, 100, 50, 1),
-    (2, "Wall", "Defensive", "A basic wall", "Sprites/PlanningPhase/attackIcon", 0, 200, 50, 1);
+    (2, "Wall", "Defensive", "A basic wall", "Sprites/PlanningPhase/wallIcon", 0, 200, 50, 1);
