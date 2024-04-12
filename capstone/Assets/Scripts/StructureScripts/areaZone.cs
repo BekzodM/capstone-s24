@@ -13,9 +13,10 @@ public class AreaZone : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         GameObject structure = transform.parent.gameObject;
+        string structureType = structure.GetComponent<Structure>().GetStructureType();
+
         if (other.CompareTag("Enemy"))
         {
-            string structureType = structure.GetComponent<Structure>().GetStructureType();
             if (structureType == "Offensive") {
                 HandleOnTriggerEnterForOffensiveStructures(structure, other.gameObject);
             }
@@ -25,24 +26,30 @@ public class AreaZone : MonoBehaviour
             }
             else if (structureType == "Support")
             {
-
+                HandleOnTriggerEnterForSupportStructures(structure, other.gameObject);
             }
             else if (structureType == "Trap")
             {
-
+                
             }
             else
             {
                 Debug.LogError("Invalid structure type");
             }
         }
+        if (other.transform.parent.CompareTag("Structure")) {
+            if (structureType == "Support") {
+                HandleOnTriggerEnterForSupportStructures(structure, other.transform.parent.gameObject);
+            }
+        }
     }
     private void OnTriggerExit(Collider other)
     {
         GameObject structure = transform.parent.gameObject;
+        string structureType = structure.GetComponent<Structure>().GetStructureType();
+
         if (other.CompareTag("Enemy"))
         {
-            string structureType = structure.GetComponent<Structure>().GetStructureType();
             if (structureType == "Offensive")
             {
                 HandleOnTriggerExitForOffensiveStructures(structure, other.gameObject);
@@ -53,7 +60,7 @@ public class AreaZone : MonoBehaviour
             }
             else if (structureType == "Support")
             {
-
+                HandleOnTriggerExitForSupportStructures(structure, other.gameObject);
             }
             else if (structureType == "Trap")
             {
@@ -63,7 +70,19 @@ public class AreaZone : MonoBehaviour
                 Debug.LogError("Invalid structure type");
             }
         }
+        if (other.CompareTag("Structure"))
+        {
+            if (structureType == "Support")
+            {
+                HandleOnTriggerExitForSupportStructures(structure, other.gameObject);
+            }
+        }
 
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        
     }
     // Offensive
     private void HandleOnTriggerEnterForOffensiveStructures(GameObject structure, GameObject other) {
@@ -98,6 +117,22 @@ public class AreaZone : MonoBehaviour
         if (defensiveScript != null)
         {
             defensiveScript.EndDefensiveAttack(other);
+        }
+    }
+
+    //Support
+    private void HandleOnTriggerEnterForSupportStructures(GameObject structure, GameObject other) {
+        Support supportScript = structure.GetComponent<Support>();
+        if (supportScript != null) {
+            supportScript.StartSupport(other);
+        }
+    }
+
+    private void HandleOnTriggerExitForSupportStructures(GameObject structure, GameObject other) {
+        Support supportScript = structure.GetComponent<Support>();
+        if (supportScript != null)
+        {
+            supportScript.EndSupport(other);
         }
     }
 

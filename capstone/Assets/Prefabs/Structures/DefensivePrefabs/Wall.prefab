@@ -147,6 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1443709805866510048}
   - component: {fileID: 4975925385011848689}
+  - component: {fileID: 4727322329798964589}
   m_Layer: 7
   m_Name: Wall
   m_TagString: Structure
@@ -188,12 +189,40 @@ MonoBehaviour:
   description: 
   structureType: 
   cost: 0
+  maxHealth: 0
   health: 0
   progressLevel: 0
   attackDamage: 0
   cooldown: 0
   flameParticles: {fileID: 2098788386995052834}
   embersParticles: {fileID: 2098925537403801162}
+--- !u!54 &4727322329798964589
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8467770523811498818}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &2297310267031633282
 PrefabInstance:
   m_ObjectHideFlags: 0
