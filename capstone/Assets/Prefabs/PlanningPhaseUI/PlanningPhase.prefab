@@ -2929,7 +2929,7 @@ PrefabInstance:
       objectReference: {fileID: 4906208120328015543}
     - target: {fileID: 4214530061545534888, guid: a7baa03507fbde84c999a2bb8fe62881, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 172.0002
+      value: 172.00021
       objectReference: {fileID: 0}
     - target: {fileID: 4529450663262753977, guid: a7baa03507fbde84c999a2bb8fe62881, type: 3}
       propertyPath: m_fontSize
@@ -3175,6 +3175,14 @@ PrefabInstance:
       propertyPath: mapManager
       value: 
       objectReference: {fileID: 9137034981382039019}
+    - target: {fileID: 8893427538465876523, guid: a7baa03507fbde84c999a2bb8fe62881, type: 3}
+      propertyPath: supportStructurePrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893427538465876523, guid: a7baa03507fbde84c999a2bb8fe62881, type: 3}
+      propertyPath: supportStructurePrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 8274411752445798367, guid: 2c3ff8699b380ea41a582567f12d986c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -84,7 +84,7 @@ public class StructureInfo : MonoBehaviour
     public void SetInfoBasedOnSelectedObject(GameObject obj) {
         Structure structure= obj.GetComponent<Structure>();
         structureName.text = structure.GetStructureName();
-        healthText.text = "Health: " + structure.GetHealth();
+        healthText.text = "Health: " + structure.GetMaxHealth();
         costText.text = "Cost: " + structure.GetCost();
         structureDescription.text = structure.GetDescription();
     }
