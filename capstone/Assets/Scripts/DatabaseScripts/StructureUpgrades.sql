@@ -49,21 +49,21 @@ VALUES
     (30, "Lv.5 That's a lot of heat!", "Each time an enemy touches the wall, they tae 25 damage.", "Sprites/PlanningPhase/wallIconFirewall", 0, 50, 2),
 -- Idol Upgrades
     --Idol Upgrade Slot 0
-    (31, "Lv.1 Healing Aura", "All allies within range, heal 2 health every 10 seconds.", "Sprites/PlanningPhase/wallIconFirewall", 0, 50, 3),
-    (32, "Lv.2 Healing Aura", "All allies within range, heal 3 health every 10 seconds.", "Sprites/PlanningPhase/wallIconFirewall", 0, 50, 3),
-    (33, "Lv.3 Healing Aura", "All allies within range, heal 4 health every 10 seconds.", "Sprites/PlanningPhase/wallIconFirewall", 0, 50, 3),
-    (34, "Lv.4 Healing Aura", "All allies within range, heal 5 health every 10 seconds.", "Sprites/PlanningPhase/wallIconFirewall", 0, 50, 3),
-    (35, "Lv.5 Healing Aura", "All allies within range, heal 6 health every 10 seconds.", "Sprites/PlanningPhase/wallIconFirewall", 0, 50, 3),
+    (31, "Lv.1 Healing Aura", "All allies within range, heal 2 health every 10 seconds.", "Sprites/PlanningPhase/idolIconHealingAura", 0, 50, 3),
+    (32, "Lv.2 Healing Aura", "All allies within range, heal 3 health every 10 seconds.", "Sprites/PlanningPhase/idolIconHealingAura", 0, 50, 3),
+    (33, "Lv.3 Healing Aura", "All allies within range, heal 4 health every 10 seconds.", "Sprites/PlanningPhase/idolIconHealingAura", 0, 50, 3),
+    (34, "Lv.4 Healing Aura", "All allies within range, heal 5 health every 10 seconds.", "Sprites/PlanningPhase/idolIconHealingAura", 0, 50, 3),
+    (35, "Lv.5 Healing Aura", "All allies within range, heal 6 health every 10 seconds.", "Sprites/PlanningPhase/idolIconHealingAura", 0, 50, 3),
     --Idol Upgrade Slot 1
-    (36, "Lv.1 Faster Healing", "Heals 0.5x faster.", "Sprites/PlanningPhase/wallIconFirewall", 0, 50, 3),
-    (37, "Lv.2 Faster Healing", "Heals 0.5x faster.", "Sprites/PlanningPhase/wallIconFirewall", 0, 50, 3),
-    (38, "Lv.3 Faster Healing", "Heals 0.5x faster.", "Sprites/PlanningPhase/wallIconFirewall", 0, 50, 3),
-    (39, "Lv.4 Faster Healing", "Heals 0.5x faster.", "Sprites/PlanningPhase/wallIconFirewall", 0, 50, 3),
-    (40, "Lv.5 Faster Healing", "Heals 0.5x faster.", "Sprites/PlanningPhase/wallIconFirewall", 0, 50, 3),
+    (36, "Lv.1 Faster Healing", "Heals 0.5x faster.", "Sprites/PlanningPhase/idolIconFasterHealing", 0, 50, 3),
+    (37, "Lv.2 Faster Healing", "Heals 0.5x faster.", "Sprites/PlanningPhase/idolIconFasterHealing", 0, 50, 3),
+    (38, "Lv.3 Faster Healing", "Heals 0.5x faster.", "Sprites/PlanningPhase/idolIconFasterHealing", 0, 50, 3),
+    (39, "Lv.4 Faster Healing", "Heals 0.5x faster.", "Sprites/PlanningPhase/idolIconFasterHealing", 0, 50, 3),
+    (40, "Lv.5 Faster Healing", "Heals 0.5x faster.", "Sprites/PlanningPhase/idolIconFasterHealing", 0, 50, 3),
     --Idol Upgrade Slot 2
-    (41, "Lv.1 Bigger Aura", "Healing range is 0.5x bigger.", "Sprites/PlanningPhase/wallIconFirewall", 0, 50, 3),
-    (42, "Lv.2 Bigger Aura", "Healing range is 0.5x bigger.", "Sprites/PlanningPhase/wallIconFirewall", 0, 50, 3),
-    (43, "Lv.3 Bigger Aura", "Healing range is 0.5x bigger.", "Sprites/PlanningPhase/wallIconFirewall", 0, 50, 3),
-    (44, "Lv.4 Bigger Aura", "Healing range is 0.5x bigger.", "Sprites/PlanningPhase/wallIconFirewall", 0, 50, 3),
-    (45, "Lv.5 Bigger Aura", "Healing range is 0.5x bigger.", "Sprites/PlanningPhase/wallIconFirewall", 0, 50, 3)
+    (41, "Lv.1 Bigger Aura", "Healing range is 0.5x bigger.", "Sprites/PlanningPhase/idolIconBiggerAura", 0, 50, 3),
+    (42, "Lv.2 Bigger Aura", "Healing range is 0.5x bigger.", "Sprites/PlanningPhase/idolIconBiggerAura", 0, 50, 3),
+    (43, "Lv.3 Bigger Aura", "Healing range is 0.5x bigger.", "Sprites/PlanningPhase/idolIconBiggerAura", 0, 50, 3),
+    (44, "Lv.4 Bigger Aura", "Healing range is 0.5x bigger.", "Sprites/PlanningPhase/idolIconBiggerAura", 0, 50, 3),
+    (45, "Lv.5 Bigger Aura", "Healing range is 0.5x bigger.", "Sprites/PlanningPhase/idolIconBiggerAura", 0, 50, 3)
     ;

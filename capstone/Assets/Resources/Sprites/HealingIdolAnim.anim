@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: healingIdol
+  m_Name: HealingIdolAnim
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,9 +21,9 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 21300000, guid: 6b35a073d8eb38a49b91851a733734fd, type: 3}
+      value: {fileID: 21300000, guid: 3b213207bb5efb446b23edea60177887, type: 3}
     - time: 0.083333336
-      value: {fileID: 21300000, guid: 6a5a28648f3b8dc4ab943b612315591d, type: 3}
+      value: {fileID: 21300000, guid: 99a055fda7b788a488a31a4f9c59ddaa, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,8 +46,8 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 6b35a073d8eb38a49b91851a733734fd, type: 3}
-    - {fileID: 21300000, guid: 6a5a28648f3b8dc4ab943b612315591d, type: 3}
+    - {fileID: 21300000, guid: 3b213207bb5efb446b23edea60177887, type: 3}
+    - {fileID: 21300000, guid: 99a055fda7b788a488a31a4f9c59ddaa, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
