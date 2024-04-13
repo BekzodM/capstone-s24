@@ -28,13 +28,12 @@ public abstract class Trap : Structure
     {
         if (isAttacking && Time.time >= nextCooldown)
         {
-            if (targetEnemy == null && enemiesInZone.Count > 0)
+            foreach (var enemy in enemiesInZone)
             {
-                targetEnemy = enemiesInZone[0];
-            }
-            if (targetEnemy != null)
-            {
-                Attack(targetEnemy);
+                if (enemy != null)
+                {
+                    Attack(enemy);
+                }
                 nextCooldown = Time.time + cooldown;
             }
         }

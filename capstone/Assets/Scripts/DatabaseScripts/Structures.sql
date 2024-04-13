@@ -65,4 +65,26 @@ VALUES
         100,
         50,
         1
+    ),
+    (
+        6,
+        "PoisonTrap",
+        "Trap",
+        "A basic Poison trap",
+        "Sprites/PlanningPhase/turretIcon",
+        2,
+        100,
+        50,
+        1
+    ),
+    (
+        7,
+        "PlasmaTrap",
+        "Trap",
+        "A basic Plasma trap",
+        "Sprites/PlanningPhase/turretIcon",
+        2,
+        100,
+        50,
+        1
     );
