@@ -10,37 +10,32 @@ using Unity.VisualScripting;
 
 public class SimpleDB : MonoBehaviour
 {
-    private string dbName = "URI=file:GameData.db";
     // Start is called before the first frame update
+
+    private DatabaseWrapper databaseWrapper = new DatabaseWrapper();
+
     void Start()
     {
-        CreateDB();
-    }
 
-    public void CreateDB()
-    {
-        //Create the db connection
-        using (var connection = new SqliteConnection(dbName))
+        string databasePath = "GameData.db"; // Replace "your_database.db" with the path to your SQLite database file
+
+        if (File.Exists(databasePath))
         {
-            connection.Open();
-
-            // Read the SQL script from file
-            string sqlScript = File.ReadAllText("Assets/Scripts/DatabaseScripts/CreateDB.sql");
-
-
-            //set up an object (called "command") to allow db control
-            using (var command = connection.CreateCommand())
-            {
-                //create tables using sql commands from createdb.sql
-                command.CommandText = sqlScript;
-
-                //run the command
-                command.ExecuteNonQuery();
-
-            }
-
-            connection.Close();
+            Debug.Log("The database file exists.");
+            // Do something if the file exists, like open the database connection
         }
+        else
+        {
+            Debug.Log("The database file does not exist.");
+            //create DB
+            databaseWrapper.databaseInit();
+            //database created in project root
+
+            //Insert your stuff, put path of your sql file
+            databaseWrapper.InsertImmutables("Assets/Scripts/DatabaseScripts/Structures.sql");
+            databaseWrapper.InsertImmutables("Assets/Scripts/DatabaseScripts/StructureUpgrades.sql");
+        }
+
     }
 
 
