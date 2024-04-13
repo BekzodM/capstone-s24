@@ -9,6 +9,7 @@ public abstract class Structure : MonoBehaviour
     [SerializeField] protected string description;
     [SerializeField] protected string structureType;
     [SerializeField] protected int cost;
+    [SerializeField] protected int maxHealth;
     [SerializeField] protected int health;
     [SerializeField] protected int progressLevel;
     [SerializeField] protected int attackDamage;
@@ -31,7 +32,8 @@ public abstract class Structure : MonoBehaviour
         this.description = description;
         structureType = type;
         this.cost = cost;
-        this.health = health;
+        this.maxHealth = health;
+        this.health = maxHealth;
         this.progressLevel = progressLevel;
         structureWorth = cost;
     }
@@ -67,6 +69,7 @@ public abstract class Structure : MonoBehaviour
         upgradesInfo = gameObject.AddComponent<StructureUpgradesInfo>();
         tooltipHover = gameObject.AddComponent<TooltipHover>();
         tooltipHover.type = TooltipHover.HoverType.Structure;
+        health = maxHealth;
     }
 
     protected virtual void SetStructureProperties() {
@@ -77,15 +80,18 @@ public abstract class Structure : MonoBehaviour
         SetDescription(results[0,3]);
         SetImagePath(results[0,4]);
         SetAttackDamage(int.Parse(results[0,5]));
-        SetHealth(int.Parse(results[0,6]));
+        SetMaxHealth(int.Parse(results[0,6]));
         SetCost(int.Parse(results[0,7]));
         SetProgressLevel(int.Parse(results[0,8]));
         SetStructureWorth(cost);
     }
 
     public void TakeDamage(int damage) {
+        if (damage <= 0) {
+            Debug.LogError("Damage must be greater than 0");
+        }
         if (health - damage <= 0) {
-            SetHealth(0);
+            SetMaxHealth(0);
             PlaceStructure placeStructComponent = FindObjectOfType<PlaceStructure>();
             if (placeStructComponent != null) {
                 placeStructComponent.RemoveStructurePlacement(gameObject);
@@ -95,7 +101,20 @@ public abstract class Structure : MonoBehaviour
             Destroy(gameObject);
         }
         else{
-            SetHealth(health-damage);
+            health -= damage;
+        }
+    }
+
+    public void HealHealth(int heal) {
+        if (heal <= 0) {
+            Debug.LogError("Heal must be greater than 0");
+        }
+        if (health + heal > maxHealth)
+        {
+            SetMaxHealth(maxHealth);
+        }
+        else {
+            health += heal;
         }
     }
 
@@ -124,9 +143,9 @@ public abstract class Structure : MonoBehaviour
         return cost;
     }
 
-    public int GetHealth()
+    public int GetMaxHealth()
     {
-        return health;
+        return maxHealth;
     }
 
     public int GetProgressLevel()
@@ -164,7 +183,7 @@ public abstract class Structure : MonoBehaviour
         structureInfo[0] = GetStructureName();
         structureInfo[1] = GetStructureType();
         structureInfo[2] = GetDescription();
-        structureInfo[3] = "Health: " + GetHealth().ToString();
+        structureInfo[3] = "Health: " + GetMaxHealth().ToString();
         structureInfo[4] = "Attack: " + GetAttackDamage().ToString();
         structureInfo[5] = "Worth: " + GetStructureWorth().ToString();
         return structureInfo;
@@ -195,9 +214,9 @@ public abstract class Structure : MonoBehaviour
         cost = c;
     }
 
-    protected void SetHealth(int h)
+    protected void SetMaxHealth(int h)
     {
-        health = h;
+        maxHealth = h;
     }
 
     protected void SetProgressLevel(int level) {

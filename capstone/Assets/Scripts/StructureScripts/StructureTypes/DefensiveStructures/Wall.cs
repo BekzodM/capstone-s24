@@ -32,39 +32,44 @@ public class Wall : Defensive
 
     public override void StartDefensiveAttack(GameObject other) { 
         base.StartDefensiveAttack(other);
-        Debug.Log("Start Defensive Wall Attack");
+        //Debug.Log("Start Defensive Wall Attack");
     }
 
     public override void EndDefensiveAttack(GameObject other)
     {
         base.EndDefensiveAttack(other);
-        Debug.Log("End Defensive Wall Attack");
+        //Debug.Log("End Defensive Wall Attack");
     }
 
     //upgrades
     //slot0
     protected override void Slot0UpgradeLevel1()
     {
+        maxHealth += 100;
         health += 100;
     }
 
     protected override void Slot0UpgradeLevel2()
     {
+        maxHealth += 100;
         health += 100;
     }
 
     protected override void Slot0UpgradeLevel3()
     {
+        maxHealth += 100;
         health += 100;
     }
 
     protected override void Slot0UpgradeLevel4()
     {
+        maxHealth += 100;
         health += 100;
     }
 
     protected override void Slot0UpgradeLevel5()
     {
+        maxHealth += 100;
         health += 100;
     }
     //slot1

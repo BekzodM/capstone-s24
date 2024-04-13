@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
 
     //private PlayerInput playerInput;
 
+    private Animator animator;
+
+
     private Rigidbody rb;
     [SerializeField] private float movementForce = 5f;
     [SerializeField] private float jumpForce = 5f;
@@ -62,6 +65,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         playerCamera = Camera.main;
+        animator = GetComponent<Animator>();
         rb = this.GetComponent<Rigidbody>();
         //playerInput = GetComponent<PlayerInput>();
         //movement = playerInput.actions["Movement"];
@@ -121,6 +125,14 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (movement.ReadValue<Vector2>() != Vector2.zero)
+        {
+            animator.SetBool("Is_Walking", true);
+        }
+        else
+        {
+            animator.SetBool("Is_Walking", false);
+        }
         // Player movement
         if (activeActionMap == ActiveActionMap.Player)
         {
