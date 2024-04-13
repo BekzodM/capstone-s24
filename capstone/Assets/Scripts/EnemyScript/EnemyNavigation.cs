@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -19,7 +20,7 @@ public class EnemyNavigation : MonoBehaviour
         enemy = GetComponent<NavMeshAgent>();
         whatIsPlayer = 1 << LayerMask.NameToLayer("Player");
         sightRange = 10;
-        attackRange = 5;
+        attackRange = 2;
     }
 
     
@@ -35,9 +36,11 @@ public class EnemyNavigation : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if(!playerInSightRange && !playerInAttackRange) enemy.SetDestination(homeBase.position);
-        if(playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if(playerInSightRange && playerInAttackRange) AttackPlayer();
+        //if(!playerInSightRange && !playerInAttackRange && !DestinationReachable()) enemy.SetDestination(homeBase.position);
+        if(playerInSightRange && !playerInAttackRange && DestinationReachable()) ChasePlayer();
+        else if(playerInSightRange && playerInAttackRange) AttackPlayer();
+        else enemy.SetDestination(homeBase.position);
+
         
     }
 
@@ -49,7 +52,14 @@ public class EnemyNavigation : MonoBehaviour
 
     void AttackPlayer()
     {
-        enemy.SetDestination(transform.position);
+        enemy.ResetPath();
         transform.LookAt(player);
+    }
+
+    bool DestinationReachable(){
+        NavMeshHit hit;
+        bool isReachable = NavMesh.SamplePosition(player.position, out hit, 1f, NavMesh.AllAreas);
+
+        return isReachable;
     }
 }
