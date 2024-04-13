@@ -121,4 +121,49 @@ public class PlaceStructure : MonoBehaviour
     public void RemoveStructurePlacement(GameObject obj) {
         structures.Remove(obj);
     }
+
+    public void ActivateStructureAreaZoneColliders(bool activate) {
+        foreach (GameObject structure in structures) {
+            GameObject areaZone = structure.transform.GetChild(0).gameObject;
+            if (areaZone != null)
+            {
+                if (areaZone.GetComponent<AreaZone>())
+                {
+                    Collider collider = areaZone.GetComponent<Collider>();
+                    if (collider != null)
+                    {
+                        collider.enabled = activate;
+                    }
+                    else {
+                        Debug.LogError("Structure collider is missing");
+                    }
+                }
+                else {
+                    Debug.LogError("Area zone script is missing");
+                }
+            }
+            else {
+                Debug.LogError("areaZone GameObject is null");
+            }
+        }
+    }
+
+    public void ActivateStructureAreaZoneMesh(bool activate) {
+        foreach (GameObject structure in structures) {
+            GameObject areaZone = structure.transform.GetChild(0).gameObject;
+            if (areaZone != null)
+            {
+                MeshRenderer render = areaZone.GetComponent<MeshRenderer>();
+                if (render != null) {
+                    render.enabled = activate;
+                }
+                else {
+                    Debug.LogError("Mesh Render is missing");
+                }
+            }
+            else {
+                Debug.LogError("Area zone GameObject is null");
+            }
+        }
+    }
 }
