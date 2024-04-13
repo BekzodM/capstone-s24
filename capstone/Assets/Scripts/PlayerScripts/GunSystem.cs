@@ -14,22 +14,22 @@ public class GunSystem : MonoBehaviour
     private bool isAiming = false;            // To determine how accurate the spread is
     private bool readyToShoot = true;
     private bool reloading = false;
-    private bool allowButtonHold = true;    // Allow for player to hold down and continuously shoot
+    [SerializeField] private bool allowButtonHold = true;    // Allow for player to hold down and continuously shoot
     private bool shouldSpread = false;      // Indicates WHEN to spread
     private bool allowSpread = false;       // Determines IF the weapon can spread
 
-    private int damage = 10;
-    private int magazineSize = 100;
+    [SerializeField] private int damage = 10;
+    [SerializeField] private int magazineSize = 100;
     private int bulletsLeft;
-    private int bulletsPerTap = 10;  // How many bullets to shoot out
+    [SerializeField] private int bulletsPerTap = 10;  // How many bullets to shoot out
     private int burstRounds = 3;    // How many shots to shoot consecutively after one click
     private int bulletsShot = 0;    // The amount of bullets fired consecutively per click (counter)
 
-    private float timeBetweenShooting = 1.1f;   // Time between shots being reset & player input clicks (fire rate)
-    private float timeBetweenShots = .0f;       // Time between consecutive shots (per click)  // 0f for shotgun, > 0f for burst
-    private float reloadTime = 2f;
-    private float spread = .02f;
-    private float steadyAimTime = .5f;  // The time it takes after the first shot/click to steady the gun
+    [SerializeField] private float timeBetweenShooting = 1.1f;   // Time between shots being reset & player input clicks (fire rate)
+    [SerializeField] private float timeBetweenShots = .0f;       // Time between consecutive shots (per click)  // 0f for shotgun, > 0f for burst
+    [SerializeField] private float reloadTime = 2f;
+    [SerializeField] private float spread = .02f;
+    [SerializeField] private float steadyAimTime = .5f;  // The time it takes after the first shot/click to steady the gun
     /* gun type will determine allow to hold*/
 
     // All instantiated bullets will belong to this parent to make it so the hierarchy doesn't get messy

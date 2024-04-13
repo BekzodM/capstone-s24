@@ -69,7 +69,7 @@ public class BattlePhaseController : MonoBehaviour
             numberOfWaves++;
             countdown = 5f;
             roundComplete = false;
-            player.transform.GetChild(2).gameObject.GetComponent<Player>().ToggleCursorUnlocked();
+            //player.transform.GetChild(2).gameObject.GetComponent<Player>().ToggleCursorUnlocked();
             player.SetActive(false);
             gameObject.SetActive(false);
 
