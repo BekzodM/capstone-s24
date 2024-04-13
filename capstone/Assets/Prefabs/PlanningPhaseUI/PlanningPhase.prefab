@@ -2929,7 +2929,7 @@ PrefabInstance:
       objectReference: {fileID: 4906208120328015543}
     - target: {fileID: 4214530061545534888, guid: a7baa03507fbde84c999a2bb8fe62881, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 172.00021
+      value: -0.0000076293945
       objectReference: {fileID: 0}
     - target: {fileID: 4529450663262753977, guid: a7baa03507fbde84c999a2bb8fe62881, type: 3}
       propertyPath: m_fontSize
@@ -2989,11 +2989,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5103780844134064357, guid: a7baa03507fbde84c999a2bb8fe62881, type: 3}
       propertyPath: m_Size
-      value: 0.40108734
+      value: 0.40108728
       objectReference: {fileID: 0}
     - target: {fileID: 5103780844134064357, guid: a7baa03507fbde84c999a2bb8fe62881, type: 3}
       propertyPath: m_Value
-      value: -0.0000005766399
+      value: 1.0000001
       objectReference: {fileID: 0}
     - target: {fileID: 5228935157186013584, guid: a7baa03507fbde84c999a2bb8fe62881, type: 3}
       propertyPath: m_Colors.m_NormalColor.b
