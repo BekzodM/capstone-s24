@@ -4,61 +4,59 @@ using UnityEngine;
 
 public class BaseDamage : MonoBehaviour
 {
-    public float radius = 0.2f;
-    
-    public Transform basePoint;
-    public GameObject[] allEnemies;
-    public GameObject nearestEnemy;
+    public GameObject battlePhaseControllerObject;
+    private BattlePhaseController battlePhaseController;
+
     float distance;
     float nearestDistance = 100000;
-
-    public int maxHealth = 100;
     int currentHealth;
-
-    public HealthBar healthBar;
 
     void Start()
     {
-        currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
-        nearestEnemy = null;
+        battlePhaseController = battlePhaseControllerObject.GetComponent<BattlePhaseController>();
+
+        currentHealth = battlePhaseController.maxHealth;
+        battlePhaseController.healthBar.SetMaxHealth(battlePhaseController.maxHealth);
+        battlePhaseController.nearestEnemy = null;
     }
 
     private void Update()
     {
-        nearestEnemyFunction();
+        //nearestEnemyFunction();
         baseEnemyAttack();
     }
 
     private void baseEnemyAttack()
     {
-            if (nearestEnemy!= null && Vector3.Distance(basePoint.position, nearestEnemy.transform.position) < radius)
+            nearestEnemyFunction();
+            if (battlePhaseController.nearestEnemy!= null && Vector3.Distance(battlePhaseController.basePoint.position, battlePhaseController.nearestEnemy.transform.position) < battlePhaseController.radius)
             {
-                Destroy(nearestEnemy);
-                nearestEnemy = null;
-                currentHealth -= 5;
-                healthBar.SetHealth(currentHealth);
+                Destroy(battlePhaseController.nearestEnemy);
+                battlePhaseController.nearestEnemy = null;
+                currentHealth -= battlePhaseController.baseDamageAmount;
+                battlePhaseController.healthBar.SetHealth(currentHealth);
+                battlePhaseController.planningPhaseManager.DecreaseBaseHealth(battlePhaseController.baseDamageAmount);
             }
             if (currentHealth <= 0)
             {
             //GAME OVER IMPLEMENT
             //temp delete player to simulate game over
-                Destroy(GameObject.FindGameObjectWithTag("Player"));
+                battlePhaseController.baseAlive = false;
             }
 
     }
     private void nearestEnemyFunction()
     {
-        allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-        if (allEnemies.Length > 0)
+        battlePhaseController.allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if (battlePhaseController.allEnemies.Length > 0)
         {
-            for (int i = 0; i < allEnemies.Length; i++)
+            for (int i = 0; i < battlePhaseController.allEnemies.Length; i++)
             {
-                distance = Vector3.Distance(basePoint.position, allEnemies[i].transform.position);
+                distance = Vector3.Distance(battlePhaseController.basePoint.position, battlePhaseController.allEnemies[i].transform.position);
 
-                if (distance < nearestDistance)
+                if (distance <= nearestDistance)
                 {
-                    nearestEnemy = allEnemies[i];
+                    battlePhaseController.nearestEnemy = battlePhaseController.allEnemies[i];
                     nearestDistance = distance;
                 }
             }

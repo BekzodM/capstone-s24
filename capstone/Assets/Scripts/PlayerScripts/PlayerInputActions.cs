@@ -214,6 +214,118 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""MapView"",
+            ""id"": ""1499f3a7-c628-433f-9934-79b7f1715811"",
+            ""actions"": [
+                {
+                    ""name"": ""Direction"",
+                    ""type"": ""Button"",
+                    ""id"": ""be2fc018-f884-4504-9eb6-94de715ebd96"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Zoom"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""6577af2f-7f22-444a-8de2-2a382eeffcae"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchToPlayerActions"",
+                    ""type"": ""Button"",
+                    ""id"": ""a5b9c96f-085e-4a5c-be46-1b792c4fb6ec"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""CardinalDirection"",
+                    ""id"": ""c5ca591c-a51f-46c5-bb52-e995712d9262"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Direction"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""1268d514-e9fd-4967-954e-d05853a7ec5c"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Direction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""91f27ce8-78d8-4d15-b8aa-463d918c8203"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Direction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""2a2f9784-d0dc-4b77-bf33-c6e9833a9b7b"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Direction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""21ef6c85-4b54-4d34-b61a-ae5722fe6d80"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Direction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bbd3063f-ac30-4f9c-93b3-cab9eab2f4e6"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Zoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9f94bb0c-4902-41fc-bedb-1c10ad8c675b"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""SwitchToPlayerActions"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -239,6 +351,11 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
         m_Player_SwitchToMapActions = m_Player.FindAction("SwitchToMapActions", throwIfNotFound: true);
+        // MapView
+        m_MapView = asset.FindActionMap("MapView", throwIfNotFound: true);
+        m_MapView_Direction = m_MapView.FindAction("Direction", throwIfNotFound: true);
+        m_MapView_Zoom = m_MapView.FindAction("Zoom", throwIfNotFound: true);
+        m_MapView_SwitchToPlayerActions = m_MapView.FindAction("SwitchToPlayerActions", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -390,6 +507,68 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // MapView
+    private readonly InputActionMap m_MapView;
+    private List<IMapViewActions> m_MapViewActionsCallbackInterfaces = new List<IMapViewActions>();
+    private readonly InputAction m_MapView_Direction;
+    private readonly InputAction m_MapView_Zoom;
+    private readonly InputAction m_MapView_SwitchToPlayerActions;
+    public struct MapViewActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public MapViewActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Direction => m_Wrapper.m_MapView_Direction;
+        public InputAction @Zoom => m_Wrapper.m_MapView_Zoom;
+        public InputAction @SwitchToPlayerActions => m_Wrapper.m_MapView_SwitchToPlayerActions;
+        public InputActionMap Get() { return m_Wrapper.m_MapView; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MapViewActions set) { return set.Get(); }
+        public void AddCallbacks(IMapViewActions instance)
+        {
+            if (instance == null || m_Wrapper.m_MapViewActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_MapViewActionsCallbackInterfaces.Add(instance);
+            @Direction.started += instance.OnDirection;
+            @Direction.performed += instance.OnDirection;
+            @Direction.canceled += instance.OnDirection;
+            @Zoom.started += instance.OnZoom;
+            @Zoom.performed += instance.OnZoom;
+            @Zoom.canceled += instance.OnZoom;
+            @SwitchToPlayerActions.started += instance.OnSwitchToPlayerActions;
+            @SwitchToPlayerActions.performed += instance.OnSwitchToPlayerActions;
+            @SwitchToPlayerActions.canceled += instance.OnSwitchToPlayerActions;
+        }
+
+        private void UnregisterCallbacks(IMapViewActions instance)
+        {
+            @Direction.started -= instance.OnDirection;
+            @Direction.performed -= instance.OnDirection;
+            @Direction.canceled -= instance.OnDirection;
+            @Zoom.started -= instance.OnZoom;
+            @Zoom.performed -= instance.OnZoom;
+            @Zoom.canceled -= instance.OnZoom;
+            @SwitchToPlayerActions.started -= instance.OnSwitchToPlayerActions;
+            @SwitchToPlayerActions.performed -= instance.OnSwitchToPlayerActions;
+            @SwitchToPlayerActions.canceled -= instance.OnSwitchToPlayerActions;
+        }
+
+        public void RemoveCallbacks(IMapViewActions instance)
+        {
+            if (m_Wrapper.m_MapViewActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IMapViewActions instance)
+        {
+            foreach (var item in m_Wrapper.m_MapViewActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_MapViewActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public MapViewActions @MapView => new MapViewActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -408,5 +587,11 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnShoot(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
         void OnSwitchToMapActions(InputAction.CallbackContext context);
+    }
+    public interface IMapViewActions
+    {
+        void OnDirection(InputAction.CallbackContext context);
+        void OnZoom(InputAction.CallbackContext context);
+        void OnSwitchToPlayerActions(InputAction.CallbackContext context);
     }
 }

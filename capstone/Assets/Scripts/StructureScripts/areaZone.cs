@@ -8,38 +8,135 @@ public class AreaZone : MonoBehaviour
 
     private void Start()
     {
-        transform.localScale = new Vector3(areaEffectRadius, areaEffectRadius, areaEffectRadius);
+        //transform.localScale = new Vector3(areaEffectRadius,areaEffectRadius,areaEffectRadius);
     }
     private void OnTriggerEnter(Collider other)
     {
-        GameObject gameObjectParent = transform.parent.gameObject;
+        GameObject structure = transform.parent.gameObject;
+        string structureType = structure.GetComponent<Structure>().GetStructureType();
+
         if (other.CompareTag("Enemy"))
         {
-            //Debug.Log("Enemy has entered the trigger zone");
-            Offensive offensiveScript = gameObjectParent.GetComponent<Offensive>();
-            if (offensiveScript != null)
+            if (structureType == "Offensive") {
+                HandleOnTriggerEnterForOffensiveStructures(structure, other.gameObject);
+            }
+            else if (structureType == "Defensive")
             {
-                offensiveScript.StartAttacking(other.gameObject);
+                HandleOnTriggerEnterForDefensiveStructures(structure, other.gameObject);
+            }
+            else if (structureType == "Support")
+            {
+                HandleOnTriggerEnterForSupportStructures(structure, other.gameObject);
+            }
+            else if (structureType == "Trap")
+            {
+                
+            }
+            else
+            {
+                Debug.LogError("Invalid structure type");
+            }
+        }
+        if (other.transform.parent.CompareTag("Structure")) {
+            if (structureType == "Support") {
+                HandleOnTriggerEnterForSupportStructures(structure, other.transform.parent.gameObject);
             }
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        GameObject gameObjectParent = transform.parent.gameObject;
+        GameObject structure = transform.parent.gameObject;
+        string structureType = structure.GetComponent<Structure>().GetStructureType();
+
         if (other.CompareTag("Enemy"))
         {
-            //Debug.Log("Enemy has left the trigger zone");
-            Offensive offensiveScript = gameObjectParent.GetComponent<Offensive>();
-            if (offensiveScript != null)
+            if (structureType == "Offensive")
             {
-                offensiveScript.StopAttacking(other.gameObject);
+                HandleOnTriggerExitForOffensiveStructures(structure, other.gameObject);
+            }
+            else if (structureType == "Defensive")
+            {
+                HandleOnTriggerExitForDefensiveStructures(structure, other.gameObject);
+            }
+            else if (structureType == "Support")
+            {
+                HandleOnTriggerExitForSupportStructures(structure, other.gameObject);
+            }
+            else if (structureType == "Trap")
+            {
+
+            }
+            else {
+                Debug.LogError("Invalid structure type");
+            }
+        }
+        if (other.CompareTag("Structure"))
+        {
+            if (structureType == "Support")
+            {
+                HandleOnTriggerExitForSupportStructures(structure, other.gameObject);
             }
         }
 
     }
-
-    public float GetAreaEffectRadius()
+    
+    private void OnTriggerStay(Collider other)
     {
+        
+    }
+    // Offensive
+    private void HandleOnTriggerEnterForOffensiveStructures(GameObject structure, GameObject other) {
+        Offensive offensiveScript = structure.GetComponent<Offensive>();
+        if (offensiveScript != null)
+        {
+            offensiveScript.StartAttacking(other);
+        }
+    }
+
+    private void HandleOnTriggerExitForOffensiveStructures(GameObject structure, GameObject other) {
+        Offensive offensiveScript = structure.GetComponent<Offensive>();
+        if (offensiveScript != null)
+        {
+            offensiveScript.StopAttacking(other);
+        }
+    }
+
+    //Defensive
+
+    private void HandleOnTriggerEnterForDefensiveStructures(GameObject structure, GameObject other) {
+        Defensive defensiveScript = structure.GetComponent<Defensive>();
+        if (defensiveScript != null)
+        {
+            defensiveScript.StartDefensiveAttack(other);
+        }
+    }
+
+    private void HandleOnTriggerExitForDefensiveStructures(GameObject structure, GameObject other)
+    {
+        Defensive defensiveScript = structure.GetComponent<Defensive>();
+        if (defensiveScript != null)
+        {
+            defensiveScript.EndDefensiveAttack(other);
+        }
+    }
+
+    //Support
+    private void HandleOnTriggerEnterForSupportStructures(GameObject structure, GameObject other) {
+        Support supportScript = structure.GetComponent<Support>();
+        if (supportScript != null) {
+            supportScript.StartSupport(other);
+        }
+    }
+
+    private void HandleOnTriggerExitForSupportStructures(GameObject structure, GameObject other) {
+        Support supportScript = structure.GetComponent<Support>();
+        if (supportScript != null)
+        {
+            supportScript.EndSupport(other);
+        }
+    }
+
+    public float GetAreaEffectRadius() {
         return areaEffectRadius;
     }
 
@@ -48,4 +145,6 @@ public class AreaZone : MonoBehaviour
         areaEffectRadius = radius;
         transform.localScale = new Vector3(areaEffectRadius, areaEffectRadius, areaEffectRadius);
     }
+
+
 }

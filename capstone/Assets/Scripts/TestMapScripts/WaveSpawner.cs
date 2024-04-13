@@ -1,48 +1,93 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 public class WaveSpawner : MonoBehaviour
 {
+    public GameObject battlePhaseControllerObject;
+    private BattlePhaseController battlePhaseController;
 
-    public Transform enemyPrefab;
+    //public GameObject baseObject;
+    //private battlePhaseController battlePhaseController;
 
-    public Transform spawnPoint;
+    private void Start()
+    {
+        battlePhaseController = battlePhaseControllerObject.GetComponent<BattlePhaseController>();
 
-    public float timeBetweenWaves = 5.5f;
-    private float countdown = 2f;
-
-    public Text waveCountdownText;
-
-    private int waveIndex = 0;
+    }
 
     void Update()
     {
-        if (countdown <= 0f && waveIndex < 4)
+        if (!battlePhaseController.roundComplete)  
         {
-            StartCoroutine(SpawnWave());
-            countdown = timeBetweenWaves;
+            battlePhaseController.waveCounter.text = battlePhaseController.waveIndex.ToString();
+            if (battlePhaseController.countdown <= 0f && battlePhaseController.waveIndex < battlePhaseController.numberOfWaves && battlePhaseController.allEnemies.Length == 0)
+            {
+                battlePhaseController.waveIndex++;
+                battlePhaseController.spawning = true;
+                StartCoroutine(SpawnWave());
+            }
+
+            DetermineColorOfCountdown();
+
+            if (battlePhaseController.waveIndex <= battlePhaseController.numberOfWaves && battlePhaseController.countdown > 0f)//timer counting down:
+            {
+                battlePhaseController.countdown -= Time.deltaTime;
+                
+                battlePhaseController.waveCountdownText.text = Mathf.Round(battlePhaseController.countdown).ToString();
+            }
+
+            if (battlePhaseController.waveIndex >= battlePhaseController.numberOfWaves && battlePhaseController.allEnemies.Length == 0 && battlePhaseController.spawning == false)
+            {
+                StartCoroutine(singalComplete());
+                //battlePhaseController.roundComplete = true;
+                battlePhaseController.waveCountdownText.text = "Done";
+            }
         }
-
-        countdown -= Time.deltaTime;
-
-        waveCountdownText.text = Mathf.Round(countdown).ToString();
     }
 
-    IEnumerator SpawnWave()
+    private void DetermineColorOfCountdown()
     {
-        waveIndex++;
+        if (battlePhaseController.spawning)
+        {
+            battlePhaseController.waveCountdownText.color = Color.red;
+        }
+        else
+        {
+            battlePhaseController.waveCountdownText.color = Color.green;
+        }
+    }
 
-        for (int i = 0; i < waveIndex * 3; i++)
+    IEnumerator SpawnWave() //function to start wave, waiting for previous wave to be complete ( first spawnwave function has to complete before it can get triggered again)
+    {
+        float numEnemies = battlePhaseController.waveIndex * battlePhaseController.numberOfWaves;
+        battlePhaseController.countdown = numEnemies;
+        for (int i = 0; i < numEnemies; i++)
         {
             SpawnEnemy();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f);
         }
+        battlePhaseController.spawning = false;
+        battlePhaseController.waveCountdownText.enabled = false;
+        while (battlePhaseController.allEnemies.Length != 0)
+        {
+            yield return null; // Wait for next frame
+        }
+        battlePhaseController.countdown = battlePhaseController.timeBetweenWaves;
+        battlePhaseController.waveCountdownText.enabled = true;
+        
     }
 
-    void SpawnEnemy()
+    private void SpawnEnemy() //function to spawn enemy
     {
-        Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        Instantiate(battlePhaseController.enemyPrefab, battlePhaseController.spawnPoint.position, battlePhaseController.spawnPoint.rotation);
+    }
+
+    IEnumerator singalComplete()
+    {
+        yield return new WaitForSeconds(battlePhaseController.timeBetweenWaves);
+        battlePhaseController.roundComplete = true;
     }
 
 }

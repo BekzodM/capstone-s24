@@ -12,7 +12,7 @@ public class EnemyNavigation : MonoBehaviour
     void Start()
     {
         enemy = GetComponent<NavMeshAgent>();
-        homeBase = GameObject.Find("Base").transform;
+        homeBase = GameObject.Find("Base Controller").transform;
     }
 
     // Update is called once per frame

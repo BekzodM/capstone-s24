@@ -57,6 +57,7 @@ public abstract class Shooter : Offensive
                         Destroy(muzzleInstance, ps1.main.duration);
                     }
 
+
                     GameObject impactInstance = Instantiate(impact, hit.point, Quaternion.identity);
                     ParticleSystem ps2 = impactInstance.GetComponent<ParticleSystem>();
                     if (ps2 != null)

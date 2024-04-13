@@ -36,6 +36,7 @@ public class PlanningPhaseManager : MonoBehaviour
 
     void Start()
     {
+        StartPlanningPhase();
     }
 
     public void StartPlanningPhase() { 
@@ -45,7 +46,7 @@ public class PlanningPhaseManager : MonoBehaviour
         EnablePlanningPhaseCamera();
 
         //Set all structure's area zone colliders to false
-        ActivateStructureAreaZoneColliders(false);
+        placeStructure.ActivateStructureAreaZoneColliders(false);
     }
 
     //connected to the Start Wave button
@@ -63,8 +64,8 @@ public class PlanningPhaseManager : MonoBehaviour
             dragStructures.HideSelectedStructureAreaZoneMesh();
             dragStructures.SetSelectedObject(null);
 
-            ActivateStructureAreaZoneColliders(true);
-            ActivateStructureAreaZoneMesh(false);
+            placeStructure.ActivateStructureAreaZoneColliders(true);
+            placeStructure.ActivateStructureAreaZoneMesh(false);
         }
     }
 
@@ -119,8 +120,8 @@ public class PlanningPhaseManager : MonoBehaviour
         mapManager.GetBaseHealth();
     }
 
-    public void GetMaxBaseHealth() { 
-        mapManager.GetMaxBaseHealth();
+    public int GetMaxBaseHealth() { 
+        return mapManager.GetMaxBaseHealth();
     }
 
     public void IncreaseBaseHealth(int increase) {
@@ -137,34 +138,6 @@ public class PlanningPhaseManager : MonoBehaviour
 
     public void DecreaseMaxBaseHealth(int decrease) {
         mapManager.DecreaseMaxBaseHealth(decrease);
-    }
-
-    //helper functions
-    private void ActivateStructureAreaZoneColliders(bool activate) {
-        GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("Structure");
-
-        foreach (GameObject obj in objectsWithTag)
-        {
-            GameObject areaZone = obj.transform.GetChild(0).gameObject;
-            if (areaZone != null) { 
-                SphereCollider collider = areaZone.GetComponent<SphereCollider>();
-                collider.enabled = activate;
-            }
-        }
-    }
-
-    private void ActivateStructureAreaZoneMesh(bool activate) {
-        GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("Structure");
-
-        foreach (GameObject obj in objectsWithTag)
-        {
-            GameObject areaZone = obj.transform.GetChild(0).gameObject;
-            if (areaZone != null)
-            {
-                MeshRenderer render= areaZone.GetComponent<MeshRenderer>();
-                render.enabled = activate;
-            }
-        }
     }
 
 }
