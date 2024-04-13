@@ -123,6 +123,15 @@ public class PlayerController : MonoBehaviour
         playerInputActions.Player.Disable();
     }
 
+    public void ToggleCursorUnlocked()
+    {
+        // Toggle cursor lock state between locked and confined to the window
+        Cursor.lockState = CursorLockMode.None;
+
+        // Toggle cursor visibility
+        Cursor.visible = true;
+    }
+
     private void FixedUpdate()
     {
         if (movement.ReadValue<Vector2>() != Vector2.zero)
