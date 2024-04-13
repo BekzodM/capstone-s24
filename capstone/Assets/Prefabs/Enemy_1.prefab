@@ -210,7 +210,7 @@ Transform:
   m_GameObject: {fileID: 3693717713917295803}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.05, z: 1.25}
+  m_LocalPosition: {x: 0, y: 3.5, z: 2.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -293,7 +293,6 @@ MonoBehaviour:
   maxHealth: 100
   healthBar: {fileID: 2312006379510747402}
   attackPoint: {fileID: 1319540451853291672}
-  attackRange: 0.5
   playerTag: Player
 --- !u!195 &5967084027633122930
 NavMeshAgent:
@@ -329,6 +328,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d7558b5ae9384315a1627ed8da1ad8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 0
+  sightRange: 0
+  attackRange: 0
+  playerInSightRange: 0
+  playerInAttackRange: 0
 --- !u!54 &2118584050531182600
 Rigidbody:
   m_ObjectHideFlags: 0
