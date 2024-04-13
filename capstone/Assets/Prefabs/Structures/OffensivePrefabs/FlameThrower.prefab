@@ -267,9 +267,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3082135183863729722}
   - component: {fileID: 3283257571764427742}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FlameThrower
-  m_TagString: Untagged
+  m_TagString: Structure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -307,6 +307,7 @@ MonoBehaviour:
   description: 
   structureType: 
   cost: 0
+  maxHealth: 0
   health: 0
   progressLevel: 0
   attackDamage: 0
@@ -319,9 +320,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2738540285996386078}
     m_Modifications:
+    - target: {fileID: 1112473309193181361, guid: bc558a8a018a9485abddb9bcffd86ae7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3705567541074358175, guid: bc558a8a018a9485abddb9bcffd86ae7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4162324145617320313, guid: bc558a8a018a9485abddb9bcffd86ae7, type: 3}
       propertyPath: m_Name
       value: FlameThrowerEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 4162324145617320313, guid: bc558a8a018a9485abddb9bcffd86ae7, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4690848565400797761, guid: bc558a8a018a9485abddb9bcffd86ae7, type: 3}
       propertyPath: autoRandomSeed

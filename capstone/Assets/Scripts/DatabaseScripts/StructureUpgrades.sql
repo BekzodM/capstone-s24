@@ -703,4 +703,282 @@ VALUES
         2,
         50,
         5
+    ),
+    -- PoisonTrap Upgrades
+    -- PoisonTrap Upgrade Slot 0
+    (
+        76,
+        "Lv.1 More Damage!",
+        "Poison does 2 additional damage",
+        "Sprites/PlanningPhase/turretIconMoreDamage",
+        0,
+        50,
+        6
+    ),
+    (
+        77,
+        "Lv.2 More Damage!",
+        "Poison does 2 additional damagee",
+        "Sprites/PlanningPhase/turretIconMoreDamage",
+        0,
+        50,
+        6
+    ),
+    (
+        78,
+        "Lv.3 More Damage!",
+        "Poison does 2 additional damagee",
+        "Sprites/PlanningPhase/turretIconMoreDamage",
+        0,
+        50,
+        6
+    ),
+    (
+        79,
+        "Lv.4 More Damage!",
+        "Poison does 2 additional damagee",
+        "Sprites/PlanningPhase/turretIconMoreDamage",
+        0,
+        50,
+        6
+    ),
+    (
+        80,
+        "Lv.5 More Damage!",
+        "Poison does 2 additional damagee",
+        "Sprites/PlanningPhase/turretIconMoreDamage",
+        0,
+        50,
+        6
+    ),
+    -- PoisonTrap Upgrade Slot 1
+    (
+        81,
+        "Lv.1 More Speed!",
+        "Poison burns 0.5x faster",
+        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        1,
+        50,
+        6
+    ),
+    (
+        82,
+        "Lv.2 More Speed!",
+        "Poison burns 0.5x faster",
+        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        1,
+        50,
+        6
+    ),
+    (
+        83,
+        "Lv.3 More Speed!",
+        "Poison burns 0.5x faster",
+        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        1,
+        50,
+        6
+    ),
+    (
+        84,
+        "Lv.4 More Speed!",
+        "Poison burns 0.5x faster",
+        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        1,
+        50,
+        6
+    ),
+    (
+        85,
+        "Lv.5 More Speed!",
+        "Poison burns 0.5x faster",
+        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        1,
+        50,
+        6
+    ),
+    -- PoisonTrap Upgrade Slot 2
+    (
+        86,
+        "Lv.1 More Range!",
+        "Poison range is 0.5 bigger",
+        "Sprites/PlanningPhase/turretIconMoreRange",
+        2,
+        50,
+        6
+    ),
+    (
+        87,
+        "Lv.2 More Range!",
+        "Poison range is 0.5 bigger",
+        "Sprites/PlanningPhase/turretIconMoreRange",
+        2,
+        50,
+        6
+    ),
+    (
+        88,
+        "Lv.3 More Range!",
+        "Poison range is 0.5 bigger",
+        "Sprites/PlanningPhase/turretIconMoreRange",
+        2,
+        50,
+        6
+    ),
+    (
+        89,
+        "Lv.4 More Range!",
+        "Poison range is 0.5 bigger",
+        "Sprites/PlanningPhase/turretIconMoreRange",
+        2,
+        50,
+        6
+    ),
+    (
+        90,
+        "Lv.5 More Range!",
+        "Poison range is 0.5 bigger",
+        "Sprites/PlanningPhase/turretIconMoreRange",
+        2,
+        50,
+        6
+    ),
+    -- PlasmaTrap Upgrades
+    -- PlasmaTrap Upgrade Slot 0
+    (
+        91,
+        "Lv.1 More Damage!",
+        "Plasma does 2 additional damage",
+        "Sprites/PlanningPhase/turretIconMoreDamage",
+        0,
+        50,
+        7
+    ),
+    (
+        92,
+        "Lv.2 More Damage!",
+        "Plasma does 2 additional damagee",
+        "Sprites/PlanningPhase/turretIconMoreDamage",
+        0,
+        50,
+        7
+    ),
+    (
+        93,
+        "Lv.3 More Damage!",
+        "Plasma does 2 additional damagee",
+        "Sprites/PlanningPhase/turretIconMoreDamage",
+        0,
+        50,
+        7
+    ),
+    (
+        94,
+        "Lv.4 More Damage!",
+        "Plasma does 2 additional damagee",
+        "Sprites/PlanningPhase/turretIconMoreDamage",
+        0,
+        50,
+        7
+    ),
+    (
+        95,
+        "Lv.5 More Damage!",
+        "Plasma does 2 additional damagee",
+        "Sprites/PlanningPhase/turretIconMoreDamage",
+        0,
+        50,
+        7
+    ),
+    -- PlasmaTrap Upgrade Slot 1
+    (
+        96,
+        "Lv.1 More Speed!",
+        "Plasma burns 0.5x faster",
+        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        1,
+        50,
+        5
+    ),
+    (
+        97,
+        "Lv.2 More Speed!",
+        "Plasma burns 0.5x faster",
+        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        1,
+        50,
+        7
+    ),
+    (
+        98,
+        "Lv.3 More Speed!",
+        "Plasma burns 0.5x faster",
+        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        1,
+        50,
+        7
+    ),
+    (
+        99,
+        "Lv.4 More Speed!",
+        "Plasma burns 0.5x faster",
+        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        1,
+        50,
+        7
+    ),
+    (
+        100,
+        "Lv.5 More Speed!",
+        "Plasma burns 0.5x faster",
+        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        1,
+        50,
+        7
+    ),
+    -- PlasmaTrap Upgrade Slot 2
+    (
+        101,
+        "Lv.1 More Range!",
+        "Plasma range is 0.5 bigger",
+        "Sprites/PlanningPhase/turretIconMoreRange",
+        2,
+        50,
+        7
+    ),
+    (
+        102,
+        "Lv.2 More Range!",
+        "Plasma range is 0.5 bigger",
+        "Sprites/PlanningPhase/turretIconMoreRange",
+        2,
+        50,
+        7
+    ),
+    (
+        103,
+        "Lv.3 More Range!",
+        "Plasma range is 0.5 bigger",
+        "Sprites/PlanningPhase/turretIconMoreRange",
+        2,
+        50,
+        7
+    ),
+    (
+        104,
+        "Lv.4 More Range!",
+        "Plasma range is 0.5 bigger",
+        "Sprites/PlanningPhase/turretIconMoreRange",
+        2,
+        50,
+        7
+    ),
+    (
+        105,
+        "Lv.5 More Range!",
+        "Plasma range is 0.5 bigger",
+        "Sprites/PlanningPhase/turretIconMoreRange",
+        2,
+        50,
+        7
     );
