@@ -26,7 +26,7 @@ public abstract class Structure : MonoBehaviour
 
     protected TooltipHover tooltipHover;
 
-    protected Structure(string name, string description, string type, int cost, int health, int progressLevel, int attackDamage) 
+    protected Structure(string name, string description, string type, int cost, int health, int progressLevel, int attackDamage)
     {
         structureName = name;
         this.description = description;
@@ -38,12 +38,13 @@ public abstract class Structure : MonoBehaviour
         structureWorth = cost;
     }
 
-    protected virtual void Awake() {
+    protected virtual void Awake()
+    {
         areaZone = transform.GetChild(0).gameObject;
 
         databaseWrapper = new DatabaseWrapper();
 
-        upgradeFunctions = new UpgradeFunction[15] { 
+        upgradeFunctions = new UpgradeFunction[15] {
             Slot0UpgradeLevel1,
             Slot0UpgradeLevel2,
             Slot0UpgradeLevel3,
@@ -62,7 +63,8 @@ public abstract class Structure : MonoBehaviour
         };
     }
 
-    protected virtual void Start() {
+    protected virtual void Start()
+    {
         gameObject.tag = "Structure";
         gameObject.layer = LayerMask.NameToLayer("Draggable");
         SetStructureProperties();
@@ -72,7 +74,8 @@ public abstract class Structure : MonoBehaviour
         health = maxHealth;
     }
 
-    protected virtual void SetStructureProperties() {
+    protected virtual void SetStructureProperties()
+    {
         //structure properties
         string[,] results = databaseWrapper.GetData("structures", "structure_name", structureName);
         SetStructureId(int.Parse(results[0,0]));
@@ -93,10 +96,11 @@ public abstract class Structure : MonoBehaviour
         if (health - damage <= 0) {
             SetMaxHealth(0);
             PlaceStructure placeStructComponent = FindObjectOfType<PlaceStructure>();
-            if (placeStructComponent != null) {
+            if (placeStructComponent != null)
+            {
                 placeStructComponent.RemoveStructurePlacement(gameObject);
             }
-            
+
             placeStructComponent.RemoveStructurePlacement(gameObject);
             Destroy(gameObject);
         }
@@ -119,7 +123,8 @@ public abstract class Structure : MonoBehaviour
     }
 
     //Getters
-    public int GetStructureId() {
+    public int GetStructureId()
+    {
         return structureId;
     }
 
@@ -153,15 +158,18 @@ public abstract class Structure : MonoBehaviour
         return progressLevel;
     }
 
-    public int GetStructureWorth() {
+    public int GetStructureWorth()
+    {
         return structureWorth;
     }
 
-    public int GetAttackDamage() {
+    public int GetAttackDamage()
+    {
         return attackDamage;
     }
 
-    public string GetImagePath() {
+    public string GetImagePath()
+    {
         return imagePath;
     }
 
@@ -170,15 +178,18 @@ public abstract class Structure : MonoBehaviour
         return upgradeFunctions;
     }
 
-    public UpgradeFunction GetUpgradeFunction(int index) {
+    public UpgradeFunction GetUpgradeFunction(int index)
+    {
         return upgradeFunctions[index];
     }
 
-    public float GetAreaZoneRadius() { 
+    public float GetAreaZoneRadius()
+    {
         return areaZone.GetComponent<AreaZone>().GetAreaEffectRadius();
     }
 
-    public string[] GetStructureInfo() {
+    public string[] GetStructureInfo()
+    {
         string[] structureInfo = new string[6];
         structureInfo[0] = GetStructureName();
         structureInfo[1] = GetStructureType();
@@ -191,7 +202,8 @@ public abstract class Structure : MonoBehaviour
 
     //Setters
 
-    protected void SetStructureId(int id) {
+    protected void SetStructureId(int id)
+    {
         structureId = id;
     }
     protected void SetStructureName(string structName)
@@ -219,35 +231,42 @@ public abstract class Structure : MonoBehaviour
         maxHealth = h;
     }
 
-    protected void SetProgressLevel(int level) {
-        progressLevel= level;
+    protected void SetProgressLevel(int level)
+    {
+        progressLevel = level;
     }
 
-    public void SetStructureWorth(int worth) {
+    public void SetStructureWorth(int worth)
+    {
         structureWorth = worth;
     }
 
-    protected void SetAttackDamage(int damage) {
+    protected void SetAttackDamage(int damage)
+    {
         attackDamage = damage;
     }
 
-    protected void SetImagePath(string path) { 
-        imagePath= path;
+    protected void SetImagePath(string path)
+    {
+        imagePath = path;
     }
 
     //Area Zone methods
-    protected void SetAreaZoneRadius(float radius) { 
+    protected void SetAreaZoneRadius(float radius)
+    {
         areaZone.GetComponent<AreaZone>().SetAreaEffectRadius(radius);
     }
 
-    public void ShowAreaZone(bool show) { 
+    public void ShowAreaZone(bool show)
+    {
         //areaZone.SetActive(show);
-        areaZone.GetComponent<MeshRenderer>().enabled= show;
-        
+        areaZone.GetComponent<MeshRenderer>().enabled = show;
+
     }
 
     public void ActivateAreaZoneCollider(bool isActive) { 
         areaZone.GetComponent<Collider>().enabled = isActive;
+
     }
 
 
