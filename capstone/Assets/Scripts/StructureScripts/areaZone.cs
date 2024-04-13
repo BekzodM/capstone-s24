@@ -79,7 +79,7 @@ public class AreaZone : MonoBehaviour
         }
 
     }
-
+    
     private void OnTriggerStay(Collider other)
     {
         
@@ -140,7 +140,8 @@ public class AreaZone : MonoBehaviour
         return areaEffectRadius;
     }
 
-    public void SetAreaEffectRadius(float radius) { 
+    public void SetAreaEffectRadius(float radius)
+    {
         areaEffectRadius = radius;
         transform.localScale = new Vector3(areaEffectRadius, areaEffectRadius, areaEffectRadius);
     }

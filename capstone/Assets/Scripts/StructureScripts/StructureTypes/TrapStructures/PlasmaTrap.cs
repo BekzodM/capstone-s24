@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : Shooter
+public class PlasmaTrap : Trap
 {
-    public Turret(string name, string description, int cost, int health, int progressLevel, int attackDamage)
+
+    public PlasmaTrap(string name, string description, int cost, int health, int progressLevel, int attackDamage)
         : base(name, description, cost, health, progressLevel, attackDamage)
     {
     }
 
     protected override void Awake()
     {
-        SetStructureName("Turret");
+        SetStructureName("PlasmaTrap");
+        SetStructureType("Trap");
         base.Awake();
     }
 
@@ -20,31 +22,55 @@ public class Turret : Shooter
         base.Start();
     }
 
-    //upgrades
-    //slot0
+    protected override void Attack(GameObject target)
+    {
+        if (target == null)
+        {
+            Debug.LogWarning("Target is null. Cannot attack.");
+            return;
+        }
+
+
+        DealDamage(target);
+    }
+
+
+    protected override void DealDamage(GameObject target)
+    {
+        if (target != null)
+        {
+            target.GetComponent<Enemy>().TakeDamage(attackDamage, gameObject);
+        }
+        else
+        {
+            //Debug.Log("No valid target to deal damage to");
+        }
+
+    }
+
     protected override void Slot0UpgradeLevel1()
     {
-        attackDamage += 20;
+        attackDamage += 2;
     }
 
     protected override void Slot0UpgradeLevel2()
     {
-        attackDamage += 20;
+        attackDamage += 2;
     }
 
     protected override void Slot0UpgradeLevel3()
     {
-        attackDamage += 20;
+        attackDamage += 2;
     }
 
     protected override void Slot0UpgradeLevel4()
     {
-        attackDamage += 20;
+        attackDamage += 2;
     }
 
     protected override void Slot0UpgradeLevel5()
     {
-        attackDamage += 20;
+        attackDamage += 2;
     }
     //slot1
     protected override void Slot1UpgradeLevel1()
@@ -102,3 +128,5 @@ public class Turret : Shooter
         SetAreaZoneRadius(currentRadius * 0.5f + currentRadius);
     }
 }
+
+

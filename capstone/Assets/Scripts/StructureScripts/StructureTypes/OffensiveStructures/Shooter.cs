@@ -39,7 +39,6 @@ public abstract class Shooter : Offensive
             RaycastHit hit;
             Vector3 startPos = modelHead.position + modelHead.forward * rayDistanceFromHead;
             float distanceToTarget = Vector3.Distance(target.transform.position, startPos);//ray length
-
             if (Physics.Raycast(startPos, direction, out hit, distanceToTarget))
             {
                 Debug.Log(hit.collider.name);
@@ -47,7 +46,6 @@ public abstract class Shooter : Offensive
                 if (hit.collider.gameObject.tag == "Enemy")
                 {
                     DealDamage(hit.collider.gameObject);
-
 
                     //attacking particles
                     GameObject muzzleInstance = Instantiate(muzzle, startPos, Quaternion.identity);
@@ -67,7 +65,6 @@ public abstract class Shooter : Offensive
                         ps2.Play();
                         Destroy(impactInstance, ps2.main.duration);
                     }
-
 
                 }
             }
