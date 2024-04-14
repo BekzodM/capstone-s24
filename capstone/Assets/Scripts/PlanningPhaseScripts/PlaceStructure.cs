@@ -9,6 +9,7 @@ public class PlaceStructure : MonoBehaviour
     public Camera planningCamera;
     public GameObject worldSpaceCanvas;
     public GameObject mapManager;
+    public GameObject message;
 
     HashSet<GameObject> structures; //structures that have been placed down already
 
@@ -50,26 +51,38 @@ public class PlaceStructure : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
-                // Get the hit point and instantiate the prefab
-                Vector3 spawnPosition = hit.point;
-                
-                GameObject prefabInstance = Instantiate(prefab, spawnPosition, Quaternion.identity);
+                if (hit.collider.gameObject.layer == LayerMask.NameToLayer("StructureGround"))
+                {
+                    Debug.Log("Place structure");
+                    // Get the hit point and instantiate the prefab
+                    Vector3 spawnPosition = hit.point;
 
-                prefabInstance.GetComponent<Structure>().ActivateAreaZoneCollider(false);
+                    GameObject prefabInstance = Instantiate(prefab, spawnPosition, Quaternion.identity);
 
-                //structures.Add(prefabInstance);
+                    prefabInstance.GetComponent<Structure>().ActivateAreaZoneCollider(false);
 
-                WorldSpaceCanvas canvas = worldSpaceCanvas.GetComponent<WorldSpaceCanvas>();
-                canvas.SetCanvasParent(prefabInstance.transform);
-                canvas.ShowCanvas(true);
-                canvas.ShowPlacementConfirmationPanel(true);
-                canvas.ShowRotationPanel(true);
-                canvas.ShowSellPanel(false);
+                    //structures.Add(prefabInstance);
 
-                isPlacingStructure = true;
+                    WorldSpaceCanvas canvas = worldSpaceCanvas.GetComponent<WorldSpaceCanvas>();
+                    canvas.SetCanvasParent(prefabInstance.transform);
+                    canvas.ShowCanvas(true);
+                    canvas.ShowPlacementConfirmationPanel(true);
+                    canvas.ShowRotationPanel(true);
+                    canvas.ShowSellPanel(false);
 
-                gameObject.GetComponent<DragStructures>().SetSelectedObject(prefabInstance);
-                
+                    isPlacingStructure = true;
+
+                    gameObject.GetComponent<DragStructures>().SetSelectedObject(prefabInstance);
+                }
+                else {
+                    message.GetComponent<Message>().SetMessageText("Cannot place structure. Move the center of the camera on the avaliable space.");
+                    Debug.Log("Move the camera's center with WASD on avaliable space. Cannot place structure.");
+                }
+            }
+            else
+            {
+                message.GetComponent<Message>().SetMessageText("Cannot place structure. Move the center of the camera on the avaliable space.");
+                Debug.Log("Move the camera's center with WASD on avaliable space. Cannot place structure.");
             }
         }
     }
