@@ -30,7 +30,7 @@ public class AreaZone : MonoBehaviour
             }
             else if (structureType == "Trap")
             {
-                
+                HandleOnTriggerEnterForTrapStructures(structure, other.gameObject);
             }
             else
             {
@@ -64,7 +64,7 @@ public class AreaZone : MonoBehaviour
             }
             else if (structureType == "Trap")
             {
-
+                HandleOnTriggerEnterForTrapStructures(structure, other.gameObject);
             }
             else {
                 Debug.LogError("Invalid structure type");
@@ -133,6 +133,22 @@ public class AreaZone : MonoBehaviour
         if (supportScript != null)
         {
             supportScript.EndSupport(other);
+        }
+    }
+
+    //Trap
+    private void HandleOnTriggerEnterForTrapStructures(GameObject structure, GameObject other) {
+        Trap trapScript = structure.GetComponent<Trap>();
+        if (trapScript != null) {
+            trapScript.StartAttacking(other);
+        }
+    }
+
+    private void HandleOnTriggerExitForTrapStructures(GameObject structure, GameObject other) {
+        Trap trapScript = structure.GetComponent<Trap>();
+        if (trapScript != null)
+        {
+            trapScript.StopAttacking(other);
         }
     }
 
