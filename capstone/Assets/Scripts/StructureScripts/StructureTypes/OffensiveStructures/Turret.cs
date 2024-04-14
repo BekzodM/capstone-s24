@@ -5,7 +5,8 @@ using UnityEngine;
 public class Turret : Shooter
 {
     public Turret(string name, string description, int cost, int health, int progressLevel, int attackDamage)
-        : base(name, description, cost, health, progressLevel, attackDamage) {
+        : base(name, description, cost, health, progressLevel, attackDamage)
+    {
     }
 
     protected override void Awake()
@@ -74,7 +75,7 @@ public class Turret : Shooter
     protected override void Slot2UpgradeLevel1()
     {
         float currentRadius = GetAreaZoneRadius();
-        SetAreaZoneRadius(currentRadius* 0.5f + currentRadius);
+        SetAreaZoneRadius(currentRadius * 0.5f + currentRadius);
     }
 
     protected override void Slot2UpgradeLevel2()

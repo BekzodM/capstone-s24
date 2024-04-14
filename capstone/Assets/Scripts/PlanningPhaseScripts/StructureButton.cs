@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Xml.Serialization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +12,8 @@ public class StructureButton : MonoBehaviour
     private Button button;
     private int tabIndex;
     private int buttonIndex;
+
+    private DatabaseWrapper databaseWrapper = new DatabaseWrapper();
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +26,7 @@ public class StructureButton : MonoBehaviour
         SetButtonText(text);
         ConnectOnClickFunction();
         SetUpIndex(tabIdx, buttonIdx);
+        SetButtonImage(text);
 
         //other methods to change button appearance
     }
@@ -48,6 +53,28 @@ public class StructureButton : MonoBehaviour
         TextMeshProUGUI buttonText = transform.GetComponentInChildren<TextMeshProUGUI>();
         buttonText.text = text;
         buttonName = text;
+    }
+
+    private void SetButtonImage(string name) {
+        string[,] results = databaseWrapper.GetData("structures", "structure_name", name);
+        string imagePath = results[0,4];
+        Texture2D texture = Resources.Load<Texture2D>(imagePath);
+        Sprite loadedSprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
+        if (texture != null)
+        {
+            Image buttonImg = GetComponent<Image>();
+            if (buttonImg != null)
+            {
+                buttonImg.sprite = loadedSprite;
+            }
+            else {
+                Debug.LogError("Image component not found in structureButton");
+            }
+        }
+        else
+        {
+            Debug.LogError("Texture2D not found at path: " + imagePath);
+        }
     }
 
     private void ConnectOnClickFunction()

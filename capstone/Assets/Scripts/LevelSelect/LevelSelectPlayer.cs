@@ -9,7 +9,12 @@ public class LevelSelectPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject currentLevel = GameObject.Find("Level " + GameState.currentProgressLevel);
         characterController = GetComponent<CharacterController>();
+        if(currentLevel != null) {
+            Vector3 levelPosition = currentLevel.transform.position;
+            transform.position = levelPosition;
+        }
         
     }
 

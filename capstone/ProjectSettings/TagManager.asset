@@ -16,11 +16,11 @@ TagManager:
   - Enemy
   - Draggable
   - Levels
-  - 
+  - Player
   - 
   - 
   - Ground
-  - 
+  - StructureGround
   - 
   - 
   - 

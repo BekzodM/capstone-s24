@@ -14,7 +14,7 @@ and draggable layer is set to "Draggable" in the inspector of the PlanningPhaseU
  */
 public class DragStructures : MonoBehaviour
 {
-    public LayerMask groundLayer;
+    public LayerMask structureGroundLayer;
     public LayerMask draggableLayer;
 
     public GameObject worldSpaceCanvas;
@@ -71,9 +71,11 @@ public class DragStructures : MonoBehaviour
                             Debug.Log("You are currently placing a structure. Do not reparent world space canvas.");
                         }
                         else { 
-                            worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().SetCanvasParent(selectedObject.transform);
-                            worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().ShowCanvas(true);
-                            worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().ShowSellPanel(true);
+                            WorldSpaceCanvas worldCanvas = worldSpaceCanvas.GetComponent<WorldSpaceCanvas>();
+                            worldCanvas.SetCanvasParent(selectedObject.transform);
+                            worldCanvas.ShowCanvas(true);
+                            worldCanvas.ShowSellPanel(true);
+                            worldCanvas.ShowRotationPanel(false);
                             
                             StructureInfo structureInfo = FindObjectOfType<StructureInfo>();
                             structureInfo.SetInfoBasedOnSelectedObject(selectedObject);
@@ -121,7 +123,7 @@ public class DragStructures : MonoBehaviour
             Debug.DrawRay(ray.origin, ray.direction * 100f, Color.red, 0.1f);
 
             //moving the selected object to the postions along the ground
-            if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, groundLayer) && isDragging) {
+            if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, structureGroundLayer) && isDragging) {
                 selectedObject.transform.position = hitInfo.point;            
             }
 

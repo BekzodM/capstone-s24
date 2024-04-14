@@ -11,5 +11,80 @@ INSERT INTO
         progress_level
     )
 VALUES
-    (1, "Turret", "Offensive","A basic shooting turret", "Sprites/PlanningPhase/attackIcon", 10, 100, 50, 1),
-    (2, "Wall", "Defensive", "A basic wall", "Sprites/PlanningPhase/attackIcon", 0, 200, 50, 1);
+    (
+        1,
+        "Turret",
+        "Offensive",
+        "A basic shooting turret",
+        "Sprites/PlanningPhase/turretIcon",
+        10,
+        100,
+        50,
+        1
+    ),
+    (
+        2,
+        "Wall",
+        "Defensive",
+        "A basic wall",
+        "Sprites/PlanningPhase/wallIcon",
+        0,
+        200,
+        50,
+        1
+    ),
+    (
+        3,
+        "Idol",
+        "Support",
+        "The idol that heals the heart",
+        "Sprites/PlanningPhase/idolIcon",
+        0,
+        100,
+        50,
+        1
+    ),
+    (
+        4,
+        "FlameThrower",
+        "Offensive",
+        "A basic flamethrower turret",
+        "Sprites/PlanningPhase/turretIcon",
+        2,
+        100,
+        50,
+        1
+    ),
+    (
+        5,
+        "FireTrap",
+        "Trap",
+        "A basic fire trap",
+        "Sprites/PlanningPhase/turretIcon",
+        2,
+        100,
+        50,
+        1
+    ),
+    (
+        6,
+        "PoisonTrap",
+        "Trap",
+        "A basic Poison trap",
+        "Sprites/PlanningPhase/turretIcon",
+        2,
+        100,
+        50,
+        1
+    ),
+    (
+        7,
+        "PlasmaTrap",
+        "Trap",
+        "A basic Plasma trap",
+        "Sprites/PlanningPhase/turretIcon",
+        2,
+        100,
+        50,
+        1
+    );

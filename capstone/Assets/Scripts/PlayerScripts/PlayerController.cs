@@ -7,6 +7,7 @@ using Cinemachine;
 using System.Runtime.Serialization;
 using System;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,11 +15,15 @@ public class PlayerController : MonoBehaviour
     // This class instance will retrieve the inputs the user makes to control the player object
     private PlayerInputActions playerInputActions;
     private InputAction movement;
+    private InputAction mapViewMovement;
     //private InputAction jump;
     ////private InputAction look;
     //private InputAction aim;
 
     //private PlayerInput playerInput;
+
+    private Animator animator;
+
 
     private Rigidbody rb;
     [SerializeField] private float movementForce = 5f;
@@ -29,10 +34,12 @@ public class PlayerController : MonoBehaviour
 
     // Current active camera (main camera)
     // We want our motion to be relative to camera position
-    [SerializeField] private Camera playerCamera;
+    private Camera playerCamera;
 
     [SerializeField] private CinemachineVirtualCamera thirdPersonCamera;
     [SerializeField] private CinemachineVirtualCamera aimCamera;
+    [SerializeField] private CinemachineVirtualCamera mapViewCamera;
+    //[SerializeField] private GameObject topDownLookAt;
     private bool aimCameraActive = false;
 
     //[SerializeField] private GameObject bulletPrefab;
@@ -40,48 +47,25 @@ public class PlayerController : MonoBehaviour
 
     private bool isShooting = false;        // Player bool input
     private bool isAiming = false;
-    //private bool isAiming = false;            // To determine how accurate the spread is
-    //private bool readyToShoot = true;
-    //private bool reloading = false;
-    //private bool allowButtonHold = true;    // Allow for player to hold down and continuously shoot
-    //private bool shouldSpread = false;      // Indicates WHEN to spread
-    //private bool allowSpread = false;       // Determines IF the weapon can spread
 
-    //private int damage = 10;
-    //private int magazineSize = 100;
-    //private int bulletsLeft = 100;
-    //private int bulletsPerTap = 10;  // How many bullets to shoot out
-    //private int burstRounds = 3;    // How many shots to shoot consecutively after one click
-    //private int bulletsShot = 0;    // The amount of bullets fired consecutively per click (counter)
 
-    //private float timeBetweenShooting = 1.1f;   // Time between shots being reset & player input clicks (fire rate)
-    //private float timeBetweenShots = .1f;       // Time between consecutive shots (per click)  // 0f for shotgun, > 0f for burst
-    //private float reloadTime = 2f;
-    //private float spread = .02f;
-    //private float steadyAimTime = .5f;  // The time it takes after the first shot/click to steady the gun
-    ///* gun type will determine allow to hold*/
-
-    //// All instantiated bullets will belong to this parent to make it so the hierarchy doesn't get messy
-    //[SerializeField] private Transform bulletParent;
-    //[SerializeField] private float bulletMissDistance;
 
     private GunSystem gunSystem;
 
-    //[SerializeField] public int test;
-    private enum GunType
+    private enum ActiveActionMap
     {
-        [EnumMember(Value = "SemiAuto")] SemiAuto,      // Pistols, Snipers, Certain rifles
-        [EnumMember(Value = "Burst")] Burst,            // Certain assault rifles (e.g. 3 round burst each trigger press)
-        [EnumMember(Value = "Auto")] Auto,              // Fully automatic assult rifles/Machine guns
-        [EnumMember(Value = "Multishot")] Multishot,    // Shotguns
+        Player,
+        MapView
     }
-    [SerializeField] private GunType gunType;
-    /* semi auto, burst, auto, multishot */
+    private ActiveActionMap activeActionMap;    // Flag to signal which action maps to switch to
+
 
     // Needs to be Awake() so values can be initialized before the OnEnable() & OnDisable() calls
     // (before accessing their methods)
     private void Awake()
     {
+        playerCamera = Camera.main;
+        animator = GetComponent<Animator>();
         rb = this.GetComponent<Rigidbody>();
         //playerInput = GetComponent<PlayerInput>();
         //movement = playerInput.actions["Movement"];
@@ -109,47 +93,75 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
+        activeActionMap = ActiveActionMap.Player;
+
         // NOTE: For some reason, the right mouse button never triggers "started" or "canceled" events
         // But they are subscribed to their respective functions just in case
         // "performed" is currently triggered twice (on-click and on-release of right mouse button)
-        //playerInputActions.Player.Aim.started += AimStart;
         playerInputActions.Player.Aim.performed += Aim;
-        //playerInputActions.Player.Aim.canceled += AimCancel;
         playerInputActions.Player.Shoot.performed += _ => OnShoot();
         playerInputActions.Player.Reload.performed += _ => OnReload();
-        playerInputActions.Player.Jump.performed += Jump; // Subscribe to Jump() method
-        movement = playerInputActions.Player.Movement;  // Get ref to "Movement" action from PlayerInputActions
+        playerInputActions.Player.Jump.performed += Jump;
+        //playerInputActions.Player.SwitchToMapActions.performed += _ => SwitchToMapActions();
+        playerInputActions.Player.SwitchToMapActions.performed += SwitchToMapActions;
+
+        movement = playerInputActions.Player.Movement;  // Get ref to player "Movement" action from PlayerInputActions
+        mapViewMovement = playerInputActions.MapView.Direction; // Get ref to battlefield view movement from PlayerInputActions
+
         playerInputActions.Player.Enable();
     }
 
     private void OnDisable()
     {
-        //playerInputActions.Player.Aim.started -= AimStart;
         playerInputActions.Player.Aim.performed -= Aim;
-        //playerInputActions.Player.Aim.canceled -= AimCancel;
-        playerInputActions.Player.Shoot.performed += _ => OnShoot();
-        playerInputActions.Player.Reload.performed += _ => OnReload();
+        playerInputActions.Player.Shoot.performed -= _ => OnShoot();
+        playerInputActions.Player.Reload.performed -= _ => OnReload();
         playerInputActions.Player.Jump.performed -= Jump;
+        //playerInputActions.Player.SwitchToMapActions.performed -= _ => SwitchToMapActions();
+        playerInputActions.Player.SwitchToMapActions.performed -= SwitchToMapActions;
+
         playerInputActions.Player.Disable();
+    }
+
+    public void ToggleCursorUnlocked()
+    {
+        // Toggle cursor lock state between locked and confined to the window
+        Cursor.lockState = CursorLockMode.None;
+
+        // Toggle cursor visibility
+        Cursor.visible = true;
     }
 
     private void FixedUpdate()
     {
-        //Debug.Log(aim.ReadValue<float>());
-        //if (aim.ReadValue<bool>())
-        //    aimCamera.gameObject.SetActive(true);
-        //else
-        //    aimCamera.gameObject.SetActive(false);
+        if (movement.ReadValue<Vector2>() != Vector2.zero)
+        {
+            animator.SetBool("Is_Walking", true);
+        }
+        else
+        {
+            animator.SetBool("Is_Walking", false);
+        }
+        // Player movement
+        if (activeActionMap == ActiveActionMap.Player)
+        {
+            // Get normalized (horizontal plane) directional XZ values and multiply by the force of movement
+            forceDirection += movement.ReadValue<Vector2>().x * GetCameraRight(playerCamera) * movementForce;
+            forceDirection += movement.ReadValue<Vector2>().y * GetCameraForward(playerCamera) * movementForce;
 
-        // Get normalized (horizontal plane) directional XZ values and multiply by the force of movement
-        forceDirection += movement.ReadValue<Vector2>().x * GetCameraRght(playerCamera) * movementForce;
-        forceDirection += movement.ReadValue<Vector2>().y * GetCameraForward(playerCamera) * movementForce;
-
-        // Update force input
-        // y value comes from Jump() callback
-        rb.AddForce(forceDirection, ForceMode.Impulse);
-        // Helps player come to a full stop after releasing the key instead of continuing to accelerate
-        forceDirection = Vector3.zero;
+            // Update force input
+            // y value comes from Jump() callback
+            rb.AddForce(forceDirection, ForceMode.Impulse);
+            // Helps player come to a full stop after releasing the key instead of continuing to accelerate
+            forceDirection = Vector3.zero;
+        }
+        // Top down camera movement
+        else
+        {
+            Vector3 direction = mapViewMovement.ReadValue<Vector2>().x * GetCameraRight(playerCamera) * movementForce;
+            //topDownLookAt.transform.Translate(new Vector3(playerCamera.transform.position.x + direction.x, playerCamera.transform.position.y, playerCamera.transform.position.z + direction.z));
+            //mapViewCamera.gameObject.transform.GetChild(0).gameObject.transform = new Vector3(playerCamera.transform.position.x + direction.x, playerCamera.transform.y, playerCamera.transform.position.z + direction.z);
+        }
 
         // Remove falling "floaty-ness" during fall by increasing the acceleration
         // AKA make the character fall faster
@@ -218,7 +230,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Project camera right onto a horizontal plane
-    private Vector3 GetCameraRght(Camera playerCamera)
+    private Vector3 GetCameraRight(Camera playerCamera)
     {
         Vector3 right = playerCamera.transform.right;
         right.y = 0f;
@@ -286,36 +298,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //// Never used
-    //private void AimStart(InputAction.CallbackContext context)
-    //{
-    //    Debug.Log("aim start");
-    //    if (context.started)
-    //    {
-    //        aimCamera.gameObject.SetActive(true);
-    //    }
-    //}
 
-    //// Never used
-    //private void AimCancel(InputAction.CallbackContext context)
-    //{
-    //    Debug.Log("aim cancel");
-    //    if (context.canceled)
-    //    {
-    //        aimCamera.gameObject.SetActive(false);
-    //    }
-    //}
-
-    //private void Update()
-    //{
-    //    if (isShooting)
-    //    {
-    //        // rotate
-
-    //        // shoot
-    //        ShootMid();
-    //    }
-    //}
 
     private void OnShoot()
     {
@@ -336,168 +319,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    // THE GUN CLASS METHOD STARTS HERE FOR SHOOT
-    //private void ShootMid()
-    //{
-    //    bulletsShot = bulletsPerTap;
-    //    Shoot();
-    //    //Shoot();
-    //}
 
-    //private void Shoot()
-    //{
-    //    Debug.Log(bulletsLeft);
-
-    //    //if (isShooting && readyToShoot && !reloading && bulletsLeft > 0)
-    //    //{
-    //    readyToShoot = false;
-    //    bulletsLeft--;
-    //    bulletsShot--;
-
-    //    // Bullet instantiate
-
-    //    InstantiateBullet();
-
-
-    //    Invoke(nameof(ResetShot), timeBetweenShooting);
-
-    //    //if (allowButtonHold)    // should switch to auto/semiauto enum
-    //    //{
-    //    /* MIGHT BE ABLE TO SWITCH BACK for fully auto*/
-    //    if (bulletsShot > 0 && bulletsLeft > 0)
-    //        Invoke(nameof(Shoot), timeBetweenShots);    // If held down shoot button
-
-    //    if (allowSpread)
-    //    {
-    //        shouldSpread = true;
-
-    //        Invoke(nameof(SteadyAim), steadyAimTime);
-    //    }
-    //    //}
-
-    //    //shouldSpread = true;
-
-    //    //if (bulletsShot > 0 && bulletsLeft > 0)
-    //    //{
-    //    //    shouldSpread = true;
-    //    //    Debug.Log("test");
-    //    //    float time = timeBetweenShots;
-    //    //    for (int i = 1; i < bulletsPerTap; i++)
-    //    //    {
-    //    //        Invoke(nameof(InstantiateBullet), timeBetweenShots);
-    //    //        time += timeBetweenShots;
-    //    //    }
-    //    //    Invoke(nameof(SteadyAim), steadyAimTime);
-    //    //}
-
-    //    //}
-    //}
-
-
-
-
-
-    //private void Shoot()
-    //{
-    //    Debug.Log(bulletsLeft);
-
-    //    if (isShooting && readyToShoot && !reloading && bulletsLeft > 0)
-    //    {
-    //        readyToShoot = false;
-    //        bulletsLeft--;
-
-    //        // Bullet instantiate
-
-    //        //if (gunType == GunType.SemiAuto || gunType == GunType.Auto)
-    //        // auto vs semi is actually determined by allowButtonHold
-    //        //{
-    //        InstantiateBullet();
-    //        //}
-    //        // handling multiple bullets (SHOTGUNS & BURST RIFLES)
-    //        if (gunType == GunType.Burst || gunType == GunType.Multishot)
-    //        {
-    //            //InstantiateBullet(); // Shoot first bullet
-    //            /* 
-    //             * NOTE: can divide timeBetweenShooting by bulletsPerTap instead to avoid wording similarity confusion (but uses division)
-    //             */
-    //            shouldSpread = true;
-    //            float timeGap = timeBetweenShots;
-    //            for (int i = 1; i < bulletsPerTap; i++)
-    //            {
-    //                ///* Spread */
-    //                //Vector3 direction = playerCamera.transform.forward;
-    //                //if (shouldSpread || gunType == GunType.Shotgun)  // if consecutive shot or a shotgun, spread
-    //                //{
-    //                //    float x = UnityEngine.Random.Range(-spread, spread);
-    //                //    float y = UnityEngine.Random.Range(-spread, spread);
-    //                //    direction = playerCamera.transform.forward + new Vector3(x, y, 0);
-    //                //}
-
-    //                ////  Actual bullet instantiate
-
-    //                //RaycastHit hit;
-    //                //// 2nd arg: position + forward for the position in front of the gun
-    //                //// Bullet direction should face where you are aiming
-    //                //GameObject bullet = GameObject.Instantiate(bulletPrefab, gun.transform.position + gun.transform.forward, Quaternion.identity, bulletParent);
-    //                //BulletController bulletController = bullet.GetComponent<BulletController>();
-
-    //                //// Can specify a 5th arg for a layermask (i.e. if ray hits an "enemy" layermask)
-    //                //// Has to not hit player, so enemy layermask only? and if needed a layermask for terrain?
-    //                //if (Physics.Raycast(playerCamera.transform.position, direction, out hit, Mathf.Infinity))
-    //                //{
-    //                //    bulletController.target = hit.point;
-    //                //    bulletController.hit = true;
-    //                //}
-    //                //else
-    //                //{
-    //                //    // If no target, shoot direction is based off of the position of center of the screen
-    //                //    //bulletController.target = playerCamera.transform.position + playerCamera.transform.forward * bulletMissDistance;
-    //                //    bulletController.target = playerCamera.transform.position + direction * bulletMissDistance;
-    //                //    bulletController.hit = false;
-
-    //                //}
-
-
-
-    //                Invoke(nameof(InstantiateBullet), timeGap);
-
-    //                if (gunType == GunType.Burst)   // only shotguns multiple shots count as 1 shot used
-    //                    bulletsLeft--;
-
-    //                timeGap += timeBetweenShots;
-    //                //Debug.Log("burst");
-    //                //Invoke(nameof(SteadyAim), steadyAimTime);
-    //            }
-
-    //            Invoke(nameof(SteadyAim), steadyAimTime);
-    //        }
-    //        //if (gunType == GunType.Multishot)
-    //        //{
-    //        //    for (int i = 0; i < bulletsPerTap; i++)
-    //        //        InstantiateBullet();
-    //        //    Debug.Log("multi");
-    //        //}
-
-
-    //        Invoke(nameof(ResetShot), timeBetweenShooting);
-
-    //        // AUTOMATIC RIFLE
-    //        if (allowButtonHold)    // should switch to auto/semiauto enum
-    //        {
-    //            /* MIGHT BE ABLE TO SWITCH BACK for fully auto*/
-    //            Invoke(nameof(Shoot), timeBetweenShooting);    // If held down shoot button
-
-    //            shouldSpread = true;    // only spread if for held down weapons
-
-    //            Invoke(nameof(SteadyAim), steadyAimTime);
-    //        }
-    //    }
-    //}
-
-    //private void ResetShot()
-    //{
-    //    readyToShoot = true;
-    //}
 
     //// Player input callback
     private void OnReload()
@@ -506,119 +328,74 @@ public class PlayerController : MonoBehaviour
         gunSystem.OnReload();
     }
 
-    //// Actual reload logic
-    //private void Reload()
-    //{
+    // "m"
+    private void SwitchToMapActions(InputAction.CallbackContext context)
+    {
+        Debug.Log(context.performed);
+        // Switch to MapView actions
+        if (activeActionMap == ActiveActionMap.Player)
+        {
+            Debug.Log("Switch to map view actions");
+            playerInputActions.Player.Aim.performed -= Aim;
+            playerInputActions.Player.Shoot.performed -= _ => OnShoot();
+            playerInputActions.Player.Reload.performed -= _ => OnReload();
+            playerInputActions.Player.Jump.performed -= Jump;
+            //playerInputActions.Player.SwitchToMapActions.performed -= _ => SwitchToMapActions();
+            playerInputActions.Player.SwitchToMapActions.performed -= SwitchToMapActions;
 
-    //    reloading = true;
-    //    Invoke(nameof(ReloadFinished), reloadTime);
-    //}
+            playerInputActions.Player.Disable();
 
-    //private void ReloadFinished()
-    //{
-    //    bulletsLeft = magazineSize;
-    //    reloading = false;
-    //}
+            playerInputActions.MapView.Zoom.performed += _ => Zoom();
+            //playerInputActions.MapView.SwitchToPlayerActions.performed += _ => SwitchToMapActions();
+            playerInputActions.MapView.SwitchToPlayerActions.performed += SwitchToMapActions;
 
-    //private void SteadyAim()
-    //{
-    //    //if (!isShooting)
-    //    //{
+            playerInputActions.MapView.Enable();
 
-    //    // steady aim time MUST BE LONGER than BURST timeBetweenShots * shotsPerTap
-    //    shouldSpread = false;
-    //    Debug.Log("steady");
-    //    //}
-    //}
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
 
-    //private void InstantiateBullet()
-    //{
-    //    Vector3 direction = playerCamera.transform.forward;
-    //    //if (shouldSpread || gunType == GunType.Multishot)  // if consecutive shot or a shotgun, spread
-    //    if (shouldSpread)
-    //    {
-    //        float x = UnityEngine.Random.Range(-spread, spread);
-    //        float y = UnityEngine.Random.Range(-spread, spread);
-    //        direction = playerCamera.transform.forward + new Vector3(x, y, 0);
-    //    }
-
-    //    //  Actual bullet instantiate
-
-    //    RaycastHit hit;
-    //    // 2nd arg: position + forward for the position in front of the gun
-    //    // Bullet direction should face where you are aiming
-    //    GameObject bullet = GameObject.Instantiate(bulletPrefab, gun.transform.position + gun.transform.forward, Quaternion.identity, bulletParent);
-    //    BulletController bulletController = bullet.GetComponent<BulletController>();
-
-    //    // Can specify a 5th arg for a layermask (i.e. if ray hits an "enemy" layermask)
-    //    // Has to not hit player, so enemy layermask only? and if needed a layermask for terrain?
-    //    if (Physics.Raycast(playerCamera.transform.position, direction, out hit, Mathf.Infinity))
-    //    {
-    //        bulletController.target = hit.point;
-    //        bulletController.hit = true;
-    //    }
-    //    else
-    //    {
-    //        // If no target, shoot direction is based off of the position of center of the screen
-    //        //bulletController.target = playerCamera.transform.position + playerCamera.transform.forward * bulletMissDistance;
-    //        bulletController.target = playerCamera.transform.position + direction * bulletMissDistance;
-    //        bulletController.hit = false;
-
-    //    }
-    //}
+            activeActionMap = ActiveActionMap.MapView;
 
 
 
+            aimCamera.gameObject.SetActive(false);
+            thirdPersonCamera.gameObject.SetActive(false);
+        }
+        // Switch to Player actions
+        else
+        {
+            Debug.Log("Switch to player actions");
+            playerInputActions.MapView.Zoom.performed -= _ => Zoom();
+            //playerInputActions.MapView.SwitchToPlayerActions.performed -= _ => SwitchToMapActions();
+            playerInputActions.MapView.SwitchToPlayerActions.performed -= SwitchToMapActions;
+
+            playerInputActions.MapView.Disable();
+
+            playerInputActions.Player.Aim.performed += Aim;
+            playerInputActions.Player.Shoot.performed += _ => OnShoot();
+            playerInputActions.Player.Reload.performed += _ => OnReload();
+            playerInputActions.Player.Jump.performed += Jump;
+            //playerInputActions.Player.SwitchToMapActions.performed += _ => SwitchToMapActions();
+            playerInputActions.Player.SwitchToMapActions.performed += SwitchToMapActions;
+
+            //movement = playerInputActions.Player.Movement;  // Get ref to "Movement" action from PlayerInputActions
+
+            playerInputActions.Player.Enable();
+
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
+            activeActionMap = ActiveActionMap.Player;
 
 
-    //private void InstantiateBullet()
-    //{
-    //    for (int i = 0; i < bulletsPerTap; i++)
-    //    {
-    //        /* Spread */
-    //        Vector3 direction = playerCamera.transform.forward;
-    //        if (shouldSpread || gunType == GunType.Shotgun)  // if consecutive shot or a shotgun, spread
-    //        {
-    //            float x = UnityEngine.Random.Range(-spread, spread);
-    //            float y = UnityEngine.Random.Range(-spread, spread);
-    //            direction = playerCamera.transform.forward + new Vector3(x, y, 0);
-    //        }
 
+            aimCamera.gameObject.SetActive(true);
+            thirdPersonCamera.gameObject.SetActive(true);
+        }
+    }
 
-    //        RaycastHit hit;
-    //        // 2nd arg: position + forward for the position in front of the gun
-    //        // Bullet direction should face where you are aiming
-    //        GameObject bullet = GameObject.Instantiate(bulletPrefab, gun.transform.position + gun.transform.forward, Quaternion.identity, bulletParent);
-    //        BulletController bulletController = bullet.GetComponent<BulletController>();
-
-    //        // Can specify a 5th arg for a layermask (i.e. if ray hits an "enemy" layermask)
-    //        // Has to not hit player, so enemy layermask only? and if needed a layermask for terrain?
-    //        if (Physics.Raycast(playerCamera.transform.position, direction, out hit, Mathf.Infinity))
-    //        {
-    //            bulletController.target = hit.point;
-    //            bulletController.hit = true;
-    //        }
-    //        else
-    //        {
-    //            // If no target, shoot direction is based off of the position of center of the screen
-    //            //bulletController.target = playerCamera.transform.position + playerCamera.transform.forward * bulletMissDistance;
-    //            bulletController.target = playerCamera.transform.position + direction * bulletMissDistance;
-    //            bulletController.hit = false;
-
-    //        }
-    //        //if (gunType == GunType.Rifle)
-    //    }
-
-    //    if (burstRounds > 1)
-    //    {
-    //        float timeBetweenConsecutiveShots = timeBetweenShots / (float)burstRounds;
-    //        float timeToShoot = timeBetweenConsecutiveShots;
-    //        for (int i = 1; i < burstRounds; i++)
-    //        {
-    //            Invoke(nameof(InstantiateBullet), timeToShoot);
-    //            timeToShoot += timeBetweenConsecutiveShots;
-
-    //        }
-    //    }
-    //}
+    private void Zoom()
+    {
+        //playerCamera.transform = Vector3(playerCamera.transform.x, playerCamera.transform + SOMETHING, playerCamera.transform.z);
+    }
 }

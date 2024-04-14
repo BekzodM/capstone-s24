@@ -9,7 +9,7 @@ public abstract class Shooter : Offensive
     public GameObject impact;
 
     public Shooter(string name, string description, int cost, int health, int progressLevel, int attackDamage)
-        : base(name, description, cost, health, progressLevel, attackDamage )
+        : base(name, description, cost, health, progressLevel, attackDamage)
     {
     }
 
@@ -39,28 +39,33 @@ public abstract class Shooter : Offensive
             RaycastHit hit;
             Vector3 startPos = modelHead.position + modelHead.forward * rayDistanceFromHead;
             float distanceToTarget = Vector3.Distance(target.transform.position, startPos);//ray length
-            if (Physics.Raycast(startPos, direction, out hit, distanceToTarget)) {
+            if (Physics.Raycast(startPos, direction, out hit, distanceToTarget))
+            {
                 Debug.Log(hit.collider.name);
                 Debug.DrawLine(startPos, hit.point, Color.blue, 5);
-                if (hit.collider.gameObject.tag == "Enemy") {
+                if (hit.collider.gameObject.tag == "Enemy")
+                {
                     DealDamage(hit.collider.gameObject);
-                    
+
                     //attacking particles
                     GameObject muzzleInstance = Instantiate(muzzle, startPos, Quaternion.identity);
                     ParticleSystem ps1 = muzzle.GetComponent<ParticleSystem>();
-                    
-                    if (ps1 != null) {
+
+                    if (ps1 != null)
+                    {
                         ps1.Play();
                         Destroy(muzzleInstance, ps1.main.duration);
                     }
 
+
                     GameObject impactInstance = Instantiate(impact, hit.point, Quaternion.identity);
                     ParticleSystem ps2 = impactInstance.GetComponent<ParticleSystem>();
-                    if (ps2 != null) {
+                    if (ps2 != null)
+                    {
                         ps2.Play();
                         Destroy(impactInstance, ps2.main.duration);
                     }
-                    
+
                 }
             }
         }
@@ -71,12 +76,13 @@ public abstract class Shooter : Offensive
     {
         if (target != null)
         {
-            target.GetComponent<Enemy>().TakeDamage(attackDamage,gameObject);
+            target.GetComponent<Enemy>().TakeDamage(attackDamage, gameObject);
         }
-        else {
+        else
+        {
             //Debug.Log("No valid target to deal damage to");
         }
-        
+
     }
 
 }

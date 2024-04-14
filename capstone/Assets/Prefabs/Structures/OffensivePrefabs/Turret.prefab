@@ -127,6 +127,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4997073381334681966}
   - component: {fileID: 7907070498450089891}
+  - component: {fileID: 6935474922084810985}
   m_Layer: 7
   m_Name: Turret
   m_TagString: Structure
@@ -167,6 +168,7 @@ MonoBehaviour:
   description: 
   structureType: 
   cost: 0
+  maxHealth: 0
   health: 0
   progressLevel: 0
   attackDamage: 0
@@ -174,6 +176,33 @@ MonoBehaviour:
   rayDistanceFromHead: 1.5
   muzzle: {fileID: 236028636016778209, guid: fd908c94dd27bde40a89a625301fb5f9, type: 3}
   impact: {fileID: 6264440987299713252, guid: 4c83953b5761d9e4b9590e85fa29cb85, type: 3}
+--- !u!54 &6935474922084810985
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3459350931898883265}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4042465573080848128
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,10 +296,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5905312630646424418}
-  - component: {fileID: 3177404798190154492}
+  - component: {fileID: 4082552837021249608}
   m_Layer: 7
   m_Name: turret
-  m_TagString: Untagged
+  m_TagString: Structure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -292,7 +321,7 @@ Transform:
   - {fileID: 7973237527297430583}
   m_Father: {fileID: 4997073381334681966}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3177404798190154492
+--- !u!65 &4082552837021249608
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
