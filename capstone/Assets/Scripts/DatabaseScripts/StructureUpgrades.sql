@@ -293,7 +293,7 @@ VALUES
         31,
         "Lv.1 Healing Aura",
         "All allies within range, heal 2 health every 10 seconds.",
-        "Sprites/PlanningPhase/wallIconFirewall",
+        "Sprites/PlanningPhase/idolIconHealingAura",
         0,
         50,
         3
@@ -302,7 +302,7 @@ VALUES
         32,
         "Lv.2 Healing Aura",
         "All allies within range, heal 3 health every 10 seconds.",
-        "Sprites/PlanningPhase/wallIconFirewall",
+        "Sprites/PlanningPhase/idolIconHealingAura",
         0,
         50,
         3
@@ -311,7 +311,7 @@ VALUES
         33,
         "Lv.3 Healing Aura",
         "All allies within range, heal 4 health every 10 seconds.",
-        "Sprites/PlanningPhase/wallIconFirewall",
+        "Sprites/PlanningPhase/idolIconHealingAura",
         0,
         50,
         3
@@ -320,7 +320,7 @@ VALUES
         34,
         "Lv.4 Healing Aura",
         "All allies within range, heal 5 health every 10 seconds.",
-        "Sprites/PlanningPhase/wallIconFirewall",
+        "Sprites/PlanningPhase/idolIconHealingAura",
         0,
         50,
         3
@@ -329,7 +329,7 @@ VALUES
         35,
         "Lv.5 Healing Aura",
         "All allies within range, heal 6 health every 10 seconds.",
-        "Sprites/PlanningPhase/wallIconFirewall",
+        "Sprites/PlanningPhase/idolIconHealingAura",
         0,
         50,
         3
@@ -339,7 +339,7 @@ VALUES
         36,
         "Lv.1 Faster Healing",
         "Heals 0.5x faster.",
-        "Sprites/PlanningPhase/wallIconFirewall",
+        "Sprites/PlanningPhase/idolIconFasterHealing",
         0,
         50,
         3
@@ -348,7 +348,7 @@ VALUES
         37,
         "Lv.2 Faster Healing",
         "Heals 0.5x faster.",
-        "Sprites/PlanningPhase/wallIconFirewall",
+        "Sprites/PlanningPhase/idolIconFasterHealing",
         0,
         50,
         3
@@ -357,7 +357,7 @@ VALUES
         38,
         "Lv.3 Faster Healing",
         "Heals 0.5x faster.",
-        "Sprites/PlanningPhase/wallIconFirewall",
+        "Sprites/PlanningPhase/idolIconFasterHealing",
         0,
         50,
         3
@@ -366,7 +366,7 @@ VALUES
         39,
         "Lv.4 Faster Healing",
         "Heals 0.5x faster.",
-        "Sprites/PlanningPhase/wallIconFirewall",
+        "Sprites/PlanningPhase/idolIconFasterHealing",
         0,
         50,
         3
@@ -375,7 +375,7 @@ VALUES
         40,
         "Lv.5 Faster Healing",
         "Heals 0.5x faster.",
-        "Sprites/PlanningPhase/wallIconFirewall",
+        "Sprites/PlanningPhase/idolIconFasterHealing",
         0,
         50,
         3
@@ -385,7 +385,7 @@ VALUES
         41,
         "Lv.1 Bigger Aura",
         "Healing range is 0.5x bigger.",
-        "Sprites/PlanningPhase/wallIconFirewall",
+        "Sprites/PlanningPhase/idolIconBiggerAura",
         0,
         50,
         3
@@ -394,7 +394,7 @@ VALUES
         42,
         "Lv.2 Bigger Aura",
         "Healing range is 0.5x bigger.",
-        "Sprites/PlanningPhase/wallIconFirewall",
+        "Sprites/PlanningPhase/idolIconBiggerAura",
         0,
         50,
         3
@@ -403,7 +403,7 @@ VALUES
         43,
         "Lv.3 Bigger Aura",
         "Healing range is 0.5x bigger.",
-        "Sprites/PlanningPhase/wallIconFirewall",
+        "Sprites/PlanningPhase/idolIconBiggerAura",
         0,
         50,
         3
@@ -412,7 +412,7 @@ VALUES
         44,
         "Lv.4 Bigger Aura",
         "Healing range is 0.5x bigger.",
-        "Sprites/PlanningPhase/wallIconFirewall",
+        "Sprites/PlanningPhase/idolIconBiggerAura",
         0,
         50,
         3
@@ -421,7 +421,7 @@ VALUES
         45,
         "Lv.5 Bigger Aura",
         "Healing range is 0.5x bigger.",
-        "Sprites/PlanningPhase/wallIconFirewall",
+        "Sprites/PlanningPhase/idolIconBiggerAura",
         0,
         50,
         3

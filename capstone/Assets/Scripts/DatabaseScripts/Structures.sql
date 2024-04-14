@@ -38,7 +38,7 @@ VALUES
         "Idol",
         "Support",
         "The idol that heals the heart",
-        "Sprites/PlanningPhase/turretIcon",
+        "Sprites/PlanningPhase/idolIcon",
         0,
         100,
         50,
