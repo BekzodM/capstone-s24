@@ -18,6 +18,8 @@ public abstract class Structure : MonoBehaviour
     protected string imagePath;
     protected GameObject areaZone;
 
+    protected HealthBar healthBar;
+
     protected UpgradeFunction[] upgradeFunctions;
 
     protected DatabaseWrapper databaseWrapper;
@@ -41,6 +43,9 @@ public abstract class Structure : MonoBehaviour
     protected virtual void Awake()
     {
         areaZone = transform.GetChild(0).gameObject;
+
+        healthBar = transform.GetChild(2).GetChild(0).GetComponent<HealthBar>();
+        healthBar.SetMaxHealth(maxHealth);
 
         databaseWrapper = new DatabaseWrapper();
 
@@ -93,8 +98,10 @@ public abstract class Structure : MonoBehaviour
         if (damage <= 0) {
             Debug.LogError("Damage must be greater than 0");
         }
+
         if (health - damage <= 0) {
-            SetMaxHealth(0);
+            SetHealth(0);
+            healthBar.SetHealth(0);
             PlaceStructure placeStructComponent = FindObjectOfType<PlaceStructure>();
             if (placeStructComponent != null)
             {
@@ -106,6 +113,7 @@ public abstract class Structure : MonoBehaviour
         }
         else{
             health -= damage;
+            healthBar.SetHealth(health);
         }
     }
 
@@ -151,6 +159,10 @@ public abstract class Structure : MonoBehaviour
     public int GetMaxHealth()
     {
         return maxHealth;
+    }
+
+    public int GetHealth() {
+        return health;
     }
 
     public int GetProgressLevel()
@@ -229,6 +241,10 @@ public abstract class Structure : MonoBehaviour
     protected void SetMaxHealth(int h)
     {
         maxHealth = h;
+    }
+
+    protected void SetHealth(int h) {
+        health = h;
     }
 
     protected void SetProgressLevel(int level)
