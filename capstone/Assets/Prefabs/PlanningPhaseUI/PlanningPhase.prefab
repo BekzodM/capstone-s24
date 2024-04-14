@@ -1226,7 +1226,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3850690441036777135
 Transform:
   m_ObjectHideFlags: 0
@@ -3291,7 +3291,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4214530061545534888, guid: a7baa03507fbde84c999a2bb8fe62881, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000038146973
+      value: 172.00018
       objectReference: {fileID: 0}
     - target: {fileID: 4529450663262753977, guid: a7baa03507fbde84c999a2bb8fe62881, type: 3}
       propertyPath: m_fontSize
@@ -3351,11 +3351,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5103780844134064357, guid: a7baa03507fbde84c999a2bb8fe62881, type: 3}
       propertyPath: m_Size
-      value: 0.40108728
+      value: 0.40108734
       objectReference: {fileID: 0}
     - target: {fileID: 5103780844134064357, guid: a7baa03507fbde84c999a2bb8fe62881, type: 3}
       propertyPath: m_Value
-      value: 1.0000005
+      value: -0.00000048792606
       objectReference: {fileID: 0}
     - target: {fileID: 5228935157186013584, guid: a7baa03507fbde84c999a2bb8fe62881, type: 3}
       propertyPath: m_Colors.m_NormalColor.b
@@ -3365,6 +3365,10 @@ PrefabInstance:
       propertyPath: m_Colors.m_NormalColor.g
       value: 0.3529412
       objectReference: {fileID: 0}
+    - target: {fileID: 5331175946862143853, guid: a7baa03507fbde84c999a2bb8fe62881, type: 3}
+      propertyPath: message
+      value: 
+      objectReference: {fileID: 7726850997192060562}
     - target: {fileID: 5331175946862143853, guid: a7baa03507fbde84c999a2bb8fe62881, type: 3}
       propertyPath: mapManager
       value: 
