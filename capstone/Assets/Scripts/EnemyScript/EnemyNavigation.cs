@@ -9,10 +9,14 @@ public class EnemyNavigation : MonoBehaviour
     Transform homeBase;
     private NavMeshAgent enemy;
     public Transform player;
+    public Vector3 structure;
+    public LayerMask whatIsStructure;
     public LayerMask whatIsPlayer;
 
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
+    public bool structureInSightRange, structureInAttackRange;
+
 
     void Awake()
     {
@@ -33,12 +37,17 @@ public class EnemyNavigation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        structureInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsStructure);
+        structureInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsStructure);
+
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
         //if(!playerInSightRange && !playerInAttackRange && !DestinationReachable()) enemy.SetDestination(homeBase.position);
         if(playerInSightRange && !playerInAttackRange && DestinationReachable()) ChasePlayer();
         else if(playerInSightRange && playerInAttackRange) AttackPlayer();
+        if(structureInSightRange && !structureInAttackRange && DestinationReachable()) ChaseStructure();
+        else if(structureInSightRange && structureInAttackRange) AttackStructure();
         else enemy.SetDestination(homeBase.position);
 
         
@@ -48,6 +57,23 @@ public class EnemyNavigation : MonoBehaviour
     {
         enemy.SetDestination(player.position);
 
+    }
+
+    void ChaseStructure() {
+        // Get the position of the structure
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, sightRange, whatIsStructure);
+        if (hitColliders.Length > 0)
+        {
+            structure = hitColliders[0].transform.position;
+            // Store the position of the first detected structure
+            enemy.SetDestination(structure);
+            // You can also iterate through hitColliders to find the closest or any other criteria
+        }
+    }
+
+    void AttackStructure() {
+        enemy.ResetPath();
+        transform.LookAt(structure);
     }
 
     void AttackPlayer()
