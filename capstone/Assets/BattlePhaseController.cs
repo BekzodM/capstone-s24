@@ -41,15 +41,16 @@ public class BattlePhaseController : MonoBehaviour
     {
         planningPhaseManager = planningPhaseObject.GetComponent<PlanningPhaseManager>();
         maxHealth = planningPhaseManager.GetMaxBaseHealth();
-        currentRound = 0;
+        currentRound = 1;
         levelComplete = false;
+        
 
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
+        planningPhaseManager.SetWave(1);
     }
 
     // Update is called once per frame
@@ -64,7 +65,8 @@ public class BattlePhaseController : MonoBehaviour
         if (roundComplete)
         {
             planningPhaseObject.SetActive(true);
-            currentRound++;
+            //increaseRound();
+            planningPhaseManager.SetWave(increaseRound());
             waveIndex = 0;
             numberOfWaves++;
             countdown = 5f;
@@ -74,6 +76,12 @@ public class BattlePhaseController : MonoBehaviour
             gameObject.SetActive(false);
 
         }
+    }
+
+    int increaseRound()
+    {
+        currentRound++;
+        return currentRound;
     }
 
 }

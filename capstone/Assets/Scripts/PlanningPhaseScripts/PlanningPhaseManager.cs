@@ -99,6 +99,11 @@ public class PlanningPhaseManager : MonoBehaviour
         mapManager.GetTotalWaveNumber();
     }
 
+    public void SetWave(int wave)
+    {
+        mapManager.SetWave(wave);
+    }
+
     public void IncreaseCurrentWaveNumber(int increase) {
         mapManager.IncreaseCurrentWaveNumber(increase);
     }

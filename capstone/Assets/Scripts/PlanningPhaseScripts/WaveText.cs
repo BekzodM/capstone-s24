@@ -29,6 +29,6 @@ public class WaveText : MonoBehaviour
     }
 
     public void ChangeMoneyText(int currWave, int totalWaves) {
-        waveText.text = "Round: " + currentWave.ToString() + '/' + totalWaves.ToString();
+        waveText.text = "Round: " + currWave.ToString() + '/' + totalWaves.ToString();
     }
 }

@@ -27,8 +27,8 @@ public class MapManager : MonoBehaviour
     private int money;
 
     //Waves
-    [SerializeField] private int currentWave = 0;
-    [SerializeField] private int totalWaves = 5;
+    private int currentWave = 1;
+    [SerializeField] public int totalWaves = 5;
 
     //Base HP
     [SerializeField] private int startingBaseHealth = 200;
@@ -174,6 +174,12 @@ public class MapManager : MonoBehaviour
     public int GetTotalWaveNumber()
     {
         return totalWaves;
+    }
+
+    public void SetWave(int waveNumber)
+    {
+        WaveText waveText = planningPhaseUI.GetComponentInChildren<WaveText>();
+        waveText.ChangeMoneyText(waveNumber, totalWaves);
     }
 
     public void IncreaseCurrentWaveNumber(int increase)
