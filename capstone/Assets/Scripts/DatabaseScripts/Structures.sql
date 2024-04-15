@@ -49,7 +49,7 @@ VALUES
         "FlameThrower",
         "Offensive",
         "A basic flamethrower turret",
-        "Sprites/PlanningPhase/turretIcon",
+        "Sprites/PlanningPhase/flameThrowerIcon",
         2,
         100,
         50,
