@@ -45,7 +45,6 @@ public abstract class Structure : MonoBehaviour
         areaZone = transform.GetChild(0).gameObject;
 
         healthBar = transform.GetChild(2).GetChild(0).GetComponent<HealthBar>();
-        healthBar.SetMaxHealth(maxHealth);
 
         databaseWrapper = new DatabaseWrapper();
 
@@ -77,6 +76,8 @@ public abstract class Structure : MonoBehaviour
         tooltipHover = gameObject.AddComponent<TooltipHover>();
         tooltipHover.type = TooltipHover.HoverType.Structure;
         health = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+
     }
 
     protected virtual void SetStructureProperties()
