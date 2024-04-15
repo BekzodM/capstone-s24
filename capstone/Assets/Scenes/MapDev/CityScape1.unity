@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2991,7 +2991,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 2
+    m_Time: 0.1
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -8470,9 +8470,21 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 278957246019099238, guid: a9da540c58f0448999604da04e125810, type: 3}
+      propertyPath: magazineSize
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 278957246019099238, guid: a9da540c58f0448999604da04e125810, type: 3}
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 589814984}
+    - target: {fileID: 278957246019099238, guid: a9da540c58f0448999604da04e125810, type: 3}
+      propertyPath: bulletsPerTap
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 278957246019099238, guid: a9da540c58f0448999604da04e125810, type: 3}
+      propertyPath: timeBetweenShooting
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 360123354315928664, guid: a9da540c58f0448999604da04e125810, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -8572,6 +8584,14 @@ PrefabInstance:
     - target: {fileID: 4507035651625002772, guid: a9da540c58f0448999604da04e125810, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4642918531217247235, guid: a9da540c58f0448999604da04e125810, type: 3}
+      propertyPath: m_ScreenX
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4642918531217247235, guid: a9da540c58f0448999604da04e125810, type: 3}
+      propertyPath: m_ScreenY
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4770887655393396526, guid: a9da540c58f0448999604da04e125810, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8708,6 +8728,14 @@ PrefabInstance:
     - target: {fileID: 8047089678394155975, guid: a9da540c58f0448999604da04e125810, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8087362925711953660, guid: a9da540c58f0448999604da04e125810, type: 3}
+      propertyPath: m_ScreenX
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8087362925711953660, guid: a9da540c58f0448999604da04e125810, type: 3}
+      propertyPath: m_ScreenY
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 8311417104169693546, guid: a9da540c58f0448999604da04e125810, type: 3}
       propertyPath: m_Layer
@@ -9257,7 +9285,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 694117896133927974, guid: 03683157d907419488c137f669e5816d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 172.00032
+      value: 0.000022888184
       objectReference: {fileID: 0}
     - target: {fileID: 740472268170030203, guid: 03683157d907419488c137f669e5816d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

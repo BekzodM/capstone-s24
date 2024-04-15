@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6769213834903564626}
   m_Layer: 6
   m_Name: Face
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 1618896142564058924}
   m_Layer: 6
   m_Name: Canvas (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 1319540451853291672}
   m_Layer: 6
   m_Name: AttackPoint
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -225,11 +225,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6592323667759460898}
-  - component: {fileID: 168322013559213953}
   - component: {fileID: 8992003464461176027}
   - component: {fileID: 5967084027633122930}
   - component: {fileID: 1213398700168087460}
   - component: {fileID: 2118584050531182600}
+  - component: {fileID: 6426095673782059350}
   m_Layer: 6
   m_Name: Enemy_1
   m_TagString: Enemy
@@ -255,29 +255,6 @@ Transform:
   - {fileID: 1319540451853291672}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &168322013559213953
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4179528736186703511}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &8992003464461176027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,6 +333,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &6426095673782059350
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4179528736186703511}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2.138828
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.998665, z: 0}
 --- !u!1 &5258497750960248046
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 2876477554153219980}
   m_Layer: 6
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -452,7 +452,7 @@ GameObject:
   - component: {fileID: 2312006379510747402}
   m_Layer: 6
   m_Name: Health Bar
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -555,7 +555,7 @@ GameObject:
   - component: {fileID: 2880945056023654010}
   m_Layer: 6
   m_Name: Background
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -630,7 +630,7 @@ GameObject:
   - component: {fileID: 4994383224748787241}
   m_Layer: 6
   m_Name: Head
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -713,7 +713,7 @@ GameObject:
   - component: {fileID: 1650213437919413216}
   m_Layer: 6
   m_Name: PlayerVisual
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -769,7 +769,7 @@ GameObject:
   - component: {fileID: 8312148226372799500}
   m_Layer: 6
   m_Name: Health
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

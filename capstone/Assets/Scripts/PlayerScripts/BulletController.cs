@@ -6,8 +6,9 @@ public class BulletController : MonoBehaviour
 {
     //[SerializeField] private GameObject bulletDecal;    // Bullet hole
 
-    private float speed = 50f;
-    private float timeToDestroy = 1f;   // Timer before bullet is destroyed
+    [SerializeField] private float speed = 500f;
+    [SerializeField] private float timeToDestroy = .2f;   // Timer before bullet is destroyed
+    public int damage { get; set; }
 
     public Vector3 target { get; set; }
     public bool hit { get; set; }
@@ -44,13 +45,43 @@ public class BulletController : MonoBehaviour
      OR because the collision needs to be with a rigidbody!!!
     
      most likely the second reason*/
-    private void OnCollisionEnter(Collision collision)
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    // For bullet holes (2 lines of code)
+    //    ContactPoint contact = collision.GetContact(0);
+    //    // arg 2: point + slightly above surface of collided object
+    //    //GameObject.Instantiate(bulletDecal, contact.point + contact.normal * .0001f, Quaternion.LookRotation(contact.normal));
+    //    Debug.Log("on collision");
+    //    Debug.Log(collision.gameObject.tag);
+
+    //    if (collision.gameObject.CompareTag("Enemy"))
+    //    {
+    //        collision.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+    //        Debug.Log("damage enemy");
+    //    }
+
+    //    Destroy(gameObject);
+    //}
+
+    private void OnTriggerEnter(Collider collision)
     {
         // For bullet holes (2 lines of code)
-        ContactPoint contact = collision.GetContact(0);
+        //ContactPoint contact = collision.GetContact(0);
         // arg 2: point + slightly above surface of collided object
         //GameObject.Instantiate(bulletDecal, contact.point + contact.normal * .0001f, Quaternion.LookRotation(contact.normal));
         Debug.Log("on collision");
-        Destroy(gameObject);
+        Debug.Log(collision.gameObject.tag);
+        Debug.Log(collision.gameObject.name);
+
+        // Enemy script attached to root parent enemy object
+        if (collision.transform.root.gameObject.CompareTag("Enemy"))
+        {
+            //collision.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+            collision.transform.root.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+            Debug.Log("damage enemy");
+            Destroy(gameObject);
+        }
+
+        //Destroy(gameObject);
     }
 }
