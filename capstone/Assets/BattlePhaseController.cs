@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BattlePhaseController : MonoBehaviour
 {
@@ -37,6 +38,8 @@ public class BattlePhaseController : MonoBehaviour
     [SerializeField] GameObject player;
     public PlanningPhaseManager planningPhaseManager;
 
+    public GameObject levelOverScene;
+
     private void Awake()
     {
         planningPhaseManager = planningPhaseObject.GetComponent<PlanningPhaseManager>();
@@ -50,12 +53,21 @@ public class BattlePhaseController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        planningPhaseManager.SetWave(1);
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (levelComplete)
+        {
+            player.transform.GetChild(2).gameObject.GetComponent<PlayerController>().ToggleCursorUnlocked();
+            player.SetActive(false);
+            planningPhaseObject.SetActive(false);
+            levelOverScene.SetActive(true);
+            gameObject.SetActive(false);
+
+        }
         if (!baseAlive)
         {
             planningPhaseObject.SetActive(false);
@@ -64,6 +76,11 @@ public class BattlePhaseController : MonoBehaviour
         //round complete will invoke planning phase:
         if (roundComplete)
         {
+            for (int i = 0; i < allEnemies.Length; i++)
+            {
+                Destroy(allEnemies[i].transform);
+            }
+            waitForEnemiesDestroyed();
             planningPhaseObject.SetActive(true);
             //increaseRound();
             planningPhaseManager.SetWave(increaseRound());
@@ -82,6 +99,17 @@ public class BattlePhaseController : MonoBehaviour
     {
         currentRound++;
         return currentRound;
+    }
+
+    IEnumerator waitForEnemiesDestroyed()
+    {
+        yield return (allEnemies.Length == 0);
+    }
+
+    public void restartScene()
+    {
+        print("Button Pressed");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 }
