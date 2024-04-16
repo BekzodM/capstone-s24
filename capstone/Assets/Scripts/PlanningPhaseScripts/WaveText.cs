@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Transactions;
 using TMPro;
 using Unity.PlasticSCM.Editor.WebApi;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WaveText : MonoBehaviour
@@ -15,20 +16,22 @@ public class WaveText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        waveText= GetComponent<TextMeshProUGUI>();
+        waveText = GetComponent<TextMeshProUGUI>();
         mapManager = transform.parent.parent.gameObject.GetComponent<StructureShop>().GetMapManager();
-        if (mapManager == null) {
+        if (mapManager == null)
+        {
             Debug.Log("Connect the MapManager gameobject to the wave text in the inspector");
         }
         MapManager mapManagerComponent = mapManager.GetComponent<MapManager>();
-        
-        
+
+
         currentWave = mapManagerComponent.GetCurrentWaveNumber();
         totalWaves = mapManagerComponent.GetTotalWaveNumber();
-        ChangeMoneyText(currentWave, totalWaves);
+        ChangeWaveText(currentWave, totalWaves);
     }
 
-    public void ChangeMoneyText(int currWave, int totalWaves) {
-        waveText.text = "Wave: " + currentWave.ToString() + '/' + totalWaves.ToString();
+    public void ChangeWaveText(int currWave, int totalWaves)
+    {
+        waveText.text = "Wave: " + currWave.ToString() + '/' + totalWaves.ToString();
     }
 }

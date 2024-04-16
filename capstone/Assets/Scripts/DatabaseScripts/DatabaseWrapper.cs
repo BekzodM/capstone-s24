@@ -119,4 +119,10 @@ public class DatabaseWrapper
 
     }
 
+
+    public void UpdateData(int progLevel, int saveId)
+    {
+        string updateCommand = "UPDATE saves SET progress_level = " + progLevel + " WHERE save_id = " + saveId;
+        databaseHandler.NonQuery(updateCommand);
+    }
 }

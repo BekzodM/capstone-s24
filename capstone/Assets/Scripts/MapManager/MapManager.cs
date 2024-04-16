@@ -3,11 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class MapManager : MonoBehaviour
 {
     //Planning Phase UI
     public GameObject planningPhaseUI;
+
+    //Battle Phase UI
+    public GameObject battlePhaseUI;
+
+    //LevelEndUI
+
+    public GameObject levelCompleteUI;
+
+    public TMP_Text levelStats;
 
     //World Space Canvas
     public GameObject worldSpaceCanvas;
@@ -18,12 +29,14 @@ public class MapManager : MonoBehaviour
     //Database
     private DatabaseWrapper databaseWrapper = new DatabaseWrapper();
 
+    bool levelWon = false;
+
     //Money
     [SerializeField] private int startingMoney = 100;
 
     //percentage of how much the player gets for selling a structure
     [SerializeField] private float sellingPercentage = 0.7f;
-    
+
     private int money;
 
     //Waves
@@ -52,7 +65,8 @@ public class MapManager : MonoBehaviour
         return money;
     }
 
-    public void SetMoney(int amount) {
+    public void SetMoney(int amount)
+    {
         money = amount;
     }
 
@@ -70,7 +84,8 @@ public class MapManager : MonoBehaviour
         moneyText.ChangeMoneyText(money);
     }
 
-    public bool CanPurchase(string structureName) {
+    public bool CanPurchase(string structureName)
+    {
         string[,] results = databaseWrapper.GetData("structures", "structure_name", structureName);
 
         int structCost = Int32.Parse(results[0, 7]);
@@ -87,7 +102,7 @@ public class MapManager : MonoBehaviour
     {
         string[,] results = databaseWrapper.GetData("structures", "structure_name", structureName);
         string structName = results[0, 1];
-        int structCost = Int32.Parse(results[0,7]);
+        int structCost = Int32.Parse(results[0, 7]);
         PlaceStructure placeStructureComponent = planningPhaseUI.GetComponent<PlaceStructure>();
         bool isPlacingStructure = placeStructureComponent.GetIsPlacingStructure();
         if (money >= structCost)
@@ -97,12 +112,14 @@ public class MapManager : MonoBehaviour
                 //Player can buy it and they are not currently placing a structure down
                 SubtractMoney(structCost);
             }
-            else {
+            else
+            {
                 Debug.Log("player must place down the structure first");
                 messagePanel.GetComponent<Message>().SetMessageText("You must place down the structure first.");
             }
         }
-        else {
+        else
+        {
             messagePanel.GetComponent<Message>().SetMessageText("Not enough money for " + structName);
             //Insufficent funds
             /*
@@ -115,13 +132,15 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    public void OnClickSellButton() {
+    public void OnClickSellButton()
+    {
         GameObject selectedObj = planningPhaseUI.GetComponent<DragStructures>().GetSelectedObject();
         if (selectedObj == null)
         {
             Debug.Log("No selected object for selling");
         }
-        else {
+        else
+        {
             //Sell(selectedObj);
             WorldSpaceCanvas canvas = worldSpaceCanvas.GetComponent<WorldSpaceCanvas>();
             canvas.ShowSellConfirmationPanel(true);
@@ -137,20 +156,22 @@ public class MapManager : MonoBehaviour
         Tooltip.HideTooltip();
     }
 
-    public void Sell() {
+    public void Sell()
+    {
         GameObject obj = planningPhaseUI.GetComponent<DragStructures>().GetSelectedObject();
         if (obj == null)
         {
             Debug.Log("No selected object for selling");
         }
-        else {
+        else
+        {
             int sellingValue = Mathf.RoundToInt(sellingPercentage * obj.GetComponent<Structure>().GetStructureWorth());
             //Refund 70% of structure's worth value
             AddMoney(sellingValue);
 
             //Remove from placement's set
             planningPhaseUI.GetComponent<PlaceStructure>().RemoveStructurePlacement(obj);
-        
+
             //ReparentWorldSpaceCanvas
             worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().ResetWorldCanvas();
 
@@ -181,14 +202,46 @@ public class MapManager : MonoBehaviour
 
         if (currentWave + increase > totalWaves)
         {
-            Debug.Log("Current wave number cannot exceed total waves");
+            Debug.Log("Current wave number cannot exceed total waves. You Win!");
+            levelWon = true;
+            EndLevel();
         }
         else
         {
             currentWave += increase;
             WaveText waveText = planningPhaseUI.GetComponentInChildren<WaveText>();
-            waveText.ChangeMoneyText(currentWave, totalWaves);
+            waveText.ChangeWaveText(currentWave, totalWaves);
         }
+    }
+
+    public void EndLevel()
+    {
+        battlePhaseUI.SetActive(false);
+        planningPhaseUI.SetActive(false);
+        levelCompleteUI.SetActive(true);
+
+        string wavesBeat = currentWave + "/" + totalWaves;
+        int moneySpend = startingMoney - money;
+        if (levelWon)
+        {
+            GameState.currentProgressLevel += 1;
+            levelStats.text = "Waves beat: " + wavesBeat + "\nMoney Spent: " + moneySpend + "\nYou leveled up! New Progress Level: " + GameState.currentProgressLevel;
+        }
+        else
+        {
+            levelStats.text = "Waves beat: " + wavesBeat + "\nMoney Spent: " + moneySpend + "\nYou did not level up\nProgress Level: " + GameState.currentProgressLevel;
+
+        }
+    }
+
+    public void ContinueToLevelSelect()
+    {
+        if (levelWon)
+        {
+            databaseWrapper.UpdateData(GameState.currentProgressLevel, GameState.saveId);
+        }
+        Debug.Log("clicked");
+        SceneManager.LoadScene("LevelSelect2");
     }
 
     public void DecreaseCurrentWaveNumber(int decrease)
@@ -201,7 +254,7 @@ public class MapManager : MonoBehaviour
         {
             currentWave -= decrease;
             WaveText waveText = planningPhaseUI.GetComponentInChildren<WaveText>();
-            waveText.ChangeMoneyText(currentWave, totalWaves);
+            waveText.ChangeWaveText(currentWave, totalWaves);
         }
     }
 
@@ -224,7 +277,7 @@ public class MapManager : MonoBehaviour
         {
             totalWaves -= decrease;
             WaveText waveText = planningPhaseUI.GetComponentInChildren<WaveText>();
-            waveText.ChangeMoneyText(currentWave, totalWaves);
+            waveText.ChangeWaveText(currentWave, totalWaves);
         }
     }
 
@@ -239,7 +292,8 @@ public class MapManager : MonoBehaviour
         return maxBaseHealth;
     }
 
-    public int GetBaseHealth() {
+    public int GetBaseHealth()
+    {
         return baseHealth;
     }
 
