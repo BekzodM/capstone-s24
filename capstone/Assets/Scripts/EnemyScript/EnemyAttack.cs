@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,13 +16,19 @@ public class EnemyAttack : MonoBehaviour
         if(other.CompareTag(playerTag) || other.CompareTag(structureTag)) {
             Debug.Log("Player entered trigger zone");
             if(Time.time - lastAttackTime >= attackCooldown) {
-                Debug.Log("Cooldown passed");
                 if(other.CompareTag(playerTag)) {
                     other.GetComponent<Player>().TakeDamage(10);
                 }
                 if(other.CompareTag(structureTag)) {
-                    other.GetComponent<Structure>().TakeDamage(10);
-                    Debug.Log("Damage done");
+                    Turret turret = other.GetComponentInParent<Turret>();
+                    if (turret != null)
+                    {
+                        turret.TakeDamage(10);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Turret component not found on object tagged as 'Structure'");
+                    }
                 }
                 lastAttackTime = Time.time;
             }
