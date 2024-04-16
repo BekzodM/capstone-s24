@@ -13,17 +13,14 @@ public class PlaceStructure : MonoBehaviour
 
     HashSet<GameObject> structures; //structures that have been placed down already
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        //planningCamera = Camera.main;
         structures = new HashSet<GameObject>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+        //planningCamera = Camera.main;
     }
 
     public void InstantiateStructure(int tabIndex, int buttonIndex) {
@@ -132,7 +129,14 @@ public class PlaceStructure : MonoBehaviour
     }
 
     public void RemoveStructurePlacement(GameObject obj) {
-        structures.Remove(obj);
+        if (obj != null)
+        {
+            structures.Remove(obj);
+            Destroy(obj);
+        }
+        else {
+            Debug.LogError("Cannnot remove structure placement");
+        }
     }
 
     public void ActivateStructureAreaZoneColliders(bool activate) {

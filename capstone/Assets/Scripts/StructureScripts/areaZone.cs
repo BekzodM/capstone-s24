@@ -37,8 +37,11 @@ public class AreaZone : MonoBehaviour
                 Debug.LogError("Invalid structure type");
             }
         }
-        if (other.transform.parent.CompareTag("Structure")) {
+        if (other.CompareTag("Structure")) {
             if (structureType == "Support") {
+                if (other.transform.parent != null) {
+                    structure = other.transform.parent.gameObject;
+                }
                 HandleOnTriggerEnterForSupportStructures(structure, other.transform.parent.gameObject);
             }
         }

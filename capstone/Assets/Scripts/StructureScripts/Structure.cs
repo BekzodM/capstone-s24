@@ -28,6 +28,10 @@ public abstract class Structure : MonoBehaviour
 
     protected TooltipHover tooltipHover;
 
+    protected PlaceStructure placeStruct;
+
+    protected bool isDead = false;
+
     protected Structure(string name, string description, string type, int cost, int health, int progressLevel, int attackDamage)
     {
         structureName = name;
@@ -65,6 +69,12 @@ public abstract class Structure : MonoBehaviour
             Slot2UpgradeLevel4,
             Slot2UpgradeLevel5,
         };
+
+        placeStruct = FindObjectOfType<PlaceStructure>();
+        if (placeStruct == null)
+        {
+            Debug.LogError("Cannot find Place Structure");
+        }
     }
 
     protected virtual void Start()
@@ -100,17 +110,22 @@ public abstract class Structure : MonoBehaviour
             Debug.LogError("Damage must be greater than 0");
         }
 
-        if (health - damage <= 0) {
+        if (health - damage <= 0 && isDead == false) {
             SetHealth(0);
             healthBar.SetHealth(0);
-            PlaceStructure placeStructComponent = FindObjectOfType<PlaceStructure>();
-            if (placeStructComponent != null)
+
+            if (placeStruct != null)
             {
-                placeStructComponent.RemoveStructurePlacement(gameObject);
+                //placeStruct.RemoveStructurePlacement(gameObject);
+                isDead = true;
+                Destroy(gameObject);
+                placeStruct.RemoveStructurePlacement(gameObject);
+                    
+            }
+            else {
+                Debug.LogError("place structure is missing");
             }
 
-            placeStructComponent.RemoveStructurePlacement(gameObject);
-            Destroy(gameObject);
         }
         else{
             health -= damage;
