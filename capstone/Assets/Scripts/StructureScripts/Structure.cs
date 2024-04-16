@@ -28,6 +28,8 @@ public abstract class Structure : MonoBehaviour
 
     protected TooltipHover tooltipHover;
 
+    protected GameObject planningPhaseManager;
+
     protected PlaceStructure placeStruct;
 
     protected bool isDead = false;
@@ -69,6 +71,11 @@ public abstract class Structure : MonoBehaviour
             Slot2UpgradeLevel4,
             Slot2UpgradeLevel5,
         };
+
+        planningPhaseManager = FindFirstObjectByType<PlanningPhaseManager>().gameObject;
+        if (planningPhaseManager == null) {
+            Debug.LogError("Cannot find planning phase manager");
+        }
 
         placeStruct = FindObjectOfType<PlaceStructure>();
         if (placeStruct == null)

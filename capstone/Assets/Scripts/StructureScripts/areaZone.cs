@@ -39,10 +39,15 @@ public class AreaZone : MonoBehaviour
         }
         if (other.CompareTag("Structure")) {
             if (structureType == "Support") {
-                if (other.transform.parent != null) {
-                    structure = other.transform.parent.gameObject;
+                GameObject ally;
+                if (other.transform.parent.gameObject != null)
+                {
+                    ally = other.transform.parent.gameObject;
                 }
-                HandleOnTriggerEnterForSupportStructures(structure, other.transform.parent.gameObject);
+                else {
+                    ally = other.gameObject;
+                }
+                HandleOnTriggerEnterForSupportStructures(structure, ally);
             }
         }
     }
