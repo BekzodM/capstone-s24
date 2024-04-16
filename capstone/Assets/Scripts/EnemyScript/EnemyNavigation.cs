@@ -23,6 +23,7 @@ public class EnemyNavigation : MonoBehaviour
         player = GameObject.Find("Female 1").transform;
         enemy = GetComponent<NavMeshAgent>();
         whatIsPlayer = 1 << LayerMask.NameToLayer("Player");
+        whatIsStructure = 1 << LayerMask.NameToLayer("Draggable");
         sightRange = 10;
         attackRange = 2;
     }
@@ -44,12 +45,11 @@ public class EnemyNavigation : MonoBehaviour
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
         //if(!playerInSightRange && !playerInAttackRange && !DestinationReachable()) enemy.SetDestination(homeBase.position);
-        if(playerInSightRange && !playerInAttackRange && DestinationReachable()) ChasePlayer();
+        if(playerInSightRange && !playerInAttackRange && PlayerReachable()) ChasePlayer();
         else if(playerInSightRange && playerInAttackRange) AttackPlayer();
-        if(structureInSightRange && !structureInAttackRange && DestinationReachable()) ChaseStructure();
+        else if(structureInSightRange && !structureInAttackRange && StructureReachable()) ChaseStructure();
         else if(structureInSightRange && structureInAttackRange) AttackStructure();
         else enemy.SetDestination(homeBase.position);
-
         
     }
 
@@ -82,9 +82,16 @@ public class EnemyNavigation : MonoBehaviour
         transform.LookAt(player);
     }
 
-    bool DestinationReachable(){
+    bool PlayerReachable(){
         NavMeshHit hit;
         bool isReachable = NavMesh.SamplePosition(player.position, out hit, 1f, NavMesh.AllAreas);
+
+        return isReachable;
+    }
+
+    bool StructureReachable(){
+        NavMeshHit hit;
+        bool isReachable = NavMesh.SamplePosition(structure, out hit, 4f, NavMesh.AllAreas);
 
         return isReachable;
     }
