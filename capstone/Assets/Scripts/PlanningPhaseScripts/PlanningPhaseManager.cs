@@ -39,7 +39,8 @@ public class PlanningPhaseManager : MonoBehaviour
         StartPlanningPhase();
     }
 
-    public void StartPlanningPhase() { 
+    public void StartPlanningPhase()
+    {
         gameObject.SetActive(true);
         worldSpaceCanvas.gameObject.SetActive(false);
         structureInfo.gameObject.SetActive(false);
@@ -50,17 +51,19 @@ public class PlanningPhaseManager : MonoBehaviour
     }
 
     //connected to the Start Wave button
-    public void EndPlanningPhase() {
+    public void EndPlanningPhase()
+    {
         if (placeStructure.GetIsPlacingStructure())
         {
             Debug.Log("The player cannot end the planning phase when a structure is still being placed.");
             message.SetMessageText("You cannot start the wave until you finish placing down the current structure.");
         }
-        else {
+        else
+        {
             gameObject.SetActive(false);
             worldSpaceCanvas.gameObject.SetActive(false);
             worldSpaceCanvas.SetCanvasParent(gameObject.transform);
-            structureInfo.gameObject.SetActive(false);        
+            structureInfo.gameObject.SetActive(false);
             dragStructures.HideSelectedStructureAreaZoneMesh();
             dragStructures.SetSelectedObject(null);
 
@@ -69,74 +72,91 @@ public class PlanningPhaseManager : MonoBehaviour
         }
     }
 
-    public void EnablePlanningPhaseCamera() { 
+    public void EnablePlanningPhaseCamera()
+    {
         planningPhaseCamera.enabled = true;
     }
 
     //Money Wrappers
-    public void GetMoney() { 
+    public void GetMoney()
+    {
         mapManager.GetMoney();
     }
 
-    public void SetMoney(int amount) {
+    public void SetMoney(int amount)
+    {
         mapManager.SetMoney(amount);
     }
 
-    public void AddMoney(int amount) {
+    public void AddMoney(int amount)
+    {
         mapManager.AddMoney(amount);
     }
 
-    public void SubtractMoney(int amount) {
+    public void SubtractMoney(int amount)
+    {
         mapManager.SubtractMoney(amount);
     }
 
     //Wave Wrappers
-    public void GetCurrentWave() { 
-        mapManager.GetCurrentWaveNumber();
+    public int GetCurrentWave()
+    {
+        return mapManager.GetCurrentWaveNumber();
     }
 
-    public void GetTotalWave() { 
-        mapManager.GetTotalWaveNumber();
+    public int GetTotalWave()
+    {
+        return mapManager.GetTotalWaveNumber();
     }
 
-    public void IncreaseCurrentWaveNumber(int increase) {
+    public void IncreaseCurrentWaveNumber(int increase)
+    {
         mapManager.IncreaseCurrentWaveNumber(increase);
     }
 
-    public void DecreaseCurrentWaveNumber(int decrease) { 
+    public void DecreaseCurrentWaveNumber(int decrease)
+    {
         mapManager.DecreaseCurrentWaveNumber(decrease);
     }
 
-    public void IncreaseTotalWaves(int increase) { 
+    public void IncreaseTotalWaves(int increase)
+    {
         mapManager.IncreaseTotalWaves(increase);
     }
 
-    public void DecreaseTotalWaves(int decrease) { 
+    public void DecreaseTotalWaves(int decrease)
+    {
         mapManager.DecreaseTotalWaves(decrease);
     }
 
     //Base Health Wrappers
-    public void GetBaseHealth() { 
+    public void GetBaseHealth()
+    {
         mapManager.GetBaseHealth();
     }
 
-    public int GetMaxBaseHealth() { 
+    public int GetMaxBaseHealth()
+    {
         return mapManager.GetMaxBaseHealth();
     }
 
-    public void IncreaseBaseHealth(int increase) {
+    public void IncreaseBaseHealth(int increase)
+    {
         mapManager.IncreaseBaseHealth(increase);
     }
 
-    public void DecreaseBaseHealth(int decrease) {
+    public void DecreaseBaseHealth(int decrease)
+    {
         mapManager.DecreaseBaseHealth(decrease);
     }
 
-    public void IncreaseMaxBaseHealth(int increase) { 
+    public void IncreaseMaxBaseHealth(int increase)
+    {
         mapManager.IncreaseMaxBaseHealth(increase);
     }
 
-    public void DecreaseMaxBaseHealth(int decrease) {
+    public void DecreaseMaxBaseHealth(int decrease)
+    {
         mapManager.DecreaseMaxBaseHealth(decrease);
     }
 

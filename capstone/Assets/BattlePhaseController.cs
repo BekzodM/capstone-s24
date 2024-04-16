@@ -37,11 +37,15 @@ public class BattlePhaseController : MonoBehaviour
     [SerializeField] GameObject player;
     public PlanningPhaseManager planningPhaseManager;
 
+    public GameObject mapManagerObject;
+    private MapManager mapManager;
+
     private void Awake()
     {
         planningPhaseManager = planningPhaseObject.GetComponent<PlanningPhaseManager>();
+        mapManager = mapManagerObject.GetComponent<MapManager>();
         maxHealth = planningPhaseManager.GetMaxBaseHealth();
-        currentRound = 0;
+        currentRound = 1;
         levelComplete = false;
 
     }
@@ -59,12 +63,15 @@ public class BattlePhaseController : MonoBehaviour
         {
             planningPhaseObject.SetActive(false);
             gameObject.SetActive(false);
+            mapManager.EndLevel();
         }
         //round complete will invoke planning phase:
         if (roundComplete)
         {
-            planningPhaseObject.SetActive(true);
-            currentRound++;
+            planningPhaseManager.StartPlanningPhase();
+            mapManager.IncreaseCurrentWaveNumber(1);
+            currentRound = mapManager.GetCurrentWaveNumber();
+            Debug.Log(currentRound);
             waveIndex = 0;
             numberOfWaves++;
             countdown = 5f;
