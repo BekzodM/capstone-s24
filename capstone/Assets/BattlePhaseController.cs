@@ -40,6 +40,8 @@ public class BattlePhaseController : MonoBehaviour
 
     public GameObject levelOverScene;
 
+    public Text gameOverText;
+
     private void Awake()
     {
         planningPhaseManager = planningPhaseObject.GetComponent<PlanningPhaseManager>();
@@ -61,36 +63,43 @@ public class BattlePhaseController : MonoBehaviour
     {
         if (levelComplete)
         {
-            player.transform.GetChild(2).gameObject.GetComponent<PlayerController>().ToggleCursorUnlocked();
-            player.SetActive(false);
-            planningPhaseObject.SetActive(false);
-            levelOverScene.SetActive(true);
-            gameObject.SetActive(false);
+            levelCompleteFunctions();
 
         }
-        if (!baseAlive)
+        if (!baseAlive || player.transform.GetChild(2).gameObject.GetComponent<Player>().currentHealth <= 0)
         {
             planningPhaseObject.SetActive(false);
+            player.transform.GetChild(2).gameObject.GetComponent<PlayerController>().ToggleCursorUnlocked();
+            StartCoroutine(WaitForEnemiesDestroyed());
+            player.SetActive(false);
             gameObject.SetActive(false);
+            gameOverText.text = "Level Failed";
+            levelOverScene.SetActive(true);
         }
+
+
         //round complete will invoke planning phase:
         if (roundComplete)
         {
-            for (int i = 0; i < allEnemies.Length; i++)
-            {
-                Destroy(allEnemies[i].transform);
-            }
-            waitForEnemiesDestroyed();
+            StartCoroutine(WaitForEnemiesDestroyed());
             planningPhaseObject.SetActive(true);
             //increaseRound();
             planningPhaseManager.SetWave(increaseRound());
-            waveIndex = 0;
-            numberOfWaves++;
-            countdown = 5f;
-            roundComplete = false;
-            player.transform.GetChild(2).gameObject.GetComponent<PlayerController>().ToggleCursorUnlocked();
-            player.SetActive(false);
-            gameObject.SetActive(false);
+            if (currentRound <= planningPhaseManager.GetTotalWaves())
+            {
+                waveIndex = 0;
+                numberOfWaves++;
+                countdown = 5f;
+                roundComplete = false;
+                player.transform.GetChild(2).gameObject.GetComponent<PlayerController>().ToggleCursorUnlocked();
+                player.SetActive(false);
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                levelComplete = true;
+                levelCompleteFunctions();
+            }
 
         }
     }
@@ -101,15 +110,23 @@ public class BattlePhaseController : MonoBehaviour
         return currentRound;
     }
 
-    IEnumerator waitForEnemiesDestroyed()
+    IEnumerator WaitForEnemiesDestroyed()
     {
+        for (int i = 0; i < allEnemies.Length; i++)
+        {
+            Destroy(allEnemies[i]);
+        }
         yield return (allEnemies.Length == 0);
     }
 
-    public void restartScene()
+    void levelCompleteFunctions()
     {
-        print("Button Pressed");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        player.transform.GetChild(2).gameObject.GetComponent<PlayerController>().ToggleCursorUnlocked();
+        player.SetActive(false);
+        planningPhaseObject.SetActive(false);
+        gameOverText.text = "Level Complete";
+        levelOverScene.SetActive(true);
+        gameObject.SetActive(false);
     }
 
 }

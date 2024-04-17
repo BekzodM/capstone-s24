@@ -109,6 +109,9 @@ public class PlayerController : MonoBehaviour
         mapViewMovement = playerInputActions.MapView.Direction; // Get ref to battlefield view movement from PlayerInputActions
 
         playerInputActions.Player.Enable();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void OnDisable()

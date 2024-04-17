@@ -17,7 +17,7 @@ public class LevelOverScene : MonoBehaviour
         
     }
 
-    public void restartScene()
+    public void RestartScene()
     {
         print("Button Pressed");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

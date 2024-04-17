@@ -182,6 +182,11 @@ public class MapManager : MonoBehaviour
         waveText.ChangeMoneyText(waveNumber, totalWaves);
     }
 
+    public int GetTotalWaves()
+    {
+        return totalWaves;
+    }
+
     public void IncreaseCurrentWaveNumber(int increase)
     {
 
