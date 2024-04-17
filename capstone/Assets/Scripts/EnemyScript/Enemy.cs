@@ -6,7 +6,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public int maxHealth = 100;
-    int currentHealth;
+    public int currentHealth;
     public HealthBar healthBar;
     // Start is called before the first frame update
     void Start()
@@ -14,7 +14,13 @@ public class Enemy : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    
+    private void Update()
+    {
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     /*
     Called by Player or Structure to deduct

@@ -32,6 +32,7 @@ public class WaveText : MonoBehaviour
 
     public void ChangeWaveText(int currWave, int totalWaves)
     {
-        waveText.text = "Wave: " + currWave.ToString() + '/' + totalWaves.ToString();
+        waveText.text = "Round: " + currWave.ToString() + '/' + totalWaves.ToString();
+
     }
 }
