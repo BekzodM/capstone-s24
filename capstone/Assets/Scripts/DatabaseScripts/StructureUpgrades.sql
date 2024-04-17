@@ -432,7 +432,7 @@ VALUES
         46,
         "Lv.1 More Damage!",
         "Each shot does 20 additional damage",
-        "Sprites/PlanningPhase/turretIconMoreDamage",
+        "Sprites/PlanningPhase/flameThrowerIconMoreDamage",
         0,
         50,
         4
@@ -441,7 +441,7 @@ VALUES
         47,
         "Lv.2 More Damage!",
         "Each shot does 20 additional damage",
-        "Sprites/PlanningPhase/turretIconMoreDamage",
+        "Sprites/PlanningPhase/flameThrowerIconMoreDamage",
         0,
         50,
         4
@@ -450,7 +450,7 @@ VALUES
         48,
         "Lv.3 More Damage!",
         "Each shot does 20 additional damage",
-        "Sprites/PlanningPhase/turretIconMoreDamage",
+        "Sprites/PlanningPhase/flameThrowerIconMoreDamage",
         0,
         50,
         4
@@ -459,7 +459,7 @@ VALUES
         49,
         "Lv.4 More Damage!",
         "Each shot does 20 additional damage",
-        "Sprites/PlanningPhase/turretIconMoreDamage",
+        "Sprites/PlanningPhase/flameThrowerIconMoreDamage",
         0,
         50,
         4
@@ -468,7 +468,7 @@ VALUES
         50,
         "Lv.5 More Damage!",
         "Each shot does 20 additional damage",
-        "Sprites/PlanningPhase/turretIconMoreDamage",
+        "Sprites/PlanningPhase/flameThrowerIconMoreDamage",
         0,
         50,
         4
@@ -478,7 +478,7 @@ VALUES
         51,
         "Lv.1 More Speed!",
         "Fire burns 0.5x faster",
-        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        "Sprites/PlanningPhase/flameThrowerIconMoreSpeed",
         1,
         50,
         4
@@ -487,7 +487,7 @@ VALUES
         52,
         "Lv.2 More Speed!",
         "Fire burns 0.5x faster",
-        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        "Sprites/PlanningPhase/flameThrowerIconMoreSpeed",
         1,
         50,
         4
@@ -496,7 +496,7 @@ VALUES
         53,
         "Lv.3 More Speed!",
         "Fire burns 0.5x faster",
-        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        "Sprites/PlanningPhase/flameThrowerIconMoreSpeed",
         1,
         50,
         4
@@ -505,7 +505,7 @@ VALUES
         54,
         "Lv.4 More Speed!",
         "Fire burns 0.5x faster",
-        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        "Sprites/PlanningPhase/flameThrowerIconMoreSpeed",
         1,
         50,
         4
@@ -514,7 +514,7 @@ VALUES
         55,
         "Lv.5 More Speed!",
         "Fire burns 0.5x faster",
-        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        "Sprites/PlanningPhase/flameThrowerIconMoreSpeed",
         1,
         50,
         4
@@ -524,7 +524,7 @@ VALUES
         56,
         "Lv.1 More Range!",
         "Fire range is 0.5 bigger",
-        "Sprites/PlanningPhase/turretIconMoreRange",
+        "Sprites/PlanningPhase/flameThrowerIconMoreRange",
         2,
         50,
         4
@@ -533,7 +533,7 @@ VALUES
         57,
         "Lv.2 More Range!",
         "Fire range is 0.5 bigger",
-        "Sprites/PlanningPhase/turretIconMoreRange",
+        "Sprites/PlanningPhase/flameThrowerIconMoreRange",
         2,
         50,
         4
@@ -542,7 +542,7 @@ VALUES
         58,
         "Lv.3 More Range!",
         "Fire range is 0.5 bigger",
-        "Sprites/PlanningPhase/turretIconMoreRange",
+        "Sprites/PlanningPhase/flameThrowerIconMoreRange",
         2,
         50,
         4
@@ -551,7 +551,7 @@ VALUES
         59,
         "Lv.4 More Range!",
         "Fire range is 0.5 bigger",
-        "Sprites/PlanningPhase/turretIconMoreRange",
+        "Sprites/PlanningPhase/flameThrowerIconMoreRange",
         2,
         50,
         4
@@ -560,7 +560,7 @@ VALUES
         60,
         "Lv.5 More Range!",
         "Fire range is 0.5 bigger",
-        "Sprites/PlanningPhase/turretIconMoreRange",
+        "Sprites/PlanningPhase/flameThrowerIconMoreRange",
         2,
         50,
         4
@@ -571,7 +571,7 @@ VALUES
         61,
         "Lv.1 More Damage!",
         "Fire does 2 additional damage",
-        "Sprites/PlanningPhase/turretIconMoreDamage",
+        "Sprites/PlanningPhase/fireTrapIconMoreDamage",
         0,
         50,
         5
@@ -580,7 +580,7 @@ VALUES
         62,
         "Lv.2 More Damage!",
         "Fire does 2 additional damagee",
-        "Sprites/PlanningPhase/turretIconMoreDamage",
+        "Sprites/PlanningPhase/fireTrapIconMoreDamage",
         0,
         50,
         5
@@ -589,7 +589,7 @@ VALUES
         63,
         "Lv.3 More Damage!",
         "Fire does 2 additional damagee",
-        "Sprites/PlanningPhase/turretIconMoreDamage",
+        "Sprites/PlanningPhase/fireTrapIconMoreDamage",
         0,
         50,
         5
@@ -598,7 +598,7 @@ VALUES
         64,
         "Lv.4 More Damage!",
         "Fire does 2 additional damagee",
-        "Sprites/PlanningPhase/turretIconMoreDamage",
+        "Sprites/PlanningPhase/fireTrapIconMoreDamage",
         0,
         50,
         5
@@ -607,7 +607,7 @@ VALUES
         65,
         "Lv.5 More Damage!",
         "Fire does 2 additional damagee",
-        "Sprites/PlanningPhase/turretIconMoreDamage",
+        "Sprites/PlanningPhase/fireTrapIconMoreDamage",
         0,
         50,
         5
@@ -617,7 +617,7 @@ VALUES
         66,
         "Lv.1 More Speed!",
         "Fire burns 0.5x faster",
-        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        "Sprites/PlanningPhase/fireTrapIconMoreSpeed",
         1,
         50,
         5
@@ -626,7 +626,7 @@ VALUES
         67,
         "Lv.2 More Speed!",
         "Fire burns 0.5x faster",
-        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        "Sprites/PlanningPhase/fireTrapIconMoreSpeed",
         1,
         50,
         5
@@ -635,7 +635,7 @@ VALUES
         68,
         "Lv.3 More Speed!",
         "Fire burns 0.5x faster",
-        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        "Sprites/PlanningPhase/fireTrapIconMoreSpeed",
         1,
         50,
         5
@@ -644,7 +644,7 @@ VALUES
         69,
         "Lv.4 More Speed!",
         "Fire burns 0.5x faster",
-        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        "Sprites/PlanningPhase/fireTrapIconMoreSpeed",
         1,
         50,
         5
@@ -653,7 +653,7 @@ VALUES
         70,
         "Lv.5 More Speed!",
         "Fire burns 0.5x faster",
-        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        "Sprites/PlanningPhase/fireTrapIconMoreSpeed",
         1,
         50,
         5
@@ -663,7 +663,7 @@ VALUES
         71,
         "Lv.1 More Range!",
         "Fire range is 0.5 bigger",
-        "Sprites/PlanningPhase/turretIconMoreRange",
+        "Sprites/PlanningPhase/fireTrapIconMoreRange",
         2,
         50,
         5
@@ -672,7 +672,7 @@ VALUES
         72,
         "Lv.2 More Range!",
         "Fire range is 0.5 bigger",
-        "Sprites/PlanningPhase/turretIconMoreRange",
+        "Sprites/PlanningPhase/fireTrapIconMoreRange",
         2,
         50,
         5
@@ -681,7 +681,7 @@ VALUES
         73,
         "Lv.3 More Range!",
         "Fire range is 0.5 bigger",
-        "Sprites/PlanningPhase/turretIconMoreRange",
+        "Sprites/PlanningPhase/fireTrapIconMoreRange",
         2,
         50,
         5
@@ -690,7 +690,7 @@ VALUES
         74,
         "Lv.4 More Range!",
         "Fire range is 0.5 bigger",
-        "Sprites/PlanningPhase/turretIconMoreRange",
+        "Sprites/PlanningPhase/fireTrapIconMoreRange",
         2,
         50,
         5
@@ -699,7 +699,7 @@ VALUES
         75,
         "Lv.5 More Range!",
         "Fire range is 0.5 bigger",
-        "Sprites/PlanningPhase/turretIconMoreRange",
+        "Sprites/PlanningPhase/fireTrapIconMoreRange",
         2,
         50,
         5
@@ -710,7 +710,7 @@ VALUES
         76,
         "Lv.1 More Damage!",
         "Poison does 2 additional damage",
-        "Sprites/PlanningPhase/turretIconMoreDamage",
+        "Sprites/PlanningPhase/poisonTrapIconMoreDamage",
         0,
         50,
         6
@@ -719,7 +719,7 @@ VALUES
         77,
         "Lv.2 More Damage!",
         "Poison does 2 additional damagee",
-        "Sprites/PlanningPhase/turretIconMoreDamage",
+        "Sprites/PlanningPhase/poisonTrapIconMoreDamage",
         0,
         50,
         6
@@ -728,7 +728,7 @@ VALUES
         78,
         "Lv.3 More Damage!",
         "Poison does 2 additional damagee",
-        "Sprites/PlanningPhase/turretIconMoreDamage",
+        "Sprites/PlanningPhase/poisonTrapIconMoreDamage",
         0,
         50,
         6
@@ -737,7 +737,7 @@ VALUES
         79,
         "Lv.4 More Damage!",
         "Poison does 2 additional damagee",
-        "Sprites/PlanningPhase/turretIconMoreDamage",
+        "Sprites/PlanningPhase/poisonTrapIconMoreDamage",
         0,
         50,
         6
@@ -746,7 +746,7 @@ VALUES
         80,
         "Lv.5 More Damage!",
         "Poison does 2 additional damagee",
-        "Sprites/PlanningPhase/turretIconMoreDamage",
+        "Sprites/PlanningPhase/poisonTrapIconMoreDamage",
         0,
         50,
         6
@@ -756,7 +756,7 @@ VALUES
         81,
         "Lv.1 More Speed!",
         "Poison burns 0.5x faster",
-        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        "Sprites/PlanningPhase/poisonTrapIconMoreSpeed",
         1,
         50,
         6
@@ -765,7 +765,7 @@ VALUES
         82,
         "Lv.2 More Speed!",
         "Poison burns 0.5x faster",
-        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        "Sprites/PlanningPhase/poisonTrapIconMoreSpeed",
         1,
         50,
         6
@@ -774,7 +774,7 @@ VALUES
         83,
         "Lv.3 More Speed!",
         "Poison burns 0.5x faster",
-        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        "Sprites/PlanningPhase/poisonTrapIconMoreSpeed",
         1,
         50,
         6
@@ -783,7 +783,7 @@ VALUES
         84,
         "Lv.4 More Speed!",
         "Poison burns 0.5x faster",
-        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        "Sprites/PlanningPhase/poisonTrapIconMoreSpeed",
         1,
         50,
         6
@@ -792,7 +792,7 @@ VALUES
         85,
         "Lv.5 More Speed!",
         "Poison burns 0.5x faster",
-        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        "Sprites/PlanningPhase/poisonTrapIconMoreSpeed",
         1,
         50,
         6
@@ -802,7 +802,7 @@ VALUES
         86,
         "Lv.1 More Range!",
         "Poison range is 0.5 bigger",
-        "Sprites/PlanningPhase/turretIconMoreRange",
+        "Sprites/PlanningPhase/poisonTrapIconMoreRange",
         2,
         50,
         6
@@ -811,7 +811,7 @@ VALUES
         87,
         "Lv.2 More Range!",
         "Poison range is 0.5 bigger",
-        "Sprites/PlanningPhase/turretIconMoreRange",
+        "Sprites/PlanningPhase/poisonTrapIconMoreRange",
         2,
         50,
         6
@@ -820,7 +820,7 @@ VALUES
         88,
         "Lv.3 More Range!",
         "Poison range is 0.5 bigger",
-        "Sprites/PlanningPhase/turretIconMoreRange",
+        "Sprites/PlanningPhase/poisonTrapIconMoreRange",
         2,
         50,
         6
@@ -829,7 +829,7 @@ VALUES
         89,
         "Lv.4 More Range!",
         "Poison range is 0.5 bigger",
-        "Sprites/PlanningPhase/turretIconMoreRange",
+        "Sprites/PlanningPhase/poisonTrapIconMoreRange",
         2,
         50,
         6
@@ -838,7 +838,7 @@ VALUES
         90,
         "Lv.5 More Range!",
         "Poison range is 0.5 bigger",
-        "Sprites/PlanningPhase/turretIconMoreRange",
+        "Sprites/PlanningPhase/poisonTrapIconMoreRange",
         2,
         50,
         6
@@ -849,7 +849,7 @@ VALUES
         91,
         "Lv.1 More Damage!",
         "Plasma does 2 additional damage",
-        "Sprites/PlanningPhase/turretIconMoreDamage",
+        "Sprites/PlanningPhase/plasmaTrapIconMoreDamage",
         0,
         50,
         7
@@ -858,7 +858,7 @@ VALUES
         92,
         "Lv.2 More Damage!",
         "Plasma does 2 additional damagee",
-        "Sprites/PlanningPhase/turretIconMoreDamage",
+        "Sprites/PlanningPhase/plasmaTrapIconMoreDamage",
         0,
         50,
         7
@@ -867,7 +867,7 @@ VALUES
         93,
         "Lv.3 More Damage!",
         "Plasma does 2 additional damagee",
-        "Sprites/PlanningPhase/turretIconMoreDamage",
+        "Sprites/PlanningPhase/plasmaTrapIconMoreDamage",
         0,
         50,
         7
@@ -876,7 +876,7 @@ VALUES
         94,
         "Lv.4 More Damage!",
         "Plasma does 2 additional damagee",
-        "Sprites/PlanningPhase/turretIconMoreDamage",
+        "Sprites/PlanningPhase/plasmaTrapIconMoreDamage",
         0,
         50,
         7
@@ -885,7 +885,7 @@ VALUES
         95,
         "Lv.5 More Damage!",
         "Plasma does 2 additional damagee",
-        "Sprites/PlanningPhase/turretIconMoreDamage",
+        "Sprites/PlanningPhase/plasmaTrapIconMoreDamage",
         0,
         50,
         7
@@ -895,7 +895,7 @@ VALUES
         96,
         "Lv.1 More Speed!",
         "Plasma burns 0.5x faster",
-        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        "Sprites/PlanningPhase/plasmaTrapIconMoreSpeed",
         1,
         50,
         5
@@ -904,7 +904,7 @@ VALUES
         97,
         "Lv.2 More Speed!",
         "Plasma burns 0.5x faster",
-        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        "Sprites/PlanningPhase/plasmaTrapIconMoreSpeed",
         1,
         50,
         7
@@ -913,7 +913,7 @@ VALUES
         98,
         "Lv.3 More Speed!",
         "Plasma burns 0.5x faster",
-        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        "Sprites/PlanningPhase/plasmaTrapIconMoreSpeed",
         1,
         50,
         7
@@ -922,7 +922,7 @@ VALUES
         99,
         "Lv.4 More Speed!",
         "Plasma burns 0.5x faster",
-        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        "Sprites/PlanningPhase/plasmaTrapIconMoreSpeed",
         1,
         50,
         7
@@ -931,7 +931,7 @@ VALUES
         100,
         "Lv.5 More Speed!",
         "Plasma burns 0.5x faster",
-        "Sprites/PlanningPhase/turretIconMoreSpeed",
+        "Sprites/PlanningPhase/plasmaTrapIconMoreSpeed",
         1,
         50,
         7
@@ -941,7 +941,7 @@ VALUES
         101,
         "Lv.1 More Range!",
         "Plasma range is 0.5 bigger",
-        "Sprites/PlanningPhase/turretIconMoreRange",
+        "Sprites/PlanningPhase/plasmaTrapIconMoreRange",
         2,
         50,
         7
@@ -950,7 +950,7 @@ VALUES
         102,
         "Lv.2 More Range!",
         "Plasma range is 0.5 bigger",
-        "Sprites/PlanningPhase/turretIconMoreRange",
+        "Sprites/PlanningPhase/plasmaTrapIconMoreRange",
         2,
         50,
         7
@@ -959,7 +959,7 @@ VALUES
         103,
         "Lv.3 More Range!",
         "Plasma range is 0.5 bigger",
-        "Sprites/PlanningPhase/turretIconMoreRange",
+        "Sprites/PlanningPhase/plasmaTrapIconMoreRange",
         2,
         50,
         7
@@ -968,7 +968,7 @@ VALUES
         104,
         "Lv.4 More Range!",
         "Plasma range is 0.5 bigger",
-        "Sprites/PlanningPhase/turretIconMoreRange",
+        "Sprites/PlanningPhase/plasmaTrapIconMoreRange",
         2,
         50,
         7
@@ -977,7 +977,7 @@ VALUES
         105,
         "Lv.5 More Range!",
         "Plasma range is 0.5 bigger",
-        "Sprites/PlanningPhase/turretIconMoreRange",
+        "Sprites/PlanningPhase/plasmaTrapIconMoreRange",
         2,
         50,
         7

@@ -24,7 +24,14 @@ public abstract class Support : Structure
     {
         if (isSupporting && Time.time >= nextCooldown) {
             if (alliesInZone.Count > 0) {
-                SupportAbility();
+                if (planningPhaseManager.activeSelf)
+                {
+                    Debug.Log("Cannot heal because planning phase is active");
+                }
+                else {
+                    SupportAbility();                
+                }
+
             }
             nextCooldown= Time.time + cooldown;
         }

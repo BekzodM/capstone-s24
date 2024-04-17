@@ -16,9 +16,6 @@ public class PlayerController : MonoBehaviour
     private PlayerInputActions playerInputActions;
     private InputAction movement;
     private InputAction mapViewMovement;
-    //private InputAction jump;
-    ////private InputAction look;
-    //private InputAction aim;
 
     //private PlayerInput playerInput;
 
@@ -38,8 +35,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private CinemachineVirtualCamera thirdPersonCamera;
     [SerializeField] private CinemachineVirtualCamera aimCamera;
-    [SerializeField] private CinemachineVirtualCamera mapViewCamera;
-    //[SerializeField] private GameObject topDownLookAt;
+    //[SerializeField] private CinemachineVirtualCamera mapViewCamera;
     private bool aimCameraActive = false;
 
     //[SerializeField] private GameObject bulletPrefab;
@@ -93,6 +89,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
+        // Ensure when planning phase -> battle phase
+        // Cursor is locked and invisible again
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         activeActionMap = ActiveActionMap.Player;
 
         // NOTE: For some reason, the right mouse button never triggers "started" or "canceled" events
@@ -102,8 +103,8 @@ public class PlayerController : MonoBehaviour
         playerInputActions.Player.Shoot.performed += _ => OnShoot();
         playerInputActions.Player.Reload.performed += _ => OnReload();
         playerInputActions.Player.Jump.performed += Jump;
-        //playerInputActions.Player.SwitchToMapActions.performed += _ => SwitchToMapActions();
-        playerInputActions.Player.SwitchToMapActions.performed += SwitchToMapActions;
+
+        //playerInputActions.Player.SwitchToMapActions.performed += SwitchToMapActions;
 
         movement = playerInputActions.Player.Movement;  // Get ref to player "Movement" action from PlayerInputActions
         mapViewMovement = playerInputActions.MapView.Direction; // Get ref to battlefield view movement from PlayerInputActions
@@ -120,8 +121,8 @@ public class PlayerController : MonoBehaviour
         playerInputActions.Player.Shoot.performed -= _ => OnShoot();
         playerInputActions.Player.Reload.performed -= _ => OnReload();
         playerInputActions.Player.Jump.performed -= Jump;
-        //playerInputActions.Player.SwitchToMapActions.performed -= _ => SwitchToMapActions();
-        playerInputActions.Player.SwitchToMapActions.performed -= SwitchToMapActions;
+
+        //playerInputActions.Player.SwitchToMapActions.performed -= SwitchToMapActions;
 
         playerInputActions.Player.Disable();
     }
@@ -332,70 +333,70 @@ public class PlayerController : MonoBehaviour
     }
 
     // "m"
-    private void SwitchToMapActions(InputAction.CallbackContext context)
-    {
-        Debug.Log(context.performed);
-        // Switch to MapView actions
-        if (activeActionMap == ActiveActionMap.Player)
-        {
-            Debug.Log("Switch to map view actions");
-            playerInputActions.Player.Aim.performed -= Aim;
-            playerInputActions.Player.Shoot.performed -= _ => OnShoot();
-            playerInputActions.Player.Reload.performed -= _ => OnReload();
-            playerInputActions.Player.Jump.performed -= Jump;
-            //playerInputActions.Player.SwitchToMapActions.performed -= _ => SwitchToMapActions();
-            playerInputActions.Player.SwitchToMapActions.performed -= SwitchToMapActions;
+    //private void SwitchToMapActions(InputAction.CallbackContext context)
+    //{
+    //    Debug.Log(context.performed);
+    //    // Switch to MapView actions
+    //    if (activeActionMap == ActiveActionMap.Player)
+    //    {
+    //        Debug.Log("Switch to map view actions");
+    //        playerInputActions.Player.Aim.performed -= Aim;
+    //        playerInputActions.Player.Shoot.performed -= _ => OnShoot();
+    //        playerInputActions.Player.Reload.performed -= _ => OnReload();
+    //        playerInputActions.Player.Jump.performed -= Jump;
+    //        //playerInputActions.Player.SwitchToMapActions.performed -= _ => SwitchToMapActions();
+    //        playerInputActions.Player.SwitchToMapActions.performed -= SwitchToMapActions;
 
-            playerInputActions.Player.Disable();
+    //        playerInputActions.Player.Disable();
 
-            playerInputActions.MapView.Zoom.performed += _ => Zoom();
-            //playerInputActions.MapView.SwitchToPlayerActions.performed += _ => SwitchToMapActions();
-            playerInputActions.MapView.SwitchToPlayerActions.performed += SwitchToMapActions;
+    //        playerInputActions.MapView.Zoom.performed += _ => Zoom();
+    //        //playerInputActions.MapView.SwitchToPlayerActions.performed += _ => SwitchToMapActions();
+    //        playerInputActions.MapView.SwitchToPlayerActions.performed += SwitchToMapActions;
 
-            playerInputActions.MapView.Enable();
+    //        playerInputActions.MapView.Enable();
 
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+    //        Cursor.lockState = CursorLockMode.None;
+    //        Cursor.visible = true;
 
-            activeActionMap = ActiveActionMap.MapView;
-
-
-
-            aimCamera.gameObject.SetActive(false);
-            thirdPersonCamera.gameObject.SetActive(false);
-        }
-        // Switch to Player actions
-        else
-        {
-            Debug.Log("Switch to player actions");
-            playerInputActions.MapView.Zoom.performed -= _ => Zoom();
-            //playerInputActions.MapView.SwitchToPlayerActions.performed -= _ => SwitchToMapActions();
-            playerInputActions.MapView.SwitchToPlayerActions.performed -= SwitchToMapActions;
-
-            playerInputActions.MapView.Disable();
-
-            playerInputActions.Player.Aim.performed += Aim;
-            playerInputActions.Player.Shoot.performed += _ => OnShoot();
-            playerInputActions.Player.Reload.performed += _ => OnReload();
-            playerInputActions.Player.Jump.performed += Jump;
-            //playerInputActions.Player.SwitchToMapActions.performed += _ => SwitchToMapActions();
-            playerInputActions.Player.SwitchToMapActions.performed += SwitchToMapActions;
-
-            //movement = playerInputActions.Player.Movement;  // Get ref to "Movement" action from PlayerInputActions
-
-            playerInputActions.Player.Enable();
-
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-
-            activeActionMap = ActiveActionMap.Player;
+    //        activeActionMap = ActiveActionMap.MapView;
 
 
 
-            aimCamera.gameObject.SetActive(true);
-            thirdPersonCamera.gameObject.SetActive(true);
-        }
-    }
+    //        aimCamera.gameObject.SetActive(false);
+    //        thirdPersonCamera.gameObject.SetActive(false);
+    //    }
+    //    // Switch to Player actions
+    //    else
+    //    {
+    //        Debug.Log("Switch to player actions");
+    //        playerInputActions.MapView.Zoom.performed -= _ => Zoom();
+    //        //playerInputActions.MapView.SwitchToPlayerActions.performed -= _ => SwitchToMapActions();
+    //        playerInputActions.MapView.SwitchToPlayerActions.performed -= SwitchToMapActions;
+
+    //        playerInputActions.MapView.Disable();
+
+    //        playerInputActions.Player.Aim.performed += Aim;
+    //        playerInputActions.Player.Shoot.performed += _ => OnShoot();
+    //        playerInputActions.Player.Reload.performed += _ => OnReload();
+    //        playerInputActions.Player.Jump.performed += Jump;
+    //        //playerInputActions.Player.SwitchToMapActions.performed += _ => SwitchToMapActions();
+    //        playerInputActions.Player.SwitchToMapActions.performed += SwitchToMapActions;
+
+    //        //movement = playerInputActions.Player.Movement;  // Get ref to "Movement" action from PlayerInputActions
+
+    //        playerInputActions.Player.Enable();
+
+    //        Cursor.lockState = CursorLockMode.Locked;
+    //        Cursor.visible = false;
+
+    //        activeActionMap = ActiveActionMap.Player;
+
+
+
+    //        aimCamera.gameObject.SetActive(true);
+    //        thirdPersonCamera.gameObject.SetActive(true);
+    //    }
+    //}
 
     private void Zoom()
     {

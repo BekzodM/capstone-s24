@@ -42,9 +42,11 @@ public class BattlePhaseController : MonoBehaviour
 
     public Text gameOverText;
 
+
     private void Awake()
     {
         planningPhaseManager = planningPhaseObject.GetComponent<PlanningPhaseManager>();
+        mapManager = mapManagerObject.GetComponent<MapManager>();
         maxHealth = planningPhaseManager.GetMaxBaseHealth();
         currentRound = 1;
         levelComplete = false;
@@ -73,6 +75,7 @@ public class BattlePhaseController : MonoBehaviour
             StartCoroutine(WaitForEnemiesDestroyed());
             player.SetActive(false);
             gameObject.SetActive(false);
+
             gameOverText.text = "Level Failed";
             levelOverScene.SetActive(true);
         }
@@ -81,6 +84,7 @@ public class BattlePhaseController : MonoBehaviour
         //round complete will invoke planning phase:
         if (roundComplete)
         {
+
             StartCoroutine(WaitForEnemiesDestroyed());
             planningPhaseObject.SetActive(true);
             //increaseRound();

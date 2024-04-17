@@ -45,6 +45,16 @@ public class GunSystem : MonoBehaviour
     }
     [SerializeField] private GunType gunType;
 
+    private void OnDisable()
+    {
+        /* Needed because if player holds on shoot button while battle phase -> planning phase,
+         * on release in the player controller script is not called due to being disabled,
+         * so the player controller does not tell the gun to stop shooting
+         */
+        readyToShoot = true;
+        isShooting = false;
+    }
+
     private void Awake()
     {
         bulletsLeft = magazineSize;
@@ -55,7 +65,7 @@ public class GunSystem : MonoBehaviour
 
     private void Update()
     {
-        
+
     }
 
     public void Shoot()
@@ -69,7 +79,6 @@ public class GunSystem : MonoBehaviour
     // can shoot a slug
     public void ShootShot()
     {
-        Debug.Log(bulletsLeft);
 
         if (isShooting && readyToShoot && !reloading && bulletsLeft > 0)
         {
@@ -197,7 +206,6 @@ public class GunSystem : MonoBehaviour
 
         // steady aim time MUST BE LONGER than BURST timeBetweenShots * shotsPerTap
         shouldSpread = false;
-        Debug.Log("steady");
         //}
     }
 
@@ -219,12 +227,16 @@ public class GunSystem : MonoBehaviour
         // Bullet direction should face where you are aiming
         GameObject bullet = GameObject.Instantiate(bulletPrefab, this.transform.position + this.transform.forward, Quaternion.identity, bulletParent);
         BulletController bulletController = bullet.GetComponent<BulletController>();
+        bulletController.damage = damage;   // Set the damage amount for the bullet
 
         // Can specify a 5th arg for a layermask (i.e. if ray hits an "enemy" layermask)
         // Has to not hit player, so enemy layermask only? and if needed a layermask for terrain?
         if (Physics.Raycast(playerCamera.transform.position, direction, out hit, Mathf.Infinity))
         {
-            bulletController.target = hit.point;
+            // direction * 1 for raycast contact point to penetrate enemy mesh and reach collider
+            // This is also because the target is moving
+            // This is because the raycast contact point is the final destination for the bullet to travel
+            bulletController.target = hit.point + direction * 1;
             bulletController.hit = true;
         }
         else

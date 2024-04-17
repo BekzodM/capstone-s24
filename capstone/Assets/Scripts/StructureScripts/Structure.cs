@@ -18,6 +18,8 @@ public abstract class Structure : MonoBehaviour
     protected string imagePath;
     protected GameObject areaZone;
 
+    protected HealthBar healthBar;
+
     protected UpgradeFunction[] upgradeFunctions;
 
     protected DatabaseWrapper databaseWrapper;
@@ -25,6 +27,12 @@ public abstract class Structure : MonoBehaviour
     protected StructureUpgradesInfo upgradesInfo;
 
     protected TooltipHover tooltipHover;
+
+    protected GameObject planningPhaseManager;
+
+    protected PlaceStructure placeStruct;
+
+    protected bool isDead = false;
 
     protected Structure(string name, string description, string type, int cost, int health, int progressLevel, int attackDamage)
     {
@@ -41,6 +49,8 @@ public abstract class Structure : MonoBehaviour
     protected virtual void Awake()
     {
         areaZone = transform.GetChild(0).gameObject;
+
+        healthBar = transform.GetChild(2).GetChild(0).GetComponent<HealthBar>();
 
         databaseWrapper = new DatabaseWrapper();
 
@@ -61,6 +71,17 @@ public abstract class Structure : MonoBehaviour
             Slot2UpgradeLevel4,
             Slot2UpgradeLevel5,
         };
+
+        planningPhaseManager = FindFirstObjectByType<PlanningPhaseManager>().gameObject;
+        if (planningPhaseManager == null) {
+            Debug.LogError("Cannot find planning phase manager");
+        }
+
+        placeStruct = FindObjectOfType<PlaceStructure>();
+        if (placeStruct == null)
+        {
+            Debug.LogError("Cannot find Place Structure");
+        }
     }
 
     protected virtual void Start()
@@ -72,6 +93,8 @@ public abstract class Structure : MonoBehaviour
         tooltipHover = gameObject.AddComponent<TooltipHover>();
         tooltipHover.type = TooltipHover.HoverType.Structure;
         health = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+
     }
 
     protected virtual void SetStructureProperties()
@@ -93,19 +116,27 @@ public abstract class Structure : MonoBehaviour
         if (damage <= 0) {
             Debug.LogError("Damage must be greater than 0");
         }
-        if (health - damage <= 0) {
-            SetMaxHealth(0);
-            PlaceStructure placeStructComponent = FindObjectOfType<PlaceStructure>();
-            if (placeStructComponent != null)
+
+        if (health - damage <= 0 && isDead == false) {
+            SetHealth(0);
+            healthBar.SetHealth(0);
+
+            if (placeStruct != null)
             {
-                placeStructComponent.RemoveStructurePlacement(gameObject);
+                //placeStruct.RemoveStructurePlacement(gameObject);
+                isDead = true;
+                Destroy(gameObject);
+                placeStruct.RemoveStructurePlacement(gameObject);
+                    
+            }
+            else {
+                Debug.LogError("place structure is missing");
             }
 
-            placeStructComponent.RemoveStructurePlacement(gameObject);
-            Destroy(gameObject);
         }
         else{
             health -= damage;
+            healthBar.SetHealth(health);
         }
     }
 
@@ -151,6 +182,10 @@ public abstract class Structure : MonoBehaviour
     public int GetMaxHealth()
     {
         return maxHealth;
+    }
+
+    public int GetHealth() {
+        return health;
     }
 
     public int GetProgressLevel()
@@ -229,6 +264,10 @@ public abstract class Structure : MonoBehaviour
     protected void SetMaxHealth(int h)
     {
         maxHealth = h;
+    }
+
+    protected void SetHealth(int h) {
+        health = h;
     }
 
     protected void SetProgressLevel(int level)
