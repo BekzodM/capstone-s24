@@ -224,6 +224,7 @@ public class MapManager : MonoBehaviour
         int moneySpend = startingMoney - money;
         if (levelWon)
         {
+            //Bodrul change implementation
             GameState.currentProgressLevel += 1;
             levelStats.text = "Waves beat: " + wavesBeat + "\nMoney Spent: " + moneySpend + "\nYou leveled up! New Progress Level: " + GameState.currentProgressLevel;
         }
@@ -243,6 +244,10 @@ public class MapManager : MonoBehaviour
         Debug.Log("clicked");
         SceneManager.LoadScene("LevelSelect2");
     }
+
+    //Bodrul Add restart level method
+    //Bodrul Add back to main menu function
+
 
     public void DecreaseCurrentWaveNumber(int decrease)
     {
