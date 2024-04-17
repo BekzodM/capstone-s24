@@ -19,6 +19,7 @@ public class MapManager : MonoBehaviour
     public GameObject levelCompleteUI;
 
     public TMP_Text levelStats;
+    public TMP_Text levelCompleteFailText;
 
     //World Space Canvas
     public GameObject worldSpaceCanvas;
@@ -225,13 +226,16 @@ public class MapManager : MonoBehaviour
         if (levelWon)
         {
             //Bodrul change implementation
-            GameState.currentProgressLevel += 1;
-            levelStats.text = "Waves beat: " + wavesBeat + "\nMoney Spent: " + moneySpend + "\nYou leveled up! New Progress Level: " + GameState.currentProgressLevel;
+            Scene currentScene = SceneManager.GetActiveScene();
+            string sceneName = currentScene.name;
+            LevelManagementFucntion(sceneName);
+            levelStats.text = "Waves beat: " + wavesBeat + "\nMoney Spent: " + moneySpend + "\nYou leveled up!\nNew Progress Level: " + GameState.currentProgressLevel;
+            levelCompleteFailText.text = "Level Complete";
         }
         else
         {
             levelStats.text = "Waves beat: " + wavesBeat + "\nMoney Spent: " + moneySpend + "\nYou did not level up\nProgress Level: " + GameState.currentProgressLevel;
-
+            levelCompleteFailText.text = "Level Failed";
         }
     }
 
@@ -244,9 +248,6 @@ public class MapManager : MonoBehaviour
         Debug.Log("clicked");
         SceneManager.LoadScene("LevelSelect2");
     }
-
-    //Bodrul Add restart level method
-    //Bodrul Add back to main menu function
 
 
     public void DecreaseCurrentWaveNumber(int decrease)
@@ -352,6 +353,42 @@ public class MapManager : MonoBehaviour
             maxBaseHealth -= decrease;
             BaseHealthText baseHealthText = planningPhaseUI.GetComponentInChildren<BaseHealthText>();
             baseHealthText.ChangeBaseHealthText(baseHealth, maxBaseHealth);
+        }
+    }
+
+    public void LevelManagementFucntion(string sceneName)
+    {
+
+        if (sceneName == "CityScape1")
+        {
+            if (GameState.currentProgressLevel == 1)
+            {
+                GameState.currentProgressLevel++;
+            }
+        }
+
+        if (sceneName == "CityScape2")
+        {
+            if (GameState.currentProgressLevel == 2)
+            {
+                GameState.currentProgressLevel++;
+            }
+        }
+
+        if (sceneName == "CityScape3")
+        {
+            if (GameState.currentProgressLevel == 3)
+            {
+                GameState.currentProgressLevel++;
+            }
+        }
+
+        if (sceneName == "CityScape4")
+        {
+            if (GameState.currentProgressLevel == 4)
+            {
+                GameState.currentProgressLevel++;
+            }
         }
     }
 }

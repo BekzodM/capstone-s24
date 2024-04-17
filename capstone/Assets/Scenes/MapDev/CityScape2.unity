@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7484,7 +7484,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2886361137089512915, guid: ba1d82c71e10943c7b9aa0c59a0dbdb5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3864611375983346211, guid: ba1d82c71e10943c7b9aa0c59a0dbdb5, type: 3}
       propertyPath: m_IsActive
@@ -7572,7 +7572,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6570668779194693321, guid: ba1d82c71e10943c7b9aa0c59a0dbdb5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 172.00021
+      value: 172.00015
       objectReference: {fileID: 0}
     - target: {fileID: 8177211750225794957, guid: ba1d82c71e10943c7b9aa0c59a0dbdb5, type: 3}
       propertyPath: m_AnchorMax.y
@@ -7610,6 +7610,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8657227514056415713, guid: ba1d82c71e10943c7b9aa0c59a0dbdb5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3747705638513432518}
+    - target: {fileID: 8657227514056415713, guid: ba1d82c71e10943c7b9aa0c59a0dbdb5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 9111555202982992141, guid: ba1d82c71e10943c7b9aa0c59a0dbdb5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -7642,6 +7650,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a9096557137f4a45a958e50ef816a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3747705638513432518 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3864611375983346211, guid: ba1d82c71e10943c7b9aa0c59a0dbdb5, type: 3}
+  m_PrefabInstance: {fileID: 3747705638513432516}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4816005830018417739
 PrefabInstance:
   m_ObjectHideFlags: 0

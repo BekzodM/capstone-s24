@@ -58,9 +58,11 @@ public class BattlePhaseController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!baseAlive)
+        if (!baseAlive || player.transform.GetChild(2).gameObject.GetComponent<Player>().currentHealth <= 0)
         {
-            planningPhaseObject.SetActive(false);
+            //planningPhaseObject.SetActive(false);
+            player.SetActive(false);
+            player.transform.GetChild(2).gameObject.GetComponent<PlayerController>().ToggleCursorUnlocked();
             gameObject.SetActive(false);
             mapManager.EndLevel();
         }
