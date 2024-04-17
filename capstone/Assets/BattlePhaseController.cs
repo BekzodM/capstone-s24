@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BattlePhaseController : MonoBehaviour
 {
@@ -37,13 +38,13 @@ public class BattlePhaseController : MonoBehaviour
     [SerializeField] GameObject player;
     public PlanningPhaseManager planningPhaseManager;
 
-    public GameObject mapManagerObject;
-    private MapManager mapManager;
+
+    public GameObject levelOverScene;
+    public Text gameOverText;
 
     private void Awake()
     {
         planningPhaseManager = planningPhaseObject.GetComponent<PlanningPhaseManager>();
-        mapManager = mapManagerObject.GetComponent<MapManager>();
         maxHealth = planningPhaseManager.GetMaxBaseHealth();
         currentRound = 1;
         levelComplete = false;
@@ -59,28 +60,72 @@ public class BattlePhaseController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!baseAlive)
+        if (levelComplete)
+        {
+            levelCompleteFunctions();
+
+        }
+        if (!baseAlive || player.transform.GetChild(2).gameObject.GetComponent<Player>().currentHealth <= 0)
         {
             planningPhaseObject.SetActive(false);
+            player.transform.GetChild(2).gameObject.GetComponent<PlayerController>().ToggleCursorUnlocked();
+            StartCoroutine(WaitForEnemiesDestroyed());
+            player.SetActive(false);
             gameObject.SetActive(false);
-            mapManager.EndLevel();
+            gameOverText.text = "Level Failed";
+            levelOverScene.SetActive(true);
         }
+
+
         //round complete will invoke planning phase:
         if (roundComplete)
         {
-            planningPhaseManager.StartPlanningPhase();
-            mapManager.IncreaseCurrentWaveNumber(1);
-            currentRound = mapManager.GetCurrentWaveNumber();
-            Debug.Log(currentRound);
-            waveIndex = 0;
-            numberOfWaves++;
-            countdown = 5f;
-            roundComplete = false;
-            player.transform.GetChild(2).gameObject.GetComponent<PlayerController>().ToggleCursorUnlocked();
-            player.SetActive(false);
-            gameObject.SetActive(false);
+            StartCoroutine(WaitForEnemiesDestroyed());
+            planningPhaseObject.SetActive(true);
+            //increaseRound();
+            planningPhaseManager.SetWave(increaseRound());
+            if (currentRound <= planningPhaseManager.GetTotalWaves())
+            {
+                waveIndex = 0;
+                numberOfWaves++;
+                countdown = 5f;
+                roundComplete = false;
+                player.transform.GetChild(2).gameObject.GetComponent<PlayerController>().ToggleCursorUnlocked();
+                player.SetActive(false);
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                levelComplete = true;
+                levelCompleteFunctions();
+            }
 
         }
+    }
+
+    int increaseRound()
+    {
+        currentRound++;
+        return currentRound;
+    }
+
+    IEnumerator WaitForEnemiesDestroyed()
+    {
+        for (int i = 0; i < allEnemies.Length; i++)
+        {
+            Destroy(allEnemies[i]);
+        }
+        yield return (allEnemies.Length == 0);
+    }
+
+    void levelCompleteFunctions()
+    {
+        player.transform.GetChild(2).gameObject.GetComponent<PlayerController>().ToggleCursorUnlocked();
+        player.SetActive(false);
+        planningPhaseObject.SetActive(false);
+        gameOverText.text = "Level Complete";
+        levelOverScene.SetActive(true);
+        gameObject.SetActive(false);
     }
 
 }

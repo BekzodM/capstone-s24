@@ -160,4 +160,14 @@ public class PlanningPhaseManager : MonoBehaviour
         mapManager.DecreaseMaxBaseHealth(decrease);
     }
 
+    public void SetWave(int wave)
+    {
+        mapManager.SetWave(wave);
+    }
+
+    public int GetTotalWaves()
+    {
+        return mapManager.GetTotalWaves();
+    }
+
 }
