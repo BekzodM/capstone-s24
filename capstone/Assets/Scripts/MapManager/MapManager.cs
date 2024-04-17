@@ -349,15 +349,4 @@ public class MapManager : MonoBehaviour
             baseHealthText.ChangeBaseHealthText(baseHealth, maxBaseHealth);
         }
     }
-
-    public void SetWave(int waveNumber)
-    {
-        WaveText waveText = planningPhaseUI.GetComponentInChildren<WaveText>();
-        waveText.ChangeWaveText(waveNumber, totalWaves);
-    }
-
-    public int GetTotalWaves()
-    {
-        return totalWaves;
-    }
 }
