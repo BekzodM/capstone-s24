@@ -14,7 +14,13 @@ public class Enemy : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    
+    private void Update()
+    {
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     /*
     Called by Player or Structure to deduct
