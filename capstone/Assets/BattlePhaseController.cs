@@ -32,12 +32,11 @@ public class BattlePhaseController : MonoBehaviour
     public bool baseAlive = true;
 
     //planning phase connection:
-    public GameObject planningPhaseObject;
+    [SerializeField] GameObject planningPhaseObject;
 
     [SerializeField] GameObject player;
     public PlanningPhaseManager planningPhaseManager;
-
-    public GameObject mapManagerObject;
+    [SerializeField] GameObject mapManagerObject;
     private MapManager mapManager;
 
     private void Awake()
