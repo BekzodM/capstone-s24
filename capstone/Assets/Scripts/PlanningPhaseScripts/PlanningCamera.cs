@@ -35,7 +35,7 @@ public class PlanningCamera : MonoBehaviour
 
         Vector3 moveDirection = transform.up * directionY + transform.right *directionX;
 
-        Debug.Log(moveDirection);
+        //Debug.Log(moveDirection);
         //changing wasd buttons colors
         if (moveDirection.z > 0) {
             w.color = Color.red;

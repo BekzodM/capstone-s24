@@ -898,7 +898,7 @@ VALUES
         "Sprites/PlanningPhase/plasmaTrapIconMoreSpeed",
         1,
         50,
-        5
+        7
     ),
     (
         97,
