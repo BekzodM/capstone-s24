@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GunSystem : MonoBehaviour
 {
     [SerializeField] private Camera playerCamera;
 
     [SerializeField] private GameObject bulletPrefab;
+
+    [SerializeField] private TMP_Text ammoCountText;
     //[SerializeField] private GameObject gun;
 
     private bool isShooting;        // Player bool input
@@ -45,6 +49,11 @@ public class GunSystem : MonoBehaviour
     }
     [SerializeField] private GunType gunType;
 
+    private void OnEnable()
+    {
+        UpdateAmmoCount();
+    }
+
     private void OnDisable()
     {
         /* Needed because if player holds on shoot button while battle phase -> planning phase,
@@ -65,7 +74,11 @@ public class GunSystem : MonoBehaviour
 
     private void Update()
     {
+        UpdateAmmoCount();
 
+        // Automatically reload if empty magazine
+        if (bulletsLeft <= 0)
+            OnReload();
     }
 
     public void Shoot()
@@ -247,5 +260,10 @@ public class GunSystem : MonoBehaviour
             bulletController.hit = false;
 
         }
+    }
+
+    private void UpdateAmmoCount()
+    {
+        ammoCountText.text = bulletsLeft.ToString() + "/" + magazineSize.ToString();
     }
 }
