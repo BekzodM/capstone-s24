@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlanningCamera : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class PlanningCamera : MonoBehaviour
     public InputAction cameraControls;
     Vector2 move = Vector2.zero;
 
+    public Image w;
+    public Image a;
+    public Image s;
+    public Image d;
 
     Camera planningCamera;
     void Start()
@@ -30,6 +35,39 @@ public class PlanningCamera : MonoBehaviour
 
         Vector3 moveDirection = transform.up * directionY + transform.right *directionX;
 
+        Debug.Log(moveDirection);
+        //changing wasd buttons colors
+        if (moveDirection.z > 0) {
+            w.color = Color.red;
+        }
+        else
+        {
+            w.color = Color.white;
+        }
+        
+        if (moveDirection.z < 0) {
+            s.color = Color.red;
+        }
+        else
+        {
+            s.color = Color.white;
+        }
+        
+        if (moveDirection.x > 0) {
+            d.color = Color.red;
+        }
+        else
+        {
+            d.color = Color.white;
+        }
+
+        if (moveDirection.x < 0) {
+            a.color = Color.red;
+        }
+        else
+        {
+            a.color = Color.white;
+        }
 
 
         // Normalize the movement direction to ensure consistent speed diagonally
