@@ -169,15 +169,16 @@ public class MapManager : MonoBehaviour
             int sellingValue = Mathf.RoundToInt(sellingPercentage * obj.GetComponent<Structure>().GetStructureWorth());
             //Refund 70% of structure's worth value
             AddMoney(sellingValue);
-
-            //Remove from placement's set
-            planningPhaseUI.GetComponent<PlaceStructure>().RemoveStructurePlacement(obj);
-
+            
             //ReparentWorldSpaceCanvas
             worldSpaceCanvas.GetComponent<WorldSpaceCanvas>().ResetWorldCanvas();
 
+            //Remove from placement's set and destroy it
+            planningPhaseUI.GetComponent<PlaceStructure>().RemoveStructurePlacement(obj);
+
+
             //Destroy Structure
-            planningPhaseUI.GetComponent<DragStructures>().DestroySelectedObject();
+            //planningPhaseUI.GetComponent<DragStructures>().DestroySelectedObject();
 
             //Hide structure Info
             StructureInfo structureInfo = planningPhaseUI.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<StructureInfo>();
