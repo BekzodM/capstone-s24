@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlaceStructure : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class PlaceStructure : MonoBehaviour
     public GameObject worldSpaceCanvas;
     public GameObject mapManager;
     public GameObject message;
+    public Image dot;
 
     HashSet<GameObject> structures; //structures that have been placed down already
 
@@ -21,6 +23,33 @@ public class PlaceStructure : MonoBehaviour
     void Start()
     {
         //planningCamera = Camera.main;
+    }
+
+    private void Update()
+    {
+        Vector3 cameraPosition = planningCamera.transform.position;
+        Vector3 cameraForward = planningCamera.transform.forward;
+
+        Debug.DrawRay(cameraPosition, cameraForward * 100f, Color.cyan, 0.1f);
+
+        // Raycast from camera to ground
+        Ray ray = new Ray(cameraPosition, cameraForward);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        {
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("StructureGround"))
+            {
+                dot.color = Color.green;
+            }
+            else
+            {
+                dot.color = Color.red;
+            }
+        }
+        else {
+            dot.color = Color.red;
+        }
     }
 
     public void InstantiateStructure(int tabIndex, int buttonIndex) {
