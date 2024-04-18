@@ -365,6 +365,7 @@ public class MapManager : MonoBehaviour
             if (GameState.currentProgressLevel == 1)
             {
                 GameState.currentProgressLevel++;
+                databaseWrapper.UpdateData(GameState.currentProgressLevel, GameState.saveId);
             }
         }
 
@@ -373,6 +374,7 @@ public class MapManager : MonoBehaviour
             if (GameState.currentProgressLevel == 2)
             {
                 GameState.currentProgressLevel++;
+                databaseWrapper.UpdateData(GameState.currentProgressLevel, GameState.saveId);
             }
         }
 
@@ -381,6 +383,7 @@ public class MapManager : MonoBehaviour
             if (GameState.currentProgressLevel == 3)
             {
                 GameState.currentProgressLevel++;
+                databaseWrapper.UpdateData(GameState.currentProgressLevel, GameState.saveId);
             }
         }
 
@@ -389,6 +392,7 @@ public class MapManager : MonoBehaviour
             if (GameState.currentProgressLevel == 4)
             {
                 GameState.currentProgressLevel++;
+                databaseWrapper.UpdateData(GameState.currentProgressLevel, GameState.saveId);
             }
         }
     }

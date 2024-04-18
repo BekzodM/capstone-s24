@@ -18,7 +18,8 @@ public class PlanningPhaseManager : MonoBehaviour
     [SerializeField] private DragStructures dragStructures;
     [SerializeField] private Message message;
     [SerializeField] private Camera planningPhaseCamera;
-
+    [SerializeField] private GameObject battlePhaseController;
+    [SerializeField] private GameObject player;
 
     private void Awake()
     {
@@ -69,6 +70,8 @@ public class PlanningPhaseManager : MonoBehaviour
 
             placeStructure.ActivateStructureAreaZoneColliders(true);
             placeStructure.ActivateStructureAreaZoneMesh(false);
+            battlePhaseController.SetActive(true);
+            player.SetActive(true);
         }
     }
 
