@@ -8,7 +8,7 @@ using UnityEditor.Rendering;
 using TMPro;
 using Unity.VisualScripting;
 
-public class SimpleDB : MonoBehaviour
+public class CreateDB : MonoBehaviour
 {
     // Start is called before the first frame update
 
@@ -17,7 +17,7 @@ public class SimpleDB : MonoBehaviour
     void Start()
     {
 
-        string databasePath = "GameData.db"; // Replace "your_database.db" with the path to your SQLite database file
+        string databasePath = "GameData.db"; //path to your SQLite database file
 
         if (File.Exists(databasePath))
         {
