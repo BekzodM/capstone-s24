@@ -26,8 +26,8 @@ public class EnemyNavigation : MonoBehaviour
         enemyAttack = GetComponent<EnemyAttack>();
         whatIsPlayer = 1 << LayerMask.NameToLayer("Player");
         whatIsStructure = 1 << LayerMask.NameToLayer("Draggable");
-        sightRange = 10;
-        attackRange = 2;
+        sightRange = 5;
+        attackRange = 1;
     }
 
     
@@ -69,9 +69,19 @@ public class EnemyNavigation : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, sightRange, whatIsStructure);
         if (hitColliders.Length > 0)
         {
-            structure = hitColliders[0]; // Store the position of the first detected structure
-            if(StructureReachable()) enemy.SetDestination(structure.transform.position); // If Structure reachable go to it
-            else enemy.SetDestination(homeBase.position); // Else go to base
+            foreach (Collider collider in hitColliders) {
+                Structure structureComponent = collider.GetComponentInParent<Structure>();
+                if (structureComponent != null && structureComponent.GetStructureType() != "Trap")
+                {
+                    structure = collider; // Store the position of the first detected structure that is not a trap
+                    if (StructureReachable()) enemy.SetDestination(structure.transform.position); // If Structure reachable go to it
+                    else enemy.SetDestination(homeBase.position);
+                    return;
+                }
+            }
+            //structure = hitColliders[0]; // Store the position of the first detected structure
+            //if(StructureReachable()) enemy.SetDestination(structure.transform.position); // If Structure reachable go to it
+            //else enemy.SetDestination(homeBase.position); // Else go to base
         } else enemy.SetDestination(homeBase.position); // If no structure colliders go to base
     }
 
@@ -82,8 +92,20 @@ public class EnemyNavigation : MonoBehaviour
     void AttackStructure() {
         enemy.ResetPath();
         if(structure != null) {
-            enemyAttack.EnemyAttackStructure(structure);
-            transform.LookAt(structure.transform.position);
+            Structure structureComponent = structure.GetComponentInParent<Structure>();
+            if (structureComponent != null && structureComponent.GetStructureType() != "Trap")
+            {
+                enemyAttack.EnemyAttackStructure(structure);
+                transform.LookAt(structure.transform.position);
+            }
+            else
+            {
+                // If the structure is a trap, chase another structure
+                ChaseStructure();
+                return;
+            }
+            //enemyAttack.EnemyAttackStructure(structure);
+            //transform.LookAt(structure.transform.position);
         } else ChaseStructure();
     }
 

@@ -173,7 +173,6 @@ MonoBehaviour:
   health: 0
   progressLevel: 0
   attackDamage: 0
-  planningPhase: {fileID: 4367970144473117807, guid: 03683157d907419488c137f669e5816d, type: 3}
   cooldown: 1
   rayDistanceFromHead: 1.5
   muzzle: {fileID: 236028636016778209, guid: fd908c94dd27bde40a89a625301fb5f9, type: 3}
@@ -299,6 +298,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5905312630646424418}
   - component: {fileID: 4082552837021249608}
+  - component: {fileID: 4493585167536510}
   m_Layer: 7
   m_Name: turret
   m_TagString: Structure
@@ -344,6 +344,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 2.1862931, z: 1.7489218}
   m_Center: {x: 0, y: 1.1922843, z: 0.0029954314}
+--- !u!208 &4493585167536510
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6537029973759138264}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 1, z: 0.875}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.2, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &147367491546440867
 PrefabInstance:
   m_ObjectHideFlags: 0
