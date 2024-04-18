@@ -32,9 +32,12 @@ public abstract class Trap : Structure
             {
                 if (enemy != null)
                 {
+                    Debug.Log(Time.time + " attacked now");
                     Attack(enemy);
                 }
                 nextCooldown = Time.time + cooldown;
+                Debug.Log(nextCooldown + " is the next cooldown ");
+
             }
         }
     }
@@ -47,7 +50,7 @@ public abstract class Trap : Structure
             targetEnemy = target;
         }
         isAttacking = true;
-        nextCooldown = Time.time;
+        // nextCooldown = Time.time;
     }
 
     public void StopAttacking(GameObject target)
