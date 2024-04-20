@@ -40,6 +40,7 @@ public class FireTrap : Trap
         if (target != null)
         {
             target.GetComponent<Enemy>().TakeDamage(attackDamage, gameObject);
+            //Debug.Log("-5 health!");
         }
         else
         {
