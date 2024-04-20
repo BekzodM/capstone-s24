@@ -40,11 +40,12 @@ public class Enemy : MonoBehaviour
         currentHealth-= damage;
         healthBar.SetHealth(currentHealth);
 
-        //remove killed enemy from enemiesInZone list
-        attacker.GetComponent<Offensive>().RemoveEnemyFromZone(gameObject);
         
         if(currentHealth <= 0)
         {
+            //remove killed enemy from enemiesInZone list
+            attacker.GetComponent<Offensive>().RemoveEnemyFromZone(gameObject);
+
             Destroy(gameObject);
         }
     }
