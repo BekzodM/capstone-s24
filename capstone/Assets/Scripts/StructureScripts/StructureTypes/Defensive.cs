@@ -26,6 +26,21 @@ public abstract class Defensive : Structure
         if (isAttacking && Time.time >= nextCooldown) {
             if (enemiesInZone.Count > 0) {
                 Attack();
+
+                //clear dead enemies from the enemiesInZone
+                int enemiesInZoneSize = enemiesInZone.Count;
+                for (int i = 0; i < enemiesInZoneSize; i++)
+                {
+                    GameObject enemy = enemiesInZone[i];
+                    if (enemy != null)
+                    {
+                        if (enemy.GetComponent<Enemy>().GetIsDead())
+                        {
+                            RemoveEnemyFromZone(enemy);
+                        }
+                    }
+                }
+
                 PlayAudio();
             }
             nextCooldown= Time.time + cooldown;

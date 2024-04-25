@@ -48,6 +48,7 @@ public class Enemy : MonoBehaviour
         {
             isDead= true;
             
+            /*
             //remove killed enemy from enemiesInZone list
             string structType = attacker.GetComponent<Structure>().GetStructureType();
 
@@ -60,8 +61,8 @@ public class Enemy : MonoBehaviour
             else if (structType == "Trap") {
                 //attacker.GetComponent<Trap>().RemoveEnemyFromZone(gameObject);
             }
+            */
 
-            
             Destroy(gameObject);
         }
     }
