@@ -34,6 +34,21 @@ public abstract class Offensive : Structure
             if (targetEnemy != null)
             {
                 Attack(targetEnemy);
+
+                //clear dead enemies from the enemiesInZone
+                int enemiesInZoneSize = enemiesInZone.Count;
+                for (int i = 0; i < enemiesInZoneSize; i++)
+                {
+                    GameObject enemy = enemiesInZone[i];
+                    if (enemy != null)
+                    {
+                        if (enemy.GetComponent<Enemy>().GetIsDead())
+                        {
+                            RemoveEnemyFromZone(enemy);
+                        }
+                    }
+                }
+
                 PlayAudio();
                 nextCooldown = Time.time + cooldown;
             }

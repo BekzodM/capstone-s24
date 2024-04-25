@@ -22,6 +22,7 @@ public class PlasmaTrap : Trap
         base.Start();
     }
 
+    /*
     protected override void Attack(GameObject target)
     {
         if (target == null)
@@ -33,7 +34,12 @@ public class PlasmaTrap : Trap
 
         DealDamage(target);
     }
+    */
 
+    protected override void Attack()
+    {
+        base.Attack();
+    }
 
     protected override void DealDamage(GameObject target)
     {
