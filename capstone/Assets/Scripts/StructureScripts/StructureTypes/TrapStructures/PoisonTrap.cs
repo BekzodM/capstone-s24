@@ -22,6 +22,7 @@ public class PoisonTrap : Trap
         base.Start();
     }
 
+    /*
     protected override void Attack(GameObject target)
     {
         if (target == null)
@@ -33,7 +34,12 @@ public class PoisonTrap : Trap
 
         DealDamage(target);
     }
+    */
 
+    protected override void Attack()
+    {
+        base.Attack();
+    }
 
     protected override void DealDamage(GameObject target)
     {

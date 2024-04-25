@@ -48,14 +48,16 @@ public abstract class Defensive : Structure
         foreach (GameObject enemy in enemiesInZone) {
             Enemy enemyComponent = enemy.GetComponent<Enemy>();
             if (enemyComponent != null) {
-                enemyComponent.TakeDamage(attackDamage);            
+                enemyComponent.TakeDamage(attackDamage, gameObject);            
             }
         }
     }
 
-    private void PlayAudio()
+    public void RemoveEnemyFromZone(GameObject enemy)
     {
-        AudioSource audio = GetComponent<AudioSource>();
-        audio?.Play();
+        enemiesInZone.Remove(enemy);
+        //Debug.Log(enemy.name + " has lefted the enemiesInZone");
     }
+
+
 }

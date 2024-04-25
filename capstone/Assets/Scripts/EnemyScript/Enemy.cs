@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public int maxHealth = 100;
     int currentHealth;
     public HealthBar healthBar;
+    protected bool isDead = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,10 +17,12 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        /*
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }
+        */
     }
 
     /*
@@ -30,7 +33,7 @@ public class Enemy : MonoBehaviour
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
 
-        if(currentHealth == 0) {
+        if(currentHealth <= 0) {
             Destroy(gameObject);
         }
     }
@@ -41,14 +44,27 @@ public class Enemy : MonoBehaviour
         healthBar.SetHealth(currentHealth);
 
         
-        if(currentHealth <= 0)
+        if(currentHealth <= 0 && isDead == false)
         {
+            isDead= true;
+            
             //remove killed enemy from enemiesInZone list
-            attacker.GetComponent<Offensive>().RemoveEnemyFromZone(gameObject);
+            string structType = attacker.GetComponent<Structure>().GetStructureType();
 
+            if (structType == "Offensive") {
+                attacker.GetComponent<Offensive>().RemoveEnemyFromZone(gameObject);
+            }
+            else if (structType == "Defensive") {
+                attacker.GetComponent<Defensive>().RemoveEnemyFromZone(gameObject);
+            }
+            else if (structType == "Trap") {
+                //attacker.GetComponent<Trap>().RemoveEnemyFromZone(gameObject);
+            }
+
+            
             Destroy(gameObject);
         }
     }
 
-
+    public bool GetIsDead() { return isDead; }
 }

@@ -72,7 +72,7 @@ public class AreaZone : MonoBehaviour
             }
             else if (structureType == "Trap")
             {
-                HandleOnTriggerEnterForTrapStructures(structure, other.gameObject);
+                HandleOnTriggerExitForTrapStructures(structure, other.gameObject);
             }
             else {
                 Debug.LogError("Invalid structure type");

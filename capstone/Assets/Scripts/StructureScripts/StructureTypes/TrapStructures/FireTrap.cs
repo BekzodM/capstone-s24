@@ -22,6 +22,7 @@ public class FireTrap : Trap
         base.Start();
     }
 
+    /*
     protected override void Attack(GameObject target)
     {
         if (target == null)
@@ -29,11 +30,16 @@ public class FireTrap : Trap
             Debug.LogWarning("Target is null. Cannot attack.");
             return;
         }
-
-
-        DealDamage(target);
+        else {
+            DealDamage(target);
+        }
     }
+    */
 
+    protected override void Attack()
+    {
+        base.Attack();
+    }
 
     protected override void DealDamage(GameObject target)
     {
