@@ -33,6 +33,7 @@ public abstract class Trap : Structure
                 if (enemy != null)
                 {
                     Attack(enemy);
+                    PlayAudio();
                 }
                 nextCooldown = Time.time + cooldown;
             }
