@@ -29,7 +29,8 @@ public abstract class Support : Structure
                     Debug.Log("Cannot heal because planning phase is active");
                 }
                 else {
-                    SupportAbility();                
+                    SupportAbility();
+                    PlayAudio();
                 }
 
             }

@@ -34,6 +34,7 @@ public abstract class Offensive : Structure
             if (targetEnemy != null)
             {
                 Attack(targetEnemy);
+                PlayAudio();
                 nextCooldown = Time.time + cooldown;
             }
         }
@@ -78,7 +79,5 @@ public abstract class Offensive : Structure
         enemiesInZone.Remove(enemy);
         //Debug.Log(enemy.name + " has lefted the enemiesInZone");
     }
-
-
 
 }

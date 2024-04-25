@@ -308,6 +308,16 @@ public abstract class Structure : MonoBehaviour
 
     }
 
+    //audio
+    protected void PlayAudio()
+    {
+        AudioSource audio = GetComponent<AudioSource>();
+        if (audio != null) {
+            audio.Play();
+        }
+
+    }
+
 
     //Abstract methods upgrade functions
     //slot 0 upgrades

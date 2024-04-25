@@ -26,6 +26,7 @@ public abstract class Defensive : Structure
         if (isAttacking && Time.time >= nextCooldown) {
             if (enemiesInZone.Count > 0) {
                 Attack();
+                PlayAudio();
             }
             nextCooldown= Time.time + cooldown;
         }
@@ -50,5 +51,11 @@ public abstract class Defensive : Structure
                 enemyComponent.TakeDamage(attackDamage);            
             }
         }
+    }
+
+    private void PlayAudio()
+    {
+        AudioSource audio = GetComponent<AudioSource>();
+        audio?.Play();
     }
 }
