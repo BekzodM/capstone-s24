@@ -8,11 +8,13 @@ public class Enemy : MonoBehaviour
     public int maxHealth = 100;
     int currentHealth;
     public HealthBar healthBar;
+    BattlePhaseController battlePhaseController;
     protected bool isDead = false;
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
+        battlePhaseController = FindFirstObjectByType<BattlePhaseController>();
     }
 
     private void Update()
@@ -64,6 +66,7 @@ public class Enemy : MonoBehaviour
             */
 
             Destroy(gameObject);
+            battlePhaseController.planningPhaseManager.AddMoney(50);
         }
     }
 
