@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class GunSystem : MonoBehaviour
 {
-    [SerializeField] private Camera playerCamera;
+    private Camera playerCamera;
 
     [SerializeField] private GameObject bulletPrefab;
 
@@ -66,6 +66,8 @@ public class GunSystem : MonoBehaviour
 
     private void Awake()
     {
+        playerCamera = Camera.main;
+
         bulletsLeft = magazineSize;
         readyToShoot = true;
 
