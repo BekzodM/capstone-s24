@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1293579, g: 0.15273058, b: 0.2877285, a: 1}
+  m_IndirectSpecularColor: {r: 0.12955043, g: 0.15253443, b: 0.2877607, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4359,6 +4359,10 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 297399157}
+    - target: {fileID: 8332056995437456224, guid: acad3b8a3da9f974f8d4a53f2e4ba1d0, type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 1887362270909896772, guid: 1e5ceeaaacc9a4d9dbdc4ebfb66875d5, type: 3}
     - target: {fileID: 8332056995437456224, guid: acad3b8a3da9f974f8d4a53f2e4ba1d0, type: 3}
       propertyPath: waveCounter
       value: 
@@ -11159,7 +11163,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 726354507290046934, guid: cc4d3e59439e3bc41ab60f822f17ef03, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.04
+      value: 1.15
       objectReference: {fileID: 0}
     - target: {fileID: 726354507290046934, guid: cc4d3e59439e3bc41ab60f822f17ef03, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13322,7 +13326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: -334000983
+  m_AgentTypeID: 1479372276
   m_CollectObjects: 0
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 2, z: 0}
@@ -13337,7 +13341,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.4333333
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 2333f7415073c4fb1b2538f3e0237a44, type: 2}
   m_BuildHeightMesh: 0
