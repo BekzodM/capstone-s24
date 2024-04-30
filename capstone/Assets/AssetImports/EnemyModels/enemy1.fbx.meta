@@ -3,7 +3,47 @@ guid: d91d84ce6b4ff4cd59959805afb3e1bf
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Battery
+    second: {fileID: 2100000, guid: 1f1d2619ac7464205be05dbb75fd7359, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bolt
+    second: {fileID: 2100000, guid: 6956213c335664c0ea07ad8d67f935b2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Head
+    second: {fileID: 2100000, guid: e9c86aec8c29442deb24f073ae68c688, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Headlights
+    second: {fileID: 2100000, guid: a2d5c41d62890449bbbec25d9d81836b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Motor bronze
+    second: {fileID: 2100000, guid: b5617884256aa4485a23e79521e72853, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Motor_main
+    second: {fileID: 2100000, guid: f24327b85982048588035f2ca128a798, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tire
+    second: {fileID: 2100000, guid: acb31efda6a764578aa8b06d8f362126, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wire
+    second: {fileID: 2100000, guid: 52c28e0358f154487a11bc4d1d6f3302, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
