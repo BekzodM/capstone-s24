@@ -3,7 +3,12 @@ guid: d91d84ce6b4ff4cd59959805afb3e1bf
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Headlights
+    second: {fileID: 2100000, guid: a2d5c41d62890449bbbec25d9d81836b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
