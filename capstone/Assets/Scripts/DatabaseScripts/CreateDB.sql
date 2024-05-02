@@ -1,12 +1,3 @@
-CREATE TABLE IF NOT EXISTS gameItems(
-    item_id INTEGER NOT NULL PRIMARY KEY,
-    item_name VARCHAR(20),
-    item_type VARCHAR(20),
-    item_damage INTEGER,
-    item_armor INTEGER,
-    progress_level INTEGER
-);
-
 CREATE TABLE IF NOT EXISTS structures(
     structure_id INTEGER NOT NULL PRIMARY KEY,
     structure_name VARCHAR(20),
@@ -28,16 +19,6 @@ CREATE TABLE IF NOT EXISTS structureUpgrades(
     upgrade_cost INTEGER,
     structure_id INTEGER,
     FOREIGN KEY (structure_id) REFERENCES structures(structure_id)
-);
-
-CREATE TABLE IF NOT EXISTS enemies(
-    enemy_id INTEGER NOT NULL PRIMARY KEY,
-    enemy_name VARCHAR(20),
-    enemy_type VARCHAR(20),
-    enemy_damage INTEGER,
-    enemy_health INTEGER,
-    enemy_mana INTEGER,
-    progress_level INTEGER
 );
 
 CREATE TABLE IF NOT EXISTS saves (
