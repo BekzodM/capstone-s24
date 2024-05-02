@@ -85,7 +85,6 @@ public class StructureShop : MonoBehaviour
                 GameObject buttonInstance = Instantiate(structureShopButtonPrefab);
                 //Button buttonComponent = buttonInstance.GetComponent<Button>();
                 buttonInstance.transform.SetParent(child.transform);
-
                 buttonInstance.GetComponent<StructureButton>().SetUpButton(obj.name, i, j);
             }
         }
