@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12955043, g: 0.15253443, b: 0.2877607, a: 1}
+  m_IndirectSpecularColor: {r: 0.1293579, g: 0.15273058, b: 0.2877285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5157,7 +5157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8332056995437456224, guid: acad3b8a3da9f974f8d4a53f2e4ba1d0, type: 3}
       propertyPath: baseDamageAmount
-      value: 5
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8332056995437456224, guid: acad3b8a3da9f974f8d4a53f2e4ba1d0, type: 3}
       propertyPath: mapManagerObject
@@ -11905,7 +11905,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ff9709625f64ee4fb6ef11adef66445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCamera: {fileID: 589814984}
   bulletPrefab: {fileID: 58641070614536995, guid: 05146a0a178bc694a8ff90c51d15f2ac, type: 3}
   ammoCountText: {fileID: 189870698}
   allowButtonHold: 1
@@ -19611,6 +19610,10 @@ PrefabInstance:
       propertyPath: levelStats
       value: 
       objectReference: {fileID: 244341047}
+    - target: {fileID: 150716748477017793, guid: 03683157d907419488c137f669e5816d, type: 3}
+      propertyPath: totalWaves
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 150716748477017793, guid: 03683157d907419488c137f669e5816d, type: 3}
       propertyPath: battlePhaseUI
       value: 
