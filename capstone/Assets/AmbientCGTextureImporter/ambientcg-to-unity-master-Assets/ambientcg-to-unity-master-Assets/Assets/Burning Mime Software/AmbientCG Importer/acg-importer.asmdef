@@ -1,0 +1,6 @@
+{
+  "name": "burningmime.unity.editor.acgimport",
+  "references": [],
+  "includePlatforms": ["Editor"],
+  "autoReferenced": false
+}
