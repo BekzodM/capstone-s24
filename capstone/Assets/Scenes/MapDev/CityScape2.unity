@@ -191,6 +191,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 989ca930a1db34eb382a0e2ff111c0ef, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -216,7 +220,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &11728496
 Transform:
@@ -305,6 +309,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
       propertyPath: m_Name
       value: Building_3 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -474,6 +482,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a09c95fd9d9894fd4988892069394ab7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -535,6 +547,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 989ca930a1db34eb382a0e2ff111c0ef, type: 3}
       propertyPath: m_Name
       value: BuildingBlock_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 989ca930a1db34eb382a0e2ff111c0ef, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -613,6 +629,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 046ba8b8894ac47d39b181864d06281d, type: 3}
       propertyPath: m_Name
       value: BuildingBlock_19
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 046ba8b8894ac47d39b181864d06281d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -781,6 +801,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a09c95fd9d9894fd4988892069394ab7, type: 3}
       propertyPath: m_Name
       value: BuildingBlock_2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a09c95fd9d9894fd4988892069394ab7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -965,6 +989,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
       propertyPath: m_Name
       value: Building_3 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1268,7 +1296,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &196622436
 Transform:
@@ -1303,7 +1331,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &204935747
 Transform:
@@ -1380,6 +1408,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a09c95fd9d9894fd4988892069394ab7, type: 3}
       propertyPath: m_Name
       value: BuildingBlock_2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a09c95fd9d9894fd4988892069394ab7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1459,6 +1491,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_18 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e3d4a5899319a400f905d996f8c00f3c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1520,6 +1556,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
       propertyPath: m_Name
       value: Building_3 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1704,6 +1744,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
       propertyPath: m_Name
       value: Building_3 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1978,6 +2022,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
       propertyPath: m_Name
       value: Building_3 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2310,6 +2358,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_18 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e3d4a5899319a400f905d996f8c00f3c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2337,7 +2389,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!65 &388975048
 BoxCollider:
@@ -2476,6 +2528,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e3d4a5899319a400f905d996f8c00f3c, type: 3}
       propertyPath: m_Name
       value: BuildingBlock_18 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e3d4a5899319a400f905d996f8c00f3c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2751,6 +2807,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building_3 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2817,6 +2877,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_19 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 046ba8b8894ac47d39b181864d06281d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2878,6 +2942,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e3d4a5899319a400f905d996f8c00f3c, type: 3}
       propertyPath: m_Name
       value: BuildingBlock_18 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e3d4a5899319a400f905d996f8c00f3c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3063,6 +3131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_24 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0dbd65479cb5042c39592c9e07d77062, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3247,6 +3319,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_19
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 046ba8b8894ac47d39b181864d06281d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3324,6 +3400,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 046ba8b8894ac47d39b181864d06281d, type: 3}
       propertyPath: m_Name
       value: BuildingBlock_19 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 046ba8b8894ac47d39b181864d06281d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3403,6 +3483,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building_3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3480,6 +3564,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 046ba8b8894ac47d39b181864d06281d, type: 3}
       propertyPath: m_Name
       value: BuildingBlock_19
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 046ba8b8894ac47d39b181864d06281d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3611,7 +3699,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &597221814
 Transform:
@@ -3681,6 +3769,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_24
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0dbd65479cb5042c39592c9e07d77062, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3742,6 +3834,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a09c95fd9d9894fd4988892069394ab7, type: 3}
       propertyPath: m_Name
       value: BuildingBlock_2 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a09c95fd9d9894fd4988892069394ab7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3927,6 +4023,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 989ca930a1db34eb382a0e2ff111c0ef, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4110,6 +4210,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0dbd65479cb5042c39592c9e07d77062, type: 3}
       propertyPath: m_Name
       value: BuildingBlock_24 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0dbd65479cb5042c39592c9e07d77062, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4295,6 +4399,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_19
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 046ba8b8894ac47d39b181864d06281d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4319,7 +4427,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &698574157
 Transform:
@@ -4409,6 +4517,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 989ca930a1db34eb382a0e2ff111c0ef, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4486,6 +4598,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e3d4a5899319a400f905d996f8c00f3c, type: 3}
       propertyPath: m_Name
       value: BuildingBlock_18 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e3d4a5899319a400f905d996f8c00f3c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4659,6 +4775,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_19 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 046ba8b8894ac47d39b181864d06281d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4724,6 +4844,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 046ba8b8894ac47d39b181864d06281d, type: 3}
       propertyPath: m_Name
       value: BuildingBlock_19 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 046ba8b8894ac47d39b181864d06281d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4909,6 +5033,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 989ca930a1db34eb382a0e2ff111c0ef, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4970,6 +5098,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e3d4a5899319a400f905d996f8c00f3c, type: 3}
       propertyPath: m_Name
       value: BuildingBlock_18 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e3d4a5899319a400f905d996f8c00f3c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5367,6 +5499,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building_3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5535,6 +5671,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building_3 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5613,6 +5753,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building_3 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5679,6 +5823,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_19 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 046ba8b8894ac47d39b181864d06281d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5703,7 +5851,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &900845049
 Transform:
@@ -5913,7 +6061,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &930506322
 Transform:
@@ -5946,7 +6094,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &944178967
 Transform:
@@ -6353,6 +6501,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building_3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6430,6 +6582,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
       propertyPath: m_Name
       value: Building_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6573,6 +6729,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a09c95fd9d9894fd4988892069394ab7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6634,6 +6794,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e3d4a5899319a400f905d996f8c00f3c, type: 3}
       propertyPath: m_Name
       value: BuildingBlock_18
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e3d4a5899319a400f905d996f8c00f3c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6803,6 +6967,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_24
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0dbd65479cb5042c39592c9e07d77062, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6880,6 +7048,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
       propertyPath: m_Name
       value: Building_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7011,7 +7183,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1055678351
 Transform:
@@ -7094,6 +7266,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 046ba8b8894ac47d39b181864d06281d, type: 3}
       propertyPath: m_Name
       value: BuildingBlock_19 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 046ba8b8894ac47d39b181864d06281d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7373,6 +7549,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_24 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0dbd65479cb5042c39592c9e07d77062, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7397,7 +7577,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1143955663
 Transform:
@@ -7475,6 +7655,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_19 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 046ba8b8894ac47d39b181864d06281d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7536,6 +7720,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a09c95fd9d9894fd4988892069394ab7, type: 3}
       propertyPath: m_Name
       value: BuildingBlock_2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a09c95fd9d9894fd4988892069394ab7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7705,6 +7893,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_2 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a09c95fd9d9894fd4988892069394ab7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7835,7 +8027,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1259419838
 Transform:
@@ -8121,6 +8313,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a09c95fd9d9894fd4988892069394ab7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8288,6 +8484,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a09c95fd9d9894fd4988892069394ab7, type: 3}
       propertyPath: m_Name
       value: BuildingBlock_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a09c95fd9d9894fd4988892069394ab7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8457,6 +8657,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_24
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0dbd65479cb5042c39592c9e07d77062, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8535,6 +8739,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_18 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e3d4a5899319a400f905d996f8c00f3c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8559,7 +8767,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1314885813
 Transform:
@@ -8754,6 +8962,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_24 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0dbd65479cb5042c39592c9e07d77062, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8816,6 +9028,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a09c95fd9d9894fd4988892069394ab7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8877,6 +9093,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 989ca930a1db34eb382a0e2ff111c0ef, type: 3}
       propertyPath: m_Name
       value: BuildingBlock_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 989ca930a1db34eb382a0e2ff111c0ef, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9046,6 +9266,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a09c95fd9d9894fd4988892069394ab7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9107,6 +9331,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a09c95fd9d9894fd4988892069394ab7, type: 3}
       propertyPath: m_Name
       value: BuildingBlock_2 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a09c95fd9d9894fd4988892069394ab7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9186,6 +9414,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_18 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e3d4a5899319a400f905d996f8c00f3c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9248,6 +9480,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_24 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0dbd65479cb5042c39592c9e07d77062, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9272,7 +9508,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1444061876
 Transform:
@@ -9468,6 +9704,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a09c95fd9d9894fd4988892069394ab7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9495,7 +9735,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1495196499
 Transform:
@@ -9651,6 +9891,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building_3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9675,7 +9919,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1530855780
 Transform:
@@ -9763,6 +10007,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
       propertyPath: m_Name
       value: Building_3 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9931,6 +10179,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e3d4a5899319a400f905d996f8c00f3c, type: 3}
       propertyPath: m_Name
       value: BuildingBlock_18
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e3d4a5899319a400f905d996f8c00f3c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10206,6 +10458,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_2 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a09c95fd9d9894fd4988892069394ab7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10336,7 +10592,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1610468003
 Transform:
@@ -10372,7 +10628,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1614285227
 Transform:
@@ -10449,6 +10705,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_18 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e3d4a5899319a400f905d996f8c00f3c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10473,7 +10733,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1680421945
 Transform:
@@ -10506,7 +10766,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1685734585
 Transform:
@@ -10592,6 +10852,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
       propertyPath: m_Name
       value: Building_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10832,7 +11096,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!65 &1701014034
 BoxCollider:
@@ -10965,6 +11229,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_24 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0dbd65479cb5042c39592c9e07d77062, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11027,6 +11295,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building_3 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11088,6 +11360,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a09c95fd9d9894fd4988892069394ab7, type: 3}
       propertyPath: m_Name
       value: BuildingBlock_2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a09c95fd9d9894fd4988892069394ab7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11167,6 +11443,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 989ca930a1db34eb382a0e2ff111c0ef, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11244,6 +11524,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
       propertyPath: m_Name
       value: Building_3 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11429,6 +11713,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_24 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0dbd65479cb5042c39592c9e07d77062, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11453,7 +11741,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1842794809
 Transform:
@@ -11543,6 +11831,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 989ca930a1db34eb382a0e2ff111c0ef, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11621,6 +11913,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a09c95fd9d9894fd4988892069394ab7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11683,6 +11979,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_18 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e3d4a5899319a400f905d996f8c00f3c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11744,6 +12044,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a09c95fd9d9894fd4988892069394ab7, type: 3}
       propertyPath: m_Name
       value: BuildingBlock_2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a09c95fd9d9894fd4988892069394ab7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11928,6 +12232,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
       propertyPath: m_Name
       value: Building_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12203,6 +12511,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_18
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e3d4a5899319a400f905d996f8c00f3c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12281,6 +12593,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building_3 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12342,6 +12658,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a09c95fd9d9894fd4988892069394ab7, type: 3}
       propertyPath: m_Name
       value: BuildingBlock_2 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a09c95fd9d9894fd4988892069394ab7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12527,6 +12847,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildingBlock_1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 989ca930a1db34eb382a0e2ff111c0ef, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12605,6 +12929,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building_3 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e0629b2ff09dc4500a8b08b47843364b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12671,6 +12999,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0dbd65479cb5042c39592c9e07d77062, type: 3}
       propertyPath: m_Name
       value: BuildingBlock_24 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0dbd65479cb5042c39592c9e07d77062, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12802,7 +13134,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2139131918
 Transform:
@@ -13104,6 +13436,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 11728496}
     m_Modifications:
+    - target: {fileID: 106848315582741705, guid: 9ff436df454c04c68a2d15abd0d94743, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 638274002943080487, guid: 9ff436df454c04c68a2d15abd0d94743, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1397153163176968456, guid: 9ff436df454c04c68a2d15abd0d94743, type: 3}
       propertyPath: m_Name
       value: Base2
@@ -13111,6 +13451,18 @@ PrefabInstance:
     - target: {fileID: 1397153163176968456, guid: 9ff436df454c04c68a2d15abd0d94743, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397153163176968456, guid: 9ff436df454c04c68a2d15abd0d94743, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 2974917128792922945, guid: 9ff436df454c04c68a2d15abd0d94743, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3335769223839129210, guid: 9ff436df454c04c68a2d15abd0d94743, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3340660565648287625, guid: 9ff436df454c04c68a2d15abd0d94743, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13151,6 +13503,34 @@ PrefabInstance:
     - target: {fileID: 3340660565648287625, guid: 9ff436df454c04c68a2d15abd0d94743, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5489802134304745888, guid: 9ff436df454c04c68a2d15abd0d94743, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228872988367832530, guid: 9ff436df454c04c68a2d15abd0d94743, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6921484873369595453, guid: 9ff436df454c04c68a2d15abd0d94743, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7893503001615532393, guid: 9ff436df454c04c68a2d15abd0d94743, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8094965595789664400, guid: 9ff436df454c04c68a2d15abd0d94743, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8352925176239641159, guid: 9ff436df454c04c68a2d15abd0d94743, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8980021778600423469, guid: 9ff436df454c04c68a2d15abd0d94743, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
