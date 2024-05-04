@@ -14037,6 +14037,7 @@ GameObject:
   - component: {fileID: 1701014036}
   - component: {fileID: 1701014035}
   - component: {fileID: 1701014034}
+  - component: {fileID: 1701014038}
   m_Layer: 0
   m_Name: Arena Walls
   m_TagString: Untagged
@@ -14105,7 +14106,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 50, y: 10, z: 8}
+  m_Size: {x: 85.07, y: 10, z: 8}
   m_Center: {x: -20, y: 5, z: -1}
 --- !u!4 &1701014037
 Transform:
@@ -14122,6 +14123,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1701014038
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701014033}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.3, y: 11.61, z: 67.27}
+  m_Center: {x: -59.2, y: 1.88, z: -27.8}
 --- !u!1 &1703238235
 GameObject:
   m_ObjectHideFlags: 0
