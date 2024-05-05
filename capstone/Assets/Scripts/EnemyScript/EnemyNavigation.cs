@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -79,7 +80,12 @@ public class EnemyNavigation : MonoBehaviour
         enemy.ResetPath();
         if(structure != null) {
             enemyAttack.EnemyAttackStructure(structure);
-            transform.LookAt(structure.transform.position);
+
+            Vector3 direction = structure.transform.position - transform.position;
+            direction.y = 0;
+            Quaternion rotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Euler(0,rotation.eulerAngles.y, 0);
+            //transform.LookAt(structure.transform.position);
         }
     }
 
