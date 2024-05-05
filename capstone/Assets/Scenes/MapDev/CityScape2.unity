@@ -21615,6 +21615,14 @@ PrefabInstance:
       value: OldPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 5292490737764495599, guid: ba1d82c71e10943c7b9aa0c59a0dbdb5, type: 3}
+      propertyPath: m_VoxelSize
+      value: 0.4333333
+      objectReference: {fileID: 0}
+    - target: {fileID: 5292490737764495599, guid: ba1d82c71e10943c7b9aa0c59a0dbdb5, type: 3}
+      propertyPath: m_AgentTypeID
+      value: 1479372276
+      objectReference: {fileID: 0}
+    - target: {fileID: 5292490737764495599, guid: ba1d82c71e10943c7b9aa0c59a0dbdb5, type: 3}
       propertyPath: m_NavMeshData
       value: 
       objectReference: {fileID: 23800000, guid: 77cf8985521454e3a8cd37acd363660e, type: 2}
@@ -21770,6 +21778,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1305719426}
+    - target: {fileID: 8910370560716140837, guid: ba1d82c71e10943c7b9aa0c59a0dbdb5, type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 1887362270909896772, guid: 1e5ceeaaacc9a4d9dbdc4ebfb66875d5, type: 3}
     - target: {fileID: 8910370560716140837, guid: ba1d82c71e10943c7b9aa0c59a0dbdb5, type: 3}
       propertyPath: numberOfWaves
       value: 2
