@@ -6255,6 +6255,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5292490737764495599, guid: ba1d82c71e10943c7b9aa0c59a0dbdb5, type: 3}
+      propertyPath: m_VoxelSize
+      value: 0.4333333
+      objectReference: {fileID: 0}
+    - target: {fileID: 5292490737764495599, guid: ba1d82c71e10943c7b9aa0c59a0dbdb5, type: 3}
+      propertyPath: m_AgentTypeID
+      value: 1479372276
+      objectReference: {fileID: 0}
+    - target: {fileID: 5292490737764495599, guid: ba1d82c71e10943c7b9aa0c59a0dbdb5, type: 3}
       propertyPath: m_NavMeshData
       value: 
       objectReference: {fileID: 23800000, guid: ef133a7a0088946b5b945c41df718f22, type: 2}
@@ -6332,7 +6340,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6570668779194693321, guid: ba1d82c71e10943c7b9aa0c59a0dbdb5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000045776367
+      value: 0.000015258789
       objectReference: {fileID: 0}
     - target: {fileID: 8177211750225794957, guid: ba1d82c71e10943c7b9aa0c59a0dbdb5, type: 3}
       propertyPath: m_AnchorMax.y
@@ -6374,6 +6382,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1535866630}
+    - target: {fileID: 8910370560716140837, guid: ba1d82c71e10943c7b9aa0c59a0dbdb5, type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 1887362270909896772, guid: 1e5ceeaaacc9a4d9dbdc4ebfb66875d5, type: 3}
     - target: {fileID: 9111555202982992141, guid: ba1d82c71e10943c7b9aa0c59a0dbdb5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
