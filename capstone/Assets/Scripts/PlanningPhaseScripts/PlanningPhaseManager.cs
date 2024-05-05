@@ -53,7 +53,7 @@ public class PlanningPhaseManager : MonoBehaviour
 
     //connected to the Start Wave button
     public void EndPlanningPhase()
-    {
+    {   
         if (placeStructure.GetIsPlacingStructure())
         {
             Debug.Log("The player cannot end the planning phase when a structure is still being placed.");
@@ -61,6 +61,7 @@ public class PlanningPhaseManager : MonoBehaviour
         }
         else
         {
+
             gameObject.SetActive(false);
             worldSpaceCanvas.gameObject.SetActive(false);
             worldSpaceCanvas.SetCanvasParent(gameObject.transform);
