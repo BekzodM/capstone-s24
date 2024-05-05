@@ -37,10 +37,10 @@ public class Actor : MonoBehaviour
 
 
         //Attacking
-        if (Input.GetMouseButtonDown(0))
-        {
-            Attack();
-        }
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    Attack();
+        //}
         //float rotateSpeed = 12f;
         //transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
     }
