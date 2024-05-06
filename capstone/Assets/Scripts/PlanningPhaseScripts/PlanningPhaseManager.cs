@@ -21,6 +21,8 @@ public class PlanningPhaseManager : MonoBehaviour
     [SerializeField] private GameObject battlePhaseController;
     [SerializeField] private GameObject player;
 
+    private AudioManager audioManager;
+
     private void Awake()
     {
         /*
@@ -36,12 +38,17 @@ public class PlanningPhaseManager : MonoBehaviour
     }
 
     void Start()
-    {
+    {   audioManager = FindObjectOfType<AudioManager>();
         StartPlanningPhase();
     }
 
     public void StartPlanningPhase()
     {
+        if (audioManager != null)
+        {
+            audioManager.PlayBackgroundMusic(0);
+        }
+
         gameObject.SetActive(true);
         worldSpaceCanvas.gameObject.SetActive(false);
         structureInfo.gameObject.SetActive(false);
@@ -54,6 +61,8 @@ public class PlanningPhaseManager : MonoBehaviour
     //connected to the Start Wave button
     public void EndPlanningPhase()
     {   
+
+
         if (placeStructure.GetIsPlacingStructure())
         {
             Debug.Log("The player cannot end the planning phase when a structure is still being placed.");
@@ -61,6 +70,10 @@ public class PlanningPhaseManager : MonoBehaviour
         }
         else
         {
+
+            if (audioManager != null) {
+                audioManager.PlayBackgroundMusic(1);
+            }
 
             gameObject.SetActive(false);
             worldSpaceCanvas.gameObject.SetActive(false);
