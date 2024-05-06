@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.Timeline;
+// using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -30,7 +30,7 @@ public class EnemyNavigation : MonoBehaviour
         attackRange = 1;
     }
 
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,12 +51,12 @@ public class EnemyNavigation : MonoBehaviour
         // Checks if player is in attack range
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if(playerInSightRange && !playerInAttackRange && PlayerReachable()) ChasePlayer();  // 1st Prioirty = Player: if nearby chase player
-        else if(playerInSightRange && playerInAttackRange) AttackPlayer();  // if within enemy attack range then deal damage to player
-        else if(structureInSightRange() && !structureInAttackRange()) ChaseStructure(); // 2nd Priority = Structure: if nearyby go to structure
-        else if(structureInSightRange() && structureInAttackRange()) AttackStructure(); // if within enemy attack range then deal damage to structure
+        if (playerInSightRange && !playerInAttackRange && PlayerReachable()) ChasePlayer();  // 1st Prioirty = Player: if nearby chase player
+        else if (playerInSightRange && playerInAttackRange) AttackPlayer();  // if within enemy attack range then deal damage to player
+        else if (structureInSightRange() && !structureInAttackRange()) ChaseStructure(); // 2nd Priority = Structure: if nearyby go to structure
+        else if (structureInSightRange() && structureInAttackRange()) AttackStructure(); // if within enemy attack range then deal damage to structure
         else enemy.SetDestination(homeBase.position); // If nothing nearby, go to base
-        
+
     }
 
     void ChasePlayer()
@@ -65,9 +65,11 @@ public class EnemyNavigation : MonoBehaviour
 
     }
 
-    void ChaseStructure() {
-        if (structure != null) {
-            if(StructureReachable()) enemy.SetDestination(structure.transform.position); // If Structure reachable go to it
+    void ChaseStructure()
+    {
+        if (structure != null)
+        {
+            if (StructureReachable()) enemy.SetDestination(structure.transform.position); // If Structure reachable go to it
             else enemy.SetDestination(homeBase.position); // Else go to base
         }
     }
@@ -76,15 +78,17 @@ public class EnemyNavigation : MonoBehaviour
     Make enemy stay in one place.
     Deal damage to structure detected by ChaseStructure while looking at it.
     */
-    void AttackStructure() {
+    void AttackStructure()
+    {
         enemy.ResetPath();
-        if(structure != null) {
+        if (structure != null)
+        {
             enemyAttack.EnemyAttackStructure(structure);
 
             Vector3 direction = structure.transform.position - transform.position;
             direction.y = 0;
             Quaternion rotation = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.Euler(0,rotation.eulerAngles.y, 0);
+            transform.rotation = Quaternion.Euler(0, rotation.eulerAngles.y, 0);
             //transform.LookAt(structure.transform.position);
         }
     }
@@ -99,7 +103,8 @@ public class EnemyNavigation : MonoBehaviour
     /*
     Check if Player is within NavMesh Area
     */
-    bool PlayerReachable(){
+    bool PlayerReachable()
+    {
         NavMeshHit hit;
         bool isReachable = NavMesh.SamplePosition(player.position, out hit, 1f, NavMesh.AllAreas);
 
@@ -109,16 +114,18 @@ public class EnemyNavigation : MonoBehaviour
     /*
     Check if Structure is within NavMesh Area
     */
-    bool StructureReachable(){
+    bool StructureReachable()
+    {
         NavMeshHit hit;
         bool isReachable = NavMesh.SamplePosition(structure.transform.position, out hit, 2f, NavMesh.AllAreas);
 
         return isReachable;
     }
 
-    bool structureInSightRange() {
+    bool structureInSightRange()
+    {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, sightRange, whatIsStructure);
-        
+
         foreach (Collider collider in hitColliders)
         {
             //check if structure has a Nav Mesh Obstacle (not a trap)
@@ -132,9 +139,10 @@ public class EnemyNavigation : MonoBehaviour
         return false;
     }
 
-    bool structureInAttackRange() {
+    bool structureInAttackRange()
+    {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange, whatIsStructure);
-        
+
         foreach (Collider collider in hitColliders)
         {
             //check if structure has a Nav Mesh Obstacle (not a trap)
