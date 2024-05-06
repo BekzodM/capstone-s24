@@ -34,7 +34,7 @@ public class WaveSpawner : MonoBehaviour
             if (battlePhaseController.waveIndex <= battlePhaseController.numberOfWaves && battlePhaseController.countdown > 0f)//timer counting down:
             {
                 battlePhaseController.countdown -= Time.deltaTime;
-                
+
                 battlePhaseController.waveCountdownText.text = Mathf.Round(battlePhaseController.countdown).ToString();
             }
 
@@ -65,6 +65,14 @@ public class WaveSpawner : MonoBehaviour
         battlePhaseController.countdown = numEnemies;
         for (int i = 0; i < numEnemies; i++)
         {
+            //countdown audio
+            AudioSource sirenAlertAudio = GetComponent<AudioSource>();
+            if (sirenAlertAudio && i == 0)
+            {
+                sirenAlertAudio.Play();
+                Debug.Log("Play siren");
+            }
+
             SpawnEnemy();
             yield return new WaitForSeconds(1f);
         }
