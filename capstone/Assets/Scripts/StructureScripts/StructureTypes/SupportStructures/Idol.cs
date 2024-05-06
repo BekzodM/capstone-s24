@@ -18,7 +18,6 @@ public class Idol : Support
     protected override void Start()
     {
         base.Start();
-        healingAmount= 1;
     }
 
     protected override void SupportAbility() {
@@ -42,27 +41,27 @@ public class Idol : Support
     //slot0
     protected override void Slot0UpgradeLevel1()
     {
-        healingAmount = 2;
+        healingAmount+= 10;
     }
 
     protected override void Slot0UpgradeLevel2()
     {
-        healingAmount = 3;
+        healingAmount+= 10;
     }
 
     protected override void Slot0UpgradeLevel3()
     {
-        healingAmount = 4;
+        healingAmount+= 10;
     }
 
     protected override void Slot0UpgradeLevel4()
     {
-        healingAmount = 5;
+        healingAmount+= 10;
     }
 
     protected override void Slot0UpgradeLevel5()
     {
-        healingAmount = 6;
+        healingAmount+= 10;
     }
 
     //slot1

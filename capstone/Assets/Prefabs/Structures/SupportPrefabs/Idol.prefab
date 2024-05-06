@@ -5240,8 +5240,8 @@ MonoBehaviour:
   health: 0
   progressLevel: 0
   attackDamage: 0
-  cooldown: 10
-  healingAmount: 1
+  cooldown: 5
+  healingAmount: 5
 --- !u!54 &8209706741325220667
 Rigidbody:
   m_ObjectHideFlags: 0

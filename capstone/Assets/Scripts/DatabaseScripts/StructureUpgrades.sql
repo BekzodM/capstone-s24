@@ -292,7 +292,7 @@ VALUES
     (
         31,
         "Lv.1 Healing Aura",
-        "All allies within range, heal 2 health every 10 seconds.",
+        "All allies within range, heal 10 more health every 5 seconds.",
         "Sprites/PlanningPhase/idolIconHealingAura",
         0,
         50,
@@ -301,7 +301,7 @@ VALUES
     (
         32,
         "Lv.2 Healing Aura",
-        "All allies within range, heal 3 health every 10 seconds.",
+        "All allies within range, heal 10 more health every 5 seconds.",
         "Sprites/PlanningPhase/idolIconHealingAura",
         0,
         50,
@@ -310,7 +310,7 @@ VALUES
     (
         33,
         "Lv.3 Healing Aura",
-        "All allies within range, heal 4 health every 10 seconds.",
+        "All allies within range, heal 10 more health every 5 seconds.",
         "Sprites/PlanningPhase/idolIconHealingAura",
         0,
         50,
@@ -319,7 +319,7 @@ VALUES
     (
         34,
         "Lv.4 Healing Aura",
-        "All allies within range, heal 5 health every 10 seconds.",
+        "All allies within range, heal 10 more health every 5 seconds.",
         "Sprites/PlanningPhase/idolIconHealingAura",
         0,
         50,
@@ -328,7 +328,7 @@ VALUES
     (
         35,
         "Lv.5 Healing Aura",
-        "All allies within range, heal 6 health every 10 seconds.",
+        "All allies within range, heal 10 more health every 5 seconds.",
         "Sprites/PlanningPhase/idolIconHealingAura",
         0,
         50,
