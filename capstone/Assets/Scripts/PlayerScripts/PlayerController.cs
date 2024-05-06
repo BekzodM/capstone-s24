@@ -80,7 +80,9 @@ public class PlayerController : MonoBehaviour
         // Aim camera has higher priority, set active to false to use normal 3rd person camera as
         // default
         //aimCamera.gameObject.SetActive(false);
+
         aimCamera.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        
         //thirdPersonCamera.gameObject.transform.GetChild(0).gameObject.SetActive(false);
 
         Cursor.lockState = CursorLockMode.Locked;
