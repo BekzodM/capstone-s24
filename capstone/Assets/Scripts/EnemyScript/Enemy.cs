@@ -37,6 +37,7 @@ public class Enemy : MonoBehaviour
 
         if(currentHealth <= 0) {
             Destroy(gameObject);
+            battlePhaseController.planningPhaseManager.AddMoney(50);
         }
     }
 
@@ -49,22 +50,6 @@ public class Enemy : MonoBehaviour
         if(currentHealth <= 0 && isDead == false)
         {
             isDead= true;
-            
-            /*
-            //remove killed enemy from enemiesInZone list
-            string structType = attacker.GetComponent<Structure>().GetStructureType();
-
-            if (structType == "Offensive") {
-                attacker.GetComponent<Offensive>().RemoveEnemyFromZone(gameObject);
-            }
-            else if (structType == "Defensive") {
-                attacker.GetComponent<Defensive>().RemoveEnemyFromZone(gameObject);
-            }
-            else if (structType == "Trap") {
-                //attacker.GetComponent<Trap>().RemoveEnemyFromZone(gameObject);
-            }
-            */
-
             Destroy(gameObject);
             battlePhaseController.planningPhaseManager.AddMoney(50);
         }
