@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MapDev/CityScape2.unity
     guid: 312d1a43fa27744eb9b9be290dc69e22
+  - enabled: 1
+    path: Assets/Scenes/MapDev/CityScape3.unity
+    guid: deaf5a78de76149e2ad0ebf4380fbf26
+  - enabled: 1
+    path: Assets/Scenes/MapDev/CityScape4.unity
+    guid: 2b2f564cd60314eb5acb2a2d83f6afa7
   m_configObjects: {}
