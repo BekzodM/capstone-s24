@@ -1,7 +1,12 @@
 
 # CSCI 499 Capstone Game
 A 3D tower defense game built in unity for CSCI 499 capstone
-https://greedyskunk.itch.io/capstone-3d-game
+https://greedyskunk.itch.io/capstone-3d-game  
+
+## 🛠 How To Use
+1) Unzip "HighRiseHavocGame.zip"  
+2) Inside the folder is an executable and a GameData.db  
+3) Please run the executable in the same directory as GameData.db (do not separate these files)  
 
 ## Team Links
 Trello Board: https://trello.com/b/XNcMBorS/capstone  
@@ -17,7 +22,4 @@ Bodrul
 ## 🛠 Tools
 Unity game engine, C#
 
-## 🛠 How To Use
-1) Unzip "HighRiseHavocGame.zip"  
-2) Inside the folder is an executable and a GameData.db  
-3) Please run the executable in the same directory as GameData.db (do not separate these files)  
+
