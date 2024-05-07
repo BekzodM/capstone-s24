@@ -35,6 +35,8 @@ public class MapManager : MonoBehaviour
     //Money
     [SerializeField] private int startingMoney = 100;
 
+    private int moneySpent = 0;
+
     //percentage of how much the player gets for selling a structure
     [SerializeField] private float sellingPercentage = 0.7f;
 
@@ -82,6 +84,7 @@ public class MapManager : MonoBehaviour
     {
         MoneyText moneyText = planningPhaseUI.GetComponentInChildren<MoneyText>();
         money -= decrease;
+        moneySpent += decrease;
         moneyText.ChangeMoneyText(money);
     }
 
@@ -223,19 +226,20 @@ public class MapManager : MonoBehaviour
         levelCompleteUI.SetActive(true);
 
         string wavesBeat = currentWave + "/" + totalWaves;
-        int moneySpend = startingMoney - money;
+        //no longer used:
+        //int moneySpend = startingMoney - money;
         if (levelWon)
         {
             //Bodrul change implementation
             Scene currentScene = SceneManager.GetActiveScene();
             string sceneName = currentScene.name;
             LevelManagementFucntion(sceneName);
-            levelStats.text = "Waves beat: " + wavesBeat + "\nMoney Spent: " + moneySpend + "\nYou leveled up!\nNew Progress Level: " + GameState.currentProgressLevel;
+            levelStats.text = "Waves beat: " + wavesBeat + "\nMoney Spent: " + moneySpent + "\nYou leveled up!\nNew Progress Level: " + GameState.currentProgressLevel;
             levelCompleteFailText.text = "Level Complete";
         }
         else
         {
-            levelStats.text = "Waves beat: " + wavesBeat + "\nMoney Spent: " + moneySpend + "\nYou did not level up\nProgress Level: " + GameState.currentProgressLevel;
+            levelStats.text = "Waves beat: " + wavesBeat + "\nMoney Spent: " + moneySpent + "\nYou did not level up\nProgress Level: " + GameState.currentProgressLevel;
             levelCompleteFailText.text = "Level Failed";
         }
     }
