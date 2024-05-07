@@ -16,3 +16,8 @@ Bodrul
 
 ## 🛠 Tools
 Unity game engine, C#
+
+## 🛠 How To Use
+Unzip "HighRiseHavocGame.zip".
+Inside the folder is an executable and a GameData.db
+Please run the executable in the same directory as GameData.db (do not separate these files)
